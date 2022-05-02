@@ -1,4 +1,4 @@
-package com.projectg2.thebookclub.model;
+package br.com.digitalhouse.thebookclub.modelo;
 
 import java.util.Date;
 
@@ -17,93 +17,115 @@ import javax.validation.constraints.Size;
 public class Livro {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_livro;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long Id_Livro;
 	
 	@NotNull
-	@Size(min = 5, max = 100)
-	private String categoria; //isso poderia ser um enum?
-	
-	@NotNull
-	@Size(min = 5, max = 200)
+	@Size(min=2,max=100)
 	private String titulo;
 	
 	@NotNull
-	@Size(min = 5, max = 100)
-	private String autor;
+	@Temporal(TemporalType.DATE)
+	private Date dataPublicacao;
 	
 	@NotNull
-	@Size(min = 5, max = 100)
+	@Size(min=2,max=200)
+	private String autores;
+	
+	@NotNull
+	@Size(min=2,max=30)
 	private String editora;
 	
 	@NotNull
-	@Temporal(TemporalType.DATE)
-	private Date dt_publicacao;
+	@Size(min=2,max=30)
+	private String categoria;
 	
 	@NotNull
-	private Integer num_paginas;
+	@Size(min=1,max=5)
+	private Integer numeroPaginas;
 	
 	@NotNull
-	@Size(min = 5, max = 100)
+	@Size(min=10,max=13)
 	private String isbn;
-
 	
-	//getters and setters
-	public String getCategoria() {
-		return categoria;
+	@NotNull
+	@Size(min=2,max=10)
+	private Double preco;
+	
+	@NotNull
+	@Size(min=1,max=5)
+	private Integer quantidadeEstoque;
+	
+	@NotNull
+	@Size(min=2,max=100)
+	private String fornecedor;
+	
+	
+	
+	public Long getId_Livro() {
+		return Id_Livro;
 	}
-
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setId_Livro(Long id_Livro) {
+		Id_Livro = id_Livro;
 	}
-
 	public String getTitulo() {
 		return titulo;
 	}
-
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-
+	public Date getDataPublicacao() {
+		return dataPublicacao;
+	}
+	public void setDataPublicacao(Date dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
+	}
 	public String getAutor() {
-		return autor;
+		return autores;
 	}
-
 	public void setAutor(String autor) {
-		this.autor = autor;
+		this.autores = autor;
 	}
-
 	public String getEditora() {
 		return editora;
 	}
-
 	public void setEditora(String editora) {
 		this.editora = editora;
 	}
-
-	public Date getDt_publicacao() {
-		return dt_publicacao;
+	public String getCategoria() {
+		return categoria;
 	}
-
-	public void setDt_publicacao(Date dt_publicacao) {
-		this.dt_publicacao = dt_publicacao;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
-
-	public Integer getNum_paginas() {
-		return num_paginas;
+	public Integer getNumeroPaginas() {
+		return numeroPaginas;
 	}
-
-	public void setNum_paginas(Integer num_paginas) {
-		this.num_paginas = num_paginas;
+	public void setNumeroPaginas(Integer numeroPaginas) {
+		this.numeroPaginas = numeroPaginas;
 	}
-
 	public String getIsbn() {
 		return isbn;
 	}
-
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
-	
-
+	public Double getPreco() {
+		return preco;
+	}
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+	public Integer getQuantidadeEstoque() {
+		return quantidadeEstoque;
+	}
+	public void setQuantidadeEstoque(Integer quantidadeEstoque) {
+		this.quantidadeEstoque = quantidadeEstoque;
+	}
+	public String getFornecedor() {
+		return fornecedor;
+	}
+	public void setFornecedor(String fornecedor) {
+		this.fornecedor = fornecedor;
+	}
 }
