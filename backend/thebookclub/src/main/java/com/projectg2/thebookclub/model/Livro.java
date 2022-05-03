@@ -25,12 +25,12 @@ public class Livro {
 	private String titulo;
 	
 	@NotNull
-	@Temporal(TemporalType.DATE)
-	private Date dataPublicacao;
+	@Size(min=2,max=100)
+	private String autor;
 	
 	@NotNull
-	@Size(min=2,max=200)
-	private String autores;
+	@Temporal(TemporalType.DATE)
+	private Date dataPublicacao;
 	
 	@NotNull
 	@Size(min=2,max=30)
