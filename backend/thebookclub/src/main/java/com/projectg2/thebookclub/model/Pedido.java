@@ -25,10 +25,16 @@ public class Pedido {
 	@Size(min=2,max=10)
 	private Double valor;
 	
+	@NotNull
+	@Enumerated(EnumType.STRING)
 	private TipoPagamento pagamento;
 	
+	@NotNull
+	@Enumerated(EnumType.STRING)
 	private FormaEnvio formaEnvio;
 	
+	@NotNull
+	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
 	
 	@NotNull
