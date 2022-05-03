@@ -63,88 +63,96 @@ public class Livro {
 	public Long getLivroId() {
 		return livroId;
 	}
-	
-	public void setLivroId(Long livroId) {
-		this.livroId = livroId;
-	}
-	
+
 	public String getTitulo() {
 		return titulo;
 	}
-	
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+
+	public String getAutor() {
+		return autor;
 	}
-	
+
 	public Date getDataPublicacao() {
 		return dataPublicacao;
 	}
-	
-	public void setDataPublicacao(Date dataPublicacao) {
-		this.dataPublicacao = dataPublicacao;
-	}
-	
-	public String getAutor() {
-		return autores;
-	}
-	
-	public void setAutor(String autor) {
-		this.autores = autor;
-	}
-	
+
 	public String getEditora() {
 		return editora;
 	}
-	
-	public void setEditora(String editora) {
-		this.editora = editora;
-	}
-	
+
 	public String getCategoria() {
 		return categoria;
 	}
-	
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
-	
+
 	public Integer getNumeroPaginas() {
 		return numeroPaginas;
 	}
-	
-	public void setNumeroPaginas(Integer numeroPaginas) {
-		this.numeroPaginas = numeroPaginas;
-	}
-	
+
 	public String getIsbn() {
 		return isbn;
 	}
-	
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
-	
+
 	public Double getPreco() {
 		return preco;
 	}
-	
-	public void setPreco(Double preco) {
-		this.preco = preco;
-	}
-	
+
 	public Integer getQuantidadeEstoque() {
 		return quantidadeEstoque;
 	}
-	
-	public void setQuantidadeEstoque(Integer quantidadeEstoque) {
-		this.quantidadeEstoque = quantidadeEstoque;
-	}
-	
+
 	public String getFornecedor() {
 		return fornecedor;
 	}
-	
+
+	public List<PedidoLivro> getPedidos() {
+		return pedidos;
+	}
+
+	public void setLivroId(Long livroId) {
+		this.livroId = livroId;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
+	public void setDataPublicacao(Date dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
+	}
+
+	public void setEditora(String editora) {
+		this.editora = editora;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public void setNumeroPaginas(Integer numeroPaginas) {
+		this.numeroPaginas = numeroPaginas;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+
+	public void setQuantidadeEstoque(Integer quantidadeEstoque) {
+		this.quantidadeEstoque = quantidadeEstoque;
+	}
+
 	public void setFornecedor(String fornecedor) {
 		this.fornecedor = fornecedor;
 	}
+
+	public void setPedidos(List<PedidoLivro> pedidos) {
+		this.pedidos = pedidos;
+	}	
 }
