@@ -22,8 +22,8 @@ public class Usuario {
 	
 	@NotNull
 	@Size(min=2,max=100)
-	private String sobreNome;
-	
+	private String sobrenome;
+
 	@NotNull
 	@Size(min=11,max=14)
 	private String cpf;
@@ -90,7 +90,7 @@ public class Usuario {
 	}
 	
 	public void setSobreNome(String sobreNome) {
-		this.sobreNome = sobreNome;
+		this.sobrenome = sobreNome;
 	}
 	
 	public String getUsername() {
