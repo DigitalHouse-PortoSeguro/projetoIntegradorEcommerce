@@ -1,8 +1,5 @@
 package com.projectg2.thebookclub.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +18,7 @@ public class Estoque {
 	private Long estoqueId;
 	
 	//TODO pesquisar annotation de chave estrangeira
-	private Long livroId;
+	//private Long livroId;
 	
 	@Null
 	private Integer quantidade;
@@ -30,16 +27,14 @@ public class Estoque {
 	@Size(min = 10, max = 100)
 	private String fornecedor;
 	
-	//TODO como controlar quantidades de livros no estoque?
-	private List<Livro> livros = new ArrayList<>();
+	/*//TODO como controlar quantidades de livros no estoque?
+	@OneToMany(mappedBy = "estoque", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("tb_estoque")
+	private List<Livro> livros = new ArrayList<>();*/
 
 	//getters and setters
 	public Long getEstoqueId() {
 		return estoqueId;
-	}
-
-	public Long getLivroId() {
-		return livroId;
 	}
 
 	public Integer getQuantidade() {
@@ -50,12 +45,21 @@ public class Estoque {
 		return fornecedor;
 	}
 
+	public void setEstoqueId(Long estoqueId) {
+		this.estoqueId = estoqueId;
+	}
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+
 	public void setFornecedor(String fornecedor) {
 		this.fornecedor = fornecedor;
-	} 
+	}
 	
-	//class methods
-	//TODO criar métodos para adicionar / remover livros do estoque
+	
+
+	
 	
 
 }
