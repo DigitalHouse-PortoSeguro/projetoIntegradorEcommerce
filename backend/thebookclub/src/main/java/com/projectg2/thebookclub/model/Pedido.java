@@ -43,55 +43,63 @@ public class Pedido {
 		return pedidoId;
 	}
 
-	public void setPedidoId(Long pedidoId) {
-		this.pedidoId = pedidoId;
-	}
-	
 	public Double getValor() {
 		return valor;
 	}
-	
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
-	
+
 	public TipoPagamento getPagamento() {
 		return pagamento;
 	}
-	
-	public void setPagamento(TipoPagamento pagamento) {
-		this.pagamento = pagamento;
-	}
-	
+
 	public FormaEnvio getFormaEnvio() {
 		return formaEnvio;
 	}
-	
-	public void setFormaEnvio(FormaEnvio formaEnvio) {
-		this.formaEnvio = formaEnvio;
-	}
-	
+
 	public StatusPedido getStatus() {
 		return status;
 	}
-	
-	public void setStatus(StatusPedido status) {
-		this.status = status;
-	}
-	
+
 	public Date getDataPedido() {
 		return dataPedido;
 	}
-	
-	public void setDataPedido(Date dataPedido) {
-		this.dataPedido = dataPedido;
-	}
-	
+
 	public Date getDataEntraga() {
 		return dataEntraga;
 	}
-	
+
+	public List<PedidoLivro> getLivros() {
+		return livros;
+	}
+
+	public void setPedidoId(Long pedidoId) {
+		this.pedidoId = pedidoId;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
+	public void setPagamento(TipoPagamento pagamento) {
+		this.pagamento = pagamento;
+	}
+
+	public void setFormaEnvio(FormaEnvio formaEnvio) {
+		this.formaEnvio = formaEnvio;
+	}
+
+	public void setStatus(StatusPedido status) {
+		this.status = status;
+	}
+
+	public void setDataPedido(Date dataPedido) {
+		this.dataPedido = dataPedido;
+	}
+
 	public void setDataEntraga(Date dataEntraga) {
 		this.dataEntraga = dataEntraga;
-	}	
+	}
+
+	public void setLivros(List<PedidoLivro> livros) {
+		this.livros = livros;
+	}
 }
