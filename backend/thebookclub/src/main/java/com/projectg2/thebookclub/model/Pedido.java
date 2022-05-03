@@ -25,7 +25,6 @@ public class Pedido {
 	@Size(min=2,max=10)
 	private Double valor;
 	
-	
 	private TipoPagamento pagamento;
 	
 	private FormaEnvio formaEnvio;
@@ -47,42 +46,51 @@ public class Pedido {
 	public void setPedidoId(Long pedidoId) {
 		this.pedidoId = pedidoId;
 	}
-	public void setId_Pedido(Long id_Pedido) {
-		Id_Pedido = id_Pedido;
-	}
+	
 	public Double getValor() {
 		return valor;
 	}
+	
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
+	
 	public TipoPagamento getPagamento() {
 		return pagamento;
 	}
+	
 	public void setPagamento(TipoPagamento pagamento) {
 		this.pagamento = pagamento;
 	}
+	
 	public FormaEnvio getFormaEnvio() {
 		return formaEnvio;
 	}
+	
 	public void setFormaEnvio(FormaEnvio formaEnvio) {
 		this.formaEnvio = formaEnvio;
 	}
+	
 	public StatusPedido getStatus() {
 		return status;
 	}
+	
 	public void setStatus(StatusPedido status) {
 		this.status = status;
 	}
+	
 	public Date getDataPedido() {
 		return dataPedido;
 	}
+	
 	public void setDataPedido(Date dataPedido) {
 		this.dataPedido = dataPedido;
 	}
+	
 	public Date getDataEntraga() {
 		return dataEntraga;
 	}
+	
 	public void setDataEntraga(Date dataEntraga) {
 		this.dataEntraga = dataEntraga;
 	}	

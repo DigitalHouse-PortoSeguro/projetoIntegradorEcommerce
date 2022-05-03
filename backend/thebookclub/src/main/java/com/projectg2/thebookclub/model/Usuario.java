@@ -68,78 +68,99 @@ public class Usuario {
 	public void setUsuarioId(Long usuarioId) {
 		this.usuarioId = usuarioId;
 	}
-	public void setId_Usuario(Long id_Usuario) {
-		Id_Usuario = id_Usuario;
-	}
+	
 	public String getCpf() {
 		return cpf;
 	}
+	
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	public String getSobreNome() {
-		return sobreNome;
+		return sobrenome;
 	}
+	
 	public void setSobreNome(String sobreNome) {
 		this.sobreNome = sobreNome;
 	}
+	
 	public String getUsername() {
 		return username;
 	}
+	
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	
 	public String getEmail() {
 		return email;
 	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	public Integer getIdade() {
 		return idade;
 	}
+	
 	public void setIdade(Integer idade) {
 		this.idade = idade;
 	}
+	
 	public String getPreferencias() {
 		return preferencias;
 	}
+	
 	public void setPreferencias(String preferencias) {
 		this.preferencias = preferencias;
 	}
+	
 	public String getEndereco() {
 		return endereco;
 	}
+	
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
+	
 	public Integer getNumero() {
 		return numero;
 	}
+	
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
+	
 	public String getBairro() {
 		return bairro;
 	}
+	
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
+	
 	public String getCep() {
 		return cep;
 	}
+	
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
+	
 	public String getComplemento() {
 		return complemento;
 	}
+	
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
