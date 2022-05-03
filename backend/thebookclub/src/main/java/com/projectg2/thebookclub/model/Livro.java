@@ -18,7 +18,7 @@ public class Livro {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long Id_Livro;
+	private Long livroId;
 	
 	@NotNull
 	@Size(min=2,max=100)
@@ -60,10 +60,12 @@ public class Livro {
 	@Size(min=2,max=100)
 	private String fornecedor;
 	
+	public Long getLivroId() {
+		return livroId;
+	}
 	
-	
-	public Long getId_Livro() {
-		return Id_Livro;
+	public void setLivroId(Long livroId) {
+		this.livroId = livroId;
 	}
 	public void setId_Livro(Long id_Livro) {
 		Id_Livro = id_Livro;

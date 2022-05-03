@@ -14,7 +14,7 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long Id_Usuario;
+	private Long usuarioId;
 	
 	@NotNull
 	@Size(min=2,max=100)
@@ -61,10 +61,12 @@ public class Usuario {
 	@Size(min=10,max=100)
 	private String complemento;
 	
+	public Long getUsuarioId() {
+		return usuarioId;
+	}
 	
-	
-	public Long getId_Usuario() {
-		return Id_Usuario;
+	public void setUsuarioId(Long usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 	public void setId_Usuario(Long id_Usuario) {
 		Id_Usuario = id_Usuario;

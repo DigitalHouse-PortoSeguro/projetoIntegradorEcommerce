@@ -19,7 +19,7 @@ public class Pedido {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long Id_Pedido;
+	private Long pedidoId;
 	
 	@NotNull
 	@Size(min=2,max=10)
@@ -40,10 +40,12 @@ public class Pedido {
 	@Temporal(TemporalType.DATE)
 	private Date dataEntraga;
 	
-	
-	
-	public Long getId_Pedido() {
-		return Id_Pedido;
+	public Long getPedidoId() {
+		return pedidoId;
+	}
+
+	public void setPedidoId(Long pedidoId) {
+		this.pedidoId = pedidoId;
 	}
 	public void setId_Pedido(Long id_Pedido) {
 		Id_Pedido = id_Pedido;

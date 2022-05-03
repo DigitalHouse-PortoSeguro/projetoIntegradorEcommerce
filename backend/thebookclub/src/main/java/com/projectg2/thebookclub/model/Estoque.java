@@ -18,10 +18,10 @@ public class Estoque {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_estoque;
+	private Long estoqueId;
 	
 	//TODO pesquisar annotation de chave estrangeira
-	private Long id_livro;
+	private Long livroId;
 	
 	@Null
 	private Integer quantidade;
@@ -34,12 +34,12 @@ public class Estoque {
 	private List<Livro> livros = new ArrayList<>();
 
 	//getters and setters
-	public Long getId_estoque() {
-		return id_estoque;
+	public Long getEstoqueId() {
+		return estoqueId;
 	}
 
-	public Long getId_livro() {
-		return id_livro;
+	public Long getLivroId() {
+		return livroId;
 	}
 
 	public Integer getQuantidade() {
