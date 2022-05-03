@@ -1,4 +1,4 @@
-package br.com.digitalhouse.thebookclub.modelo;
+package com.projectg2.thebookclub.model;
 
 import java.util.Date;
 
