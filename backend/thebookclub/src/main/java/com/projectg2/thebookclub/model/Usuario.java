@@ -17,16 +17,16 @@ public class Usuario {
 	private Long usuarioId;
 	
 	@NotNull
+	@Size(min=11,max=14)
+	private String cpf;
+	
+	@NotNull
 	@Size(min=2,max=100)
 	private String nome;
 	
 	@NotNull
 	@Size(min=2,max=100)
 	private String sobrenome;
-
-	@NotNull
-	@Size(min=11,max=14)
-	private String cpf;
 	
 	@NotNull
 	@Size(min=5,max=20)
@@ -40,24 +40,27 @@ public class Usuario {
 	@Size(min=1,max=3)
 	private Integer idade;
 	
+	@NotNull
+	@Size(min=8,max=256)
 	private String preferencias;
 	
 	@NotNull
-	@Size(min=10,max=100)
-	private String endereco;
-	
-	@NotNull
-	@Size(min=1,max=6)
-	private Integer numero;
+	@Size(min=11,max=14)
+	private String cep;
 	
 	@NotNull
 	@Size(min=10,max=100)
 	private String bairro;
 	
 	@NotNull
-	@Size(min=11,max=14)
-	private String cep;
+	@Size(min=10,max=100)
+	private String rua;
 	
+	@NotNull
+	@Size(min=1,max=6)
+	private Integer numero;
+	
+	@NotNull
 	@Size(min=10,max=100)
 	private String complemento;
 	
