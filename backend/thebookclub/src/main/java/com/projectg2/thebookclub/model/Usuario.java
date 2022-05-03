@@ -63,107 +63,107 @@ public class Usuario {
 	@NotNull
 	@Size(min=10,max=100)
 	private String complemento;
-	
+
 	public Long getUsuarioId() {
 		return usuarioId;
 	}
-	
-	public void setUsuarioId(Long usuarioId) {
-		this.usuarioId = usuarioId;
-	}
-	
+
 	public String getCpf() {
 		return cpf;
 	}
-	
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	
+
 	public String getNome() {
 		return nome;
 	}
-	
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	public String getSobreNome() {
+
+	public String getSobrenome() {
 		return sobrenome;
 	}
-	
-	public void setSobreNome(String sobreNome) {
-		this.sobrenome = sobreNome;
-	}
-	
+
 	public String getUsername() {
 		return username;
 	}
-	
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
+
 	public String getEmail() {
 		return email;
 	}
-	
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
+
 	public Integer getIdade() {
 		return idade;
 	}
-	
-	public void setIdade(Integer idade) {
-		this.idade = idade;
-	}
-	
+
 	public String getPreferencias() {
 		return preferencias;
 	}
-	
-	public void setPreferencias(String preferencias) {
-		this.preferencias = preferencias;
-	}
-	
-	public String getEndereco() {
-		return endereco;
-	}
-	
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-	
-	public Integer getNumero() {
-		return numero;
-	}
-	
-	public void setNumero(Integer numero) {
-		this.numero = numero;
-	}
-	
-	public String getBairro() {
-		return bairro;
-	}
-	
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-	
+
 	public String getCep() {
 		return cep;
 	}
-	
-	public void setCep(String cep) {
-		this.cep = cep;
+
+	public String getBairro() {
+		return bairro;
 	}
-	
+
+	public String getRua() {
+		return rua;
+	}
+
+	public Integer getNumero() {
+		return numero;
+	}
+
 	public String getComplemento() {
 		return complemento;
 	}
-	
+
+	public void setUsuarioId(Long usuarioId) {
+		this.usuarioId = usuarioId;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
+
+	public void setPreferencias(String preferencias) {
+		this.preferencias = preferencias;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
