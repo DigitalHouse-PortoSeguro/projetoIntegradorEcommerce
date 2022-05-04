@@ -1,4 +1,4 @@
-package com.projectg2.thebookclub.model;
+package com.projectg2.thebookclub.enums;
 
 public enum FormaEnvio {
 	
