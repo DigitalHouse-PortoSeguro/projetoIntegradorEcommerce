@@ -1,11 +1,16 @@
 package com.projectg2.thebookclub.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -37,8 +42,8 @@ public class Usuario {
 	private String email;
 	
 	@NotNull
-	@Size(min=1,max=3)
-	private Integer idade;
+	@Temporal(TemporalType.DATE)
+	private Date dataNascimento;
 	
 	@NotNull
 	@Size(min=8,max=256)
@@ -60,7 +65,7 @@ public class Usuario {
 	@Size(min=1,max=6)
 	private Integer numero;
 	
-	@NotNull
+	@Null
 	@Size(min=10,max=100)
 	private String complemento;
 
@@ -88,8 +93,8 @@ public class Usuario {
 		return email;
 	}
 
-	public Integer getIdade() {
-		return idade;
+	public Date getDataNascimento() {
+		return dataNascimento;
 	}
 
 	public String getPreferencias() {
@@ -140,8 +145,8 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public void setIdade(Integer idade) {
-		this.idade = idade;
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	public void setPreferencias(String preferencias) {
