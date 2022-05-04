@@ -18,6 +18,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.projectg2.thebookclub.enums.FormaEnvio;
+import com.projectg2.thebookclub.enums.StatusPedido;
+import com.projectg2.thebookclub.enums.TipoPagamento;
 
 
 @Entity
