@@ -1,4 +1,4 @@
-package com.projectg2.thebookclub;
+package br.com.digitalhouse.thebookclub;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
