@@ -1,16 +1,19 @@
 package br.com.digitalhouse.thebookclub.modelo;
 
 import java.util.Date;
-
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="tb_livro")
@@ -18,19 +21,19 @@ public class Livro {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long Id_Livro;
+	private Long livroId;
 	
 	@NotNull
 	@Size(min=2,max=100)
 	private String titulo;
 	
 	@NotNull
-	@Temporal(TemporalType.DATE)
-	private Date dataPublicacao;
+	@Size(min=2,max=100)
+	private String autor;
 	
 	@NotNull
-	@Size(min=2,max=200)
-	private String autores;
+	@Temporal(TemporalType.DATE)
+	private Date dataPublicacao;
 	
 	@NotNull
 	@Size(min=2,max=30)
@@ -60,72 +63,103 @@ public class Livro {
 	@Size(min=2,max=100)
 	private String fornecedor;
 	
-	
-	
-	public Long getId_Livro() {
-		return Id_Livro;
+	@OneToMany(mappedBy = "livro", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("tb_livro")
+	private List<PedidoLivro> pedidos;
+
+	public Long getLivroId() {
+		return livroId;
 	}
-	public void setId_Livro(Long id_Livro) {
-		Id_Livro = id_Livro;
-	}
+
 	public String getTitulo() {
 		return titulo;
 	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+
+	public String getAutor() {
+		return autor;
 	}
+
 	public Date getDataPublicacao() {
 		return dataPublicacao;
 	}
-	public void setDataPublicacao(Date dataPublicacao) {
-		this.dataPublicacao = dataPublicacao;
-	}
-	public String getAutor() {
-		return autores;
-	}
-	public void setAutor(String autor) {
-		this.autores = autor;
-	}
+
 	public String getEditora() {
 		return editora;
 	}
-	public void setEditora(String editora) {
-		this.editora = editora;
-	}
+
 	public String getCategoria() {
 		return categoria;
 	}
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
+
 	public Integer getNumeroPaginas() {
 		return numeroPaginas;
 	}
-	public void setNumeroPaginas(Integer numeroPaginas) {
-		this.numeroPaginas = numeroPaginas;
-	}
+
 	public String getIsbn() {
 		return isbn;
 	}
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
+
 	public Double getPreco() {
 		return preco;
 	}
-	public void setPreco(Double preco) {
-		this.preco = preco;
-	}
+
 	public Integer getQuantidadeEstoque() {
 		return quantidadeEstoque;
 	}
-	public void setQuantidadeEstoque(Integer quantidadeEstoque) {
-		this.quantidadeEstoque = quantidadeEstoque;
-	}
+
 	public String getFornecedor() {
 		return fornecedor;
 	}
+
+	public List<PedidoLivro> getPedidos() {
+		return pedidos;
+	}
+
+	public void setLivroId(Long livroId) {
+		this.livroId = livroId;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
+	public void setDataPublicacao(Date dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
+	}
+
+	public void setEditora(String editora) {
+		this.editora = editora;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public void setNumeroPaginas(Integer numeroPaginas) {
+		this.numeroPaginas = numeroPaginas;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+
+	public void setQuantidadeEstoque(Integer quantidadeEstoque) {
+		this.quantidadeEstoque = quantidadeEstoque;
+	}
+
 	public void setFornecedor(String fornecedor) {
 		this.fornecedor = fornecedor;
 	}
+
+	public void setPedidos(List<PedidoLivro> pedidos) {
+		this.pedidos = pedidos;
+	}	
 }
