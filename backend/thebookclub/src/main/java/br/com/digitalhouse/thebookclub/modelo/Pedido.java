@@ -22,103 +22,117 @@ import br.com.digitalhouse.thebookclub.enums.StatusPedido;
 import br.com.digitalhouse.thebookclub.enums.TipoPagamento;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
+//Referência a tabela pedidos
 @Entity
 @Table(name="tb_pedido")
 public class Pedido {
 	
+	//Numero do pedido
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long pedidoId;
 	
-	@NotNull
-	@Size(min=2,max=10)
-	private Double valor;
-	
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private TipoPagamento pagamento;
-	
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private FormaEnvio formaEnvio;
-	
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private StatusPedido status;
-	
-	@NotNull
-	@Temporal(TemporalType.DATE)
-	private Date dataPedido;
-	
-	@NotNull
-	@Temporal(TemporalType.DATE)
-	private Date dataEntraga;
-	
-	@OneToMany(mappedBy = "pedido", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("tb_pedido")
-	private List<PedidoLivro> livros;
-
 	public Long getPedidoId() {
 		return pedidoId;
-	}
-
-	public Double getValor() {
-		return valor;
-	}
-
-	public TipoPagamento getPagamento() {
-		return pagamento;
-	}
-
-	public FormaEnvio getFormaEnvio() {
-		return formaEnvio;
-	}
-
-	public StatusPedido getStatus() {
-		return status;
-	}
-
-	public Date getDataPedido() {
-		return dataPedido;
-	}
-
-	public Date getDataEntraga() {
-		return dataEntraga;
-	}
-
-	public List<PedidoLivro> getLivros() {
-		return livros;
 	}
 
 	public void setPedidoId(Long pedidoId) {
 		this.pedidoId = pedidoId;
 	}
 
+	//Valor total do pedido
+	@NotNull
+	@Size(min=2,max=10)
+	private Double valor;
+
+	public Double getValor() {
+		return valor;
+	}
+
 	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+
+	//Forma de pagamento do pedido
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private TipoPagamento pagamento;
+	
+	public TipoPagamento getPagamento() {
+		return pagamento;
 	}
 
 	public void setPagamento(TipoPagamento pagamento) {
 		this.pagamento = pagamento;
 	}
+	
 
+	//Forma de envio
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private FormaEnvio formaEnvio;
+
+	public FormaEnvio getFormaEnvio() {
+		return formaEnvio;
+	}
+	
 	public void setFormaEnvio(FormaEnvio formaEnvio) {
 		this.formaEnvio = formaEnvio;
+	}
+	
+	//Status
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private StatusPedido status;
+	
+	public StatusPedido getStatus() {
+		return status;
 	}
 
 	public void setStatus(StatusPedido status) {
 		this.status = status;
+	}
+	
+
+	//Data em que o pedido foi realizado
+	@NotNull
+	@Temporal(TemporalType.DATE)
+	private Date dataPedido;
+	
+	public Date getDataPedido() {
+		return dataPedido;
 	}
 
 	public void setDataPedido(Date dataPedido) {
 		this.dataPedido = dataPedido;
 	}
 
-	public void setDataEntraga(Date dataEntraga) {
-		this.dataEntraga = dataEntraga;
+	
+	//Data de atualização do status é mais apropriado. E not null não é aplicavel nessa entrada
+	@NotNull
+	@Temporal(TemporalType.DATE)
+	private Date dataEntrega;
+
+	public Date getDataEntrega() {
+		return dataEntrega;
+	}
+
+	public void setDataEntrega(Date dataEntrega) {
+		this.dataEntrega = dataEntrega;
+	}
+	
+	//Lista de livros que foram comprados 
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("tb_pedido")
+	private List<PedidoLivro> livros;
+
+	public List<PedidoLivro> getLivros() {
+		return livros;
 	}
 
 	public void setLivros(List<PedidoLivro> livros) {
 		this.livros = livros;
 	}
+
 }
