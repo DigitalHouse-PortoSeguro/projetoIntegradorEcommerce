@@ -38,6 +38,10 @@ public class Usuario {
 	private String username;
 	
 	@NotNull
+	@Size(min=8)
+	private String senha;
+
+	@NotNull
 	@Size(min=10,max=40)
 	private String email;
 	
@@ -87,6 +91,10 @@ public class Usuario {
 
 	public String getUsername() {
 		return username;
+	}
+	
+	public String getSenha() {
+		return senha;
 	}
 
 	public String getEmail() {
@@ -139,6 +147,10 @@ public class Usuario {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public void setEmail(String email) {
