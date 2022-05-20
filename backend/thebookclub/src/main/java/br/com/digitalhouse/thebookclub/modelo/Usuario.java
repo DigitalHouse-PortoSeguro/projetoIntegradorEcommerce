@@ -49,7 +49,7 @@ public class Usuario {
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 	
-	@NotNull
+	@Null
 	@Size(min=8,max=256)
 	private String preferencias;
 	
