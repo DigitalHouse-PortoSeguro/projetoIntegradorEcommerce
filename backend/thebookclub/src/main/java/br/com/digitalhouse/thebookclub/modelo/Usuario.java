@@ -1,16 +1,11 @@
 package br.com.digitalhouse.thebookclub.modelo;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -19,11 +14,7 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long usuarioId;
-	
-	@NotNull
-	@Size(min=11,max=14)
-	private String cpf;
+	private Long Id_Usuario;
 	
 	@NotNull
 	@Size(min=2,max=100)
@@ -31,156 +22,132 @@ public class Usuario {
 	
 	@NotNull
 	@Size(min=2,max=100)
-	private String sobrenome;
+	private String sobreNome;
+	
+	@NotNull
+	@Size(min=11,max=14)
+	private String cpf;
 	
 	@NotNull
 	@Size(min=5,max=20)
 	private String username;
 	
 	@NotNull
-	@Size(min=8)
-	private String senha;
-
-	@NotNull
 	@Size(min=10,max=40)
 	private String email;
 	
 	@NotNull
-	@Temporal(TemporalType.DATE)
-	private Date dataNascimento;
+	@Size(min=6,max=15)
+	private String senha;
 	
-	@Null
-	@Size(min=8,max=256)
+	@NotNull
+	@Size(min=1,max=3)
+	private Integer idade;
+	
 	private String preferencias;
 	
 	@NotNull
-	@Size(min=11,max=14)
-	private String cep;
+	@Size(min=10,max=100)
+	private String endereco;
+	
+	@NotNull
+	@Size(min=1,max=6)
+	private Integer numero;
 	
 	@NotNull
 	@Size(min=10,max=100)
 	private String bairro;
 	
 	@NotNull
-	@Size(min=10,max=100)
-	private String rua;
+	@Size(min=11,max=14)
+	private String cep;
 	
-	@NotNull
-	@Size(min=1,max=6)
-	private Integer numero;
-	
-	@Null
 	@Size(min=10,max=100)
 	private String complemento;
-
-	public Long getUsuarioId() {
-		return usuarioId;
+	
+	
+	
+	public Long getId_Usuario() {
+		return Id_Usuario;
 	}
-
+	public void setId_Usuario(Long id_Usuario) {
+		Id_Usuario = id_Usuario;
+	}
 	public String getCpf() {
 		return cpf;
 	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-	
-	public String getSenha() {
-		return senha;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public String getPreferencias() {
-		return preferencias;
-	}
-
-	public String getCep() {
-		return cep;
-	}
-
-	public String getBairro() {
-		return bairro;
-	}
-
-	public String getRua() {
-		return rua;
-	}
-
-	public Integer getNumero() {
-		return numero;
-	}
-
-	public String getComplemento() {
-		return complemento;
-	}
-
-	public void setUsuarioId(Long usuarioId) {
-		this.usuarioId = usuarioId;
-	}
-
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
+	public String getNome() {
+		return nome;
+	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
+	public String getSobreNome() {
+		return sobreNome;
 	}
-
+	public void setSobreNome(String sobreNome) {
+		this.sobreNome = sobreNome;
+	}
+	public String getUsername() {
+		return username;
+	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public String getEmail() {
+		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public String getSenha() {
+		return senha;
 	}
-
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	public Integer getIdade() {
+		return idade;
+	}
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
+	public String getPreferencias() {
+		return preferencias;
+	}
 	public void setPreferencias(String preferencias) {
 		this.preferencias = preferencias;
 	}
-
-	public void setCep(String cep) {
-		this.cep = cep;
+	public String getEndereco() {
+		return endereco;
 	}
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
-
-	public void setRua(String rua) {
-		this.rua = rua;
+	public Integer getNumero() {
+		return numero;
 	}
-
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
-
+	public String getBairro() {
+		return bairro;
+	}
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+	public String getComplemento() {
+		return complemento;
+	}
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
