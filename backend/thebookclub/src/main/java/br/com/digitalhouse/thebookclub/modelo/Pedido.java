@@ -110,7 +110,7 @@ public class Pedido {
 
 	
 	//Data de atualização do status é mais apropriado. E not null não é aplicavel nessa entrada
-	@NotNull
+	//@NotNull
 	@Temporal(TemporalType.DATE)
 	private Date dataEntrega;
 
