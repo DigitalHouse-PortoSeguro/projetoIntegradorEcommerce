@@ -48,10 +48,4 @@ public class PedidoController {
         return ResponseEntity.ok(repository.findAllByLivrosContainingIgnoreCase(livros));
     }
 
-    @PostMapping
-    public ResponseEntity<Pedido> post (RequestBody Pedido )
-    {
-
-    }
-
 }
