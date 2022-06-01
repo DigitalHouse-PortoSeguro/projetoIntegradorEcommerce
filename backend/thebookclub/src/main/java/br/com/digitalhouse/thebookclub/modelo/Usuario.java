@@ -58,9 +58,9 @@ public class Usuario {
 	@Nullable
 	private String preferencias;
 	
-	@NotNull(message = "O atributo endereço é obrigatório")
+	@NotNull(message = "O atributo rua é obrigatório")
 	@Size(min=3,max=100)
-	private String endereco;
+	private String rua;
 	
 	@NotNull(message = "O atributo número é obrigatório")
 	@Size(min=1,max=6)
@@ -134,11 +134,11 @@ public class Usuario {
 	public void setPreferencias(String preferencias) {
 		this.preferencias = preferencias;
 	}
-	public String getEndereco() {
-		return endereco;
+	public String getRua() {
+		return rua;
 	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setRua(String rua) {
+		this.rua = rua;
 	}
 	public Integer getNumero() {
 		return numero;
