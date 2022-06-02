@@ -40,6 +40,10 @@ public class Usuario {
 	@Pattern(regexp = "\\d{3}.\\d{3}.\\d{3}-\\d{2}", message="CPF Deve ser Preenchido no Formato XXX.XXX.XXX-XX")
 	private String cpf;
 	
+	@Email(regexp="^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", 
+		   message="O EMAIL Deve ser Preenchido no Formato xxxx@xxx.xxx")
+	private String email;
+	
 	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=5,max=20)
 	private String username;
