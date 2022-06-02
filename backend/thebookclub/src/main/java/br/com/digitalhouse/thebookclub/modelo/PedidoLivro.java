@@ -6,73 +6,52 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="tb_pedido_livro")
 public class PedidoLivro {	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long pedidoLivroId;
+	private Long idPedidoLivro;
 	
-	@NotNull
-	private Integer quantidade;
-	
-	@NotNull
-	private Double precoVenda;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("tb_pedido_livro")
-	private Pedido pedido;
+	private Livro livro_fk;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("tb_pedido_livro")
-	private Livro livro;
-
-	public Long getPedidoLivroId() {
-		return pedidoLivroId;
+	private Pedido pedido_fk;
+	
+	
+	//private Integer quantidade;
+	//private Double precoVenda;
+	
+	
+	public Long getIdPedidoLivro() {
+		return idPedidoLivro;
 	}
 
-	public Pedido getPedido() {
-		return pedido;
+	public void setIdPedidoLivro(Long idPedidoLivro) {
+		this.idPedidoLivro = idPedidoLivro;
 	}
 
-	public Livro getLivro() {
-		return livro;
+	public Livro getLivro_fk() {
+		return livro_fk;
 	}
 
-	public Integer getQuantidade() {
-		return quantidade;
+	public void setLivro_fk(Livro livro_fk) {
+		this.livro_fk = livro_fk;
 	}
 
-	public Double getPrecoVenda() {
-		return precoVenda;
+	public Pedido getPedido_fk() {
+		return pedido_fk;
 	}
 
-	public void setPedidoLivroId(Long pedidoLivroId) {
-		this.pedidoLivroId = pedidoLivroId;
-	}
-
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
-
-	public void setLivro(Livro livro) {
-		this.livro = livro;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
-	}
-
-	public void setPrecoVenda(Double precoVenda) {
-		this.precoVenda = precoVenda;
+	public void setPedido_fk(Pedido pedido_fk) {
+		this.pedido_fk = pedido_fk;
 	}
 }
-
-
-
-
-
