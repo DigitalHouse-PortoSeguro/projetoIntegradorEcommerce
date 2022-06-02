@@ -73,6 +73,9 @@ public class Usuario {
 	@Size(min=4,max=100)
 	private String bairro;
 	
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Pattern(regexp = "\\d{5}-\\d{3}", message="CEP Deve ser Preenchido no Formato XXXXX-XXX")
+	private String cep;
 	
 	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=4,max=100)
