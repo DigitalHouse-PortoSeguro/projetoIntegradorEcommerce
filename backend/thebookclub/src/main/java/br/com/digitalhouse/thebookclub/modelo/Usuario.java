@@ -28,6 +28,11 @@ public class Usuario {
 	private Long idUsuario;
 	
 	
+	@OneToMany(mappedBy = "usuario_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("tb_usuario")
+	private List<Pedido> pedido_fk = new ArrayList<>();
+	
+	
 	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=2,max=100)
 	private String nome;
