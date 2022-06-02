@@ -10,7 +10,7 @@ public enum TipoPagamento {
 	
 	private int valor;
 	
-	TipoPagamento(int valor){
+	private TipoPagamento(int valor){
 		this.valor = valor;
 	}
 	
@@ -18,4 +18,12 @@ public enum TipoPagamento {
 		return valor;
 	}
 	
+	public static TipoPagamento valueOf(int valor){
+		for(TipoPagamento value : TipoPagamento.values() ){
+			if(valor == value.getValor()){
+				return value;
+			}
+		}
+		throw new IllegalArgumentException("Tipo de Pagamento Inválido");
+	}
 }
