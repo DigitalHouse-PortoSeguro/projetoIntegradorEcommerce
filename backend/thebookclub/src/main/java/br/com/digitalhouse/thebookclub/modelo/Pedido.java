@@ -35,6 +35,10 @@ public class Pedido {
 	@JsonIgnoreProperties("tb_pedido")
 	private List<PedidoLivro> pedidoLivro_fk = new ArrayList<>();
 	
+	@ManyToOne
+	@JsonIgnoreProperties("tb_pedido")
+	private Usuario usuario_fk;
+	
 	
 	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=2,max=100)
