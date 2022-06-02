@@ -23,6 +23,12 @@ public class Livro {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idLivro;
 	
+	
+	@OneToMany(mappedBy = "livro_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("tb_livro")
+	private List<PedidoLivro> pedidoLivro_fk = new ArrayList<>();
+	
+	
 	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=2,max=100)
 	private String titulo;
@@ -66,10 +72,6 @@ public class Livro {
 	private String fornecedor;
 	
 	
-	
-	@OneToMany(mappedBy = "livro", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("tb_livro")
-	private List<PedidoLivro> pedidos;
 	
 	
 	
