@@ -43,5 +43,23 @@ public class PedidoController {
 		return ResponseEntity.ok(pedidoRepository.findAllByUsuarioPedidoContainingIgnoreCase(usuarioPedido));
 	}
 	
+		@PostMapping("/cadastrar")
+	public ResponseEntity<Pedido> post(@RequestBody Pedido pedido){
+		return ResponseEntity.status(HttpStatus.CREATED).body(pedidoRepository.save(pedido));
+	}
+	
+	@PutMapping("/atualizar")
+	public ResponseEntity<Pedido> put(@RequestBody Pedido pedido){
+		return ResponseEntity.status(HttpStatus.OK).body(pedidoRepository.save(pedido));
+	}
+	
+	@DeleteMapping("/remover/{id}")
+	public ResponseEntity<?> delete(@PathVariable Long id){
+		return pedidoRepository.findById(id).map(resp -> {
+				pedidoRepository.deleteById(id);
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		}).orElse(ResponseEntity.notFound().build());
+	}
+	
 	
 }
