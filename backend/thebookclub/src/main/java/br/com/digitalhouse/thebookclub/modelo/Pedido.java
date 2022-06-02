@@ -31,6 +31,11 @@ public class Pedido {
 	private Long idPedido;
 	
 	
+	@OneToMany(mappedBy = "pedido_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("tb_pedido")
+	private List<PedidoLivro> pedidoLivro_fk = new ArrayList<>();
+	
+	
 	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=2,max=100)
 	private String usuarioPedido;
@@ -61,10 +66,6 @@ public class Pedido {
 	
 	
 	
-	@OneToMany(mappedBy = "pedido", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("tb_pedido")
-	private List<PedidoLivro> livros;
-
 	
 	
 	public Long getIdPedido() {
