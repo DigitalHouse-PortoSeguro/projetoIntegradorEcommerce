@@ -21,145 +21,151 @@ public class Livro {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long livroId;
+	private Long idLivro;
 	
-	@NotNull
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=2,max=100)
 	private String titulo;
 	
-	@NotNull
-	@Size(min=2,max=100)
-	private String autor;
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Pattern(regexp = "\\d{2}/\\d{2}/\\d{4}", message="DATA Deve ser Preenchido no Formato dd/MM/YYYY")
+	private String dataPublicacao;
 	
-	@NotNull
-	@Temporal(TemporalType.DATE)
-	private Date dataPublicacao;
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Size(min=2,max=200)
+	private String autores;
 	
-	@NotNull
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=2,max=30)
 	private String editora;
 	
-	@NotNull
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=2,max=30)
 	private String categoria;
 	
-	@NotNull
-	@Size(min=1,max=5)
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Min(value=1, message="Este Campo Deve Conter no Mínimo 1 Dígito")
+	//@Max(value=5, message="Este Campo Deve Conter no Máximo 5 Dígito")
 	private Integer numeroPaginas;
 	
-	@NotNull
-	@Size(min=10,max=13)
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Size(min=8,max=13)
 	private String isbn;
 	
-	@NotNull
-	@Size(min=2,max=10)
-	private Double preco;
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Digits(integer=3, fraction=2, message="Preço Possui 3 Casas Inteiras e 2 Casas Após o Ponto")
+	private BigDecimal preco;
 	
-	@NotNull
-	@Size(min=1,max=5)
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Min(value=1, message="Este Campo Deve Conter no Mínimo 1 Dígito")
+	//@Max(value=3, message="Este Campo Deve Conter no Máximo 3 Dígito")
 	private Integer quantidadeEstoque;
 	
-	@NotNull
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=2,max=100)
 	private String fornecedor;
+	
+	
 	
 	@OneToMany(mappedBy = "livro", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tb_livro")
 	private List<PedidoLivro> pedidos;
+	
+	
+	
+	public Long getIdLivro() {
+		return idLivro;
+	}
 
-	public Long getLivroId() {
-		return livroId;
+	public void setIdLivro(Long idLivro) {
+		this.idLivro = idLivro;
+	}
+
+	public List<PedidoLivro> getPedidoLivro_fk() {
+		return pedidoLivro_fk;
+	}
+
+	public void setPedidoLivro_fk(List<PedidoLivro> pedidoLivro_fk) {
+		this.pedidoLivro_fk = pedidoLivro_fk;
 	}
 
 	public String getTitulo() {
 		return titulo;
 	}
 
-	public String getAutor() {
-		return autor;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public Date getDataPublicacao() {
+	public String getDataPublicacao() {
 		return dataPublicacao;
+	}
+
+	public void setDataPublicacao(String dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
+	}
+
+	public String getAutores() {
+		return autores;
+	}
+
+	public void setAutores(String autores) {
+		this.autores = autores;
 	}
 
 	public String getEditora() {
 		return editora;
 	}
 
-	public String getCategoria() {
-		return categoria;
-	}
-
-	public Integer getNumeroPaginas() {
-		return numeroPaginas;
-	}
-
-	public String getIsbn() {
-		return isbn;
-	}
-
-	public Double getPreco() {
-		return preco;
-	}
-
-	public Integer getQuantidadeEstoque() {
-		return quantidadeEstoque;
-	}
-
-	public String getFornecedor() {
-		return fornecedor;
-	}
-
-	public List<PedidoLivro> getPedidos() {
-		return pedidos;
-	}
-
-	public void setLivroId(Long livroId) {
-		this.livroId = livroId;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
-
-	public void setDataPublicacao(Date dataPublicacao) {
-		this.dataPublicacao = dataPublicacao;
-	}
-
 	public void setEditora(String editora) {
 		this.editora = editora;
+	}
+
+	public String getCategoria() {
+		return categoria;
 	}
 
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 
+	public Integer getNumeroPaginas() {
+		return numeroPaginas;
+	}
+
 	public void setNumeroPaginas(Integer numeroPaginas) {
 		this.numeroPaginas = numeroPaginas;
+	}
+
+	public String getIsbn() {
+		return isbn;
 	}
 
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 
-	public void setPreco(Double preco) {
+	public BigDecimal getPreco() {
+		return preco;
+	}
+
+	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
+	}
+
+	public Integer getQuantidadeEstoque() {
+		return quantidadeEstoque;
 	}
 
 	public void setQuantidadeEstoque(Integer quantidadeEstoque) {
 		this.quantidadeEstoque = quantidadeEstoque;
 	}
 
+	public String getFornecedor() {
+		return fornecedor;
+	}
+
 	public void setFornecedor(String fornecedor) {
 		this.fornecedor = fornecedor;
 	}
-
-	public void setPedidos(List<PedidoLivro> pedidos) {
-		this.pedidos = pedidos;
-	}	
 }
