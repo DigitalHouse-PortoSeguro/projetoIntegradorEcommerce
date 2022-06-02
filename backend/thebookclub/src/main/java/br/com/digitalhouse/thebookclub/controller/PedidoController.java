@@ -31,4 +31,17 @@ public class PedidoController {
 		return ResponseEntity.ok(pedidoRepository.findAll());
 	}
 	
+	@GetMapping("/consultar/{id}")
+	public ResponseEntity<Pedido> GetById(@PathVariable Long id){
+		return pedidoRepository.findById(id)
+				.map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.notFound().build());
+	}
+	
+	@GetMapping("/consultar/{usuarioPedido}")
+	public ResponseEntity<List<Pedido>>GetByUsuarioPedido(@PathVariable String usuarioPedido){
+		return ResponseEntity.ok(pedidoRepository.findAllByUsuarioPedidoContainingIgnoreCase(usuarioPedido));
+	}
+	
+	
 }
