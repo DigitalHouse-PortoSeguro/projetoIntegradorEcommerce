@@ -1,21 +1,23 @@
 package br.com.digitalhouse.thebookclub.modelo;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.springframework.lang.Nullable;
-
-import io.swagger.v3.oas.annotations.media.Schema;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="tb_usuario")
@@ -23,144 +25,139 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id_Usuario;
+	private Long idUsuario;
 	
-	@NotNull(message = "O atributo nome é obrigatório")
+	
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=2,max=100)
 	private String nome;
 	
-	@NotNull(message = "O atributo sobrenome é obrigatório")
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=2,max=100)
-	private String sobreNome;
+	private String sobrenome;
 	
-	@NotNull(message = "O atributo cpf é obrigatório")
-	@Size(min=11,max=14)
-	private String cpf;
-	
-	@NotNull(message = "O atributo username é obrigatório")
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=5,max=20)
 	private String username;
 	
-	@Schema(example = "email@email.com.br")
-	@NotNull(message = "O atributo usuário é obrigatório")
-	@Email(message = "O atributo usuário deve ser um e-mail válido")
-	@Size(min=10,max=40)
-	private String email;
-	
-	@NotNull(message = "O atributo senha é obrigatório")
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=6,max=15)
 	private String senha;
 	
-	@NotNull(message = "O atributo data de nascimento é obrigatório")
-	@Temporal(TemporalType.DATE)
-	private Date dataNascimento;
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Min(value=2, message="Este Campo Deve Conter no Mínimo 2 Dígitos")
+	private Integer idade;
 	
-	@Nullable
-	private String preferencias;
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Size(min=6,max=15)
+	private String historico;
 	
-	@NotNull(message = "O atributo rua é obrigatório")
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=3,max=100)
-	private String rua;
+	private String endereco;
 	
-	@NotNull(message = "O atributo número é obrigatório")
-	@Size(min=1,max=6)
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	//@Range(min=0, max=9999, message="Este Campo Deve Conter no Mínimo 2 Dígitos")
+	@Max(value=9999, message="Quantidade Max: não pode ultrapassar 100 unidades")
 	private Integer numero;
 	
-	@NotNull(message = "O atributo bairro é obrigatório")
-	@Size(min=3,max=100)
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Size(min=4,max=100)
 	private String bairro;
 	
-	@NotNull(message = "O atributo cep é obrigatório")
-	@Size(min=8,max=9)
-	private String cep;
 	
-	@Nullable
-	@Size(min=3,max=100)
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Size(min=4,max=100)
 	private String complemento;
 	
 	
 	
-	public Long getId_Usuario() {
-		return id_Usuario;
+	
+	
+	public Long getIdUsuario() {
+		return idUsuario;
 	}
-	public void setId_Usuario(Long id_Usuario) {
-		this.id_Usuario = id_Usuario;
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getSobreNome() {
-		return sobreNome;
+
+	public String getSobrenome() {
+		return sobrenome;
 	}
-	public void setSobreNome(String sobreNome) {
-		this.sobreNome = sobreNome;
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
 	}
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+
 	public String getSenha() {
 		return senha;
 	}
+
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public Date getDataNascimento() {
-		return dataNascimento;
+
+	public Integer getIdade() {
+		return idade;
 	}
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
+
+	public void setIdade(Integer idade) {
+		this.idade = idade;
 	}
-	public String getPreferencias() {
-		return preferencias;
+
+	public String getHistorico() {
+		return historico;
 	}
-	public void setPreferencias(String preferencias) {
-		this.preferencias = preferencias;
+
+	public void setHistorico(String historico) {
+		this.historico = historico;
 	}
-	public String getRua() {
-		return rua;
+
+	public String getEndereco() {
+		return endereco;
 	}
-	public void setRua(String rua) {
-		this.rua = rua;
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
+
 	public Integer getNumero() {
 		return numero;
 	}
+
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
+
 	public String getBairro() {
 		return bairro;
 	}
+
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
-	public String getCep() {
-		return cep;
-	}
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
+
 	public String getComplemento() {
 		return complemento;
 	}
+
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
