@@ -48,5 +48,18 @@ public class LivroController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(livroRepository.save(livro));
 	}
 	
+		@PutMapping("/atualizar")
+	public ResponseEntity<Livro> put (@RequestBody Livro livro){
+		return ResponseEntity.status(HttpStatus.OK).body(livroRepository.save(livro));
+	}
+	
+	@DeleteMapping("/remover/{id}")
+	public ResponseEntity<?> delete(@PathVariable Long id){
+		return livroRepository.findById(id).map(resp -> {
+				livroRepository.deleteById(id);
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		}).orElse(ResponseEntity.notFound().build());
+	}
+	
 	
 }
