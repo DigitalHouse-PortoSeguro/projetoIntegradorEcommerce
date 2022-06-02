@@ -8,11 +8,20 @@ public enum FormaEnvio {
 	
 	private int valor;
 	
-	FormaEnvio(int index){
-		this.valor = index;
+	private FormaEnvio(int valor){
+		this.valor = valor;
 	}
 	
-	public int getIndex() {
+	public int getValor() {
 		return valor;
+	}
+	
+	public static FormaEnvio valueOf(int valor){
+		for(FormaEnvio value : FormaEnvio.values() ){
+			if(valor == value.getValor()){
+				return value;
+			}
+		}
+		throw new IllegalArgumentException("Forma de Envio Inválida");
 	}
 }
