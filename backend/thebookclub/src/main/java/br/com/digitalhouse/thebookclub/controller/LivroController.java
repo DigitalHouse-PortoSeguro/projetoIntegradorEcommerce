@@ -37,4 +37,16 @@ public class LivroController {
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
+	
+	@GetMapping("/consultar/{titulo}")
+	public ResponseEntity<List<Livro>>GetByTitulo(@PathVariable String titulo){
+		return ResponseEntity.ok(livroRepository.findAllByTituloContainingIgnoreCase(titulo));
+	}
+	
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Livro> post (@RequestBody Livro livro){
+		return ResponseEntity.status(HttpStatus.CREATED).body(livroRepository.save(livro));
+	}
+	
+	
 }
