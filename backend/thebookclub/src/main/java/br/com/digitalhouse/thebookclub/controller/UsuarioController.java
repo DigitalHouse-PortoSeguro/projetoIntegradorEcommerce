@@ -53,5 +53,11 @@ public class UsuarioController {
 		return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.save(usuario));
 	}
 	
-	
+	@DeleteMapping("/remover/{id}")
+	public ResponseEntity<?> delete(@PathVariable Long id){
+		return usuarioRepository.findById(id).map(resp -> {
+				usuarioRepository.deleteById(id);
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		}).orElse(ResponseEntity.notFound().build());
+	}
 }
