@@ -43,5 +43,15 @@ public class UsuarioController {
 		return ResponseEntity.ok(usuarioRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Usuario> post(@RequestBody Usuario usuario){
+		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
+	}
+	
+	@PutMapping("/atualizar")
+	public ResponseEntity<Usuario> put(@RequestBody Usuario usuario){
+		return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.save(usuario));
+	}
+	
 	
 }
