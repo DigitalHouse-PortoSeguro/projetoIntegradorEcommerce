@@ -1,21 +1,27 @@
 package br.com.digitalhouse.thebookclub.modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.lang.Nullable;
 
-import io.swagger.v3.oas.annotations.media.Schema;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name="tb_usuario")
@@ -34,17 +40,20 @@ public class Usuario {
 	private String sobreNome;
 	
 	@NotNull(message = "O atributo cpf é obrigatório")
-	@Size(min=11,max=14)
+	@Pattern(regexp = "\\d{3}.\\d{3}.\\d{3}-\\d{2}", 
+	message="CPF Deve ser Preenchido no Formato 000.000.000-00")
+	//@Size(min=11,max=14)
 	private String cpf;
 	
 	@NotNull(message = "O atributo username é obrigatório")
 	@Size(min=5,max=20)
 	private String username;
 	
-	@Schema(example = "email@email.com.br")
-	@NotNull(message = "O atributo usuário é obrigatório")
-	@Email(message = "O atributo usuário deve ser um e-mail válido")
-	@Size(min=10,max=40)
+	@NotNull(message = "O atributo email é obrigatório")
+	@Email(regexp="^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$",
+	message="O email deve ser preenchido no formato email@email.com.br")
+	//@Schema(example = "email@email.com.br")
+	//@Size(min=10,max=40)
 	private String email;
 	
 	@NotNull(message = "O atributo senha é obrigatório")
@@ -71,6 +80,7 @@ public class Usuario {
 	private String bairro;
 	
 	@NotNull(message = "O atributo cep é obrigatório")
+	@Pattern(regexp = "\\d{5}-\\d{3}", message="CEP Deve ser Preenchido no Formato 00000-000")
 	@Size(min=8,max=9)
 	private String cep;
 	
@@ -78,7 +88,9 @@ public class Usuario {
 	@Size(min=3,max=100)
 	private String complemento;
 	
-	
+	@OneToMany(mappedBy = "usuario_fk", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("tb_usuario")
+	private List<Pedido> pedido_fk = new ArrayList<>();
 	
 	public Long getId_Usuario() {
 		return id_Usuario;
