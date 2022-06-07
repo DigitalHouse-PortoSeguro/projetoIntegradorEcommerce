@@ -8,6 +8,7 @@ public class UsuarioLogin {
 	private String sobrenome;
 	private String cpf;
 	private String username;
+	private String tipoUsuario;
 	private String email;
 	private String senha;
 	private Date dataNascimento;
@@ -62,6 +63,14 @@ public class UsuarioLogin {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	public String getEmail() {
@@ -143,6 +152,7 @@ public class UsuarioLogin {
 	public void setToken(String token) {
 		this.token = token;
 	}
+
 
 	
 }

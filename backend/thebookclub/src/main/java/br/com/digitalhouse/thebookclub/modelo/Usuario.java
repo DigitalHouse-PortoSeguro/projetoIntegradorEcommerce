@@ -1,6 +1,5 @@
 package br.com.digitalhouse.thebookclub.modelo;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class Usuario {
 	
 	@NotNull(message = "O atributo sobrenome é obrigatório")
 	@Size(min=2,max=100)
-	private String sobreNome;
+	private String sobrenome;
 	
 	@NotNull(message = "O atributo cpf é obrigatório")
 	@Pattern(regexp = "\\d{3}.\\d{3}.\\d{3}-\\d{2}", 
@@ -49,11 +48,14 @@ public class Usuario {
 	@Size(min=5,max=20)
 	private String username;
 	
+	@NotNull(message = "O atributo tipo é obrigatório")
+	private String tipoUsuario;
+	
 	@NotNull(message = "O atributo email é obrigatório")
 	@Email(regexp="^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$",
-	message="O email deve ser preenchido no formato email@email.com.br")
-	//@Schema(example = "email@email.com.br")
-	//@Size(min=10,max=40)
+	message="O email deve ser preenchido no formato email@email.com")
+	//@Schema(example = "email@email.com")
+	@Size(min=10,max=40)
 	private String email;
 	
 	@NotNull(message = "O atributo senha é obrigatório")
@@ -90,7 +92,7 @@ public class Usuario {
 	
 	@OneToMany(mappedBy = "usuario_fk", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tb_usuario")
-	private List<Pedido> pedido_fk = new ArrayList<>();
+	private List<Pedido> pedido;
 	
 	public Long getId_Usuario() {
 		return id_Usuario;
@@ -110,17 +112,23 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getSobreNome() {
-		return sobreNome;
+	public String getSobrenome() {
+		return sobrenome;
 	}
-	public void setSobreNome(String sobreNome) {
-		this.sobreNome = sobreNome;
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
 	}
 	public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 	public String getEmail() {
 		return email;
@@ -175,5 +183,8 @@ public class Usuario {
 	}
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+	public List<Pedido> getPedido() {
+		return pedido;
 	}
 }
