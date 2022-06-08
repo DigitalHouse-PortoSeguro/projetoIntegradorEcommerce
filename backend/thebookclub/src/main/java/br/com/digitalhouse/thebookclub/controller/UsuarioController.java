@@ -57,9 +57,10 @@ public class UsuarioController {
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Optional<Usuario>> cadastrarNovoUsuario(@Valid @RequestBody Usuario usuario) {
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(usuarioService.cadastrarUsuario(usuario));
+	public ResponseEntity<Usuario> cadastrarNovoUsuario(@Valid @RequestBody Usuario usuario) {
+		return usuarioService.cadastrarUsuario(usuario)
+				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(resposta))
+				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 	
 	@PutMapping("/atualizar")
