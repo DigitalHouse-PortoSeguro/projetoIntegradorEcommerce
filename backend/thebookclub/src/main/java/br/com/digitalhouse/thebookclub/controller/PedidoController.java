@@ -38,12 +38,36 @@ public class PedidoController {
         return repository.findById(pedidoId)
         .map(resp -> ResponseEntity.ok(resp))
         .orElse((ResponseEntity.notFound().build()));
+    }
 
+    // //Retorna pedido por valor
+    // @GetMapping("pedido/{valor}")
+    // public ResponseEntity<Pedido> GetById(@PathVariable double valor) {
+    //     return repository.findById(valor)
+    //     .map(resp -> ResponseEntity.ok(resp))
+    //     .orElse((ResponseEntity.notFound().build()));
+    // }
+
+    
+      //Retorna pedido por meio de pagamento
+      @GetMapping("pedido/{pagamento}")
+      public ResponseEntity<Pedido> GetById(@PathVariable TipoPagamento pagamento) {
+          return repository.findByTipoPagamento(pagamento)
+          .map(resp -> ResponseEntity.ok(resp))
+          .orElse((ResponseEntity.notFound()));
+      }
+
+      
+    //Retorna os pedidos que contem o parametro 'formaEnvio'
+    @GetMapping("/pedido/{formaEnvio}")
+    public ResponseEntity<Pedido> GetByLFormaEnvio(@PathVariable FormaEnvio formaEnvio)
+    {
+        return ResponseEntity.ok(repository.findAllByFormaEnvioContainingIgnoreCase(formaEnvio));
     }
 
     //Retorna os pedidos que contem o parametro 'livros'
     @GetMapping("/livros/{livros}")
-    public ResponseEntity<Object> GetByLivros(@PathVariable PedidoLivro livros)
+    public ResponseEntity<Pedido> GetByLivros(@PathVariable PedidoLivro livros)
     {
         return ResponseEntity.ok(repository.findAllByLivrosContainingIgnoreCase(livros));
     }

@@ -9,8 +9,12 @@ import br.com.digitalhouse.thebookclub.modelo.PedidoLivro;
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
-    Object findAllByLivrosContainingIgnoreCase(PedidoLivro livros);
+    public findAllByLivrosContainingIgnoreCase(PedidoLivro livros);
 
-    Object findByPedidoId(long pedidoId);
+    public findByPedidoId(long pedidoId);
 
+    public findByTipoPagamento(TipoPagamento pagamento);
+
+    public GetByLFormaEnvio(FormaEnvio formaEnvio);
+    
 }
