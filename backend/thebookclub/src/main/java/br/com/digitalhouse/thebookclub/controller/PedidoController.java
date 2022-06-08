@@ -41,7 +41,7 @@ public class PedidoController {
 
     }
 
-    //Retorna os pedidos qie contem o parametro 'livros'
+    //Retorna os pedidos que contem o parametro 'livros'
     @GetMapping("/livros/{livros}")
     public ResponseEntity<Object> GetByLivros(@PathVariable PedidoLivro livros)
     {
