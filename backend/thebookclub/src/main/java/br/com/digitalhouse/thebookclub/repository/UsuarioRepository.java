@@ -10,6 +10,8 @@ import br.com.digitalhouse.thebookclub.modelo.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-	public Optional<Usuario> findByUsername(String usuario);
+	public Optional<Usuario> findByUsername(String username);
+	public Optional<Usuario> findByEmail(String email);
+	public Optional<Usuario> findByCpf(String cpf);
 	
 }

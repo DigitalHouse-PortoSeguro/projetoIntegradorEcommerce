@@ -1,12 +1,21 @@
 package br.com.digitalhouse.thebookclub.modelo;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.lang.Nullable;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @Entity
 @Table(name="tb_usuario")
@@ -14,64 +23,68 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long Id_Usuario;
+	private Long id_Usuario;
 	
-	@NotNull
+	@NotNull(message = "O atributo nome é obrigatório")
 	@Size(min=2,max=100)
 	private String nome;
 	
-	@NotNull
+	@NotNull(message = "O atributo sobrenome é obrigatório")
 	@Size(min=2,max=100)
 	private String sobreNome;
 	
-	@NotNull
+	@NotNull(message = "O atributo cpf é obrigatório")
 	@Size(min=11,max=14)
 	private String cpf;
 	
-	@NotNull
+	@NotNull(message = "O atributo username é obrigatório")
 	@Size(min=5,max=20)
 	private String username;
 	
-	@NotNull
+	@Schema(example = "email@email.com.br")
+	@NotNull(message = "O atributo usuário é obrigatório")
+	@Email(message = "O atributo usuário deve ser um e-mail válido")
 	@Size(min=10,max=40)
 	private String email;
 	
-	@NotNull
+	@NotNull(message = "O atributo senha é obrigatório")
 	@Size(min=6,max=15)
 	private String senha;
 	
-	@NotNull
-	@Size(min=1,max=3)
-	private Integer idade;
+	@NotNull(message = "O atributo data de nascimento é obrigatório")
+	@Temporal(TemporalType.DATE)
+	private Date dataNascimento;
 	
+	@Nullable
 	private String preferencias;
 	
-	@NotNull
-	@Size(min=10,max=100)
-	private String endereco;
+	@NotNull(message = "O atributo rua é obrigatório")
+	@Size(min=3,max=100)
+	private String rua;
 	
-	@NotNull
+	@NotNull(message = "O atributo número é obrigatório")
 	@Size(min=1,max=6)
 	private Integer numero;
 	
-	@NotNull
-	@Size(min=10,max=100)
+	@NotNull(message = "O atributo bairro é obrigatório")
+	@Size(min=3,max=100)
 	private String bairro;
 	
-	@NotNull
-	@Size(min=11,max=14)
+	@NotNull(message = "O atributo cep é obrigatório")
+	@Size(min=8,max=9)
 	private String cep;
 	
-	@Size(min=10,max=100)
+	@Nullable
+	@Size(min=3,max=100)
 	private String complemento;
 	
 	
 	
 	public Long getId_Usuario() {
-		return Id_Usuario;
+		return id_Usuario;
 	}
 	public void setId_Usuario(Long id_Usuario) {
-		Id_Usuario = id_Usuario;
+		this.id_Usuario = id_Usuario;
 	}
 	public String getCpf() {
 		return cpf;
@@ -109,11 +122,11 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public Integer getIdade() {
-		return idade;
+	public Date getDataNascimento() {
+		return dataNascimento;
 	}
-	public void setIdade(Integer idade) {
-		this.idade = idade;
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 	public String getPreferencias() {
 		return preferencias;
@@ -121,11 +134,11 @@ public class Usuario {
 	public void setPreferencias(String preferencias) {
 		this.preferencias = preferencias;
 	}
-	public String getEndereco() {
-		return endereco;
+	public String getRua() {
+		return rua;
 	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setRua(String rua) {
+		this.rua = rua;
 	}
 	public Integer getNumero() {
 		return numero;
