@@ -90,10 +90,10 @@ public class Usuario {
 	@Size(min=3,max=100)
 	private String complemento;
 	
-	@OneToMany(mappedBy = "usuario_fk", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tb_usuario")
 	private List<Pedido> pedido;
-	
+
 	public Long getId_Usuario() {
 		return id_Usuario;
 	}
