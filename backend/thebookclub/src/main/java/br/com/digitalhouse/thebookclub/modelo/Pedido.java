@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -53,6 +54,10 @@ public class Pedido {
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Date dataEntraga;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("tb_pedido")
+	private Usuario usuario;
 	
 	@OneToMany(mappedBy = "pedido", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tb_pedido")
