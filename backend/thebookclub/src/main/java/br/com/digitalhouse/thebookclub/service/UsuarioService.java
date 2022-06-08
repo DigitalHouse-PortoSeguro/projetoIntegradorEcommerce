@@ -24,7 +24,7 @@ public class UsuarioService {
 		if(usuarioRepository.findByEmail(usuario.getEmail()).isPresent()
 		|| usuarioRepository.findByUsername(usuario.getUsername()).isPresent()
 		|| usuarioRepository.findByCpf(usuario.getCpf()).isPresent() ) {
-			return Optional.empty();
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 		}
 		usuario.setSenha(criptografarSenha(usuario.getSenha()));
 		return Optional.of(usuarioRepository.save(usuario));
