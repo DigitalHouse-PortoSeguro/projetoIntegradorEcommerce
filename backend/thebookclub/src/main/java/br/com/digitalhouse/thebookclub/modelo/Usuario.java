@@ -28,7 +28,7 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id_Usuario;
+	private Long usuarioId;
 	
 	@NotNull(message = "O atributo nome é obrigatório")
 	@Size(min=2,max=100)
@@ -94,8 +94,8 @@ public class Usuario {
 	@JsonIgnoreProperties("tb_usuario")
 	private List<Pedido> pedido;
 
-	public Long getId_Usuario() {
-		return id_Usuario;
+	public Long getUsuarioId() {
+		return usuarioId;
 	}
 
 	public String getNome() {
@@ -158,8 +158,8 @@ public class Usuario {
 		return pedido;
 	}
 
-	public void setId_Usuario(Long id_Usuario) {
-		this.id_Usuario = id_Usuario;
+	public void setUsuarioId(Long usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 
 	public void setNome(String nome) {
