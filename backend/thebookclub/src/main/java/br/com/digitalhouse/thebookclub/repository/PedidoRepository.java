@@ -1,20 +1,25 @@
 package br.com.digitalhouse.thebookclub.repository;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import br.com.digitalhouse.thebookclub.enums.FormaEnvio;
+import br.com.digitalhouse.thebookclub.enums.TipoPagamento;
 import br.com.digitalhouse.thebookclub.modelo.Pedido;
 import br.com.digitalhouse.thebookclub.modelo.PedidoLivro;
 
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
-    public findAllByLivrosContainingIgnoreCase(PedidoLivro livros);
+    // public List<Pedido> findAllByLivrosContainingIgnoreCase(PedidoLivro livros);
 
-    public findByPedidoId(long pedidoId);
+    public Optional<Pedido> findByPedidoId(long pedidoId);
 
-    public findByTipoPagamento(TipoPagamento pagamento);
+    public Optional<Pedido> findByTipoPagamento(TipoPagamento pagamento);
 
-    public GetByLFormaEnvio(FormaEnvio formaEnvio);
+    public Optional<Pedido> findByFormaEnvio(FormaEnvio formaEnvio);
     
 }
