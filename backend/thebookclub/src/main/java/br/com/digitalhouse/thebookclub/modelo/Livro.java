@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,9 +13,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import br.com.digitalhouse.thebookclub.enums.StatusPedido;
 
 @Entity
 @Table(name="tb_livro")
@@ -23,64 +31,71 @@ public class Livro {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long livroId;
 	
-	@NotNull
+	@OneToMany(mappedBy = "livro", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("tb_livro")
+	private List<PedidoLivro> pedidoLivros;
+	
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=2,max=100)
 	private String titulo;
 	
-	@NotNull
-	@Size(min=2,max=100)
-	private String autor;
-	
-	@NotNull
+	@NotNull(message = "A data de publicação não pode ser nula")
+	@JsonFormat(pattern="yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	private Date dataPublicacao;
 	
-	@NotNull
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Size(min=2,max=200)
+	private String autores;
+	
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=2,max=30)
 	private String editora;
 	
-	@NotNull
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=2,max=30)
 	private String categoria;
 	
-	@NotNull
-	@Size(min=1,max=5)
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Min(value=1, message="Este Campo Deve Conter no Mínimo 1 Dígito")
+	//@Max(value=5, message="Este Campo Deve Conter no Máximo 5 Dígito")
 	private Integer numeroPaginas;
 	
-	@NotNull
-	@Size(min=10,max=13)
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Size(min=8,max=13)
 	private String isbn;
 	
-	@NotNull
-	@Size(min=2,max=10)
-	private Double preco;
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Digits(integer=3, fraction=2, message="Preço Possui 3 Casas Inteiras e 2 Casas Após o Ponto")
+	private double preco;
 	
-	@NotNull
-	@Size(min=1,max=5)
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
+	@Min(value=1, message="Este Campo Deve Conter no Mínimo 1 Dígito")
+	//@Max(value=3, message="Este Campo Deve Conter no Máximo 3 Dígito")
 	private Integer quantidadeEstoque;
 	
-	@NotNull
+	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
 	@Size(min=2,max=100)
 	private String fornecedor;
-	
-	@OneToMany(mappedBy = "livro", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("tb_livro")
-	private List<PedidoLivro> pedidos;
 
 	public Long getLivroId() {
 		return livroId;
+	}
+
+	public List<PedidoLivro> getPedidoLivros() {
+		return pedidoLivros;
 	}
 
 	public String getTitulo() {
 		return titulo;
 	}
 
-	public String getAutor() {
-		return autor;
-	}
-
 	public Date getDataPublicacao() {
 		return dataPublicacao;
+	}
+
+	public String getAutores() {
+		return autores;
 	}
 
 	public String getEditora() {
@@ -99,7 +114,7 @@ public class Livro {
 		return isbn;
 	}
 
-	public Double getPreco() {
+	public double getPreco() {
 		return preco;
 	}
 
@@ -111,24 +126,24 @@ public class Livro {
 		return fornecedor;
 	}
 
-	public List<PedidoLivro> getPedidos() {
-		return pedidos;
-	}
-
 	public void setLivroId(Long livroId) {
 		this.livroId = livroId;
+	}
+
+	public void setPedidoLivros(List<PedidoLivro> pedidoLivros) {
+		this.pedidoLivros = pedidoLivros;
 	}
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
-
 	public void setDataPublicacao(Date dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
+	}
+
+	public void setAutores(String autores) {
+		this.autores = autores;
 	}
 
 	public void setEditora(String editora) {
@@ -147,7 +162,7 @@ public class Livro {
 		this.isbn = isbn;
 	}
 
-	public void setPreco(Double preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 
@@ -158,8 +173,4 @@ public class Livro {
 	public void setFornecedor(String fornecedor) {
 		this.fornecedor = fornecedor;
 	}
-
-	public void setPedidos(List<PedidoLivro> pedidos) {
-		this.pedidos = pedidos;
-	}	
 }
