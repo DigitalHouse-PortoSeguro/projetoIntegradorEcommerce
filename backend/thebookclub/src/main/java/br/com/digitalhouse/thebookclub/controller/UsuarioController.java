@@ -38,13 +38,13 @@ public class UsuarioController {
 	public ResponseEntity<List<Usuario>> buscarTodosUsuarios() {
 		return ResponseEntity.ok(usuarioRepository.findAll());
 	}
-	@GetMapping("/{id}")
+	@GetMapping("id/{id}")
 	public ResponseEntity<Usuario> buscarUsuarioPorId(@PathVariable Long id) {
 		return usuarioRepository.findById(id)
 			.map(resposta -> ResponseEntity.ok(resposta))
 			.orElse(ResponseEntity.notFound().build());
 	}
-	@GetMapping("/{nome}")
+	@GetMapping("nome/{nome}")
 	public ResponseEntity<Usuario> buscarUsuarioPorNome(@PathVariable String nome){
 		return usuarioRepository.findByNomeContainingIgnoreCase(nome)
 				.map(resposta -> ResponseEntity.ok(resposta))

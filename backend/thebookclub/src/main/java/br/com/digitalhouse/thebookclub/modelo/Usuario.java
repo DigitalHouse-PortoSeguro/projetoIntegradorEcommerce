@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -52,7 +51,7 @@ public class Usuario {
 	private String email;
 	
 	@NotNull(message = "A senha não pode ser nula")
-	@Min(value=6, message = "A senha deve ter pelo menos {min} caracteres")
+	@Size(min=6, message = "A senha deve ter pelo menos {min} caracteres")
 	private String senha;
 	
 	@NotNull(message = "A data de nascimento não pode ser nula")
