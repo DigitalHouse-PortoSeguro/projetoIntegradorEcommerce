@@ -47,12 +47,11 @@ public class UsuarioService {
 		Optional<Usuario> usuario = usuarioRepository.findByEmail(usuarioLogin.get().getEmail());
 		if (usuario.isPresent()) {
 			if (compararSenhas(usuarioLogin.get().getSenha(), usuario.get().getSenha())) {
-				usuarioLogin.get().setId_Usuario(usuario.get().getUsuarioId());
+				usuarioLogin.get().setUsuarioId(usuario.get().getUsuarioId());
 				usuarioLogin.get().setNome(usuario.get().getNome());
 				usuarioLogin.get().setSobrenome(usuario.get().getSobrenome());
 				usuarioLogin.get().setCpf(usuario.get().getCpf());
 				usuarioLogin.get().setUsername(usuario.get().getUsername());
-				usuarioLogin.get().setTipoUsuario(usuario.get().getTipoUsuario());
 				usuarioLogin.get().setEmail(usuario.get().getEmail());
 				usuarioLogin.get().setSenha(usuario.get().getSenha());
 				usuarioLogin.get().setDataNascimento(usuario.get().getDataNascimento());
