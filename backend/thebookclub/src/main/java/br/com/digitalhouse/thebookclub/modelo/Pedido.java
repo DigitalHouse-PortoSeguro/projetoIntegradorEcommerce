@@ -16,13 +16,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import br.com.digitalhouse.thebookclub.enums.FormaEnvio;
 import br.com.digitalhouse.thebookclub.enums.StatusPedido;
 import br.com.digitalhouse.thebookclub.enums.TipoPagamento;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 //Referência a tabela pedidos
 @Entity
@@ -36,13 +36,12 @@ public class Pedido {
 
 	//Valor total do pedido
 	@NotNull
-	@Size(min=2,max=10)
-	private Double valor;
+	private double valor;
 
 	//Forma de pagamento do pedido
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	private TipoPagamento pagamento;
+	private TipoPagamento tipoPagamento;
 
 	//Forma de envio
 	@NotNull
@@ -56,6 +55,7 @@ public class Pedido {
 
 	//Data em que o pedido foi realizado
 	@NotNull
+	@JsonFormat(pattern="yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	private Date dataPedido;
 	
@@ -77,12 +77,12 @@ public class Pedido {
 		return pedidoId;
 	}
 
-	public Double getValor() {
+	public double getValor() {
 		return valor;
 	}
 
-	public TipoPagamento getPagamento() {
-		return pagamento;
+	public TipoPagamento getTipoPagamento() {
+		return tipoPagamento;
 	}
 
 	public FormaEnvio getFormaEnvio() {
@@ -113,12 +113,12 @@ public class Pedido {
 		this.pedidoId = pedidoId;
 	}
 
-	public void setValor(Double valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 
-	public void setPagamento(TipoPagamento pagamento) {
-		this.pagamento = pagamento;
+	public void setTipoPagamento(TipoPagamento tipoPagamento) {
+		this.tipoPagamento = tipoPagamento;
 	}
 
 	public void setFormaEnvio(FormaEnvio formaEnvio) {
