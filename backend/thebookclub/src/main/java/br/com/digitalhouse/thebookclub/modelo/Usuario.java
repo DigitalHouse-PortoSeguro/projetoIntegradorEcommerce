@@ -13,14 +13,15 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.lang.Nullable;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 
 @Entity
 @Table(name="tb_usuario")
@@ -30,69 +31,60 @@ public class Usuario {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long usuarioId;
 	
-	@NotNull(message = "O atributo nome é obrigatório")
-	@Size(min=2,max=100)
+	@NotNull(message = "O nome não pode ser nulo")
+	@Size(min=2, max=100, message = "O tamanho do nome deve ser entre {min} e {max}")
 	private String nome;
 	
-	@NotNull(message = "O atributo sobrenome é obrigatório")
-	@Size(min=2,max=100)
+	@NotNull(message = "O sobrenome não pode ser nulo")
+	@Size(min=2, max=100, message = "O tamanho do sobrenome deve ser entre {min} e {max}")
 	private String sobrenome;
 	
-	@NotNull(message = "O atributo cpf é obrigatório")
-	@Pattern(regexp = "\\d{3}.\\d{3}.\\d{3}-\\d{2}", 
-	message="CPF Deve ser Preenchido no Formato 000.000.000-00")
-	//@Size(min=11,max=14)
+	@NotNull(message = "O CPF não pode ser nulo")
+	@Pattern(regexp = "\\d{3}.\\d{3}.\\d{3}-\\d{2}", message = "O CPF deve seguir o formato XXX.XXX.XXX-XX")
 	private String cpf;
 	
-	@NotNull(message = "O atributo username é obrigatório")
-	@Size(min=5,max=20)
+	@NotNull(message = "O username não pode ser nulo")
+	@Size(min=5,max=20, message = "O tamanho do username deve ser entre {min} e {max}")
 	private String username;
 	
-	@NotNull(message = "O atributo tipo é obrigatório")
-	private String tipoUsuario;
-	
-	@NotNull(message = "O atributo email é obrigatório")
-	@Email(regexp="^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$",
-	message="O email deve ser preenchido no formato email@email.com")
-	//@Schema(example = "email@email.com")
-	@Size(min=10,max=40)
+	@NotNull(message = "O email não pode ser nulo")
+	@Email(regexp = "^(.+)@(.+)$", message = "O email deve seguir o formato email@exemplo.com")
 	private String email;
 	
-	@NotNull(message = "O atributo senha é obrigatório")
-	@Size(min=6,max=15)
+	@NotNull(message = "A senha não pode ser nula")
+	@Min(value=6, message = "A senha deve ter pelo menos {min} caracteres")
 	private String senha;
 	
-	@NotNull(message = "O atributo data de nascimento é obrigatório")
+	@NotNull(message = "A data de nascimento não pode ser nula")
+	@JsonFormat(pattern="yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 	
 	@Nullable
 	private String preferencias;
 	
-	@NotNull(message = "O atributo rua é obrigatório")
-	@Size(min=3,max=100)
+	@NotNull(message = "A rua não pode ser nula")
+	@Size(min=3,max=100, message = "O tamanho da rua deve ser entre {min} e {max}")
 	private String rua;
 	
-	@NotNull(message = "O atributo número é obrigatório")
-	@Size(min=1,max=6)
+	@NotNull(message = "O número não pode ser nulo")
 	private Integer numero;
 	
-	@NotNull(message = "O atributo bairro é obrigatório")
-	@Size(min=3,max=100)
+	@NotNull(message = "O bairro não pode ser nulo")
+	@Size(min=3,max=100, message = "O tamanho do bairro deve ser entre {min} e {max}")
 	private String bairro;
 	
-	@NotNull(message = "O atributo cep é obrigatório")
-	@Pattern(regexp = "\\d{5}-\\d{3}", message="CEP Deve ser Preenchido no Formato 00000-000")
-	@Size(min=8,max=9)
+	@NotNull(message = "O CEP não pode ser nulo")
+	@Pattern(regexp = "\\d{5}-\\d{3}", message = "O CEP deve seguir o formato XXXXX-XXX")
 	private String cep;
 	
 	@Nullable
-	@Size(min=3,max=100)
+	@Size(min=3,max=100, message = "O tamanho do complemento deve ser entre {min} e {max}")
 	private String complemento;
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tb_usuario")
-	private List<Pedido> pedido;
+	private List<Pedido> pedidos;
 
 	public Long getUsuarioId() {
 		return usuarioId;
@@ -112,10 +104,6 @@ public class Usuario {
 
 	public String getUsername() {
 		return username;
-	}
-
-	public String getTipoUsuario() {
-		return tipoUsuario;
 	}
 
 	public String getEmail() {
@@ -154,8 +142,8 @@ public class Usuario {
 		return complemento;
 	}
 
-	public List<Pedido> getPedido() {
-		return pedido;
+	public List<Pedido> getPedidos() {
+		return pedidos;
 	}
 
 	public void setUsuarioId(Long usuarioId) {
@@ -176,10 +164,6 @@ public class Usuario {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public void setTipoUsuario(String tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
 	}
 
 	public void setEmail(String email) {
@@ -218,7 +202,7 @@ public class Usuario {
 		this.complemento = complemento;
 	}
 
-	public void setPedido(List<Pedido> pedido) {
-		this.pedido = pedido;
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 }
