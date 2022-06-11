@@ -36,7 +36,7 @@ public class Pedido {
 
 	//Valor total do pedido
 	@NotNull
-	private double valor;
+	private Double valor;
 
 	//Forma de pagamento do pedido
 	@NotNull
@@ -71,13 +71,13 @@ public class Pedido {
 	//Lista de livros que foram comprados 
 	@OneToMany(mappedBy = "pedido", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tb_pedido")
-	private List<PedidoLivro> livros;
+	private List<PedidoLivro> pedidoLivros;
 
 	public Long getPedidoId() {
 		return pedidoId;
 	}
 
-	public double getValor() {
+	public Double getValor() {
 		return valor;
 	}
 
@@ -105,15 +105,15 @@ public class Pedido {
 		return usuario;
 	}
 
-	public List<PedidoLivro> getLivros() {
-		return livros;
+	public List<PedidoLivro> getPedidoLivros() {
+		return pedidoLivros;
 	}
 
 	public void setPedidoId(Long pedidoId) {
 		this.pedidoId = pedidoId;
 	}
 
-	public void setValor(double valor) {
+	public void setValor(Double valor) {
 		this.valor = valor;
 	}
 
@@ -141,7 +141,7 @@ public class Pedido {
 		this.usuario = usuario;
 	}
 
-	public void setLivros(List<PedidoLivro> livros) {
-		this.livros = livros;
+	public void setPedidoLivros(List<PedidoLivro> livros) {
+		this.pedidoLivros = livros;
 	}
 }

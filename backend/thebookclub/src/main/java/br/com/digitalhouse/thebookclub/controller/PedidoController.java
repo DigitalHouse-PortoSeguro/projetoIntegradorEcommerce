@@ -2,8 +2,6 @@ package br.com.digitalhouse.thebookclub.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,13 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import br.com.digitalhouse.thebookclub.enums.FormaEnvio;
 import br.com.digitalhouse.thebookclub.enums.TipoPagamento;
 import br.com.digitalhouse.thebookclub.modelo.Pedido;
 import br.com.digitalhouse.thebookclub.repository.PedidoRepository;
 import br.com.digitalhouse.thebookclub.service.PedidoService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/pedidos")
@@ -42,7 +40,6 @@ public class PedidoController {
 	
 	@PostMapping("criar")
 	public ResponseEntity<Pedido> criar(@RequestBody Pedido pedido) {
-		System.out.println(pedido.getStatus());
 		return pedidoService.salvar(pedido)
 				.map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
@@ -56,9 +53,10 @@ public class PedidoController {
 	}
 	
 	// Retorna pedido por id
-	@GetMapping("pedido/{pedidoId}")
+	@GetMapping("id/{pedidoId}")
 	public ResponseEntity<Pedido> getById(@PathVariable long pedidoId) {
-		return repository.findById(pedidoId).map(resp -> ResponseEntity.ok(resp))
+		return repository.findById(pedidoId)
+				.map(resp -> ResponseEntity.ok(resp))
 				.orElse((ResponseEntity.notFound().build()));
 	}
 
@@ -71,14 +69,14 @@ public class PedidoController {
 	// }
 
 	// Retorna pedido por meio de pagamento
-	@GetMapping("pedido/{pagamento}")
+	@GetMapping("tipoPagamento/{pagamento}")
 	public ResponseEntity<Pedido> getByTipoPagamento(@PathVariable TipoPagamento pagamento) {
 		return repository.findByTipoPagamento(pagamento).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 
 	// Retorna os pedidos que contem o parametro 'formaEnvio'
-	@GetMapping("/pedido/{formaEnvio}")
+	@GetMapping("/formaEnvio/{formaEnvio}")
 	public ResponseEntity<Pedido> getByFormaEnvio(@PathVariable FormaEnvio formaEnvio) {
 		return repository.findByFormaEnvio(formaEnvio).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
