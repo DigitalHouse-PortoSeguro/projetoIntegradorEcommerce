@@ -16,24 +16,22 @@ import br.com.digitalhouse.thebookclub.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-	
+
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	public Optional<Usuario> cadastrarUsuario(Usuario usuario) {
-		if(usuarioRepository.findByEmail(usuario.getEmail()).isPresent()
-		|| usuarioRepository.findByUsername(usuario.getUsername()).isPresent()
-		|| usuarioRepository.findByCpf(usuario.getCpf()).isPresent() ) {
+		if (usuarioRepository.findByUsernameOrEmailOrCpf(usuario.getUsername(), usuario.getEmail(), usuario.getCpf()).isPresent()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 		}
 		usuario.setSenha(criptografarSenha(usuario.getSenha()));
 		return Optional.of(usuarioRepository.save(usuario));
 	}
-	
+
 	public Optional<Usuario> atualizarUsuario(Usuario usuario) {
-		if(usuarioRepository.findById(usuario.getUsuarioId()).isPresent()) {
-			Optional<Usuario> buscaUsuario = usuarioRepository.findByEmail(usuario.getEmail());
-			
+		if (usuarioRepository.findById(usuario.getUsuarioId()).isPresent()) {
+			Optional<Usuario> buscaUsuario = usuarioRepository.findByUsernameOrEmailOrCpf(usuario.getUsername(), usuario.getEmail(), usuario.getCpf());
+
 			if (buscaUsuario.isPresent() && (buscaUsuario.get().getUsuarioId() != usuario.getUsuarioId())) {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 			}
@@ -42,7 +40,7 @@ public class UsuarioService {
 		}
 		return Optional.empty();
 	}
-	
+
 	public Optional<UsuarioLogin> autenticarUsuario(Optional<UsuarioLogin> usuarioLogin) {
 		Optional<Usuario> usuario = usuarioRepository.findByEmail(usuarioLogin.get().getEmail());
 		if (usuario.isPresent()) {
@@ -61,7 +59,8 @@ public class UsuarioService {
 				usuarioLogin.get().setBairro(usuario.get().getBairro());
 				usuarioLogin.get().setCep(usuario.get().getCep());
 				usuarioLogin.get().setComplemento(usuario.get().getComplemento());
-				usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getCpf(), usuarioLogin.get().getSenha()));
+				usuarioLogin.get()
+						.setToken(gerarBasicToken(usuarioLogin.get().getCpf(), usuarioLogin.get().getSenha()));
 				return usuarioLogin;
 
 			}
@@ -69,21 +68,31 @@ public class UsuarioService {
 		return Optional.empty();
 	}
 
-	
-	//métodos auxiliares da classe:
+	public Optional<Usuario> deletar(Long id) {
+		Optional<Usuario> user = usuarioRepository.findById(id);
+		if (user.isPresent()) {
+			usuarioRepository.deleteById(id);
+			return user;
+		}
+		return Optional.empty();
+	}
+
+	// métodos auxiliares da classe:
 	private String criptografarSenha(String senha) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		return encoder.encode(senha);
 
 	}
+
 	private boolean compararSenhas(String senhaDigitada, String senhaBanco) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		return encoder.matches(senhaDigitada, senhaBanco);
 	}
+
 	private String gerarBasicToken(String usuario, String senha) {
 		String token = usuario + ":" + senha;
 		byte[] tokenBase64 = Base64.encodeBase64(token.getBytes(Charset.forName("US-ASCII")));
 		return "Basic " + new String(tokenBase64);
 	}
-	
+
 }
