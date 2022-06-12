@@ -1,6 +1,6 @@
 package br.com.digitalhouse.thebookclub.modelo;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,13 +54,13 @@ public class Pedido {
 
 	//Data em que o pedido foi realizado
 	@NotNull(message="O dataPedido não pode ser nulo")
-	@JsonFormat(pattern="yyyy-MM-dd")
-	private LocalDate dataPedido;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime dataPedido;
 	
 	//Data de previsão de entrega
 	@NotNull
-	@JsonFormat(pattern="yyyy-MM-dd")
-	private LocalDate dataEntrega;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime dataEntrega;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("pedidos")
@@ -91,11 +91,11 @@ public class Pedido {
 		return status;
 	}
 
-	public LocalDate getDataPedido() {
+	public LocalDateTime getDataPedido() {
 		return dataPedido;
 	}
 
-	public LocalDate getDataEntrega() {
+	public LocalDateTime getDataEntrega() {
 		return dataEntrega;
 	}
 
@@ -127,11 +127,11 @@ public class Pedido {
 		this.status = status;
 	}
 
-	public void setDataPedido(LocalDate dataPedido) {
+	public void setDataPedido(LocalDateTime dataPedido) {
 		this.dataPedido = dataPedido;
 	}
 
-	public void setDataEntrega(LocalDate dataEntrega) {
+	public void setDataEntrega(LocalDateTime dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
 
