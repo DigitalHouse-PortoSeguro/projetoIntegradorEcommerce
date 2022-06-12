@@ -17,30 +17,22 @@ public class PedidoLivro {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long pedidoLivroId;
 	
-	@NotNull
+	@NotNull(message = "A quantidade não pode ser nula")
 	private Integer quantidade;
 	
-	@NotNull
+	@NotNull(message = "O precoVenda não pode ser nulo")
 	private Double precoVenda;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("tb_pedido_livro")
+	@JsonIgnoreProperties("pedidoLivros")
 	private Pedido pedido;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("tb_pedido_livro")
+	@JsonIgnoreProperties("pedidoLivros")
 	private Livro livro;
 
 	public Long getPedidoLivroId() {
 		return pedidoLivroId;
-	}
-
-	public Pedido getPedido() {
-		return pedido;
-	}
-
-	public Livro getLivro() {
-		return livro;
 	}
 
 	public Integer getQuantidade() {
@@ -51,16 +43,16 @@ public class PedidoLivro {
 		return precoVenda;
 	}
 
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public Livro getLivro() {
+		return livro;
+	}
+
 	public void setPedidoLivroId(Long pedidoLivroId) {
 		this.pedidoLivroId = pedidoLivroId;
-	}
-
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
-
-	public void setLivro(Livro livro) {
-		this.livro = livro;
 	}
 
 	public void setQuantidade(Integer quantidade) {
@@ -69,6 +61,14 @@ public class PedidoLivro {
 
 	public void setPrecoVenda(Double precoVenda) {
 		this.precoVenda = precoVenda;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+
+	public void setLivro(Livro livro) {
+		this.livro = livro;
 	}
 }
 
