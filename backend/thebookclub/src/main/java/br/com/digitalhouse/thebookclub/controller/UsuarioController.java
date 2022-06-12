@@ -34,11 +34,11 @@ public class UsuarioController {
 	@Autowired
 	public UsuarioService usuarioService;
 	
-	@GetMapping("/todos")
+	@GetMapping
 	public ResponseEntity<List<Usuario>> buscarTodosUsuarios() {
 		return ResponseEntity.ok(usuarioRepository.findAll());
 	}
-	@GetMapping("id/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Usuario> buscarUsuarioPorId(@PathVariable Long id) {
 		return usuarioRepository.findById(id)
 			.map(resposta -> ResponseEntity.ok(resposta))
@@ -71,9 +71,11 @@ public class UsuarioController {
 	}
 	
 	//@DeleteMapping("/{id}")
-	@DeleteMapping("/remover/{id}")
-	public void excluirUsuario(@PathVariable Long id){
-		usuarioRepository.deleteById(id);
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Usuario> deletar(@PathVariable Long id) {
+		return usuarioService.deletar(id)
+				.map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.notFound().build());
 	}
 
 
