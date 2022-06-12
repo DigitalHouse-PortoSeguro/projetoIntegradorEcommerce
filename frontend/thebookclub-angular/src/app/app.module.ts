@@ -2,10 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { UsuarioCadastroComponent } from './components/usuario-cadastro/usuario-cadastro.component';
+import { InputCustomComponent } from './components/input-custom/input-custom.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UsuarioCadastroComponent,
+    InputCustomComponent
   ],
   imports: [
     BrowserModule
