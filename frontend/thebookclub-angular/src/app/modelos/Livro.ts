@@ -13,5 +13,5 @@ export class Livro {
     public quantidadeEstoque: number;
     public fornecedor: string;
     //relacionamentos:
-    public pedidoLivro: PedidoLivro[];
+    public pedidoLivros: PedidoLivro[];
 }
