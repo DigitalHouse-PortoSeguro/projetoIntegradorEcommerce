@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.digitalhouse.thebookclub.modelo.Pedido;
 import br.com.digitalhouse.thebookclub.modelo.PedidoLivro;
-import br.com.digitalhouse.thebookclub.repository.PedidoLivroRepository;
 import br.com.digitalhouse.thebookclub.repository.PedidoRepository;
 
 @Service
@@ -17,36 +16,42 @@ public class PedidoService {
 	@Autowired
 	private PedidoRepository pedidoRepository;
 	
-	@Autowired
-	private PedidoLivroRepository pedidoLivroRepository;
-	
-	public Optional<Pedido> salvar(Pedido pedido) {
-		// List dos pedido livros
-		// List<PedidoLivro> livros = pedido.getLivros();
+	public Optional<Pedido> cadastrar(Pedido pedido) {		
+		// Pega os livros
+		List<PedidoLivro> pedidoLivros = pedido.getPedidoLivros();
 		
-		// Salva os livros
-		// livros = pedidoLivroRepository.saveAll(livros);
+		// Para cada PedidoLivro
+		for (PedidoLivro pedidoLivro : pedidoLivros) {
+			// Muda a referência do peido
+			pedidoLivro.setPedido(pedido);
+		}
 		
-		// Guarda os novos livros
-		// pedido.setLivros(livros);
-		
+		// Salva o pedido
 		return Optional.of(pedidoRepository.save(pedido));
 	}
 	
 	public Optional<Pedido> atualizar(Pedido pedido) {
 		if (pedidoRepository.findById(pedido.getPedidoId()).isPresent()) {
-			// List dos pedido livros
-			//List<PedidoLivro> livros = pedido.getLivros();
+			// Pega os livros
+			List<PedidoLivro> pedidoLivros = pedido.getPedidoLivros();
 			
-			// Salva os livros
-			//livros = pedidoLivroRepository.saveAll(livros);
-			
-			// Guarda os novos livros
-			//pedido.setLivros(livros);
+			// Para cada PedidoLivro
+			for (PedidoLivro pedidoLivro : pedidoLivros) {
+				// Muda a referência do peido
+				pedidoLivro.setPedido(pedido);
+			}
 			
 			// Salva o pedido
 			return Optional.of(pedidoRepository.save(pedido));
-			
+		}
+		return Optional.empty();
+	}
+	
+	public Optional<Pedido> deletar(Long id) {
+		Optional<Pedido> pedido = pedidoRepository.findById(id);
+		if (pedido.isPresent()) {
+			pedidoRepository.deleteById(id);
+			return pedido;
 		}
 		return Optional.empty();
 	}
