@@ -1,6 +1,7 @@
 package br.com.digitalhouse.thebookclub.modelo;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,9 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -27,66 +25,58 @@ public class Livro {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long livroId;
 	
-	@OneToMany(mappedBy = "livro", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("tb_livro")
-	private List<PedidoLivro> pedidoLivros;
-	
-	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
-	@Size(min=2,max=100)
+	@NotNull(message="O titulo não pode ser nulo")
+	@Size(min=2,max=100, message = "O tamanho do título deve ser entre {min} e {max}")
 	private String titulo;
 	
-	@NotNull(message = "A data de publicação não pode ser nula")
+	@NotNull(message = "A dataPublicacao não pode ser nula")
 	@JsonFormat(pattern="yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)
-	private Date dataPublicacao;
+	private LocalDate dataPublicacao;
 	
-	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
-	@Size(min=2,max=200)
+	@NotNull(message="O autores não pode ser nulo")
+	@Size(min=2,max=200, message = "O tamanho do autores deve ser entre {min} e {max}")
 	private String autores;
 	
-	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
-	@Size(min=2,max=30)
+	@NotNull(message="A editora não pode ser nula")
+	@Size(min=2,max=30, message = "O tamanho da editora deve ser entre {min} e {max}")
 	private String editora;
 	
-	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
-	@Size(min=2,max=30)
+	@NotNull(message="A categoria não pode ser nula")
+	@Size(min=2,max=30, message = "O tamanho da categoria deve ser entre {min} e {max}")
 	private String categoria;
 	
-	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
-	@Min(value=1, message="Este Campo Deve Conter no Mínimo 1 Dígito")
-	//@Max(value=5, message="Este Campo Deve Conter no Máximo 5 Dígito")
+	@NotNull(message="O numeroPaginas não pode ser nulo")
+	@Min(value=1, message="O numeroPaginas deve ser pelo menos {value}")
 	private Integer numeroPaginas;
 	
-	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
-	@Size(min=8,max=13)
+	@NotNull(message="O isbn não pode ser nulo")
+	@Size(min=8,max=13, message = "O tamanho do isbn deve ser entre {min} e {max}")
 	private String isbn;
 	
-	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
-	@Digits(integer=3, fraction=2, message="Preço Possui 3 Casas Inteiras e 2 Casas Após o Ponto")
-	private double preco;
+	@NotNull(message="O preco não pode ser nulo")
+	private Double preco;
 	
-	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
-	@Min(value=1, message="Este Campo Deve Conter no Mínimo 1 Dígito")
-	//@Max(value=3, message="Este Campo Deve Conter no Máximo 3 Dígito")
+	@NotNull(message="O quantidadeEstoque não pode ser nulo")
+	@Min(value=1, message="O quantidadeEstoque deve ser pelo menos {value}")
 	private Integer quantidadeEstoque;
 	
-	@NotNull(message="Este Campo é de Preenchimento Obrigatório e Não Pode Ser Vazio")
-	@Size(min=2,max=100)
+	@NotNull(message="O fornecedor não pode ser nulo")
+	@Size(min=2,max=100, message = "O tamanho do fornecedor deve ser entre {min} e {max}")
 	private String fornecedor;
+	
+	@OneToMany(mappedBy = "livro", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("livro")
+	private List<PedidoLivro> pedidoLivros = new ArrayList<PedidoLivro>();
 
 	public Long getLivroId() {
 		return livroId;
-	}
-
-	public List<PedidoLivro> getPedidoLivros() {
-		return pedidoLivros;
 	}
 
 	public String getTitulo() {
 		return titulo;
 	}
 
-	public Date getDataPublicacao() {
+	public LocalDate getDataPublicacao() {
 		return dataPublicacao;
 	}
 
@@ -110,7 +100,7 @@ public class Livro {
 		return isbn;
 	}
 
-	public double getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 
@@ -122,19 +112,19 @@ public class Livro {
 		return fornecedor;
 	}
 
-	public void setLivroId(Long livroId) {
-		this.livroId = livroId;
+	public List<PedidoLivro> getPedidoLivros() {
+		return pedidoLivros;
 	}
 
-	public void setPedidoLivros(List<PedidoLivro> pedidoLivros) {
-		this.pedidoLivros = pedidoLivros;
+	public void setLivroId(Long livroId) {
+		this.livroId = livroId;
 	}
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 
-	public void setDataPublicacao(Date dataPublicacao) {
+	public void setDataPublicacao(LocalDate dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
 	}
 
@@ -158,7 +148,7 @@ public class Livro {
 		this.isbn = isbn;
 	}
 
-	public void setPreco(double preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 
@@ -168,5 +158,9 @@ public class Livro {
 
 	public void setFornecedor(String fornecedor) {
 		this.fornecedor = fornecedor;
+	}
+
+	public void setPedidoLivros(List<PedidoLivro> pedidoLivros) {
+		this.pedidoLivros = pedidoLivros;
 	}
 }
