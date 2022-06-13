@@ -2,6 +2,8 @@ package br.com.digitalhouse.thebookclub.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,14 +50,14 @@ public class LivroController {
 	}
 
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Livro> cadastrar(@RequestBody Livro pedido) {
+	public ResponseEntity<Livro> cadastrar(@Valid @RequestBody Livro pedido) {
 		return livroService.cadastrar(pedido)
 				.map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
 				.orElse(ResponseEntity.badRequest().build());
 	}
 
 	@PutMapping("/atualizar")
-	public ResponseEntity<Livro> atualizar(@RequestBody Livro pedido) {
+	public ResponseEntity<Livro> atualizar(@Valid @RequestBody Livro pedido) {
 		return livroService.atualizar(pedido)
 				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
 				.orElse(ResponseEntity.notFound().build());

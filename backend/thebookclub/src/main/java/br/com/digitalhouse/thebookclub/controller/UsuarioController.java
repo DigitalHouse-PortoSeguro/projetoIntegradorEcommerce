@@ -1,7 +1,6 @@
 package br.com.digitalhouse.thebookclub.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -52,7 +51,7 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<UsuarioLogin> logarUsuario(@RequestBody Optional<UsuarioLogin> user) {
+	public ResponseEntity<UsuarioLogin> logarUsuario(@Valid @RequestBody UsuarioLogin user) {
 		return usuarioService.autenticarUsuario(user).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}

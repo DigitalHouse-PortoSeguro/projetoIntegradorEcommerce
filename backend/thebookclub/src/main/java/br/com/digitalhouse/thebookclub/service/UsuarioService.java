@@ -41,28 +41,27 @@ public class UsuarioService {
 		return Optional.empty();
 	}
 
-	public Optional<UsuarioLogin> autenticarUsuario(Optional<UsuarioLogin> usuarioLogin) {
-		Optional<Usuario> usuario = usuarioRepository.findByEmail(usuarioLogin.get().getEmail());
+	public Optional<UsuarioLogin> autenticarUsuario(UsuarioLogin usuarioLogin) {
+		Optional<Usuario> usuario = usuarioRepository.findByEmail(usuarioLogin.getEmail());
 		if (usuario.isPresent()) {
-			if (compararSenhas(usuarioLogin.get().getSenha(), usuario.get().getSenha())) {
-				usuarioLogin.get().setUsuarioId(usuario.get().getUsuarioId());
-				usuarioLogin.get().setNome(usuario.get().getNome());
-				usuarioLogin.get().setSobrenome(usuario.get().getSobrenome());
-				usuarioLogin.get().setCpf(usuario.get().getCpf());
-				usuarioLogin.get().setUsername(usuario.get().getUsername());
-				usuarioLogin.get().setEmail(usuario.get().getEmail());
-				usuarioLogin.get().setSenha(usuario.get().getSenha());
-				usuarioLogin.get().setDataNascimento(usuario.get().getDataNascimento());
-				usuarioLogin.get().setPreferencias(usuario.get().getPreferencias());
-				usuarioLogin.get().setRua(usuario.get().getRua());
-				usuarioLogin.get().setNumero(usuario.get().getNumero());
-				usuarioLogin.get().setBairro(usuario.get().getBairro());
-				usuarioLogin.get().setCep(usuario.get().getCep());
-				usuarioLogin.get().setComplemento(usuario.get().getComplemento());
-				usuarioLogin.get()
-						.setToken(gerarBasicToken(usuarioLogin.get().getCpf(), usuarioLogin.get().getSenha()));
-				return usuarioLogin;
-
+			if (compararSenhas(usuarioLogin.getSenha(), usuario.get().getSenha())) {
+				usuarioLogin.setUsuarioId(usuario.get().getUsuarioId());
+				usuarioLogin.setNome(usuario.get().getNome());
+				usuarioLogin.setSobrenome(usuario.get().getSobrenome());
+				usuarioLogin.setCpf(usuario.get().getCpf());
+				usuarioLogin.setUsername(usuario.get().getUsername());
+				usuarioLogin.setEmail(usuario.get().getEmail());
+				usuarioLogin.setSenha(usuario.get().getSenha());
+				usuarioLogin.setDataNascimento(usuario.get().getDataNascimento());
+				usuarioLogin.setPreferencias(usuario.get().getPreferencias());
+				usuarioLogin.setRua(usuario.get().getRua());
+				usuarioLogin.setNumero(usuario.get().getNumero());
+				usuarioLogin.setBairro(usuario.get().getBairro());
+				usuarioLogin.setCep(usuario.get().getCep());
+				usuarioLogin.setComplemento(usuario.get().getComplemento());
+				usuarioLogin.setToken(gerarBasicToken(usuarioLogin.getCpf(), usuarioLogin.getSenha()));
+				
+				return Optional.of(usuarioLogin);
 			}
 		}
 		return Optional.empty();
