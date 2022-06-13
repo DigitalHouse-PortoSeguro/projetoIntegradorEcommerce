@@ -9,6 +9,7 @@ export class InputCustomComponent implements OnInit {
 
   @Input() label: string;
   @Input() type:string;
+  @Input() placeholder:string;
 
   constructor() { }
 
