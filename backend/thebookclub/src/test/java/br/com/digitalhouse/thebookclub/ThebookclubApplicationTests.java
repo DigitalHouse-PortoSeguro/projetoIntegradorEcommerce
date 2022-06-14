@@ -1,4 +1,4 @@
-package com.projectg2.thebookclub;
+package br.com.digitalhouse.thebookclub;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
