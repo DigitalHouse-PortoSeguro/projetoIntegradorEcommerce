@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { UsuarioCadastroComponent } from './components/usuario-cadastro/usuario-cadastro.component';
 import { InputCustomComponent } from './components/input-custom/input-custom.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { InputCustomComponent } from './components/input-custom/input-custom.com
     InputCustomComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

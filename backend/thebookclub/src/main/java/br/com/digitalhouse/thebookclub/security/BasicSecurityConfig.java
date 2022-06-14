@@ -37,7 +37,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/usuarios/login").permitAll()
-			.antMatchers("/usuarios/register").permitAll()
+			.antMatchers("/usuarios/cadastrar").permitAll()
 			.antMatchers(HttpMethod.OPTIONS).permitAll()
 			//configurar endpoint para admin adicionar livros
 			//.antMatchers("/livros/adicionar").hasAuthority("ROLE_ADMIN")

@@ -1,6 +1,7 @@
 package br.com.digitalhouse.thebookclub.modelo;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,10 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -23,49 +25,48 @@ public class Livro {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long livroId;
 	
-	@NotNull
-	@Size(min=2,max=100)
+	@NotNull(message="O titulo não pode ser nulo")
+	@Size(min=2,max=100, message = "O tamanho do título deve ser entre {min} e {max}")
 	private String titulo;
 	
-	@NotNull
-	@Size(min=2,max=100)
-	private String autor;
+	@NotNull(message = "A dataPublicacao não pode ser nula")
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private LocalDate dataPublicacao;
 	
-	@NotNull
-	@Temporal(TemporalType.DATE)
-	private Date dataPublicacao;
+	@NotNull(message="O autores não pode ser nulo")
+	@Size(min=2,max=200, message = "O tamanho do autores deve ser entre {min} e {max}")
+	private String autores;
 	
-	@NotNull
-	@Size(min=2,max=30)
+	@NotNull(message="A editora não pode ser nula")
+	@Size(min=2,max=30, message = "O tamanho da editora deve ser entre {min} e {max}")
 	private String editora;
 	
-	@NotNull
-	@Size(min=2,max=30)
+	@NotNull(message="A categoria não pode ser nula")
+	@Size(min=2,max=30, message = "O tamanho da categoria deve ser entre {min} e {max}")
 	private String categoria;
 	
-	@NotNull
-	@Size(min=1,max=5)
+	@NotNull(message="O numeroPaginas não pode ser nulo")
+	@Min(value=1, message="O numeroPaginas deve ser pelo menos {value}")
 	private Integer numeroPaginas;
 	
-	@NotNull
-	@Size(min=10,max=13)
+	@NotNull(message="O isbn não pode ser nulo")
+	@Size(min=8,max=13, message = "O tamanho do isbn deve ser entre {min} e {max}")
 	private String isbn;
 	
-	@NotNull
-	@Size(min=2,max=10)
+	@NotNull(message="O preco não pode ser nulo")
 	private Double preco;
 	
-	@NotNull
-	@Size(min=1,max=5)
+	@NotNull(message="O quantidadeEstoque não pode ser nulo")
+	@Min(value=1, message="O quantidadeEstoque deve ser pelo menos {value}")
 	private Integer quantidadeEstoque;
 	
-	@NotNull
-	@Size(min=2,max=100)
+	@NotNull(message="O fornecedor não pode ser nulo")
+	@Size(min=2,max=100, message = "O tamanho do fornecedor deve ser entre {min} e {max}")
 	private String fornecedor;
 	
 	@OneToMany(mappedBy = "livro", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("tb_livro")
-	private List<PedidoLivro> pedidos;
+	@JsonIgnoreProperties("livro")
+	private List<PedidoLivro> pedidoLivros = new ArrayList<PedidoLivro>();
 
 	public Long getLivroId() {
 		return livroId;
@@ -75,12 +76,12 @@ public class Livro {
 		return titulo;
 	}
 
-	public String getAutor() {
-		return autor;
+	public LocalDate getDataPublicacao() {
+		return dataPublicacao;
 	}
 
-	public Date getDataPublicacao() {
-		return dataPublicacao;
+	public String getAutores() {
+		return autores;
 	}
 
 	public String getEditora() {
@@ -111,8 +112,8 @@ public class Livro {
 		return fornecedor;
 	}
 
-	public List<PedidoLivro> getPedidos() {
-		return pedidos;
+	public List<PedidoLivro> getPedidoLivros() {
+		return pedidoLivros;
 	}
 
 	public void setLivroId(Long livroId) {
@@ -123,12 +124,12 @@ public class Livro {
 		this.titulo = titulo;
 	}
 
-	public void setAutor(String autor) {
-		this.autor = autor;
+	public void setDataPublicacao(LocalDate dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
 	}
 
-	public void setDataPublicacao(Date dataPublicacao) {
-		this.dataPublicacao = dataPublicacao;
+	public void setAutores(String autores) {
+		this.autores = autores;
 	}
 
 	public void setEditora(String editora) {
@@ -159,7 +160,7 @@ public class Livro {
 		this.fornecedor = fornecedor;
 	}
 
-	public void setPedidos(List<PedidoLivro> pedidos) {
-		this.pedidos = pedidos;
-	}	
+	public void setPedidoLivros(List<PedidoLivro> pedidoLivros) {
+		this.pedidoLivros = pedidoLivros;
+	}
 }
