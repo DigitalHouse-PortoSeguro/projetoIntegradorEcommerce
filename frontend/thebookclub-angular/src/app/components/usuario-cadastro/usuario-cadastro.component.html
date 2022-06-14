@@ -2,7 +2,7 @@
     <h1 class="p-2 text-nowrap border-bottom border-white border-3 w-50 text-center mx-auto">Cadastre-se</h1>
         <form action="" class="m-4">
             <div class="row">
-                <app-input-custom label="Username" type="text" class="col-md-6" placeholder="mínimo 5 caracteres"></app-input-custom>
+                <app-input-custom [modelo]="usuario.username" label="Username" type="text" class="col-md-6" placeholder="mínimo 5 caracteres"></app-input-custom>
                 <app-input-custom label="Email" type="email" class="col-md-6" placeholder="email@email.com"></app-input-custom>
             </div>
             <div class="row">

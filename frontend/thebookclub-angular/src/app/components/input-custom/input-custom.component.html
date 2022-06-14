@@ -1,2 +1,4 @@
     <label for={{label.toLowerCase()}} class="form-label">{{label}}</label>
-    <input type={{type}} class="form-control mb-4" id={{label.toLowerCase()}} placeholder={{placeholder}}>
+    <input type={{type}} class="form-control mb-4" 
+    id={{label.toLowerCase()}} placeholder={{placeholder}}
+    [readonly]="!!readOnly" [(ngModel)]="modelo">
