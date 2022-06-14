@@ -1,10 +1,7 @@
 package br.com.digitalhouse.thebookclub.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Optional;
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -24,10 +21,6 @@ import org.springframework.http.ResponseEntity;
 
 import br.com.digitalhouse.thebookclub.modelo.Usuario;
 import br.com.digitalhouse.thebookclub.repository.UsuarioRepository;
-import br.com.digitalhouse.thebookclub.service.UsuarioService;
-
-
-
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -38,9 +31,6 @@ public class UsuarioControllerTest {
 	private TestRestTemplate testRestTemplate;
 	
 	@Autowired
-	private UsuarioService usuarioService;
-	
-	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
 	@BeforeAll
@@ -49,30 +39,30 @@ public class UsuarioControllerTest {
 		usuarioRepository.deleteAll();
 	}
 	
-	
 	@Test
 	@Order(1)
 	@DisplayName("Cadastrar um Usuário")
-	public void deveCriarUmUsuario()throws java.text.ParseException
+	public void deveCriarUmUsuario()
 	{
-		Usuario usuario = new Usuario();
-		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		usuario.setNome("Leticia");
-		usuario.setSobrenome("Toffoli");
-		usuario.setCpf("492.827.858-10");
-		usuario.setUsername("letoffoli");
-		usuario.setEmail("le.toffoli@gmail.com");
-		usuario.setSenha("leticia1234");
-		Date date = formatter.parse("2002-09-09");
-		usuario.setDataNascimento(date);
-		usuario.setRua("Rua Botucatu");
-		usuario.setNumero(740);
-		usuario.setBairro("Vila Clementino");
-		usuario.setCep("07122-220");
-		usuario.setComplemento("prédio");
+		// Criação do usuario (mock)
+		Usuario usuario = new Usuario(
+				0L,								// Id
+				"Leticia",						// Nome
+				"Toffoli",						// Sobrenome
+				"492.827.858-10",				// CPF
+				"letoffoli",					// Username
+				"le.toffoli@gmail.com",			// Email
+				"leticia1234",					// Senha
+				LocalDate.parse("2002-09-09"),	// Datadenascimento
+				"",								// Preferências
+				"Rua Botucatu",					// Rua
+				740,							// Número
+				"Vila Clementino",				// Bairro
+				"07122-220",					// CEP
+				"prédio"						// Complemento
+		);
 		
-		
-		
+		// Criação da requisição HTTP
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(usuario);
 		ResponseEntity<Usuario> resposta = testRestTemplate
 				.exchange("/usuarios/cadastrar",HttpMethod.POST,requisicao,Usuario.class);
@@ -81,11 +71,94 @@ public class UsuarioControllerTest {
 		assertEquals(requisicao.getBody().getNome(),resposta.getBody().getNome());
 		assertEquals(requisicao.getBody().getUsername(),resposta.getBody().getUsername());
 		assertEquals(requisicao.getBody().getCpf(),resposta.getBody().getCpf());
-		
-		
 	}
 	
-
+	@Test
+	@Order(2)
+	@DisplayName("Retornar um Usuário pelo email")
+	public void deveRetornarUmUsuarioEmail()
+	{
+		Usuario usuario = new Usuario(
+				0L,								// Id
+				"Gabriel",						// Nome
+				"Soares",						// Sobrenome
+				"137.467.467-18",				// CPF
+				"ghsoares",						// Username
+				"ghsoares99795@gmail.com",		// Email
+				"Senha123",						// Senha
+				LocalDate.parse("2002-11-25"),	// Datadenascimento
+				"",								// Preferências
+				"Rua Pinheirinho D'Água",		// Rua
+				313,							// Número
+				"Parque Pan Americano",			// Bairro
+				"02675-031",					// CEP
+				"Casa 2"						// Complemento
+		);
+		
+		usuarioRepository.save(usuario);
+		
+		ResponseEntity<Usuario> resposta = testRestTemplate
+				.withBasicAuth("root", "root")
+				.exchange("/usuarios/email/ghsoares99795@gmail.com", HttpMethod.GET, null, Usuario.class);
+		
+		assertEquals(HttpStatus.OK, resposta.getStatusCode());
+		assertEquals(usuario.getNome(),resposta.getBody().getNome());
+		assertEquals(usuario.getUsername(),resposta.getBody().getUsername());
+		assertEquals(usuario.getCpf(),resposta.getBody().getCpf());
+	}
+	
+	@Test
+	@Order(3)
+	@DisplayName("Não deve atualizar e duplicar email")
+	public void naoDeveDuplicarEmailAtualizado()
+	{
+		Usuario usuario1 = new Usuario(
+			0L,								// Id
+			"Noah",							// Nome
+			"Thales",						// Sobrenome
+			"292.247.156-05",				// CPF
+			"noahthales",					// Username
+			"noah-nunes86@vemter.com.br",	// Email
+			"Senha123",						// Senha
+			LocalDate.parse("1995-11-06"),	// Datadenascimento
+			"",								// Preferências
+			"Rua E-5",						// Rua
+			869,							// Número
+			"Jardim Nossa Senhora Aparecida",// Bairro
+			"78090-668",					// CEP
+			""								// Complemento
+		);
+		
+		Usuario usuario2 = new Usuario(
+			0L,								// Id
+			"Heloisa",						// Nome
+			"Novaes",						// Sobrenome
+			"656.242.296-58",				// CPF
+			"novaeshel",					// Username
+			"heloisa_eloa_novaes@cntbrasil.com.br",// Email
+			"Senha123",						// Senha
+			LocalDate.parse("1949-01-14"),	// Datadenascimento
+			"",								// Preferências
+			"Rua Evaristo da Veiga",		// Rua
+			536,							// Número
+			"Virgem Santa",					// Bairro
+			"27948-349",					// CEP
+			""								// Complemento
+		);
+		
+		usuario1 = usuarioRepository.save(usuario1);
+		usuario2 = usuarioRepository.save(usuario2);
+		
+		usuario2.setEmail(usuario1.getEmail());
+		
+		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(usuario2);
+		
+		ResponseEntity<Usuario> resposta = testRestTemplate
+				.withBasicAuth("root", "root")
+				.exchange("/usuarios/atualizar", HttpMethod.PUT, requisicao, Usuario.class);
+		
+		assertEquals(HttpStatus.BAD_REQUEST, resposta.getStatusCode());
+	}
 	
 	
 //	@Test
