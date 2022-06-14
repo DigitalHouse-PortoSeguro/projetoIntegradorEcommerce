@@ -2,6 +2,8 @@ package br.com.digitalhouse.thebookclub.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.digitalhouse.thebookclub.modelo.Livro;
 import br.com.digitalhouse.thebookclub.repository.LivroRepository;
+import br.com.digitalhouse.thebookclub.service.LivroService;
 
 @RestController
 @RequestMapping("/livros")
@@ -25,35 +28,46 @@ public class LivroController {
 
 	@Autowired
 	private LivroRepository livroRepository;
+	
+	@Autowired
+	private LivroService livroService;
 
-	@GetMapping("/consultar")
-	public ResponseEntity<List<Livro>> GetAll() {
+	@GetMapping
+	public ResponseEntity<List<Livro>> getAll() {
 		return ResponseEntity.ok(livroRepository.findAll());
 	}
 
-	@GetMapping("/consultar/{id}")
-	public ResponseEntity<Livro> GetById(@PathVariable Long id) {
-		return livroRepository.findById(id).map(resp -> ResponseEntity.ok(resp))
+	@GetMapping("/{id}")
+	public ResponseEntity<Livro> getById(@PathVariable Long id) {
+		return livroRepository.findById(id)
+				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 
-	@GetMapping("/consultar/{titulo}")
-	public ResponseEntity<List<Livro>> GetByTitulo(@PathVariable String titulo) {
+	@GetMapping("/titulo/{titulo}")
+	public ResponseEntity<List<Livro>> getByTitulo(@PathVariable String titulo) {
 		return ResponseEntity.ok(livroRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Livro> post(@RequestBody Livro livro) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(livroRepository.save(livro));
+	public ResponseEntity<Livro> cadastrar(@Valid @RequestBody Livro pedido) {
+		return livroService.cadastrar(pedido)
+				.map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
+				.orElse(ResponseEntity.badRequest().build());
 	}
 
 	@PutMapping("/atualizar")
-	public ResponseEntity<Livro> put(@RequestBody Livro livro) {
-		return ResponseEntity.status(HttpStatus.OK).body(livroRepository.save(livro));
+	public ResponseEntity<Livro> atualizar(@Valid @RequestBody Livro pedido) {
+		return livroService.atualizar(pedido)
+				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+				.orElse(ResponseEntity.notFound().build());
 	}
 
-	@DeleteMapping("/remover/{id}")
-	public void delete(@PathVariable Long id) {
-		livroRepository.deleteById(id);
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Livro> deletar(@PathVariable Long id) {
+		return livroService.deletar(id)
+				.map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.notFound().build());
 	}
 }
+

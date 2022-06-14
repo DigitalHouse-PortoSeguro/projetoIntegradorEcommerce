@@ -1,6 +1,7 @@
 package br.com.digitalhouse.thebookclub.modelo;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,8 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import br.com.digitalhouse.thebookclub.enums.FormaEnvio;
@@ -35,43 +34,42 @@ public class Pedido {
 	private Long pedidoId;
 
 	//Valor total do pedido
-	@NotNull
+	@NotNull(message="O valor não pode ser nulo")
 	private Double valor;
 
 	//Forma de pagamento do pedido
-	@NotNull
+	@NotNull(message="O tipoPagamento não pode ser nulo")
 	@Enumerated(EnumType.STRING)
 	private TipoPagamento tipoPagamento;
 
 	//Forma de envio
-	@NotNull
+	@NotNull(message="A formaEnvio não pode ser nulo")
 	@Enumerated(EnumType.STRING)
 	private FormaEnvio formaEnvio;
 	
 	//Status
-	@NotNull
+	@NotNull(message="O status não pode ser nulo")
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
 
 	//Data em que o pedido foi realizado
-	@NotNull
-	@JsonFormat(pattern="yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)
-	private Date dataPedido;
+	@NotNull(message="O dataPedido não pode ser nulo")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime dataPedido;
 	
-	//Data de atualização do status é mais apropriado. E not null não é aplicavel nessa entrada
-	//@NotNull
-	@Temporal(TemporalType.DATE)
-	private Date dataEntrega;
+	//Data de previsão de entrega
+	@NotNull
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime dataEntrega;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("tb_pedido")
+	@JsonIgnoreProperties("pedidos")
 	private Usuario usuario;
 	
 	//Lista de livros que foram comprados 
-	@OneToMany(mappedBy = "pedido", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("tb_pedido")
-	private List<PedidoLivro> pedidoLivros;
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("pedido")
+	private List<PedidoLivro> pedidoLivros = new ArrayList<PedidoLivro>();
 
 	public Long getPedidoId() {
 		return pedidoId;
@@ -93,11 +91,11 @@ public class Pedido {
 		return status;
 	}
 
-	public Date getDataPedido() {
+	public LocalDateTime getDataPedido() {
 		return dataPedido;
 	}
 
-	public Date getDataEntrega() {
+	public LocalDateTime getDataEntrega() {
 		return dataEntrega;
 	}
 
@@ -129,11 +127,11 @@ public class Pedido {
 		this.status = status;
 	}
 
-	public void setDataPedido(Date dataPedido) {
+	public void setDataPedido(LocalDateTime dataPedido) {
 		this.dataPedido = dataPedido;
 	}
 
-	public void setDataEntrega(Date dataEntrega) {
+	public void setDataEntrega(LocalDateTime dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
 
@@ -141,7 +139,7 @@ public class Pedido {
 		this.usuario = usuario;
 	}
 
-	public void setPedidoLivros(List<PedidoLivro> livros) {
-		this.pedidoLivros = livros;
+	public void setPedidoLivros(List<PedidoLivro> pedidoLivros) {
+		this.pedidoLivros = pedidoLivros;
 	}
 }

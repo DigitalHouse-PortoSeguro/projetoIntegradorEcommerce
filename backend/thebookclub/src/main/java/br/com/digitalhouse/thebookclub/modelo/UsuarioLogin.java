@@ -1,6 +1,6 @@
 package br.com.digitalhouse.thebookclub.modelo;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class UsuarioLogin {
 	private Long usuarioId;
@@ -11,7 +11,7 @@ public class UsuarioLogin {
 	private String tipoUsuario;
 	private String email;
 	private String senha;
-	private Date dataNascimento;
+	private LocalDate dataNascimento;
 	private String preferencias;
 	private String rua;
 	private Integer numero;
@@ -57,7 +57,7 @@ public class UsuarioLogin {
 		return senha;
 	}
 
-	public Date getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
@@ -121,7 +121,7 @@ public class UsuarioLogin {
 		this.senha = senha;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
