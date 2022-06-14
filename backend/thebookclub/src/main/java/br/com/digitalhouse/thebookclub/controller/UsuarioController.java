@@ -50,6 +50,27 @@ public class UsuarioController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
+	@GetMapping("username/{username}")
+	public ResponseEntity<Usuario> buscarUsuarioPorUsername(@PathVariable String username){
+		return usuarioRepository.findByUsername(username)
+				.map(resposta -> ResponseEntity.ok(resposta))
+				.orElse(ResponseEntity.notFound().build());
+	}
+	
+	@GetMapping("email/{email}")
+	public ResponseEntity<Usuario> buscarUsuarioPorEmail(@PathVariable String email){
+		return usuarioRepository.findByEmail(email)
+				.map(resposta -> ResponseEntity.ok(resposta))
+				.orElse(ResponseEntity.notFound().build());
+	}
+	
+	@GetMapping("cpf/{cpf}")
+	public ResponseEntity<Usuario> buscarUsuarioPorCpf(@PathVariable String cpf){
+		return usuarioRepository.findByCpf(cpf)
+				.map(resposta -> ResponseEntity.ok(resposta))
+				.orElse(ResponseEntity.notFound().build());
+	}
+	
 	@PostMapping("/login")
 	public ResponseEntity<UsuarioLogin> logarUsuario(@Valid @RequestBody UsuarioLogin user) {
 		return usuarioService.autenticarUsuario(user).map(resp -> ResponseEntity.ok(resp))
