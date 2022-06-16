@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Usuario } from 'src/app/modelos/Usuario';
-import { UsuarioLogin } from 'src/app/modelos/UsuarioLogin';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-usuario-cadastro',
@@ -12,28 +10,45 @@ export class UsuarioCadastroComponent implements OnInit {
 
   form: FormGroup;
 
+  errorMessages = {
+    'required': "Esse campo é obrigatório",
+    'pattern': "Formato inválido"
+  };
+
   constructor() { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      nome: new FormControl(""),
-      sobrenome: new FormControl(""),
-      cpf: new FormControl(""),
-      username: new FormControl(""),
+      nome: new FormControl("", Validators.required),
+      sobrenome: new FormControl("", Validators.required),
+      cpf: new FormControl("", [
+        Validators.required,
+        Validators.pattern(/\d{3}.\d{3}.\d{3}-\d{2}/)
+      ]),
+      username: new FormControl("", Validators.required),
       tipoUsuario: new FormControl(""),
-      email: new FormControl(""),
-      senha: new FormControl(""),
-      confirmarSenha: new FormControl(""),
-      dataNascimento: new FormControl(""),
-      rua: new FormControl(""),
-      numero: new FormControl(""),
-      bairro: new FormControl(""),
-      cep: new FormControl(""),
+      email: new FormControl("", Validators.required),
+      senha: new FormControl("", Validators.required),
+      confirmarSenha: new FormControl("", Validators.required),
+      dataNascimento: new FormControl("", Validators.required),
+      rua: new FormControl("", Validators.required),
+      numero: new FormControl("", Validators.required),
+      bairro: new FormControl("", Validators.required),
+      cep: new FormControl("", [
+        Validators.required,
+        Validators.pattern(/\d{5}-\d{3}/)
+      ]),
       complemento: new FormControl("")
     });
   }
 
   cadastrar(): void {
-    console.log(this.form.value)
+    // Marca todos os input fields como mudado,
+    // assim eles podem mostrar erros de validações
+    this.form.markAllAsTouched();
+
+    if (this.form.valid) {
+      console.log("Tudo ok!");
+    }
   }
 }

@@ -1,10 +1,15 @@
-<div class="mb-3" [ngSwitch]="type">
-	
+<div 
+	class="mb-3"
+	[ngSwitch]="type"
+>
 	<!--Input textarea-->
 	<ng-container *ngSwitchCase="'textarea'">
 		<label [for]="id" class="form-label">{{title}}</label>
 		<textarea
-			class="form-control" 
+			[ngClass]="{
+				'form-control': true,
+				'is-invalid': hasError()
+			}"
 			[(ngModel)]="value"
 			[id]="id"
 			[name]="name"
@@ -14,14 +19,16 @@
 			[rows]="rows"
 			[cols]="cols"
 		></textarea>
-		<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
 	</ng-container>
 
 	<!--Input select-->
 	<ng-container *ngSwitchCase="'select'">
 		<label [for]="id" class="form-label">{{title}}</label>
 		<select 
-			class="form-select"
+			[ngClass]="{
+				'form-select': true,
+				'is-invalid': hasError()
+			}"
 			aria-label="Default select example"
 			[id]="id"
 			[name]="name"
@@ -32,7 +39,6 @@
 			<option value="" selected disabled>Selecione uma opção</option>
 			<option *ngFor="let op of options" [ngValue]="op.value">{{op.displayName}}</option>
 		</select>
-		<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
 	</ng-container>
 
 	<!--Input checkbox-->
@@ -40,7 +46,10 @@
 		<div class="form-check">
 			<input 
 				type="checkbox" 
-				class="form-check-input" 
+				[ngClass]="{
+					'form-check-input': true,
+					'is-invalid': hasError()
+				}"
 				[id]="id" 
 				[name]="name"
 				[placeholder]="placeholder"
@@ -49,7 +58,6 @@
 				[(ngModel)]="value"
 			>
 			<label [for]="id" class="form-check-label">{{title}}</label>
-			<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
 		</div>
 	</ng-container>
 
@@ -58,14 +66,21 @@
 		<label [for]="id" class="form-label">{{title}}</label>
 		<input 
 			[type]="type" 
-			class="form-control"
+			[ngClass]="{
+				'form-control': true,
+				'is-invalid': hasError()
+			}"
 			[id]="id" 
 			[name]="name"
 			[placeholder]="placeholder"
 			[attr.aria-describeBy]="id + '-help'"
 			[disabled]="!!disabled"
 			[(ngModel)]="value"
+			(blur)="onBlur($event)"
 		>
-		<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
 	</ng-container>
+	<div *ngIf="hasError()" class="invalid-feedback">
+		<span *ngFor="let err of getErrors()">{{err}}</span>
+	</div>
+	<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
 </div>
