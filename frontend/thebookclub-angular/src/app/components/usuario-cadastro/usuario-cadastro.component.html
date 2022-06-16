@@ -84,6 +84,17 @@
                     helpText="No mínimo 6 caracteres, deve conter letras maiúsculas, minúsculas, números e símbolos"
                 ></app-input-field>
             </div>
+            <div class="row">
+                <app-dropdown
+                    formControlName="tipoUsuario"
+                    title="Tipo de usuário" 
+                    name="tipo-usuario"
+                    id="tipo-usuario"
+                    class="col-md-6" 
+                    defaultOption="Selecione uma opção"
+                    [options]="['comum', 'admin']"
+                ></app-dropdown>
+            </div>
             <h3>Endereço</h3>
             <div class="row">
                 <app-input-field 

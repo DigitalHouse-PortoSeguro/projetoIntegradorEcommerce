@@ -1,12 +1,6 @@
 import { Component, Input, OnInit, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
-// Tipo de uma opção
-type FieldOption = {
-  value: any,
-  displayName: string
-};
-
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
@@ -20,7 +14,7 @@ export class DropdownComponent implements ControlValueAccessor {
   @Input() helpText: string = "";
   @Input() disabled: boolean = false;
   @Input() defaultOption: string = "Select a value";
-  @Input() options: FieldOption[] = [];
+  @Input() options: string[] = [];
 
   _value: any;
 

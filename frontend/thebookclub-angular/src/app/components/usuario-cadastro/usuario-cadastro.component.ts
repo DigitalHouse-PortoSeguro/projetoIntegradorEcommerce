@@ -21,7 +21,7 @@ export class UsuarioCadastroComponent implements OnInit {
 			sobrenome: ['', [Validators.required]],
 			cpf: ['', [Validators.required, Validators.pattern(/^\d{3}.\d{3}.\d{3}-\d{2}$/)]],
 			username: ['', [Validators.required]],
-			tipoUsuario: [''],
+			tipoUsuario: ['', [Validators.required]],
 			email: ['', [Validators.required, Validators.email]],
 			senha: ['', [Validators.required]],
 			confirmarSenha: ['', [Validators.required]],
@@ -46,6 +46,7 @@ export class UsuarioCadastroComponent implements OnInit {
 			usuario.sobrenome = this.form.get('sobrenome')?.value;
 			usuario.cpf = this.form.get('cpf')?.value;
 			usuario.username = this.form.get('username')?.value;
+			usuario.tipoUsuario = this.form.get('tipoUsuario')?.value;
 			usuario.email = this.form.get('email')?.value;
 			usuario.senha = this.form.get('senha')?.value;
 			usuario.dataNascimento = new Date(this.form.get('dataNascimento')?.value);
