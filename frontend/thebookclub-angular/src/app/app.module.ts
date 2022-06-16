@@ -7,13 +7,15 @@ import { InputCustomComponent } from './components/input-custom/input-custom.com
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputFieldComponent } from './components/input-field/input-field.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuarioCadastroComponent,
     InputCustomComponent,
-    InputFieldComponent
+    InputFieldComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,

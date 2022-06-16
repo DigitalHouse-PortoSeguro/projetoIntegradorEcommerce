@@ -1,30 +1,26 @@
-import { Component, forwardRef, Input, OnInit, Optional, Self } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl, NgModel, NG_VALUE_ACCESSOR, ValidationErrors } from '@angular/forms';
+import { Component, Input, OnInit, Optional, Self } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
-// Tipo do input
-type FieldType =
-  "button" | "checkbox" | "color" | "date" |
-  "datetime-local" | "email" | "file" | "hidden" |
-  "image" | "month" | "number" | "password" | "radio" |
-  "range" | "reset" | "search" | "submit" | "tel" |
-  "text" | "time" | "url" | "week";
+// Tipo de uma opção
+type FieldOption = {
+  value: any,
+  displayName: string
+};
 
-// Uma função que retorna os erros de um form control
-type GetControlErrorsFunction = (control: NgControl) => string[];
 @Component({
-  selector: 'app-input-field',
-  templateUrl: './input-field.component.html',
-  styleUrls: ['./input-field.component.css']
+  selector: 'app-dropdown',
+  templateUrl: './dropdown.component.html',
+  styleUrls: ['./dropdown.component.css']
 })
-export class InputFieldComponent implements ControlValueAccessor {
-  
+export class DropdownComponent implements ControlValueAccessor {
+
   @Input() id: string;
   @Input() name: string;
   @Input() title: string;
-  @Input() type: FieldType = "text";
-  @Input() placeholder: string = "";
   @Input() helpText: string = "";
   @Input() disabled: boolean = false;
+  @Input() defaultOption: string = "Select a value";
+  @Input() options: FieldOption[] = [];
 
   _value: any;
 
@@ -72,7 +68,7 @@ export class InputFieldComponent implements ControlValueAccessor {
     return this.ngControl.invalid && (this.ngControl.dirty || this.ngControl.touched);
   }
 
-  getErrors(): string[] {
+  getErrors() {    
     return Object.keys(this.ngControl.errors as any);
   }
 }
