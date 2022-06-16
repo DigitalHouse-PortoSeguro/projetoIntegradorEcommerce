@@ -5,12 +5,12 @@
 		<label [for]="id" class="form-label">{{title}}</label>
 		<textarea
 			class="form-control" 
+			[(ngModel)]="value"
 			[id]="id"
 			[name]="name"
 			[placeholder]="placeholder"
 			[attr.aria-describeBy]="id + '-help'"
 			[disabled]="!!disabled"
-			[(ngModel)]="model"
 			[rows]="rows"
 			[cols]="cols"
 		></textarea>
@@ -26,7 +26,7 @@
 			[id]="id"
 			[name]="name"
 			[attr.aria-describeBy]="id + '-help'"
-			[(ngModel)]="model"
+			[(ngModel)]="value"
 			[disabled]="!!disabled"	
 		>
 			<option value="" selected disabled>Selecione uma opção</option>
@@ -43,11 +43,10 @@
 				class="form-check-input" 
 				[id]="id" 
 				[name]="name"
-				[value]="value"
 				[placeholder]="placeholder"
 				[attr.aria-describeBy]="id + '-help'"
 				[disabled]="!!disabled"
-				[(ngModel)]="model"
+				[(ngModel)]="value"
 			>
 			<label [for]="id" class="form-check-label">{{title}}</label>
 			<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
@@ -59,14 +58,13 @@
 		<label [for]="id" class="form-label">{{title}}</label>
 		<input 
 			[type]="type" 
-			class="form-control" 
+			class="form-control"
 			[id]="id" 
 			[name]="name"
-			[value]="value"
 			[placeholder]="placeholder"
 			[attr.aria-describeBy]="id + '-help'"
 			[disabled]="!!disabled"
-			[(ngModel)]="model"
+			[(ngModel)]="value"
 		>
 		<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
 	</ng-container>

@@ -1,5 +1,5 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, NgModel, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NgModel, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 // Tipo do input
 type FieldType =
@@ -15,6 +15,8 @@ type FieldOption = {
   displayName: string
 };
 
+// Tipo de uma função de validação
+type ValidationFunction = (val: any) => string[];
 @Component({
   selector: 'app-input-field',
   templateUrl: './input-field.component.html',
@@ -28,16 +30,16 @@ type FieldOption = {
   ]
 })
 export class InputFieldComponent implements ControlValueAccessor {
-
-  @Input() _model: any;
+  
   @Input() id: string;
   @Input() name: string;
   @Input() title: string;
-  @Input() value: string;
   @Input() type: FieldType = "text";
   @Input() placeholder: string = "";
   @Input() helpText: string = "";
   @Input() disabled: boolean = false;
+
+  @Input() control: FormControl;
 
   @Input() rows: number = 3;
   @Input() cols: number = 3;
@@ -46,22 +48,24 @@ export class InputFieldComponent implements ControlValueAccessor {
   @Input() defaultOption: string = "Select a value";
   @Input() options: FieldOption[] = [];
 
+  _value: any;
+
+  get value() {
+    return this._value;
+  }
+
+  set value(val: any) {
+    this._value = val;
+    if (this.propagateChange) this.propagateChange(val);
+  }
+
   constructor() { }
 
   propagateChange: (_: any) => {};
 
-  get model() {
-    return this._model;
-  }
-
-  set model(val) {
-    this._model = val;
-    this.propagateChange(val);
-  }
-
   writeValue(val: any): void {
     if (val != undefined) {
-      this.model = val;
+      this.value = val;
     }
   }
   registerOnChange(fn: any): void {
