@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'thebookclub-angular';
+
+  test: string = "";
+
+  clicar() {
+    console.log(this.test);
+  }
 }

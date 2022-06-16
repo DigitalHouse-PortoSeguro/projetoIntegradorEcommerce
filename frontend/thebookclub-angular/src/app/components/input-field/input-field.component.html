@@ -1,0 +1,73 @@
+<div class="mb-3" [ngSwitch]="type">
+	
+	<!--Input textarea-->
+	<ng-container *ngSwitchCase="'textarea'">
+		<label [for]="id" class="form-label">{{title}}</label>
+		<textarea
+			class="form-control" 
+			[id]="id"
+			[name]="name"
+			[placeholder]="placeholder"
+			[attr.aria-describeBy]="id + '-help'"
+			[disabled]="!!disabled"
+			[(ngModel)]="model"
+			[rows]="rows"
+			[cols]="cols"
+		></textarea>
+		<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
+	</ng-container>
+
+	<!--Input select-->
+	<ng-container *ngSwitchCase="'select'">
+		<label [for]="id" class="form-label">{{title}}</label>
+		<select 
+			class="form-select"
+			aria-label="Default select example"
+			[id]="id"
+			[name]="name"
+			[attr.aria-describeBy]="id + '-help'"
+			[(ngModel)]="model"
+			[disabled]="!!disabled"	
+		>
+			<option value="" selected disabled>Selecione uma opção</option>
+			<option *ngFor="let op of options" [ngValue]="op.value">{{op.displayName}}</option>
+		</select>
+		<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
+	</ng-container>
+
+	<!--Input checkbox-->
+	<ng-container *ngSwitchCase="'checkbox'">
+		<div class="form-check">
+			<input 
+				type="checkbox" 
+				class="form-check-input" 
+				[id]="id" 
+				[name]="name"
+				[value]="value"
+				[placeholder]="placeholder"
+				[attr.aria-describeBy]="id + '-help'"
+				[disabled]="!!disabled"
+				[(ngModel)]="model"
+			>
+			<label [for]="id" class="form-check-label">{{title}}</label>
+			<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
+		</div>
+	</ng-container>
+
+	<!--Input genérico-->
+	<ng-container *ngSwitchDefault>
+		<label [for]="id" class="form-label">{{title}}</label>
+		<input 
+			[type]="type" 
+			class="form-control" 
+			[id]="id" 
+			[name]="name"
+			[value]="value"
+			[placeholder]="placeholder"
+			[attr.aria-describeBy]="id + '-help'"
+			[disabled]="!!disabled"
+			[(ngModel)]="model"
+		>
+		<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
+	</ng-container>
+</div>
