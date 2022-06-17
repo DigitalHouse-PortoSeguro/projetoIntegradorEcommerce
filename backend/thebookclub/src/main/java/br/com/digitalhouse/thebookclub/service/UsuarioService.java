@@ -59,7 +59,7 @@ public class UsuarioService {
 				usuarioLogin.setBairro(usuario.get().getBairro());
 				usuarioLogin.setCep(usuario.get().getCep());
 				usuarioLogin.setComplemento(usuario.get().getComplemento());
-				usuarioLogin.setToken(gerarBasicToken(usuarioLogin.getCpf(), usuarioLogin.getSenha()));
+				usuarioLogin.setToken(gerarBasicToken(usuarioLogin.getUsername(), usuarioLogin.getSenha()));
 				
 				return Optional.of(usuarioLogin);
 			}
