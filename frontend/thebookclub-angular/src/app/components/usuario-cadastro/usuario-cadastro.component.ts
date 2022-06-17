@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgControl, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/modelos/Usuario';
@@ -12,7 +13,8 @@ export class UsuarioCadastroComponent implements OnInit {
 	form: FormGroup;
 
 	constructor(
-		private formBuilder: FormBuilder
+		private formBuilder: FormBuilder,
+    private http: HttpClient
 	) { }
 
 	ngOnInit(): void {
@@ -20,7 +22,7 @@ export class UsuarioCadastroComponent implements OnInit {
 			nome: ['', [Validators.required]],
 			sobrenome: ['', [Validators.required]],
 			cpf: ['', [Validators.required, Validators.pattern(/^\d{3}.\d{3}.\d{3}-\d{2}$/)]],
-			username: ['', [Validators.required]],
+			username: ['', [Validators.required, Validators.minLength(5)]],
 			tipoUsuario: ['', [Validators.required]],
 			email: ['', [Validators.required, Validators.email]],
 			senha: ['', [Validators.required]],
@@ -57,6 +59,15 @@ export class UsuarioCadastroComponent implements OnInit {
 			usuario.complemento = this.form.get('complemento')?.value;
 			
 			console.log(usuario);
+      
+      //simulação do post
+      this.http.post('https://httpbin.org/post', JSON.stringify(this.form.value))
+      .subscribe((dados) => {
+        console.log(dados);
+        //reset do formulario
+        this.form.reset();
+      },
+      (error: any) => alert("erro"));
 		}
 	}
 }
