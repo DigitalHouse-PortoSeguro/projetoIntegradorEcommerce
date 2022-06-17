@@ -38,7 +38,7 @@
                     id="cpf"
                     class="col-md-6" 
                     placeholder="Insira seu CPF aqui"
-                    helpText="Segue o padrão 000.000.000.000-00"
+                    helpText="Segue o padrão 000.000.000-00"
                 ></app-input-field>
             </div>
             <h3>Informações do usuário</h3>
@@ -81,7 +81,7 @@
                     id="confirmar-senha"
                     class="col-md-6" 
                     placeholder="Insira sua senha"
-                    helpText="No mínimo 6 caracteres, deve conter letras maiúsculas, minúsculas, números e símbolos"
+                    helpText="Digite novamente a sua senha"
                 ></app-input-field>
             </div>
             <div class="row">
@@ -105,7 +105,7 @@
                     id="cep"
                     class="col-md-6" 
                     placeholder="Insira seu CEP aqui"
-                    helpText="Segue o padrão 00000-00"
+                    helpText="Segue o padrão 00000-000"
                 ></app-input-field>
                 <app-input-field 
                     formControlName="rua"
@@ -159,3 +159,5 @@
             </div>
         </form>
 </div>
+
+<app-form-debug [formulario]="form"></app-form-debug>

@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputFieldComponent } from './components/input-field/input-field.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { FormDebugComponent } from './components/form-debug/form-debug.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
     UsuarioCadastroComponent,
     InputCustomComponent,
     InputFieldComponent,
-    DropdownComponent
+    DropdownComponent,
+    FormDebugComponent
   ],
   imports: [
     BrowserModule,
