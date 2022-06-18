@@ -15,60 +15,6 @@ import { LocalDate, LocalDateTime } from './utils/LocalDate';
 export class AppComponent {
   title = 'thebookclub-angular';
 
-  constructor(
-    private carrinhoService: CarrinhoService
-  ) { 
-    globals.usuarioLogin = new UsuarioLogin();
-    globals.usuarioLogin.token = "Basic " + btoa("ghsoares:Senha123");
-    globals.usuarioLogin.usuarioId = 1;
-    carrinhoService.resetar();
-    console.log(globals.usuarioLogin.token);
-  }
-
-  addLivro(): void {
-    const livro = new Livro();
-
-    livro.livroId = 1;
-    livro.titulo = "Livro 1";
-    livro.dataPublicacao = new LocalDate("1990-03-11");
-    livro.autores = "Autor 1";
-    livro.categoria = "Ação e Aventura";
-    livro.numeroPaginas = 37;
-    livro.isbn = "0000000001";
-    livro.preco = 57.0;
-    livro.quantidadeEstoque = 100;
-    livro.fornecedor = "fornecedor 1";
-
-    const pedidoLivro = new PedidoLivro();
-    pedidoLivro.livro = livro;
-    pedidoLivro.precoVenda = livro.preco;
-    pedidoLivro.quantidade = 1;
-    
-    this.carrinhoService.adicionarPedidoLivro(pedidoLivro);
-  }
-
-  checkout(): void {
-    
-
-    this.carrinhoService.checkoutCarrinho("DEBITO", "CORREIOS").subscribe(
-      {
-        next: (resp) => {
-          console.log(resp);
-          alert('Carrinho checkout com sucesso');
-        },
-        error: (err) => {
-          console.log(err);
-          alert('Um erro aconteceu...');
-        }
-      }
-    );
-  }
-
-  getLivros(): PedidoLivro[] {
-    return this.carrinhoService.getAllPedidoLivros();
-  }
-
-  getTotal(): number {
-    return this.carrinhoService.getTotal();
+  constructor() { 
   }
 }
