@@ -1,8 +1,6 @@
 package br.com.digitalhouse.thebookclub.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.time.LocalDate;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
@@ -21,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 
 import br.com.digitalhouse.thebookclub.modelo.Usuario;
 import br.com.digitalhouse.thebookclub.repository.UsuarioRepository;
+import br.com.digitalhouse.thebookclub.service.UsuarioService;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -33,6 +32,9 @@ public class UsuarioControllerTest {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
+	@Autowired
+	private UsuarioService usuarioService;
+	
 	@BeforeAll
 	void start()
 	{
@@ -44,17 +46,17 @@ public class UsuarioControllerTest {
 	@DisplayName("Cadastrar um Usuário")
 	public void deveCriarUmUsuario()
 	{
-		// Criação do usuario (mock)
+		// Aqui fica a criação dos objetos "mock", ou seja, os objetos que irão ser
+		// usados no teste. Os valores em si são irrelevantes, desde que sigam
+		// as regras de validações
 		Usuario usuario = new Usuario(
-				0L,								// Id
 				"Leticia",						// Nome
 				"Toffoli",						// Sobrenome
 				"492.827.858-10",				// CPF
 				"letoffoli",					// Username
 				"le.toffoli@gmail.com",			// Email
 				"leticia1234",					// Senha
-				LocalDate.parse("2002-09-09"),	// Datadenascimento
-				"",								// Preferências
+				"2002-09-09",					// Data de nascimento
 				"Rua Botucatu",					// Rua
 				740,							// Número
 				"Vila Clementino",				// Bairro
@@ -62,11 +64,16 @@ public class UsuarioControllerTest {
 				"prédio"						// Complemento
 		);
 		
-		// Criação da requisição HTTP
+		// Criação de um HttpEntity com o Usuario como o corpo da requisição
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(usuario);
+		
+		// Usa-se o testRestTemplate como cliente HTTP
 		ResponseEntity<Usuario> resposta = testRestTemplate
+				// Aqui deve passar o endpoint e o método utilizado, juntamente da requisição
+				// e do tipo do retorno, no caso é o Usuario
 				.exchange("/usuarios/cadastrar",HttpMethod.POST,requisicao,Usuario.class);
 		
+		// As assertivas do teste vão aqui
 		assertEquals(HttpStatus.CREATED,resposta.getStatusCode());
 		assertEquals(requisicao.getBody().getNome(),resposta.getBody().getNome());
 		assertEquals(requisicao.getBody().getUsername(),resposta.getBody().getUsername());
@@ -78,16 +85,17 @@ public class UsuarioControllerTest {
 	@DisplayName("Retornar um Usuário pelo email")
 	public void deveRetornarUmUsuarioEmail()
 	{
+		// Aqui fica a criação dos objetos "mock", ou seja, os objetos que irão ser
+		// usados no teste. Os valores em si são irrelevantes, desde que sigam
+		// as regras de validações
 		Usuario usuario = new Usuario(
-				0L,								// Id
 				"Gabriel",						// Nome
 				"Soares",						// Sobrenome
 				"137.467.467-18",				// CPF
 				"ghsoares",						// Username
 				"ghsoares99795@gmail.com",		// Email
 				"Senha123",						// Senha
-				LocalDate.parse("2002-11-25"),	// Datadenascimento
-				"",								// Preferências
+				"2002-11-25",					// Data de nascimento
 				"Rua Pinheirinho D'Água",		// Rua
 				313,							// Número
 				"Parque Pan Americano",			// Bairro
@@ -95,12 +103,24 @@ public class UsuarioControllerTest {
 				"Casa 2"						// Complemento
 		);
 		
-		usuarioRepository.save(usuario);
+		// Para poder salvar corretamente, deve-se usar o service, não o repository,
+		// assim ele salva com a senha encriptografada corretamente.
+		// Como ele retorna um optional, usa-se o orElseThrow para poder dar erro
+		// no teste em si, caso der algo de errado no salvamento
+		usuarioService.cadastrarUsuario(usuario).orElseThrow();
 		
+		// Usa-se o testRestTemplate como cliente HTTP
 		ResponseEntity<Usuario> resposta = testRestTemplate
+				// Aqui deve passar as credenciais do usuário em questão,
+				// ou as credenciais do usuário admin root ("root", "root"),
+				// ou pode remover essa linha para passar um requisição sem autenticação
+				// (depende se a requisição precisa de autenticação e se pode ser um usuário ou deve ser admin)
 				.withBasicAuth("root", "root")
+				// Aqui deve passar o endpoint e o método utilizado, juntamente da requisição
+				// e do tipo do retorno, no caso é o Usuario
 				.exchange("/usuarios/email/ghsoares99795@gmail.com", HttpMethod.GET, null, Usuario.class);
 		
+		// As assertivas do teste vão aqui
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
 		assertEquals(usuario.getNome(),resposta.getBody().getNome());
 		assertEquals(usuario.getUsername(),resposta.getBody().getUsername());
@@ -112,16 +132,17 @@ public class UsuarioControllerTest {
 	@DisplayName("Não deve atualizar e duplicar email")
 	public void naoDeveDuplicarEmailAtualizado()
 	{
+		// Aqui fica a criação dos objetos "mock", ou seja, os objetos que irão ser
+		// usados no teste. Os valores em si são irrelevantes, desde que sigam
+		// as regras de validações
 		Usuario usuario1 = new Usuario(
-			0L,								// Id
 			"Noah",							// Nome
 			"Thales",						// Sobrenome
 			"292.247.156-05",				// CPF
 			"noahthales",					// Username
 			"noah-nunes86@vemter.com.br",	// Email
 			"Senha123",						// Senha
-			LocalDate.parse("1995-11-06"),	// Datadenascimento
-			"",								// Preferências
+			"1995-11-06",					// Data de nascimento
 			"Rua E-5",						// Rua
 			869,							// Número
 			"Jardim Nossa Senhora Aparecida",// Bairro
@@ -130,15 +151,13 @@ public class UsuarioControllerTest {
 		);
 		
 		Usuario usuario2 = new Usuario(
-			0L,								// Id
 			"Heloisa",						// Nome
 			"Novaes",						// Sobrenome
 			"656.242.296-58",				// CPF
 			"novaeshel",					// Username
 			"heloisa_eloa_novaes@cntbrasil.com.br",// Email
 			"Senha123",						// Senha
-			LocalDate.parse("1949-01-14"),	// Datadenascimento
-			"",								// Preferências
+			"1949-01-14",					// Data de nascimento
 			"Rua Evaristo da Veiga",		// Rua
 			536,							// Número
 			"Virgem Santa",					// Bairro
@@ -146,17 +165,32 @@ public class UsuarioControllerTest {
 			""								// Complemento
 		);
 		
-		usuario1 = usuarioRepository.save(usuario1);
-		usuario2 = usuarioRepository.save(usuario2);
+		// Para poder salvar corretamente, deve-se usar o service, não o repository,
+		// assim ele salva com a senha encriptografada corretamente.
+		// Como ele retorna um optional, usa-se o orElseThrow para poder dar erro
+		// no teste em si, caso der algo de errado no salvamento
+		usuario1 = usuarioService.cadastrarUsuario(usuario1).orElseThrow();
+		usuario2 = usuarioService.cadastrarUsuario(usuario2).orElseThrow();
 		
+		// Aqui está mudando o email do usuário 2 para o email exato do usuário 1,
+		// para simular a mudança de email para o email de outro usuário
 		usuario2.setEmail(usuario1.getEmail());
 		
+		// Criação de um HttpEntity com o Usuario como o corpo da requisição
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(usuario2);
 		
+		// Usa-se o testRestTemplate como cliente HTTP
 		ResponseEntity<Usuario> resposta = testRestTemplate
-				.withBasicAuth("root", "root")
+				// Aqui deve passar as credenciais do usuário em questão,
+				// ou as credenciais do usuário admin root ("root", "root"),
+				// ou pode remover essa linha para passar um requisição sem autenticação
+				// (depende se a requisição precisa de autenticação e se pode ser um usuário ou deve ser admin)
+				.withBasicAuth("novaeshel", "Senha123")	
+				// Aqui deve passar o endpoint e o método utilizado, juntamente da requisição
+				// e do tipo do retorno, no caso é o Usuario
 				.exchange("/usuarios/atualizar", HttpMethod.PUT, requisicao, Usuario.class);
 		
+		// As assertivas do teste vão aqui
 		assertEquals(HttpStatus.BAD_REQUEST, resposta.getStatusCode());
 	}
 	

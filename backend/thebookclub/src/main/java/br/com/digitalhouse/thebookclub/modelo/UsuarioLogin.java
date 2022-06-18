@@ -2,13 +2,15 @@ package br.com.digitalhouse.thebookclub.modelo;
 
 import java.time.LocalDate;
 
+import br.com.digitalhouse.thebookclub.enums.TipoUsuario;
+
 public class UsuarioLogin {
 	private Long usuarioId;
 	private String nome;
 	private String sobrenome;
 	private String cpf;
 	private String username;
-	private String tipoUsuario;
+	private TipoUsuario tipoUsuario;
 	private String email;
 	private String senha;
 	private LocalDate dataNascimento;
@@ -45,7 +47,7 @@ public class UsuarioLogin {
 		return username;
 	}
 
-	public String getTipoUsuario() {
+	public TipoUsuario getTipoUsuario() {
 		return tipoUsuario;
 	}
 
@@ -109,7 +111,7 @@ public class UsuarioLogin {
 		this.username = username;
 	}
 
-	public void setTipoUsuario(String tipoUsuario) {
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
 
