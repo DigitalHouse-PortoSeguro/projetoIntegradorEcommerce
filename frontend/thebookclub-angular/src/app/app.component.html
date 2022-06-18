@@ -1,4 +1,15 @@
 <!-- incluir navbar-component -->
 <h1 class="text-center">The BookClub</h1>
-<router-outlet></router-outlet>
+<!--<router-outlet></router-outlet>-->
+<button (click)="addLivro()">Adicionar livro</button>
+<button (click)="checkout()">Checkout carrinho</button>
+<div>
+	<div *ngFor="let pedido of getLivros(); let i = index;">
+		<span class="mr-5">{{i + 1}}.</span>
+		<span class="mr-5 border-bottom border-white">{{pedido.livro.titulo}}</span>
+		<span class="mr-5">{{pedido.quantidade}}</span>
+		<span class="mr-5">{{pedido.precoVenda.toFixed(2)}}</span>
+	</div>
+	<span>Total: R$ {{getTotal().toFixed(2)}}</span>
+</div>
 <!-- incluir rodape-component -->
