@@ -20,6 +20,7 @@ public class UsuarioLogin {
 	private String bairro;
 	private String cep;
 	private String complemento;
+	private String foto;
 	
 	/*
 	 *  Token é a propriedade específica do UsuarioLogin,
@@ -87,6 +88,10 @@ public class UsuarioLogin {
 		return complemento;
 	}
 
+	public String getFoto() {
+		return foto;
+	}
+	
 	public String getToken() {
 		return token;
 	}
@@ -149,6 +154,10 @@ public class UsuarioLogin {
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+	
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public void setToken(String token) {
