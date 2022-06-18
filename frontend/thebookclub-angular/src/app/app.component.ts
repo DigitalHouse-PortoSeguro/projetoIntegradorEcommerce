@@ -19,9 +19,10 @@ export class AppComponent {
     private carrinhoService: CarrinhoService
   ) { 
     globals.usuarioLogin = new UsuarioLogin();
-    globals.usuarioLogin.token = btoa("ghsoares:Senha123");
+    globals.usuarioLogin.token = "Basic " + btoa("ghsoares:Senha123");
     globals.usuarioLogin.usuarioId = 1;
     carrinhoService.resetar();
+    console.log(globals.usuarioLogin.token);
   }
 
   addLivro(): void {
