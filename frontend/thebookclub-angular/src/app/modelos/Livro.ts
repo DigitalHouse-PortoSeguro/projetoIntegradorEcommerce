@@ -1,9 +1,9 @@
+import { LocalDate } from "../utils/LocalDate";
 import { PedidoLivro } from "./PedidoLivro";
-
 export class Livro {
     public livroId: number;
     public titulo: string;
-    public dataPublicacao: Date;
+    public dataPublicacao: LocalDate;
     public autores: string;
     public editora: string;
     public categoria: string;
@@ -12,6 +12,7 @@ export class Livro {
     public preco: number;
     public quantidadeEstoque: number;
     public fornecedor: string;
+    
     //relacionamentos:
     public pedidoLivros: PedidoLivro[];
 }

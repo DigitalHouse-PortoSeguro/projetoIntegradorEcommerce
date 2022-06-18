@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,68 +23,98 @@ import org.springframework.lang.Nullable;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import br.com.digitalhouse.thebookclub.enums.TipoUsuario;
+
 @Entity
-@Table(name="tb_usuario")
+@Table(name = "tb_usuario")
 public class Usuario {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long usuarioId;
-	
+
 	@NotNull(message = "O nome não pode ser nulo")
-	@Size(min=2, max=100, message = "O tamanho do nome deve ser entre {min} e {max}")
+	@Size(min = 2, max = 100, message = "O tamanho do nome deve ser entre {min} e {max}")
 	private String nome;
-	
+
 	@NotNull(message = "O sobrenome não pode ser nulo")
-	@Size(min=2, max=100, message = "O tamanho do sobrenome deve ser entre {min} e {max}")
+	@Size(min = 2, max = 100, message = "O tamanho do sobrenome deve ser entre {min} e {max}")
 	private String sobrenome;
-	
+
 	@NotNull(message = "O CPF não pode ser nulo")
 	@Pattern(regexp = "\\d{3}.\\d{3}.\\d{3}-\\d{2}", message = "O CPF deve seguir o formato XXX.XXX.XXX-XX")
 	private String cpf;
-	
+
 	@NotNull(message = "O username não pode ser nulo")
-	@Size(min=5,max=20, message = "O tamanho do username deve ser entre {min} e {max}")
+	@Size(min = 5, max = 20, message = "O tamanho do username deve ser entre {min} e {max}")
 	private String username;
-	
+
 	@NotNull(message = "O email não pode ser nulo")
 	@Email(regexp = "^(.+)@(.+)$", message = "O email deve seguir o formato email@exemplo.com")
 	private String email;
-	
+
 	@NotNull(message = "A senha não pode ser nula")
-	@Size(min=6, message = "A senha deve ter pelo menos {min} caracteres")
+	@Size(min = 6, message = "A senha deve ter pelo menos {min} caracteres")
 	private String senha;
-	
+
 	@NotNull(message = "A data de nascimento não pode ser nula")
-	@JsonFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNascimento;
-	
+
 	@Nullable
-	@Size(max=255, message = "O tamanho das preferências deve ser no máximo {max}")
+	@Size(max = 255, message = "O tamanho das preferências deve ser no máximo {max}")
 	private String preferencias;
-	
+
 	@NotNull(message = "A rua não pode ser nula")
-	@Size(min=3,max=100, message = "O tamanho da rua deve ser entre {min} e {max}")
+	@Size(min = 3, max = 100, message = "O tamanho da rua deve ser entre {min} e {max}")
 	private String rua;
-	
+
 	@NotNull(message = "O número não pode ser nulo")
 	private Integer numero;
-	
+
 	@NotNull(message = "O bairro não pode ser nulo")
-	@Size(min=3,max=100, message = "O tamanho do bairro deve ser entre {min} e {max}")
+	@Size(min = 3, max = 100, message = "O tamanho do bairro deve ser entre {min} e {max}")
 	private String bairro;
-	
+
 	@NotNull(message = "O CEP não pode ser nulo")
 	@Pattern(regexp = "\\d{5}-\\d{3}", message = "O CEP deve seguir o formato XXXXX-XXX")
 	private String cep;
+
+	@Enumerated(EnumType.STRING)
+	private TipoUsuario tipoUsuario;
 	
 	@Nullable
-	@Size(min=3,max=100, message = "O tamanho do complemento deve ser entre {min} e {max}")
+	@Size(max = 100, message = "O tamanho do complemento deve ser no máximo {max}")
 	private String complemento;
 	
+	private String foto;
+
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Pedido> pedidos = new ArrayList<Pedido>();
+
+	public Usuario() {}
+	
+	// Construtor usado em testes
+	public Usuario(String nome, String sobrenome, String cpf, String username, String email,
+			String senha, String dataNascimento, String rua, Integer numero, String bairro,
+			String cep, String complemento) {
+		this.usuarioId = 0L;
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.cpf = cpf;
+		this.username = username;
+		this.email = email;
+		this.senha = senha;
+		this.dataNascimento = LocalDate.parse(dataNascimento);
+		this.preferencias = "";
+		this.rua = rua;
+		this.numero = numero;
+		this.bairro = bairro;
+		this.cep = cep;
+		this.tipoUsuario = TipoUsuario.COMUM;
+		this.complemento = complemento;
+	}
 
 	public Long getUsuarioId() {
 		return usuarioId;
@@ -135,9 +167,17 @@ public class Usuario {
 	public String getCep() {
 		return cep;
 	}
+	
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
 
 	public String getComplemento() {
 		return complemento;
+	}
+	
+	public String foto() {
+		return foto;
 	}
 
 	public List<Pedido> getPedidos() {
@@ -195,9 +235,17 @@ public class Usuario {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
+	
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+	
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public void setPedidos(List<Pedido> pedidos) {

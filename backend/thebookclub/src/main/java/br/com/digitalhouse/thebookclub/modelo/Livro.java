@@ -28,6 +28,8 @@ public class Livro {
 	@NotNull(message="O titulo não pode ser nulo")
 	@Size(min=2,max=100, message = "O tamanho do título deve ser entre {min} e {max}")
 	private String titulo;
+
+	private String foto;
 	
 	@NotNull(message = "A dataPublicacao não pode ser nula")
 	@JsonFormat(pattern="yyyy-MM-dd")
@@ -74,6 +76,10 @@ public class Livro {
 
 	public String getTitulo() {
 		return titulo;
+	}
+	
+	public String getFoto() {
+		return foto;
 	}
 
 	public LocalDate getDataPublicacao() {
@@ -122,6 +128,10 @@ public class Livro {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+	
+	public void setFoto(String foto) {
+		this.foto = foto; 
 	}
 
 	public void setDataPublicacao(LocalDate dataPublicacao) {

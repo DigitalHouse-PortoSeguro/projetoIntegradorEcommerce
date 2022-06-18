@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import br.com.digitalhouse.thebookclub.enums.FormaEnvio;
+import br.com.digitalhouse.thebookclub.enums.StatusPedido;
 import br.com.digitalhouse.thebookclub.enums.TipoPagamento;
 import br.com.digitalhouse.thebookclub.modelo.Pedido;
 import br.com.digitalhouse.thebookclub.repository.PedidoRepository;
@@ -73,25 +74,21 @@ public class PedidoController {
 
 	// Retorna pedido por meio de pagamento
 	@GetMapping("/tipoPagamento/{pagamento}")
-	public ResponseEntity<Pedido> getByTipoPagamento(@PathVariable TipoPagamento pagamento) {
-		return pedidoRepository.findByTipoPagamento(pagamento)
-				.map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.notFound().build());
+	public ResponseEntity<List<Pedido>> getByTipoPagamento(@PathVariable TipoPagamento pagamento) {
+		return ResponseEntity.ok(pedidoRepository.findAllByTipoPagamento(pagamento));
 	}
 
 	// Retorna os pedidos que contem o parametro 'formaEnvio'
 	@GetMapping("/formaEnvio/{formaEnvio}")
-	public ResponseEntity<Pedido> getByFormaEnvio(@PathVariable FormaEnvio formaEnvio) {
-		return pedidoRepository.findByFormaEnvio(formaEnvio).map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.notFound().build());
+	public ResponseEntity<List<Pedido>> getByFormaEnvio(@PathVariable FormaEnvio formaEnvio) {
+		return ResponseEntity.ok(pedidoRepository.findAllByFormaEnvio(formaEnvio));
 	}
 
-	// Retorna os pedidos que contem o parametro 'livros'
-	// @GetMapping("/livros/{livros}")
-	// public ResponseEntity<Pedido> getByLivros(@PathVariable PedidoLivro livros) {
-	//	return repository.findAllByLivrosContainingIgnoreCase(livros).map(resp -> ResponseEntity.ok(resp))
-	//			.orElse(ResponseEntity.notFound().build());
-	// }
+	// Retorna os pedidos que contem o parametro 'status'
+	@GetMapping("/status/{status}")
+	public ResponseEntity<List<Pedido>> getByStatus(@PathVariable StatusPedido status) {
+		return ResponseEntity.ok(pedidoRepository.findAllByStatus(status));
+	}
 	
 	// Deleta por id
 	@DeleteMapping("/{id}")
