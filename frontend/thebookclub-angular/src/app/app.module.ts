@@ -9,7 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputFieldComponent } from './components/input-field/input-field.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { FormDebugComponent } from './components/form-debug/form-debug.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { CardLivroComponent } from './components/livro/card-livro/card-livro.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http'
     InputCustomComponent,
     InputFieldComponent,
     DropdownComponent,
-    FormDebugComponent
+    FormDebugComponent,
+    CardLivroComponent
   ],
   imports: [
     BrowserModule,
