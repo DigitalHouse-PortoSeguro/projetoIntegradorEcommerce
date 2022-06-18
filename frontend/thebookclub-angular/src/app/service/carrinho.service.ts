@@ -60,7 +60,7 @@ export class CarrinhoService {
 
 	public checkoutCarrinho(tipoPagamento: string, formaEnvio: string): Observable<Pedido> {
 		const headers = new HttpHeaders()
-			.set('Authorization', "Basic " + btoa("root:root"));
+			.set('Authorization', globals.usuarioLogin.token);
 		
 		const dataPedido = new LocalDateTime(Date.now());
 		const dataEntrega = new LocalDateTime(Date.now());
