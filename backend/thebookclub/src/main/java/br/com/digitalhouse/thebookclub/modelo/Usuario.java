@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +22,8 @@ import org.springframework.lang.Nullable;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import br.com.digitalhouse.thebookclub.enums.TipoUsuario;
 
 @Entity
 @Table(name = "tb_usuario")
@@ -76,6 +80,9 @@ public class Usuario {
 	@Pattern(regexp = "\\d{5}-\\d{3}", message = "O CEP deve seguir o formato XXXXX-XXX")
 	private String cep;
 
+	@Enumerated(EnumType.STRING)
+	private TipoUsuario tipoUsuario;
+	
 	@Nullable
 	@Size(max = 100, message = "O tamanho do complemento deve ser no máximo {max}")
 	private String complemento;
@@ -86,22 +93,24 @@ public class Usuario {
 
 	public Usuario() {}
 	
-	public Usuario(Long usuarioId, String nome, String sobrenome, String cpf, String username, String email,
-			String senha, LocalDate dataNascimento, String preferencias, String rua, Integer numero, String bairro,
+	// Construtor usado em testes
+	public Usuario(String nome, String sobrenome, String cpf, String username, String email,
+			String senha, String dataNascimento, String rua, Integer numero, String bairro,
 			String cep, String complemento) {
-		this.usuarioId = usuarioId;
+		this.usuarioId = 0L;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.cpf = cpf;
 		this.username = username;
 		this.email = email;
 		this.senha = senha;
-		this.dataNascimento = dataNascimento;
-		this.preferencias = preferencias;
+		this.dataNascimento = LocalDate.parse(dataNascimento);
+		this.preferencias = "";
 		this.rua = rua;
 		this.numero = numero;
 		this.bairro = bairro;
 		this.cep = cep;
+		this.tipoUsuario = TipoUsuario.COMUM;
 		this.complemento = complemento;
 	}
 
@@ -155,6 +164,10 @@ public class Usuario {
 
 	public String getCep() {
 		return cep;
+	}
+	
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
 	}
 
 	public String getComplemento() {
@@ -215,6 +228,10 @@ public class Usuario {
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+	
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	public void setComplemento(String complemento) {
