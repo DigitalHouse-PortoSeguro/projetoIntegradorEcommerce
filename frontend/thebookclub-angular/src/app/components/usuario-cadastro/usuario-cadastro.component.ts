@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgControl, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/modelos/Usuario';
+import { UsuarioService } from 'src/app/service/usuario.service';
+import { LocalDate } from 'src/app/utils/LocalDate';
+import CustomValidators from '../validators/CustomValidators';
 
 @Component({
 	selector: 'app-usuario-cadastro',
@@ -14,24 +17,56 @@ export class UsuarioCadastroComponent implements OnInit {
 
 	constructor(
 		private formBuilder: FormBuilder,
-    private http: HttpClient
+		private http: HttpClient,
+		private usuarioService: UsuarioService
 	) { }
 
 	ngOnInit(): void {
 		this.form = this.formBuilder.group({
-			nome: ['', [Validators.required]],
-			sobrenome: ['', [Validators.required]],
-			cpf: ['', [Validators.required, Validators.pattern(/^\d{3}.\d{3}.\d{3}-\d{2}$/)]],
-			username: ['', [Validators.required, Validators.minLength(5)]],
-			tipoUsuario: ['', [Validators.required]],
-			email: ['', [Validators.required, Validators.email]],
-			senha: ['', [Validators.required]],
-			confirmarSenha: ['', [Validators.required]],
-			dataNascimento: ['', [Validators.required]],
-			rua: ['', [Validators.required]],
-			numero: ['', [Validators.required]],
-			bairro: ['', [Validators.required]],
-			cep: ['', [Validators.required, Validators.pattern(/^\d{5}-\d{3}$/)]],
+			nome: ['', [
+				CustomValidators.required("O nome é obrigatório")
+			]],
+			sobrenome: ['', [
+				CustomValidators.required("O sobrenome é obrigatório")
+			]],
+			cpf: ['', [
+				CustomValidators.required("O CPF é obrigatório"),
+				CustomValidators.pattern(/^\d{3}.\d{3}.\d{3}-\d{2}$/, "O CPF deve seguir o formato 000.000.000-00")
+			]],
+			username: ['', [
+				CustomValidators.required("O username é obrigatório"),
+				CustomValidators.minLength(5, "O username deve ter no mínimo 5 caracteres")
+			]],
+			tipoUsuario: ['', [
+				CustomValidators.required("O tipo de usuário é obrigatório")
+			]],
+			email: ['', [
+				CustomValidators.required("O email é obrigatório"),
+				CustomValidators.email("O email deve seguir o formato exemplo@email.com")
+			]],
+			senha: ['', [
+				CustomValidators.required("A senha é obrigatória"),
+			]],
+			confirmarSenha: ['', [
+				CustomValidators.required("A confirmação da senha é obrigatória"),
+				CustomValidators.matchField("senha", "As senhas são diferentes")
+			]],
+			dataNascimento: ['', [
+				CustomValidators.required("A data de nascimento é obrigatória"),
+			]],
+			rua: ['', [
+				CustomValidators.required("A rua é obrigatória"),
+			]],
+			numero: ['', [
+				CustomValidators.required("O número é obrigatório"),
+			]],
+			bairro: ['', [
+				CustomValidators.required("O bairro é obrigatório"),
+			]],
+			cep: ['', [
+				CustomValidators.required("O CEP é obrigatório"),
+				CustomValidators.pattern(/^\d{5}-\d{3}$/, "O CEP deve seguir o formato XXXXX-XX")
+			]],
 			complemento: [''],
 		});
 	}
@@ -48,26 +83,42 @@ export class UsuarioCadastroComponent implements OnInit {
 			usuario.sobrenome = this.form.get('sobrenome')?.value;
 			usuario.cpf = this.form.get('cpf')?.value;
 			usuario.username = this.form.get('username')?.value;
-			usuario.tipoUsuario = this.form.get('tipoUsuario')?.value;
 			usuario.email = this.form.get('email')?.value;
 			usuario.senha = this.form.get('senha')?.value;
-			usuario.dataNascimento = new Date(this.form.get('dataNascimento')?.value);
+			usuario.dataNascimento = new LocalDate(this.form.get('dataNascimento')?.value);
 			usuario.rua = this.form.get('rua')?.value;
 			usuario.numero = Number.parseInt(this.form.get('numero')?.value);
 			usuario.bairro = this.form.get('bairro')?.value;
 			usuario.cep = this.form.get('cep')?.value;
 			usuario.complemento = this.form.get('complemento')?.value;
-			
-			console.log(usuario);
-      
-      //simulação do post
-      this.http.post('https://httpbin.org/post', JSON.stringify(this.form.value))
-      .subscribe((dados) => {
-        console.log(dados);
-        //reset do formulario
-        this.form.reset();
-      },
-      (error: any) => alert("erro"));
+
+			if (this.form.get('tipoUsuario')?.value == 'admin') {
+				usuario.tipoUsuario = "ADMIN";
+			} else {
+				usuario.tipoUsuario = "COMUM";
+			}
+
+			//console.log(usuario);
+
+			this.usuarioService.cadastrarUsuario(usuario).subscribe({
+				next: resp => {
+					console.log(resp);
+					alert('Usuário cadastrado com sucesso!');
+				},
+				error: err => {
+					console.log(err);
+					alert('Um erro aconteceu...');
+				}
+			})
+
+			/*//simulação do post
+			this.http.post('https://httpbin.org/post', JSON.stringify(this.form.value))
+				.subscribe((dados) => {
+					console.log(dados);
+					//reset do formulario
+					this.form.reset();
+				},
+					(error: any) => alert("erro"));*/
 		}
 	}
 }
