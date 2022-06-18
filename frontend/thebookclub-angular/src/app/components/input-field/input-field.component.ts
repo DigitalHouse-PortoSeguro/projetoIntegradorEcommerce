@@ -69,10 +69,10 @@ export class InputFieldComponent implements ControlValueAccessor {
   }
 
   hasError() {
-    return this.ngControl.invalid && (this.ngControl.dirty || this.ngControl.touched);
+    return this.ngControl.invalid && (this.ngControl.touched || (this.ngControl.touched && this.ngControl.dirty));
   }
 
   getErrors(): string[] {
-    return Object.keys(this.ngControl.errors as any);
+    return Object.values(this.ngControl.errors as any);
   }
 }
