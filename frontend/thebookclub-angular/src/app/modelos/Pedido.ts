@@ -1,3 +1,4 @@
+import { LocalDateTime } from "../utils/LocalDate";
 import { PedidoLivro } from "./PedidoLivro";
 import { Usuario } from "./Usuario";
 
@@ -7,8 +8,8 @@ export class Pedido {
     public tipoPagamento: string;
     public formaEnvio: string;
     public status: string;
-    public dataPedido: Date;
-    public dataEntrega: Date;
+    public dataPedido: LocalDateTime;
+    public dataEntrega: LocalDateTime;
     //relacionamentos:
     public usuario: Usuario;
     public pedidoLivros: PedidoLivro[];
