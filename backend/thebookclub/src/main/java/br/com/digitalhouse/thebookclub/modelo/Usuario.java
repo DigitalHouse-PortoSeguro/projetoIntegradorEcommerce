@@ -86,6 +86,8 @@ public class Usuario {
 	@Nullable
 	@Size(max = 100, message = "O tamanho do complemento deve ser no máximo {max}")
 	private String complemento;
+	
+	private String foto;
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
@@ -173,6 +175,10 @@ public class Usuario {
 	public String getComplemento() {
 		return complemento;
 	}
+	
+	public String foto() {
+		return foto;
+	}
 
 	public List<Pedido> getPedidos() {
 		return pedidos;
@@ -236,6 +242,10 @@ public class Usuario {
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+	
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public void setPedidos(List<Pedido> pedidos) {
