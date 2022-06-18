@@ -1,26 +1,18 @@
+import { Pedido } from 'src/app/modelos/Pedido';
+import { UsuarioLogin } from 'src/app/modelos/UsuarioLogin';
+
 export const environment = {
-  production: true
+	production: true
+};
+
+type GlobalVariables = {
+	usuarioLogin: UsuarioLogin,
+	carrinho: Pedido
 };
 
 //variáveis globais para usuário login
-export const globals = {
-  usuarioLogin: {
-    usuarioId:0,
-    nome: "",
-    sobrenome: "",
-    cpf: "",
-    username:"",
-    tipoUsuario: "",
-    email: "",
-    senha: "",
-    dataNascimento: null,
-    preferencias: "",
-    rua: "",
-    numero: 0,
-    bairro: "",
-    cep: "",
-    complemento: "",
-},
+export const globals: GlobalVariables = {
+	usuarioLogin: new UsuarioLogin(),
+	carrinho: new Pedido()
+}
 
-  }
-  
