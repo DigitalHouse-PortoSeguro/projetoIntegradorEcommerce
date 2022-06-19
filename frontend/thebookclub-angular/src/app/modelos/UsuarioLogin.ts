@@ -16,6 +16,7 @@ export class UsuarioLogin {
     public bairro: string;
     public cep: string;
     public complemento?: string;
+    public foto: string;
     public token: string;
 }
 

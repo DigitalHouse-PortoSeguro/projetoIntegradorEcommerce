@@ -16,6 +16,7 @@ export class Usuario {
     public bairro: string;
     public cep: string;
     public complemento?: string;
+    public foto: string;
     //relacionamentos:
     public pedidos: Pedido[];
 }
