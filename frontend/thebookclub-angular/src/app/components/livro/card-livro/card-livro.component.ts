@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Livro } from 'src/app/modelos/Livro';
 
 @Component({
   selector: 'app-card-livro',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardLivroComponent implements OnInit {
 
-  constructor() { }
+  @Input() livro: Livro;
+
+  constructor(
+    private sanitizer: DomSanitizer
+  ) { }
 
   ngOnInit(): void {
   }
 
+  getFoto() {
+    return this.sanitizer.bypassSecurityTrustUrl(this.livro.foto);
+  }
 }
