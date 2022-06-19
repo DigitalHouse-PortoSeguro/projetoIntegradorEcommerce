@@ -6,3 +6,11 @@ body {
 .mr-5 {
     margin-right: 5px;
 }
+
+.border-radius-3 {
+    border-radius: 1rem;
+}
+
+.card {
+    overflow: hidden;
+}
