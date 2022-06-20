@@ -40,7 +40,9 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/usuarios/cadastrar").permitAll()
 			.antMatchers("/livros").permitAll()
 			.antMatchers("/livros/{id}").permitAll()
-			.antMatchers("/livros/titulo/{id}").permitAll()
+			.antMatchers("/livros/titulo/{titulo}").permitAll()
+			.antMatchers("/livros/categoria/{categoria}").permitAll()
+			.antMatchers("/livros/categorias").permitAll()
 			.antMatchers(HttpMethod.OPTIONS).permitAll()
 			
 			.antMatchers("/usuarios/atualizar").hasAuthority("ROLE_USER")
