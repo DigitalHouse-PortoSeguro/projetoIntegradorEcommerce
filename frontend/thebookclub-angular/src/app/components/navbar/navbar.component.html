@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="..." type="image/x-icon">
         <title>The Book Club</title>
         <link
             rel="stylesheet"
@@ -11,18 +12,18 @@
             integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
             crossorigin="anonymous"
         />
-        <link rel="icon" href="assets/img/Logo.png" type="image/png" />
+       
     </head>
 
-    <body class="bg-info">
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <a class="navbar-brand" href="#"
-                >The Book Club
+    <body class="bg-primary">
+
+        <nav class="navbar navbar-expand navbar-light nav nav-pills flex-column flex-sm-row" style="background-color: #8DC8FF">
+            <a class="navbar-brand" href="#">
                 <img
                     src="assets/img/Logo.png"
-                    height="20px"
+                    height="50px"
                     alt="símbolo do site, um livro com coração"
-                />
+                >
             </a>
             <button
                 class="navbar-toggler"
@@ -35,28 +36,29 @@
             >
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="d-flex p-0 bd-highlight" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto">
+            <div class="d-flex p-0 bd-highlight justify-content-around" style="font-size: 20pt; font-family: Harmonia Sans Pro Cir B;" id="categorias">
+                <ul class="navbar-nav nav-pills nav-fill">
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="/">
                             Categorias
                             </a>
                     </li>
                     
 
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <form class="form-inline">
                             <input
                                 class="form-control form-control-sm"
-                                style="min-width: 240px"
+                                style="width: 350px"
                                 type="search"
                                 placeholder="Digite aqui o que procura :D "
+                                style="font-size: 16pt;"
                                 aria-label="Search"
                             />
                             <button class="btn btn-light-info my-2 my-sm-0" type="submit">
                                 <img
                                     src="assets/img/lupa.png"
-                                    height="22px"
+                                    height="40px"
                                     alt="lupa para busca"
                                 />
                             </button>
@@ -65,7 +67,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <img src="assets/img/perfil.png" height="25px" alt="" />
+                            <img src="assets/img/perfil.png" height="40px" alt="" />
                             Olá, bem vindo(a)!
                             <p><u><small>Entre ou cadastre-se</small></u></p>
                             </a>
@@ -74,7 +76,7 @@
                         <a class="nav-link" href="#">
                             <img
                                 src="assets/img/favoritos.png"
-                                height="25px"
+                                height="40px"
                                 alt="coração representando lista de favoritos"
                         /></a>
                     </li>
@@ -82,15 +84,15 @@
                         <a class="nav-link" href="#">
                             <img
                                 src="assets/img/carrinho.png"
-                                height="25px"
+                                height="40px"
                                 alt="carrinho com os itens escolhidos para compra"
                         /></a>
                     </li>
                 </ul>
             </div>
         </nav>
-
-        <img src="assets\img\capa-site.png" class="img-fluid" alt="Imagem logo do site">
+        
+        <!-- <img src="assets/img/capa-site" class="img-fluid" alt="Imagem logo do site"> -->
         
 
         <script
