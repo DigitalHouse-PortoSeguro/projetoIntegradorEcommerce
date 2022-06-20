@@ -48,6 +48,16 @@ public class LivroController {
 	public ResponseEntity<List<Livro>> getByTitulo(@PathVariable String titulo) {
 		return ResponseEntity.ok(livroRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}
+	
+	@GetMapping("/categoria/{categoria}")
+	public ResponseEntity<List<Livro>> getByCategoria(@PathVariable String categoria) {
+		return ResponseEntity.ok(livroRepository.findAllByCategoriaContainingIgnoreCase(categoria));
+	}
+	
+	@GetMapping("/categorias")
+	public ResponseEntity<List<String>> getAllCategorias() {
+		return ResponseEntity.ok(livroRepository.findAllCategorias());
+	}
 
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Livro> cadastrar(@Valid @RequestBody Livro pedido) {
