@@ -13,7 +13,7 @@
 		[disabled]="!!disabled"	
 	>
 		<option value="" selected disabled>{{defaultOption}}</option>
-		<option *ngFor="let op of options" [ngValue]="op">{{op.charAt(0).toUpperCase() + op.slice(1)}}</option>
+		<option *ngFor="let op of options" [ngValue]="op">{{op.charAt(0).toUpperCase() + op.slice(1).toLowerCase()}}</option>
 	</select>
 	<div *ngIf="hasError()" class="invalid-feedback">
 		<span *ngFor="let err of getErrors()">{{err}}</span>
