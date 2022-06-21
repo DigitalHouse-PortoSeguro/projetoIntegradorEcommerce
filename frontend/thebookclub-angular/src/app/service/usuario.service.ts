@@ -14,18 +14,14 @@ export class UsuarioService {
   ) { }
 
   public cadastrarUsuario(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar', usuario);
-  }
-
-  public cadastrarUsuarioAdmin(usuario: Usuario): Observable<Usuario> {
-    const headers = new HttpHeaders().set(
-      'Authorization', globals.usuarioLogin.token
-    );
-    return this.http.post<Usuario>(
-      'http://localhost:8080/usuarios/cadastrar-admin',
-      usuario,
-      { headers }
-    );
+    let options = {};
+    if (this.isLoggedIn()) {
+      options = {
+        headers: new HttpHeaders()
+          .set('Authorization', globals.usuarioLogin.token)
+      }
+    }
+    return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar', usuario, options);
   }
 
   public logarUsuario(usuario: UsuarioLogin): Observable<UsuarioLogin> {
