@@ -96,7 +96,7 @@ export class FormUsuarioComponent implements OnInit {
 			this.usuario.cep = this.form.get('cep')?.value;
 			this.usuario.complemento = this.form.get('complemento')?.value;
 
-			if (this.form.get('tipoUsuario')?.value === "ADMIN") {
+			if (this.incluirTipo && this.form.get('tipoUsuario')?.value === "ADMIN") {
 				this.usuario.tipoUsuario = "ADMIN";
 			} else {
 				this.usuario.tipoUsuario = "COMUM";
