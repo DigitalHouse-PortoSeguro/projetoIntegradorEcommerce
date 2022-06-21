@@ -3,6 +3,7 @@ import { PedidoLivro } from "./PedidoLivro";
 export class Livro {
     public livroId: number;
     public titulo: string;
+    public foto: string;
     public dataPublicacao: LocalDate;
     public autores: string;
     public editora: string;

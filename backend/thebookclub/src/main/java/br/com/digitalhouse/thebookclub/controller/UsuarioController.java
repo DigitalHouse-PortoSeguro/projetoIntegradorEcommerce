@@ -74,6 +74,7 @@ public class UsuarioController {
 		return usuarioService.autenticarUsuario(user).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
+	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Usuario> cadastrarNovoUsuario(@Valid @RequestBody Usuario usuario) {
 		return usuarioService.cadastrarUsuario(usuario)
@@ -88,7 +89,6 @@ public class UsuarioController {
 			.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
-	//@DeleteMapping("/{id}")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Usuario> deletar(@PathVariable Long id) {
 		return usuarioService.deletar(id)

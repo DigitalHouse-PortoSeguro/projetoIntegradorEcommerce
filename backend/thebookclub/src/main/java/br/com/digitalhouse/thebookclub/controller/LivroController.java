@@ -1,6 +1,7 @@
 package br.com.digitalhouse.thebookclub.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -55,7 +56,7 @@ public class LivroController {
 	}
 	
 	@GetMapping("/categorias")
-	public ResponseEntity<List<String>> getAllCategorias() {
+	public ResponseEntity<Set<String>> getAllCategorias() {
 		return ResponseEntity.ok(livroRepository.findAllCategorias());
 	}
 

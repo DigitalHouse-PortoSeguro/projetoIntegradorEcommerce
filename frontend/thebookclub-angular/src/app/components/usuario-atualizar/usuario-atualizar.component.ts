@@ -4,30 +4,34 @@ import { Usuario } from 'src/app/modelos/Usuario';
 import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
-  selector: 'app-usuario-cadastro',
-  templateUrl: './usuario-cadastro.component.html',
-  styleUrls: ['./usuario-cadastro.component.css']
+  selector: 'app-usuario-atualizar',
+  templateUrl: './usuario-atualizar.component.html',
+  styleUrls: ['./usuario-atualizar.component.css']
 })
-export class UsuarioCadastroComponent implements OnInit {
+export class UsuarioAtualizarComponent implements OnInit {
+
+  user: Usuario;
 
   constructor(
     private usuarioService: UsuarioService,
     private router: Router
-	) { }
+  ) { }
 
   ngOnInit(): void {
-    if (this.usuarioService.isLoggedIn() && !this.usuarioService.isAdmin()) {
-      this.router.navigate(['inicio']);
+    if (!this.usuarioService.isLoggedIn()) {
+      this.router.navigate(['login']);
       return;
     }
+    this.user = this.usuarioService.getUsuario();
   }
 
-  cadastrar(usuario: Usuario): void {
-    this.usuarioService.cadastrarUsuario(usuario).subscribe({
+  atualizar(usuario: Usuario): void {
+    this.usuarioService.atualizarUsuario(usuario).subscribe({
       next: resp => {
         console.log(resp);
+        this.usuarioService.logout();
         this.router.navigate(['login']);
-        alert('Usuário cadastrado com sucesso!');
+        alert('Usuário atualizado com sucesso!');
       },
       error: err => {
         console.log(err);
