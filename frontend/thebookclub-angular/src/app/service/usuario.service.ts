@@ -35,7 +35,48 @@ export class UsuarioService {
     return this.http.put<Usuario>('http://localhost:8080/usuarios/atualizar', usuario, { headers });
   }
 
+  public logout(): void {
+    globals.usuarioLogin = new UsuarioLogin();
+  }
+
+  public getUsuarioLogin(): UsuarioLogin {
+    return globals.usuarioLogin;
+  }
+
+  public getUsuario(): Usuario {
+    const user = new Usuario();
+
+    user.usuarioId = globals.usuarioLogin.usuarioId;
+    user.nome = globals.usuarioLogin.nome;
+    user.sobrenome = globals.usuarioLogin.sobrenome;
+    user.cpf = globals.usuarioLogin.cpf;
+    user.username = globals.usuarioLogin.username;
+    user.tipoUsuario = globals.usuarioLogin.tipoUsuario;
+    user.email = globals.usuarioLogin.email;
+    user.senha = globals.usuarioLogin.senha;
+    user.dataNascimento = globals.usuarioLogin.dataNascimento;
+    user.preferencias = globals.usuarioLogin.preferencias;
+    user.rua = globals.usuarioLogin.rua;
+    user.numero = globals.usuarioLogin.numero;
+    user.bairro = globals.usuarioLogin.bairro;
+    user.cep = globals.usuarioLogin.cep;
+    user.complemento = globals.usuarioLogin.complemento;
+    user.foto = globals.usuarioLogin.foto;
+
+    return user;
+  }
+
+  public isLoggedIn(): boolean {
+    if (globals.usuarioLogin && globals.usuarioLogin.token) {
+      return globals.usuarioLogin.token !== "";
+    }
+    return false;
+  }
+
   public isAdmin(): boolean {
-    return globals.usuarioLogin?.tipoUsuario === "ADMIN";
+    if (globals.usuarioLogin && globals.usuarioLogin.tipoUsuario) {
+      return globals.usuarioLogin.token === "ADMIN";
+    }
+    return false;
   }
 }
