@@ -5,6 +5,7 @@ import { UsuarioCadastroComponent } from './components/usuario-cadastro/usuario-
 import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuario-atualizar.component';
 
 const routes: Routes = [
+  {path: "", redirectTo:"cadastrar", pathMatch:"full"},
   { path: "cadastrar", component: UsuarioCadastroComponent },
   { path: "atualizar", component: UsuarioAtualizarComponent },
 ]

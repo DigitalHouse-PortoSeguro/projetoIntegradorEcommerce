@@ -23,48 +23,48 @@ export class FormUsuarioComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.form = this.formBuilder.group({
-			nome: [this.usuario.nome ?? "", [
+			nome: [this.usuario.nome ?? null, [
 				CustomValidators.required("O nome é obrigatório")
 			]],
-			sobrenome: [this.usuario.sobrenome ?? "", [
+			sobrenome: [this.usuario.sobrenome ?? null, [
 				CustomValidators.required("O sobrenome é obrigatório")
 			]],
-			cpf: [this.usuario.cpf ?? "", [
+			cpf: [this.usuario.cpf ?? null, [
 				CustomValidators.required("O CPF é obrigatório"),
 				CustomValidators.pattern(/^\d{3}.\d{3}.\d{3}-\d{2}$/, "O CPF deve seguir o formato 000.000.000-00")
 			]],
-			username: [this.usuario.username ?? "", [
+			username: [this.usuario.username ?? null, [
 				CustomValidators.required("O username é obrigatório"),
 				CustomValidators.minLength(5, "O username deve ter no mínimo 5 caracteres")
 			]],
-			email: [this.usuario.email ?? "", [
+			email: [this.usuario.email ?? null, [
 				CustomValidators.required("O email é obrigatório"),
 				CustomValidators.email("O email deve seguir o formato exemplo@email.com")
 			]],
-			senha: ['', [
+			senha: [null, [
 				CustomValidators.required("A senha é obrigatória"),
 			]],
-			confirmarSenha: ['', [
+			confirmarSenha: [null, [
 				CustomValidators.required("A confirmação da senha é obrigatória"),
 				CustomValidators.matchField("senha", "As senhas são diferentes")
 			]],
-			dataNascimento: [this.usuario.dataNascimento?.toString() ?? "", [
+			dataNascimento: [this.usuario.dataNascimento?.toString() ?? null, [
 				CustomValidators.required("A data de nascimento é obrigatória"),
 			]],
-			rua: [this.usuario.rua?? "", [
+			rua: [this.usuario.rua?? null, [
 				CustomValidators.required("A rua é obrigatória"),
 			]],
-			numero: [this.usuario.numero ?? 0, [
+			numero: [this.usuario.numero ?? null, [
 				CustomValidators.required("O número é obrigatório"),
 			]],
-			bairro: [this.usuario.bairro ?? "", [
+			bairro: [this.usuario.bairro ?? null, [
 				CustomValidators.required("O bairro é obrigatório"),
 			]],
-			cep: [this.usuario.cep ?? "", [
+			cep: [this.usuario.cep ?? null, [
 				CustomValidators.required("O CEP é obrigatório"),
 				CustomValidators.pattern(/^\d{5}-\d{3}$/, "O CEP deve seguir o formato XXXXX-XX")
 			]],
-			complemento: [this.usuario.complemento ?? ""],
+			complemento: [this.usuario.complemento ?? null],
 		});
 
 		if (this.incluirTipo) {
@@ -83,17 +83,17 @@ export class FormUsuarioComponent implements OnInit {
 		this.form.markAllAsTouched();
 
 		if (this.form.valid) {
-			this.usuario.nome = this.form.get('nome')?.value;
-			this.usuario.sobrenome = this.form.get('sobrenome')?.value;
+			this.usuario.nome = this.form.get('nome')!.value;
+			this.usuario.sobrenome = this.form.get('sobrenome')!.value;
 			this.usuario.cpf = this.form.get('cpf')?.value;
-			this.usuario.username = this.form.get('username')?.value;
-			this.usuario.email = this.form.get('email')?.value;
-			this.usuario.senha = this.form.get('senha')?.value;
-			this.usuario.dataNascimento = LocalDate.fromString(this.form.get('dataNascimento')?.value);
-			this.usuario.rua = this.form.get('rua')?.value;
-			this.usuario.numero = Number.parseInt(this.form.get('numero')?.value);
-			this.usuario.bairro = this.form.get('bairro')?.value;
-			this.usuario.cep = this.form.get('cep')?.value;
+			this.usuario.username = this.form.get('username')!.value;
+			this.usuario.email = this.form.get('email')!.value;
+			this.usuario.senha = this.form.get('senha')!.value;
+			this.usuario.dataNascimento = LocalDate.fromString(this.form.get('dataNascimento')!.value);
+			this.usuario.rua = this.form.get('rua')!.value;
+			this.usuario.numero = Number.parseInt(this.form.get('numero')!.value);
+			this.usuario.bairro = this.form.get('bairro')!.value;
+			this.usuario.cep = this.form.get('cep')!.value;
 			this.usuario.complemento = this.form.get('complemento')?.value;
 
 			if (this.incluirTipo && this.form.get('tipoUsuario')?.value === "ADMIN") {
