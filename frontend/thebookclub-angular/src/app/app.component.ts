@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { globals } from 'src/environments/environment.prod';
 import { Livro } from './modelos/Livro';
+import { Usuario } from './modelos/Usuario';
+import { UsuarioLogin } from './modelos/UsuarioLogin';
+import { LocalDate } from './utils/LocalDate';
 
 @Component({
   selector: 'app-root',
@@ -9,56 +13,26 @@ import { Livro } from './modelos/Livro';
 export class AppComponent {
   title = 'thebookclub-angular';
 
-  livros: Livro[];
-
-  private createLivro(
-    titulo: string,
-    foto: string,
-    autores: string,
-    preco: number
-  ): Livro {
-    const l = new Livro();
-
-    l.titulo = titulo;
-    l.foto = foto;
-    l.autores = autores;
-    l.preco = preco;
-
-    return l;
-  }
-
   constructor() { 
-    const livros = [
-      this.createLivro(
-        "Os segredos da mente milionária",
-        "https://images-na.ssl-images-amazon.com/images/I/81ZnJcgjCdL.jpg",
-        "T. Harv Eker",
-        30.9
-      ),
-      this.createLivro(
-        "As Crônicas de Nárnia",
-        "https://images-na.ssl-images-amazon.com/images/I/71yJLhQekBL.jpg",
-        "C. S. Lewis",
-        89.9
-      ),
-      this.createLivro(
-        "Star Wars: Marcas da Guerra",
-        "https://images-na.ssl-images-amazon.com/images/I/91wNLQh9oPL.jpg",
-        "Chuck Wendig",
-        33.9
-      ),
-      this.createLivro(
-        "Harry Potter e o Prisioneiro de Azkaban",
-        "https://images-na.ssl-images-amazon.com/images/I/81u+ljPVifL.jpg",
-        "J.K. Rowling",
-        35.9
-      ),
-    ];
+    const user = new UsuarioLogin();
 
-    this.livros = [];
+    user.bairro = "Jaraguá"
+    user.cep = "05182-000"
+    user.complemento = ""
+    user.cpf = "131.131.131-03"
+    user.dataNascimento = LocalDate.fromString("2002-11-25")
+    user.email = "ghsoares99795@gmail.com"
+    user.nome = "Gabriel Henrique"
+    user.numero = 100
+    user.preferencias = "";
+    user.rua = "Mauro D' Araújo Ribeiro"
+    user.senha = "$2a$10$s5WHHaUrkJeWfC7.n2o3XuvHlKytNOm0VcNp/uQg1uzZ.NSgba/yG"
+    user.sobrenome = "Pereira Soares"
+    user.tipoUsuario = "COMUM"
+    user.username = "ghsoares"
+    user.usuarioId = 1
+    user.token = "Basic " + btoa("ghsoares:Senha123")
 
-    for (let i = 0; i < 32; i++) {
-      this.livros.push(livros[i % livros.length]);
-    }
+    //globals.usuarioLogin = user;
   }
 }
