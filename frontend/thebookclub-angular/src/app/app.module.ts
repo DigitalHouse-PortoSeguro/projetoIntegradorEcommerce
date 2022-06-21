@@ -10,7 +10,7 @@ import { InputFieldComponent } from './components/input-field/input-field.compon
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { FormDebugComponent } from './components/form-debug/form-debug.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CardLivroComponent } from './components/livro/card-livro/card-livro.component'
+import { CardLivroComponent } from './components/livro/card-livro/card-livro.component';
 
 @NgModule({
   declarations: [
