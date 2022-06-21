@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit, Optional, Self } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Optional, Output, Self } from '@angular/core';
 import { ControlValueAccessor, FormControl, NgControl, NgModel, NG_VALUE_ACCESSOR, ValidationErrors } from '@angular/forms';
 
 // Tipo do input
@@ -25,6 +25,7 @@ export class InputFieldComponent implements ControlValueAccessor {
   @Input() placeholder: string = "";
   @Input() helpText: string = "";
   @Input() disabled: boolean = false;
+  @Output() blur: any
 
   _value: any;
 

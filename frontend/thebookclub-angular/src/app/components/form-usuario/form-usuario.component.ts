@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Usuario } from 'src/app/modelos/Usuario';
+import { ConsultaCepService } from 'src/app/service/consulta-cep.service';
 import { LocalDate } from 'src/app/utils/LocalDate';
 import CustomValidators from '../validators/CustomValidators';
 
@@ -18,7 +19,8 @@ export class FormUsuarioComponent implements OnInit {
 	@Output() onSubmit: EventEmitter<Usuario> = new EventEmitter(); 
 
 	constructor(
-		private formBuilder: FormBuilder
+		private formBuilder: FormBuilder,
+		private cepService: ConsultaCepService
 	) { }
 
 	ngOnInit(): void {
@@ -104,5 +106,29 @@ export class FormUsuarioComponent implements OnInit {
 
 			this.onSubmit.emit(this.usuario);
 		}
+	}
+
+	//-------------- MÉTODOS PARA CONSULTA CEP -------------
+	testarBlur(){
+		console.log("blur");
+		
+	}
+	consultaCEP(cep: any) {
+		console.log("buscacep");
+		
+		cep = cep.value.replace(/\D/g, '');
+		//const cep = this.form.get('cep')?.value;
+		if(cep!= null && cep!== '') {
+			this.cepService.consultaCEP(cep)!
+			.subscribe(dados => {this.populaEnderecoForm(dados); console.log(dados);
+			})
+		}
+	}
+	populaEnderecoForm(dados:any) {
+		this.form.patchValue({
+			//cep: dados.cep,
+			rua: dados.logradouro,
+			bairro: dados.bairro ,
+		});
 	}
 }
