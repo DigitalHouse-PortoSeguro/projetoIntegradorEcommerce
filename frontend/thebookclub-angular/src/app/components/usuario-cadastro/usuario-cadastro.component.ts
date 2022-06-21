@@ -1,9 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Usuario } from 'src/app/modelos/Usuario';
+import { UsuarioLogin } from 'src/app/modelos/UsuarioLogin';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { LocalDate } from 'src/app/utils/LocalDate';
+import { globals } from 'src/environments/environment.prod';
 import CustomValidators from '../validators/CustomValidators';
 
 @Component({
@@ -17,11 +20,16 @@ export class UsuarioCadastroComponent implements OnInit {
 
 	constructor(
 		private formBuilder: FormBuilder,
-		private http: HttpClient,
-		private usuarioService: UsuarioService
+		private usuarioService: UsuarioService,
+		private router: Router
 	) { }
 
 	ngOnInit(): void {
+		if (globals.usuarioLogin && !this.usuarioService.isAdmin()) {
+			this.router.navigate(['inicio']);
+			return;
+		}
+
 		this.form = this.formBuilder.group({
 			nome: ['', [
 				CustomValidators.required("O nome é obrigatório")
@@ -92,13 +100,9 @@ export class UsuarioCadastroComponent implements OnInit {
 			usuario.cep = this.form.get('cep')?.value;
 			usuario.complemento = this.form.get('complemento')?.value;
 
-			if (this.form.get('tipoUsuario')?.value == 'admin') {
-				usuario.tipoUsuario = "ADMIN";
-			} else {
+			if (!this.usuarioService.isAdmin()) {
 				usuario.tipoUsuario = "COMUM";
 			}
-
-			//console.log(usuario);
 
 			this.usuarioService.cadastrarUsuario(usuario).subscribe({
 				next: resp => {
@@ -110,15 +114,10 @@ export class UsuarioCadastroComponent implements OnInit {
 					alert('Um erro aconteceu...');
 				}
 			})
-
-			/*//simulação do post
-			this.http.post('https://httpbin.org/post', JSON.stringify(this.form.value))
-				.subscribe((dados) => {
-					console.log(dados);
-					//reset do formulario
-					this.form.reset();
-				},
-					(error: any) => alert("erro"));*/
 		}
+	}
+
+	isAdmin(): boolean {
+		return this.usuarioService.isAdmin();
 	}
 }

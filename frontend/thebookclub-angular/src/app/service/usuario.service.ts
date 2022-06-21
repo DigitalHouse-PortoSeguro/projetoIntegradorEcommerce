@@ -17,6 +17,17 @@ export class UsuarioService {
     return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar', usuario);
   }
 
+  public cadastrarUsuarioAdmin(usuario: Usuario): Observable<Usuario> {
+    const headers = new HttpHeaders().set(
+      'Authorization', globals.usuarioLogin.token
+    );
+    return this.http.post<Usuario>(
+      'http://localhost:8080/usuarios/cadastrar-admin',
+      usuario,
+      { headers }
+    );
+  }
+
   public logarUsuario(usuario: UsuarioLogin): Observable<UsuarioLogin> {
     return this.http.post<UsuarioLogin>('http://localhost:8080/usuarios/login', usuario);
   }
@@ -26,5 +37,9 @@ export class UsuarioService {
       .set('Authorization', globals.usuarioLogin.token);
 
     return this.http.put<Usuario>('http://localhost:8080/usuarios/atualizar', usuario, { headers });
+  }
+
+  public isAdmin(): boolean {
+    return globals.usuarioLogin?.tipoUsuario === "ADMIN";
   }
 }
