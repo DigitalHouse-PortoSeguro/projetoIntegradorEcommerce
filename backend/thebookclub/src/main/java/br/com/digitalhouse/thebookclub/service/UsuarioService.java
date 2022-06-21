@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.digitalhouse.thebookclub.modelo.UsuarioLogin;
-import br.com.digitalhouse.thebookclub.enums.TipoUsuario;
 import br.com.digitalhouse.thebookclub.modelo.Usuario;
 import br.com.digitalhouse.thebookclub.repository.UsuarioRepository;
 
@@ -26,7 +25,6 @@ public class UsuarioService {
 				.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 		}
-		usuario.setTipoUsuario(TipoUsuario.COMUM);
 		usuario.setSenha(criptografarSenha(usuario.getSenha()));
 		return Optional.of(usuarioRepository.save(usuario));
 	}
