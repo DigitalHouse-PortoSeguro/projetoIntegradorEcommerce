@@ -25,13 +25,16 @@ export class UsuarioCadastroComponent implements OnInit {
   cadastrar(usuario: Usuario): void {
     this.usuarioService.cadastrarUsuario(usuario).subscribe({
       next: resp => {
-        console.log(resp);
+        alert("Usuário cadastrado com sucesso!");
         this.router.navigate(['login']);
-        alert('Usuário cadastrado com sucesso!');
       },
       error: err => {
-        console.log(err);
-        alert('Um erro aconteceu...');
+        if (err.error) {
+          alert(err.error.message);
+        } else {
+          alert("Erro no cadastro");
+          console.log(err);
+        }
       }
     })
   }
