@@ -17,7 +17,7 @@ export class DropdownComponent implements ControlValueAccessor {
   @Input() options: string[] = [];
   @Output() blur: EventEmitter<any> = new EventEmitter();
 
-  _value: any;
+  _value: any = "";
 
   constructor(
     @Optional()
@@ -61,6 +61,7 @@ export class DropdownComponent implements ControlValueAccessor {
   }
 
   hasError() {
+    if (!this.ngControl) return false;
     return this.ngControl.invalid && (this.ngControl.dirty || this.ngControl.touched);
   }
 
