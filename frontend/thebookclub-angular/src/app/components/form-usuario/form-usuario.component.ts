@@ -13,6 +13,8 @@ import CustomValidators from '../validators/CustomValidators';
 export class FormUsuarioComponent implements OnInit {
 
 	form: FormGroup;
+	buscandoEndereco: boolean;
+
 	@Input() usuario: Usuario = new Usuario();
 	@Input() incluirTipo: boolean = false;
 	@Input() submitText: string;
@@ -24,55 +26,57 @@ export class FormUsuarioComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
+		this.buscandoEndereco = false;
+
 		this.form = this.formBuilder.group({
-			nome: [this.usuario.nome ?? null, [
+			nome: [this.usuario?.nome ?? "", [
 				CustomValidators.required("O nome é obrigatório")
 			]],
-			sobrenome: [this.usuario.sobrenome ?? null, [
+			sobrenome: [this.usuario?.sobrenome ?? "", [
 				CustomValidators.required("O sobrenome é obrigatório")
 			]],
-			cpf: [this.usuario.cpf ?? null, [
+			cpf: [this.usuario?.cpf ?? "", [
 				CustomValidators.required("O CPF é obrigatório"),
 				CustomValidators.pattern(/^\d{3}.\d{3}.\d{3}-\d{2}$/, "O CPF deve seguir o formato 000.000.000-00")
 			]],
-			username: [this.usuario.username ?? null, [
+			username: [this.usuario?.username ?? "", [
 				CustomValidators.required("O username é obrigatório"),
 				CustomValidators.minLength(5, "O username deve ter no mínimo 5 caracteres")
 			]],
-			email: [this.usuario.email ?? null, [
+			email: [this.usuario?.email ?? "", [
 				CustomValidators.required("O email é obrigatório"),
 				CustomValidators.email("O email deve seguir o formato exemplo@email.com")
 			]],
-			senha: [null, [
+			senha: ["", [
 				CustomValidators.required("A senha é obrigatória"),
 			]],
-			confirmarSenha: [null, [
+			confirmarSenha: ["", [
 				CustomValidators.required("A confirmação da senha é obrigatória"),
 				CustomValidators.matchField("senha", "As senhas são diferentes")
 			]],
-			dataNascimento: [this.usuario.dataNascimento?.toString() ?? null, [
+			dataNascimento: [this.usuario?.dataNascimento?.toString() ?? "", [
 				CustomValidators.required("A data de nascimento é obrigatória"),
 			]],
-			rua: [this.usuario.rua?? null, [
+			rua: [this.usuario?.rua ?? "", [
 				CustomValidators.required("A rua é obrigatória"),
 			]],
-			numero: [this.usuario.numero ?? null, [
+			numero: [this.usuario?.numero ?? "", [
 				CustomValidators.required("O número é obrigatório"),
 			]],
-			bairro: [this.usuario.bairro ?? null, [
+			bairro: [this.usuario?.bairro ?? "", [
 				CustomValidators.required("O bairro é obrigatório"),
 			]],
-			cep: [this.usuario.cep ?? null, [
+			cep: [this.usuario?.cep ?? "", [
 				CustomValidators.required("O CEP é obrigatório"),
 				CustomValidators.pattern(/^\d{5}-\d{3}$/, "O CEP deve seguir o formato XXXXX-XX")
 			]],
-			complemento: [this.usuario.complemento ?? null],
+			complemento: [this.usuario?.complemento ?? ""],
 		});
 
 		if (this.incluirTipo) {
 			this.form.addControl(
 				"tipoUsuario",
-				this.formBuilder.control("", [
+				this.formBuilder.control(this.usuario.tipoUsuario ?? "", [
 					CustomValidators.required("O tipo de usuário é obrigatório")
 				])
 			);
@@ -83,6 +87,9 @@ export class FormUsuarioComponent implements OnInit {
 		// Marca todos os input fields como mudado,
 		// assim eles podem mostrar erros de validações
 		this.form.markAllAsTouched();
+
+		// Alguns campos estão carregando
+		if (this.buscandoEndereco) return;
 
 		if (this.form.valid) {
 			this.usuario.nome = this.form.get('nome')!.value;
@@ -109,26 +116,39 @@ export class FormUsuarioComponent implements OnInit {
 	}
 
 	//-------------- MÉTODOS PARA CONSULTA CEP -------------
-	testarBlur(){
-		console.log("blur");
+	buscarCEP() {
+		this.desabilitarEndereco();
 		
+		this.cepService.consultaCEP(this.form.get('cep')?.value).subscribe({
+			next: resp => {
+				this.habilitarEndereco();
+				this.form.patchValue({
+					"rua": resp.logradouro,
+					"bairro": resp.bairro,
+					"complemento": resp.complemento,
+				});
+			},
+			error: err => {
+				alert("Um erro acontenceu ao buscar cep...");
+				console.log(err);
+				this.habilitarEndereco();
+			}
+		})
 	}
-	consultaCEP(cep: any) {
-		console.log("buscacep");
-		
-		cep = cep.value.replace(/\D/g, '');
-		//const cep = this.form.get('cep')?.value;
-		if(cep!= null && cep!== '') {
-			this.cepService.consultaCEP(cep)!
-			.subscribe(dados => {this.populaEnderecoForm(dados); console.log(dados);
-			})
-		}
+
+	desabilitarEndereco() {
+		this.buscandoEndereco = true;
+		this.form.get('cep')?.disable();
+		this.form.get('rua')?.disable();
+		this.form.get('bairro')?.disable();
+		this.form.get('complemento')?.disable();
 	}
-	populaEnderecoForm(dados:any) {
-		this.form.patchValue({
-			//cep: dados.cep,
-			rua: dados.logradouro,
-			bairro: dados.bairro ,
-		});
+
+	habilitarEndereco() {
+		this.buscandoEndereco = false;
+		this.form.get('cep')?.enable();
+		this.form.get('rua')?.enable();
+		this.form.get('bairro')?.enable();
+		this.form.get('complemento')?.enable();
 	}
 }
