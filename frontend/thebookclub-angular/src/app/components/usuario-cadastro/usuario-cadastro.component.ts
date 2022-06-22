@@ -36,4 +36,8 @@ export class UsuarioCadastroComponent implements OnInit {
     })
   }
 
+  isAdmin(): boolean {
+    return this.usuarioService.isAdmin();
+  }
+
 }

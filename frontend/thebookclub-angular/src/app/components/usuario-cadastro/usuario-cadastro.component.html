@@ -2,5 +2,6 @@
 <app-form-usuario
 	submitText="Cadastrar"
 	(onSubmit)="cadastrar($event)"
+	[incluirTipo]="isAdmin()"
 >
 </app-form-usuario>
