@@ -12,6 +12,7 @@ import br.com.digitalhouse.thebookclub.modelo.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
 	public Optional<Usuario> findTopByUsernameOrEmailOrCpf(String username, String email, String cpf);
+	public Optional<Usuario> findTopByUsernameOrEmail(String username, String email);
 	public Optional<Usuario> findByUsername(String username);
 	public Optional<Usuario> findByEmail(String email);
 	public Optional<Usuario> findByCpf(String cpf);

@@ -45,7 +45,7 @@ public class UsuarioService {
 	}
 
 	public Optional<UsuarioLogin> autenticarUsuario(UsuarioLogin usuarioLogin) {
-		Optional<Usuario> usuario = usuarioRepository.findByEmail(usuarioLogin.getEmail());
+		Optional<Usuario> usuario = usuarioRepository.findTopByUsernameOrEmail(usuarioLogin.getUsername(), usuarioLogin.getUsername());
 		if (usuario.isPresent()) {
 			if (compararSenhas(usuarioLogin.getSenha(), usuario.get().getSenha())) {
 				usuarioLogin.setUsuarioId(usuario.get().getUsuarioId());
