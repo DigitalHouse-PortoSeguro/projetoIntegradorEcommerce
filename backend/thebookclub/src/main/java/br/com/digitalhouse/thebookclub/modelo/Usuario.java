@@ -176,7 +176,7 @@ public class Usuario {
 		return complemento;
 	}
 	
-	public String foto() {
+	public String getFoto() {
 		return foto;
 	}
 
