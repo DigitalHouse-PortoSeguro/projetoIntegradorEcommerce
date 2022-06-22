@@ -54,6 +54,7 @@ export class FormUsuarioComponent implements OnInit {
 				CustomValidators.required("A confirmação da senha é obrigatória"),
 				CustomValidators.matchField("senha", "As senhas são diferentes")
 			]],
+			foto: [this.usuario?.foto ?? "", []],
 			dataNascimento: [this.usuario?.dataNascimento?.toString() ?? "", [
 				CustomValidators.required("A data de nascimento é obrigatória"),
 			]],
@@ -98,6 +99,7 @@ export class FormUsuarioComponent implements OnInit {
 			this.usuario.username = this.form.get('username')!.value;
 			this.usuario.email = this.form.get('email')!.value;
 			this.usuario.senha = this.form.get('senha')!.value;
+			this.usuario.foto = this.form.get('foto')?.value;
 			this.usuario.dataNascimento = LocalDate.fromString(this.form.get('dataNascimento')!.value);
 			this.usuario.rua = this.form.get('rua')!.value;
 			this.usuario.numero = Number.parseInt(this.form.get('numero')!.value);

@@ -31,6 +31,12 @@
                 name="confirmar-senha" id="confirmar-senha" class="col-md-6" placeholder="Repita sua senha"
                 helpText="Digite novamente a sua senha"></app-input-field>
         </div>
+        <div class="row">
+            <app-input-field formControlName="foto" title="URL da foto" name="foto" id="foto"
+                class="col-md-6" placeholder="https://imagem-perfil.png"
+                helpText="Pode usar tanto .png quanto .jpg">
+            </app-input-field>
+        </div>
         <div *ngIf="incluirTipo" class="row">
             <app-dropdown formControlName="tipoUsuario" title="Tipo de usuário" name="tipo-usuario" id="tipo-usuario"
                 class="col-md-6" defaultOption="Selecione uma opção" [options]="['COMUM', 'ADMIN']"></app-dropdown>
