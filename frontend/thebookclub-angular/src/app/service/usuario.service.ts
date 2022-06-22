@@ -35,6 +35,27 @@ export class UsuarioService {
     return this.http.put<Usuario>('http://localhost:8080/usuarios/atualizar', usuario, { headers });
   }
 
+  public getAllUsuarios(): Observable<Usuario[]> {
+    const headers = new HttpHeaders()
+      .set('Authorization', globals.usuarioLogin.token);
+    
+    return this.http.get<Usuario[]>('http://localhost:8080/usuarios', { headers });
+  }
+
+  public getById(id: number): Observable<Usuario> {
+    const headers = new HttpHeaders()
+      .set('Authorization', globals.usuarioLogin.token);
+    
+    return this.http.get<Usuario>(`http://localhost:8080/usuarios/${id}`, { headers });
+  }
+
+  public deleteById(id: number): Observable<Usuario> {
+    const headers = new HttpHeaders()
+      .set('Authorization', globals.usuarioLogin.token);
+    
+      return this.http.delete<Usuario>(`http://localhost:8080/usuarios/${id}`, { headers });
+  }
+
   public logout(): void {
     globals.usuarioLogin = new UsuarioLogin();
   }
@@ -75,7 +96,7 @@ export class UsuarioService {
 
   public isAdmin(): boolean {
     if (globals.usuarioLogin && globals.usuarioLogin.tipoUsuario) {
-      return globals.usuarioLogin.token === "ADMIN";
+      return globals.usuarioLogin.tipoUsuario === "ADMIN";
     }
     return false;
   }
