@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { globals } from 'src/environments/environment.prod';
 import { Livro } from './modelos/Livro';
 import { Usuario } from './modelos/Usuario';
 import { UsuarioLogin } from './modelos/UsuarioLogin';
+import { CarrinhoService } from './service/carrinho.service';
 import { LocalDate } from './utils/LocalDate';
 
 @Component({
@@ -10,10 +11,58 @@ import { LocalDate } from './utils/LocalDate';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'thebookclub-angular';
 
-  constructor() { 
+  livro: Livro;
+
+  private createLivro(
+    titulo: string,
+    foto: string,
+    autores: string,
+    data: string,
+    quantidade: number,
+    paginas: number,
+    editora: string,
+    categoria: string,
+    sinopse: string,
+    isbn: string,
+    preco: number
+  ): Livro {
+    const l = new Livro();
+
+    l.titulo = titulo;
+    l.foto = foto;
+    l.autores = autores;
+    l.dataPublicacao = LocalDate.fromString(data);
+    l.quantidadeEstoque = quantidade;
+    l.numeroPaginas = paginas;
+    l.editora = editora;
+    l.categoria = categoria;
+    l.sinopse = sinopse;
+    l.isbn = isbn;
+    l.preco = preco;
+
+    return l;
+  }
+
+  constructor(
+    private carrinhoService: CarrinhoService
+  ) {
+    this.livro = this.createLivro(
+      "Os segredos da mente milionária",
+      "https://images-na.ssl-images-amazon.com/images/I/81ZnJcgjCdL.jpg",
+      "T. Harv Eker",
+      "2005-08-13",
+      10,
+      30,
+      "Editora",
+      "Aventura",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam culpa expedita assumenda debitis earum rerum totam minus aliquam possimus, iure iste reiciendis nulla excepturi ratione praesentium quam officiis iusto quo!",
+      "100011",
+      30.9
+    );
+
     const user = new UsuarioLogin();
 
     user.bairro = "Jaraguá"
@@ -34,5 +83,9 @@ export class AppComponent {
     user.token = "Basic " + btoa("ghsoares:Senha123")
 
     //globals.usuarioLogin = user;
+  }
+
+  ngOnInit(): void {
+    this.carrinhoService.resetar();
   }
 }
