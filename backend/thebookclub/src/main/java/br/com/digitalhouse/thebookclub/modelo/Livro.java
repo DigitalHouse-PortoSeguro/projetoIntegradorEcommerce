@@ -47,6 +47,10 @@ public class Livro {
 	@Size(min=2,max=30, message = "O tamanho da categoria deve ser entre {min} e {max}")
 	private String categoria;
 	
+	@NotNull(message="A sinopse não pode ser nula")
+	@Size(min=2,max=256, message = "O tamanho da sinopse deve ser entre {min} e {max}")
+	private String sinopse;
+	
 	@NotNull(message="O numeroPaginas não pode ser nulo")
 	@Min(value=1, message="O numeroPaginas deve ser pelo menos {value}")
 	private Integer numeroPaginas;
@@ -96,6 +100,10 @@ public class Livro {
 
 	public String getCategoria() {
 		return categoria;
+	}
+	
+	public String getSinopse() {
+		return sinopse;
 	}
 
 	public Integer getNumeroPaginas() {
@@ -148,6 +156,10 @@ public class Livro {
 
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
+	}
+	
+	public void setSinopse(String sinopse) {
+		this.sinopse = sinopse;
 	}
 
 	public void setNumeroPaginas(Integer numeroPaginas) {

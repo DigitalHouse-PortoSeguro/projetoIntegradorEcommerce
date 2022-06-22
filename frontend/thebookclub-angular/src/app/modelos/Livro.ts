@@ -8,6 +8,7 @@ export class Livro {
     public autores: string;
     public editora: string;
     public categoria: string;
+    public sinopse: string;
     public numeroPaginas: number;
     public isbn: string;
     public preco: number;
