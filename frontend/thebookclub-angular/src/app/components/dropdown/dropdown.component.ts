@@ -12,11 +12,11 @@ export class DropdownComponent implements ControlValueAccessor {
   @Input() name: string;
   @Input() title: string;
   @Input() helpText: string = "";
-  @Input() disabled: boolean = false;
   @Input() defaultOption: string = "Select a value";
   @Input() options: string[] = [];
   @Output() blur: EventEmitter<any> = new EventEmitter();
-
+  
+  disabled: boolean = false;
   _value: any;
 
   constructor(
@@ -58,6 +58,10 @@ export class DropdownComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouch = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 
   hasError() {

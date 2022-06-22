@@ -24,10 +24,9 @@ export class InputFieldComponent implements ControlValueAccessor {
   @Input() type: FieldType = "text";
   @Input() placeholder: string = "";
   @Input() helpText: string = "";
-  @Input() disabled: boolean = false;
-
   @Output() blur: EventEmitter<any> = new EventEmitter();
-
+  
+  disabled: boolean = false;
   _value: any;
 
   constructor(
@@ -69,6 +68,10 @@ export class InputFieldComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouch = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 
   hasError() {
