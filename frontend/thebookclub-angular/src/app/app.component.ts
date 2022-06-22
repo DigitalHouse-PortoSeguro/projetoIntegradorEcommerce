@@ -19,20 +19,20 @@ export class AppComponent {
     user.bairro = "Jaraguá"
     user.cep = "05182-000"
     user.complemento = ""
-    user.cpf = "131.131.131-03"
+    user.cpf = "000.001.005-11"
     user.dataNascimento = LocalDate.fromString("2002-11-25")
-    user.email = "ghsoares99795@gmail.com"
+    user.email = "ghsoares99796@gmail.com"
     user.nome = "Gabriel Henrique"
     user.numero = 100
     user.preferencias = "";
     user.rua = "Mauro D' Araújo Ribeiro"
-    user.senha = "$2a$10$s5WHHaUrkJeWfC7.n2o3XuvHlKytNOm0VcNp/uQg1uzZ.NSgba/yG"
+    user.senha = "$2a$10$hJ2Pz4Nt4RCKqq.SyEU4NOleL74LsDL7FyW0UdoK8PGub1M4PAuHy"
     user.sobrenome = "Pereira Soares"
-    user.tipoUsuario = "COMUM"
-    user.username = "ghsoares"
-    user.usuarioId = 1
-    user.token = "Basic " + btoa("ghsoares:Senha123")
+    user.tipoUsuario = "ADMIN"
+    user.username = "ghsoarez"
+    user.usuarioId = 2
+    user.token = "Basic " + btoa("ghsoarez:Senha123")
 
-    //globals.usuarioLogin = user;
+    globals.usuarioLogin = user;
   }
 }
