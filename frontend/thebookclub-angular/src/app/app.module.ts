@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CardLivroComponent } from './components/livro/card-livro/card-livro.component';
 import { UsuarioCadastroComponent } from './components/usuario-cadastro/usuario-cadastro.component';
 import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuario-atualizar.component';
+import { ListarUsuariosComponent } from './components/listar-usuarios/listar-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuari
     FormDebugComponent,
     CardLivroComponent,
     UsuarioCadastroComponent,
-    UsuarioAtualizarComponent
+    UsuarioAtualizarComponent,
+    ListarUsuariosComponent
   ],
   imports: [
     BrowserModule,
