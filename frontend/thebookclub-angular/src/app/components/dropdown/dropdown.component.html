@@ -11,6 +11,7 @@
 		[attr.aria-describeBy]="id + '-help'"
 		[(ngModel)]="value"
 		[disabled]="!!disabled"	
+		(blur)="onBlur($event)"
 	>
 		<option value="" selected disabled>{{defaultOption}}</option>
 		<option *ngFor="let op of options" [ngValue]="op">{{op.charAt(0).toUpperCase() + op.slice(1).toLowerCase()}}</option>

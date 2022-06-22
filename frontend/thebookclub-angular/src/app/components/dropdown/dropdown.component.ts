@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Optional, Self } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Optional, Output, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
@@ -15,6 +15,7 @@ export class DropdownComponent implements ControlValueAccessor {
   @Input() disabled: boolean = false;
   @Input() defaultOption: string = "Select a value";
   @Input() options: string[] = [];
+  @Output() blur: EventEmitter<any> = new EventEmitter();
 
   _value: any;
 
@@ -39,6 +40,7 @@ export class DropdownComponent implements ControlValueAccessor {
 
   onBlur(ev: any) {
     if (this.onTouch) this.onTouch(ev);
+    this.blur.emit(ev);
   }
 
   onChange: (_: any) => {};

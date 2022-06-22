@@ -25,7 +25,8 @@ export class InputFieldComponent implements ControlValueAccessor {
   @Input() placeholder: string = "";
   @Input() helpText: string = "";
   @Input() disabled: boolean = false;
-  @Output() blur: any
+
+  @Output() blur: EventEmitter<any> = new EventEmitter();
 
   _value: any;
 
@@ -50,6 +51,7 @@ export class InputFieldComponent implements ControlValueAccessor {
 
   onBlur(ev: any) {
     if (this.onTouch) this.onTouch(ev);
+    this.blur.emit(ev);
   }
 
   onChange: (_: any) => {};
