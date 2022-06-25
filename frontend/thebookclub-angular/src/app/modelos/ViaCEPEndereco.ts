@@ -1,14 +1,12 @@
-
-
-export class ViaCEPEndereco {
-	public cep: string;
-	public logradouro: string;
-	public complemento: string;
-	public bairro: string;
-	public localidade: string;
-	public uf: string;
-	public ibge: string;
-	public gia: string;
-	public ddd: string;
-	public siafi: string;
+export interface IViaCEPEndereco {
+	cep: string;
+	complemento: string;
+	bairro: string;
+	localidade: string;
+	uf: string;
+	ibge: string;
+	gia: string;
+	ddd: string;
+	siafi: string;
+	logradouro: string;
 }
