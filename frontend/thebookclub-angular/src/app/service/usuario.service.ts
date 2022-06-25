@@ -48,6 +48,26 @@ export class UsuarioService {
     
     return this.http.get<Usuario>(`http://localhost:8080/usuarios/${id}`, { headers });
   }
+  public getUsuarioByNome(nome: string): Observable<Usuario> {
+    const headers = new HttpHeaders()
+      .set('Authorization', globals.usuarioLogin.token);
+    return this.http.get<Usuario>(`http://localhost:8080/usuarios/nome/${nome}`, { headers });
+  }
+  public getUsuarioByUsername(username: string): Observable<Usuario> {
+    const headers = new HttpHeaders()
+      .set('Authorization', globals.usuarioLogin.token);
+    return this.http.get<Usuario>(`http://localhost:8080/usuarios/username/${username}`, { headers });
+  }
+  public getUsuarioByEmail(email: string): Observable<Usuario> {
+    const headers = new HttpHeaders()
+      .set('Authorization', globals.usuarioLogin.token);
+    return this.http.get<Usuario>(`http://localhost:8080/usuarios/email/${email}`, { headers });
+  }
+  public getUsuarioByCpf(cpf: string): Observable<Usuario> {
+    const headers = new HttpHeaders()
+      .set('Authorization', globals.usuarioLogin.token);
+    return this.http.get<Usuario>(`http://localhost:8080/usuarios/cpf/${cpf}`, { headers });
+  }
 
   public deleteById(id: number): Observable<Usuario> {
     const headers = new HttpHeaders()
