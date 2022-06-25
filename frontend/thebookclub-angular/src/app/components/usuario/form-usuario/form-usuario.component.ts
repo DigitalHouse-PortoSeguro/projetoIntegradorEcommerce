@@ -45,10 +45,12 @@ export class FormUsuarioComponent implements OnInit {
 			]],
 			email: [this.usuario?.email ?? "", [
 				CustomValidators.required("O email é obrigatório"),
-				CustomValidators.email("O email deve seguir o formato exemplo@email.com")
+				CustomValidators.pattern(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+				"O email deve seguir o formato exemplo@email.com")
 			]],
 			senha: ["", [
 				CustomValidators.required("A senha é obrigatória"),
+				CustomValidators.minLength(6, "A senha deve ter no mínimo 6 caracteres")
 			]],
 			confirmarSenha: ["", [
 				CustomValidators.required("A confirmação da senha é obrigatória"),
@@ -69,7 +71,7 @@ export class FormUsuarioComponent implements OnInit {
 			]],
 			cep: [this.usuario?.cep ?? "", [
 				CustomValidators.required("O CEP é obrigatório"),
-				CustomValidators.pattern(/^\d{5}-\d{3}$/, "O CEP deve seguir o formato XXXXX-XX")
+				CustomValidators.pattern(/^\d{5}-?\d{3}$/, "O CEP deve seguir o formato XXXXX-XX")
 			]],
 			complemento: [this.usuario?.complemento ?? ""],
 		});
@@ -91,6 +93,10 @@ export class FormUsuarioComponent implements OnInit {
 
 		// Alguns campos estão carregando
 		if (this.buscandoEndereco) return;
+		if(!this.form.valid) {
+			alert("Preencha o formulário corretamente");
+			return;
+		}
 
 		if (this.form.valid) {
 			this.usuario.nome = this.form.get('nome')!.value;
@@ -125,9 +131,10 @@ export class FormUsuarioComponent implements OnInit {
 			next: resp => {
 				this.habilitarEndereco();
 				this.form.patchValue({
+					"cep": resp.cep,
 					"rua": resp.logradouro,
 					"bairro": resp.bairro,
-					"complemento": resp.complemento,
+					//"complemento": resp.complemento,
 				});
 			},
 			error: err => {

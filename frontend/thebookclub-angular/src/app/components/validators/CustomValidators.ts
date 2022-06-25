@@ -33,7 +33,7 @@ export default class CustomValidators {
 			const err = func(control);
 
 			if (err) {
-				err['minLength'] = message;
+				err['minlength'] = message;
 			}
 
 			return err;
@@ -56,7 +56,7 @@ export default class CustomValidators {
 		return function (control: AbstractControl) {
 			const otherControl = control.root?.get(controlName);
 
-			if (otherControl) {
+			if (otherControl && control.value !== '') {
 				if (otherControl.value !== control.value) {
 					return {'matchField': message}
 				}
