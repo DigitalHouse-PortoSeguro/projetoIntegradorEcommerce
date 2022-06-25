@@ -41,7 +41,11 @@ export class LivroService {
     return this.http.get<Livro>(`http://localhost:8080/livros/${id}`);
   }
 
-  public getLivroByTitulo(id: number): Observable<Livro> {
-    return this.http.get<Livro>(`http://localhost:8080/livros/titulo/${id}`);
+  public getAllLivrosByCategoria(categoria: string): Observable<Livro> {
+    return this.http.get<Livro>(`http://localhost:8080/livros/categoria/${categoria}`);
+  }
+
+  public getAllLivrosByTitulo(titulo: string): Observable<Livro> {
+    return this.http.get<Livro>(`http://localhost:8080/livros/titulo/${titulo}`);
   }
 }
