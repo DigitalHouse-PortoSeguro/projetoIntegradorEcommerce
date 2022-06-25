@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Usuario } from 'src/app/modelos/Usuario';
 import { ConsultaCepService } from 'src/app/service/consulta-cep.service';
 import { LocalDate } from 'src/app/utils/LocalDate';
-import CustomValidators from '../validators/CustomValidators';
+import CustomValidators from '../../validators/CustomValidators';
 
 @Component({
 	selector: 'app-form-usuario',
