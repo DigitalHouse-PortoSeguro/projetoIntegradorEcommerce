@@ -25,7 +25,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.inMemoryAuthentication()
 			.withUser("root")
 			.password(passwordEncoder().encode("root"))
-			.authorities("ROLE_ADMIN");
+			.authorities("ROLE_USER", "ROLE_ADMIN");
 	}
 
 	@Bean
@@ -38,10 +38,22 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.antMatchers("/usuarios/login").permitAll()
 			.antMatchers("/usuarios/cadastrar").permitAll()
+			
+			.antMatchers("/livros").permitAll()
+			.antMatchers("/livros/{id}").permitAll()
+			.antMatchers("/livros/titulo/{titulo}").permitAll()
+			.antMatchers("/livros/categoria/{categoria}").permitAll()
+			.antMatchers("/livros/categorias").permitAll()
 			.antMatchers(HttpMethod.OPTIONS).permitAll()
-			//configurar endpoint para admin adicionar livros
-			//.antMatchers("/livros/adicionar").hasAuthority("ROLE_ADMIN")
+			
+			.antMatchers("/usuarios/atualizar").hasAuthority("ROLE_USER")
+			.antMatchers("/pedidos/cadastrar").hasAuthority("ROLE_USER")
+			
+			.antMatchers("/livros/cadastrar").hasAuthority("ROLE_ADMIN")
+			.antMatchers("/livros/atualizar").hasAuthority("ROLE_ADMIN")
+			
 			.anyRequest().authenticated()
+			
 			.and().httpBasic().and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and().cors()

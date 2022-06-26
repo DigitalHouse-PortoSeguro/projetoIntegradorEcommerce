@@ -1,5 +1,5 @@
+import { LocalDate } from "../utils/LocalDate";
 import { Pedido } from "./Pedido";
-
 export class Usuario {
     public usuarioId: number;
     public nome: string;
@@ -9,13 +9,14 @@ export class Usuario {
     public tipoUsuario: string;
     public email: string;
     public senha: string;
-    public dataNascimento: Date;
+    public dataNascimento: LocalDate;
     public preferencias?: string;
     public rua: string;
     public numero: number;
     public bairro: string;
     public cep: string;
     public complemento?: string;
+    public foto: string;
     //relacionamentos:
     public pedidos: Pedido[];
 }

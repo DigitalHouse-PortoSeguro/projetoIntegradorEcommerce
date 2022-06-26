@@ -2,13 +2,15 @@ package br.com.digitalhouse.thebookclub.modelo;
 
 import java.time.LocalDate;
 
+import br.com.digitalhouse.thebookclub.enums.TipoUsuario;
+
 public class UsuarioLogin {
 	private Long usuarioId;
 	private String nome;
 	private String sobrenome;
 	private String cpf;
 	private String username;
-	private String tipoUsuario;
+	private TipoUsuario tipoUsuario;
 	private String email;
 	private String senha;
 	private LocalDate dataNascimento;
@@ -18,6 +20,7 @@ public class UsuarioLogin {
 	private String bairro;
 	private String cep;
 	private String complemento;
+	private String foto;
 	
 	/*
 	 *  Token é a propriedade específica do UsuarioLogin,
@@ -45,7 +48,7 @@ public class UsuarioLogin {
 		return username;
 	}
 
-	public String getTipoUsuario() {
+	public TipoUsuario getTipoUsuario() {
 		return tipoUsuario;
 	}
 
@@ -85,6 +88,10 @@ public class UsuarioLogin {
 		return complemento;
 	}
 
+	public String getFoto() {
+		return foto;
+	}
+	
 	public String getToken() {
 		return token;
 	}
@@ -109,7 +116,7 @@ public class UsuarioLogin {
 		this.username = username;
 	}
 
-	public void setTipoUsuario(String tipoUsuario) {
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
 
@@ -147,6 +154,10 @@ public class UsuarioLogin {
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+	
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public void setToken(String token) {

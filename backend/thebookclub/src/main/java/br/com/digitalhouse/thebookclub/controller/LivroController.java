@@ -1,6 +1,7 @@
 package br.com.digitalhouse.thebookclub.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -47,6 +48,16 @@ public class LivroController {
 	@GetMapping("/titulo/{titulo}")
 	public ResponseEntity<List<Livro>> getByTitulo(@PathVariable String titulo) {
 		return ResponseEntity.ok(livroRepository.findAllByTituloContainingIgnoreCase(titulo));
+	}
+	
+	@GetMapping("/categoria/{categoria}")
+	public ResponseEntity<List<Livro>> getByCategoria(@PathVariable String categoria) {
+		return ResponseEntity.ok(livroRepository.findAllByCategoriaContainingIgnoreCase(categoria));
+	}
+	
+	@GetMapping("/categorias")
+	public ResponseEntity<Set<String>> getAllCategorias() {
+		return ResponseEntity.ok(livroRepository.findAllCategorias());
 	}
 
 	@PostMapping("/cadastrar")

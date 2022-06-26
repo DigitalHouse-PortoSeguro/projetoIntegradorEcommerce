@@ -21,7 +21,8 @@ public class UsuarioService {
 	private UsuarioRepository usuarioRepository;
 
 	public Optional<Usuario> cadastrarUsuario(Usuario usuario) {
-		if (usuarioRepository.findTopByUsernameOrEmailOrCpf(usuario.getUsername(), usuario.getEmail(), usuario.getCpf()).isPresent()) {
+		if (usuarioRepository.findTopByUsernameOrEmailOrCpf(usuario.getUsername(), usuario.getEmail(), usuario.getCpf())
+				.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 		}
 		usuario.setSenha(criptografarSenha(usuario.getSenha()));
@@ -30,11 +31,13 @@ public class UsuarioService {
 
 	public Optional<Usuario> atualizarUsuario(Usuario usuario) {
 		if (usuarioRepository.findById(usuario.getUsuarioId()).isPresent()) {
-			Optional<Usuario> buscaUsuario = usuarioRepository.findTopByUsernameOrEmailOrCpf(usuario.getUsername(), usuario.getEmail(), usuario.getCpf());
+			Optional<Usuario> buscaUsuario = usuarioRepository.findTopByUsernameOrEmailOrCpf(usuario.getUsername(),
+					usuario.getEmail(), usuario.getCpf());
 
 			if (buscaUsuario.isPresent() && (buscaUsuario.get().getUsuarioId() != usuario.getUsuarioId())) {
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 			}
+
 			usuario.setSenha(criptografarSenha(usuario.getSenha()));
 			return Optional.ofNullable(usuarioRepository.save(usuario));
 		}
@@ -42,7 +45,7 @@ public class UsuarioService {
 	}
 
 	public Optional<UsuarioLogin> autenticarUsuario(UsuarioLogin usuarioLogin) {
-		Optional<Usuario> usuario = usuarioRepository.findByEmail(usuarioLogin.getEmail());
+		Optional<Usuario> usuario = usuarioRepository.findTopByUsernameOrEmail(usuarioLogin.getUsername(), usuarioLogin.getUsername());
 		if (usuario.isPresent()) {
 			if (compararSenhas(usuarioLogin.getSenha(), usuario.get().getSenha())) {
 				usuarioLogin.setUsuarioId(usuario.get().getUsuarioId());
@@ -58,9 +61,10 @@ public class UsuarioService {
 				usuarioLogin.setNumero(usuario.get().getNumero());
 				usuarioLogin.setBairro(usuario.get().getBairro());
 				usuarioLogin.setCep(usuario.get().getCep());
+				usuarioLogin.setTipoUsuario(usuario.get().getTipoUsuario());
 				usuarioLogin.setComplemento(usuario.get().getComplemento());
-				usuarioLogin.setToken(gerarBasicToken(usuarioLogin.getCpf(), usuarioLogin.getSenha()));
-				
+				usuarioLogin.setToken(gerarBasicToken(usuarioLogin.getUsername(), usuarioLogin.getSenha()));
+
 				return Optional.of(usuarioLogin);
 			}
 		}

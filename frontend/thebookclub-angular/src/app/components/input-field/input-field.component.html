@@ -1,0 +1,21 @@
+<div class="mb-3">
+	<label [for]="id" class="form-label">{{title}}</label>
+	<input 
+		[type]="type" 
+		[ngClass]="{
+			'form-control': true,
+			'is-invalid': hasError()
+		}" 
+		[id]="id" 
+		[name]="name" 
+		[placeholder]="placeholder" 
+		[attr.aria-describeBy]="id + '-help'" 
+		[disabled]="!!disabled"
+		[(ngModel)]="value" 
+		(blur)="onBlur($event)"
+	>
+	<div *ngIf="hasError()" class="invalid-feedback">
+		<span *ngFor="let err of getErrors()">{{err}}</span>
+	</div>
+	<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
+</div>
