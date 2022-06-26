@@ -1,9 +1,9 @@
-<div *ngIf="livro" class="container">
-	<div class="row">
-		<div class="col-md-2">
+<div *ngIf="livro" class="container my-4 border border-2 border-radius-4">
+	<div class="row d-flex">
+		<div class="col-lg-2 col-md-4 align-self-center">
 			<img [src]="livro.foto" alt="Foto do livro" class="img-fluid">
 		</div>
-		<div class="col-md-7">
+		<div class="col-lg-7 col-md-8 ">
 			<h2>{{livro.titulo}}</h2>
 			<h4 class="text-muted mb-4">{{livro.categoria}}</h4>
 			<h5 class="text-muted">Por {{livro.autores}}</h5>
@@ -30,7 +30,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3 d-flex flex-column bg-light p-3 border-radius-3">
+		<div class="col-lg-3 d-flex flex-column bg-light bg-opacity-75 p-3 border-radius-3">
 			<h2 class="mb-2">R$ {{livro.preco.toFixed(2).replace(".", ",")}}</h2>
 
 			<h4 class="text-success" *ngIf="livro.quantidadeEstoque > 0">Em estoque</h4>
