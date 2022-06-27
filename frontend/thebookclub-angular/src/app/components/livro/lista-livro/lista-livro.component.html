@@ -3,6 +3,9 @@
     >
     {{ tituloLista }}
 </h1>
-    <app-produto-livro *ngFor="let livro of listaLivros" [livro]="livro"></app-produto-livro>
+<!-- <app-produto-livro *ngFor="let livro of listaLivros" [livro]="livro"></app-produto-livro> -->
+<div *ngFor="let livro of listaLivros">
+    <ng-container [ngTemplateOutlet]="content.templateRef"></ng-container>
+</div>
 
 
