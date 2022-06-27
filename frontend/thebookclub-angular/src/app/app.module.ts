@@ -16,6 +16,9 @@ import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuari
 import { ListarUsuariosComponent } from './components/listar-usuarios/listar-usuarios.component';
 import { GerenciarUsuarioComponent } from './components/gerenciar-usuario/gerenciar-usuario.component';
 import { UsuarioAtualizarAdminComponent } from './components/usuario-atualizar-admin/usuario-atualizar-admin.component';
+import { EntrarComponent } from './components/entrar/entrar.component';
+import { InicioComponent } from './views/inicio/inicio.component';
+import { MensagemModule } from './mensagem/mensagem/mensagem.module';
 
 @NgModule({
   declarations: [
@@ -30,14 +33,17 @@ import { UsuarioAtualizarAdminComponent } from './components/usuario-atualizar-a
     UsuarioAtualizarComponent,
     ListarUsuariosComponent,
     GerenciarUsuarioComponent,
-    UsuarioAtualizarAdminComponent
+    UsuarioAtualizarAdminComponent,
+    EntrarComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MensagemModule
   ],
   providers: [],
   bootstrap: [AppComponent]

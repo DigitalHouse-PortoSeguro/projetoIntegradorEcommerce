@@ -6,14 +6,16 @@ import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuari
 import { ListarUsuariosComponent } from './components/listar-usuarios/listar-usuarios.component';
 import { GerenciarUsuarioComponent } from './components/gerenciar-usuario/gerenciar-usuario.component';
 import { UsuarioAtualizarAdminComponent } from './components/usuario-atualizar-admin/usuario-atualizar-admin.component';
+import { EntrarComponent } from './components/entrar/entrar.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "cadastrar", pathMatch: "full" },
+  { path: "", redirectTo: "entrar", pathMatch: "full" },
   { path: "cadastrar", component: UsuarioCadastroComponent },
   { path: "atualizar", component: UsuarioAtualizarComponent },
   { path: "admin/listar-usuarios", component: ListarUsuariosComponent },
   { path: "admin/gerenciar-usuario/:id", component: GerenciarUsuarioComponent },
   { path: "admin/atualizar-usuario/:id", component: UsuarioAtualizarAdminComponent },
+  { path: "entrar", component: EntrarComponent},
 ]
 
 @NgModule({
