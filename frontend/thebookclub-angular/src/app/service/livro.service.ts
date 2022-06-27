@@ -33,6 +33,10 @@ export class LivroService {
     return this.http.delete<Livro>(`http://localhost:8080/livros/${id}`, { headers });
   }
 
+  public getAllCategorias(): Observable<string[]> {
+    return this.http.get<string[]>(`http://localhost:8080/livros/categorias`);
+  }
+
   public getAllLivros(): Observable<Livro[]> {
     return this.http.get<Livro[]>(`http://localhost:8080/livros`);
   }
