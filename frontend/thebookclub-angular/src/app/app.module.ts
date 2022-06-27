@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common'
+
 
 import { AppComponent } from './app.component';
 import { FormUsuarioComponent } from './components/form-usuario/form-usuario.component';
@@ -14,6 +16,7 @@ import { CardLivroComponent } from './components/livro/card-livro/card-livro.com
 import { UsuarioCadastroComponent } from './components/usuario-cadastro/usuario-cadastro.component';
 import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuario-atualizar.component';
 import { ProdutoLivroComponent } from './components/livro/produto-livro/produto-livro.component';
+import { ListaLivroComponent, ListaLivroDirective } from './components/livro/lista-livro/lista-livro.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +29,17 @@ import { ProdutoLivroComponent } from './components/livro/produto-livro/produto-
     CardLivroComponent,
     UsuarioCadastroComponent,
     UsuarioAtualizarComponent,
-    ProdutoLivroComponent
+    ProdutoLivroComponent,
+    ListaLivroComponent,
+    ListaLivroDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

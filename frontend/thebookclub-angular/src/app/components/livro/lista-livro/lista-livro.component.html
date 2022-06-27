@@ -1,0 +1,11 @@
+<h1
+    class="p-2 text-nowrap border-bottom border-white border-3 w-50 text-center mx-auto"
+    >
+    {{ tituloLista }}
+</h1>
+<!-- <app-produto-livro *ngFor="let livro of listaLivros" [livro]="livro"></app-produto-livro> -->
+<div *ngFor="let livro of listaLivros">
+    <ng-container [ngTemplateOutlet]="content.templateRef"></ng-container>
+</div>
+
+
