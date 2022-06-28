@@ -48,6 +48,8 @@ public class UsuarioService {
 		Optional<Usuario> usuario = usuarioRepository.findTopByUsernameOrEmail(usuarioLogin.getUsername(), usuarioLogin.getUsername());
 		if (usuario.isPresent()) {
 			if (compararSenhas(usuarioLogin.getSenha(), usuario.get().getSenha())) {
+				String token = gerarBasicToken(usuarioLogin.getUsername(), usuarioLogin.getSenha());
+				
 				usuarioLogin.setUsuarioId(usuario.get().getUsuarioId());
 				usuarioLogin.setNome(usuario.get().getNome());
 				usuarioLogin.setSobrenome(usuario.get().getSobrenome());
@@ -57,13 +59,14 @@ public class UsuarioService {
 				usuarioLogin.setSenha(usuario.get().getSenha());
 				usuarioLogin.setDataNascimento(usuario.get().getDataNascimento());
 				usuarioLogin.setPreferencias(usuario.get().getPreferencias());
+				usuarioLogin.setFoto(usuario.get().getFoto());
 				usuarioLogin.setRua(usuario.get().getRua());
 				usuarioLogin.setNumero(usuario.get().getNumero());
 				usuarioLogin.setBairro(usuario.get().getBairro());
 				usuarioLogin.setCep(usuario.get().getCep());
 				usuarioLogin.setTipoUsuario(usuario.get().getTipoUsuario());
 				usuarioLogin.setComplemento(usuario.get().getComplemento());
-				usuarioLogin.setToken(gerarBasicToken(usuarioLogin.getUsername(), usuarioLogin.getSenha()));
+				usuarioLogin.setToken(token);
 
 				return Optional.of(usuarioLogin);
 			}
