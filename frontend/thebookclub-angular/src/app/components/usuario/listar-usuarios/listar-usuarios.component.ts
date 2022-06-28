@@ -19,7 +19,7 @@ export class ListarUsuariosComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.usuarioService.isLoggedIn()) {
-      this.router.navigate(['login']);
+      this.router.navigate(['entrar']);
       return;
     }
     if (!this.usuarioService.isAdmin()) {
