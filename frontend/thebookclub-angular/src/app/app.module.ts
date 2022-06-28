@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common'
+
 
 import { AppComponent } from './app.component';
 import { FormUsuarioComponent } from './components/usuario/form-usuario/form-usuario.component';
@@ -16,6 +18,11 @@ import { UsuarioAtualizarComponent } from './components/usuario/usuario-atualiza
 import { ListarUsuariosComponent } from './components/usuario/listar-usuarios/listar-usuarios.component';
 import { GerenciarUsuarioComponent } from './components/usuario/gerenciar-usuario/gerenciar-usuario.component';
 import { UsuarioAtualizarAdminComponent } from './components/usuario/usuario-atualizar-admin/usuario-atualizar-admin.component';
+import { ProdutoLivroComponent } from './components/livro/produto-livro/produto-livro.component';
+import { ListaLivroComponent } from './components/livro/lista-livro/lista-livro.component';
+import { LivrosTituloComponent } from './components/livro/livros-titulo/livros-titulo.component';
+import { LivroCategoriaComponent } from './components/livro/livro-categoria/livro-categoria.component';
+import { LivroCadastroComponent } from './components/livro/livro-cadastro/livro-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +37,20 @@ import { UsuarioAtualizarAdminComponent } from './components/usuario/usuario-atu
     UsuarioAtualizarComponent,
     ListarUsuariosComponent,
     GerenciarUsuarioComponent,
-    UsuarioAtualizarAdminComponent
+    UsuarioAtualizarAdminComponent,
+    ProdutoLivroComponent,
+    ListaLivroComponent,
+    LivrosTituloComponent,
+    LivroCategoriaComponent,
+    LivroCadastroComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

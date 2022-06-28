@@ -1,0 +1,53 @@
+<div *ngIf="livro" class="container my-4 border border-2 border-radius-4">
+	<div class="row d-flex">
+		<div class="col-lg-2 col-md-4 align-self-center">
+			<img [src]="livro.foto" alt="Foto do livro" class="img-fluid">
+		</div>
+		<div class="col-lg-7 col-md-8 ">
+			<h2>{{livro.titulo}}</h2>
+			<h4 class="text-muted mb-4">{{livro.categoria}}</h4>
+			<h5 class="text-muted">Por {{livro.autores}}</h5>
+			<h6 class="text-muted">Publicado em {{livro.dataPublicacao | date:"dd/MM/yyyy"}}</h6>
+			<hr class="mt-4">
+			<p class="lead">{{livro.sinopse}}</p>
+			<hr class="mt-4">
+			<div class="row">
+				<div class="col d-flex flex-column align-items-center">
+					<h6 class="text-center">Número de páginas</h6>
+					<h6 class="text-muted">{{livro.numeroPaginas}}</h6>
+				</div>
+				<div class="col d-flex flex-column align-items-center">
+					<h6 class="text-center">Editora</h6>
+					<h6 class="text-muted">{{livro.editora}}</h6>
+				</div>
+				<div class="col d-flex flex-column align-items-center">
+					<h6 class="text-center">Data de publicação</h6>
+					<h6 class="text-muted">{{livro.dataPublicacao | date:"dd/MM/yyyy"}}</h6>
+				</div>
+				<div class="col d-flex flex-column align-items-center">
+					<h6 class="text-center">ISBN</h6>
+					<h6 class="text-muted">{{livro.isbn}}</h6>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 d-flex flex-column bg-light bg-opacity-75 p-3 border-radius-3">
+			<h2 class="mb-2">R$ {{livro.preco.toFixed(2).replace(".", ",")}}</h2>
+
+			<h4 class="text-success" *ngIf="livro.quantidadeEstoque > 0">Em estoque</h4>
+			<h4 class="text-danger" *ngIf="livro.quantidadeEstoque == 0">Fora de estoque</h4>
+				<app-dropdown
+					class="mt-4 align-self-start"
+					title="Quantidade:"
+					defaultOption=""
+					[options]="quantidadeOptions"
+					[(ngModel)]="quantidade"
+				>
+				</app-dropdown>
+			<button 
+			class="btn btn-primary mt-auto" 
+			(click)="adicionar()"
+			[disabled]="quantidade == 0"
+			>Adicionar ao carrinho</button>
+		</div>
+	</div>
+</div>

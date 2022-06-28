@@ -4,11 +4,14 @@ body {
 }
 
 .mr-5 {
-    margin-right: 5px;
+    margin-right: 3rem;
 }
 
 .border-radius-3 {
     border-radius: 1rem;
+}
+.border-radius-4 {
+    border-radius: 1.5rem;
 }
 
 .card {

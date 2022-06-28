@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Livro } from 'src/app/modelos/Livro';
 
@@ -10,15 +10,14 @@ import { Livro } from 'src/app/modelos/Livro';
 export class CardLivroComponent implements OnInit {
 
   @Input() livro: Livro;
+  @Output() select: EventEmitter<number> = new EventEmitter();
 
-  constructor(
-    private sanitizer: DomSanitizer
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  getFoto() {
-    return this.sanitizer.bypassSecurityTrustUrl(this.livro.foto);
+  onClick(): void {
+    this.select.emit(this.livro.livroId);
   }
 }

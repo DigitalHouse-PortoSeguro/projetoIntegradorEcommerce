@@ -7,6 +7,9 @@ import { ListarUsuariosComponent } from './components/usuario/listar-usuarios/li
 import { GerenciarUsuarioComponent } from './components/usuario/gerenciar-usuario/gerenciar-usuario.component';
 import { UsuarioAtualizarAdminComponent } from './components/usuario/usuario-atualizar-admin/usuario-atualizar-admin.component';
 import { AppComponent } from './app.component';
+import { LivrosTituloComponent } from './components/livro/livros-titulo/livros-titulo.component';
+import { LivroCategoriaComponent } from './components/livro/livro-categoria/livro-categoria.component';
+import { ProdutoLivroComponent } from './components/livro/produto-livro/produto-livro.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "cadastrar", pathMatch: "full" },
@@ -16,6 +19,9 @@ const routes: Routes = [
   { path: "admin/listar-usuarios", component: ListarUsuariosComponent },
   { path: "admin/gerenciar-usuario/:id", component: GerenciarUsuarioComponent },
   { path: "admin/atualizar-usuario/:id", component: UsuarioAtualizarAdminComponent },
+  { path: "livros/titulo/:titulo", component: LivrosTituloComponent },
+  { path: "livros/categoria/:categoria", component: LivroCategoriaComponent},
+  { path: "livros/produto/:id", component: ProdutoLivroComponent }
 ]
 
 @NgModule({
