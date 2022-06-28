@@ -107,5 +107,8 @@
       }
     }
   },
-  "defaultProject": "thebookclub-angular"
+  "defaultProject": "thebookclub-angular",
+  "cli": {
+    "analytics": false
+  }
 }

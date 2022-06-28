@@ -18,6 +18,7 @@ import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuari
 import { ProdutoLivroComponent } from './components/livro/produto-livro/produto-livro.component';
 import { ListaLivroComponent } from './components/livro/lista-livro/lista-livro.component';
 import { LivrosTituloComponent } from './components/livro/livros-titulo/livros-titulo.component';
+import { LivroCadastroComponent } from './components/livro/livro-cadastro/livro-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LivrosTituloComponent } from './components/livro/livros-titulo/livros-t
     UsuarioAtualizarComponent,
     ProdutoLivroComponent,
     ListaLivroComponent,
-    LivrosTituloComponent
+    LivrosTituloComponent,
+    LivroCadastroComponent
   ],
   imports: [
     BrowserModule,
