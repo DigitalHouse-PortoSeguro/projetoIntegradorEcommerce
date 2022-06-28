@@ -25,6 +25,7 @@ export class EntrarComponent implements OnInit {
       this.authService.logarUsuario(usuario).subscribe({
         next: user => {
           globals.usuarioLogin = user;
+          this.authService.saveUsuarioLocalStorage();
           this.router.navigate(['inicio']);
           console.log(user);
         },
