@@ -30,7 +30,7 @@ export class UsuarioAtualizarComponent implements OnInit {
       next: resp => {
         console.log(resp);
         this.usuarioService.logout();
-        this.router.navigate(['login']);
+        this.router.navigate(['entrar']);
         alert('Usuário atualizado com sucesso!');
       },
       error: err => {

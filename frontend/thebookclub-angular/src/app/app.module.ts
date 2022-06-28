@@ -23,6 +23,9 @@ import { ListaLivroComponent } from './components/livro/lista-livro/lista-livro.
 import { LivrosTituloComponent } from './components/livro/livros-titulo/livros-titulo.component';
 import { LivroCategoriaComponent } from './components/livro/livro-categoria/livro-categoria.component';
 import { LivroCadastroComponent } from './components/livro/livro-cadastro/livro-cadastro.component';
+import { EntrarComponent } from './components/entrar/entrar.component';
+import { InicioComponent } from './views/inicio/inicio.component';
+import { MensagemModule } from './mensagem/mensagem/mensagem.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { LivroCadastroComponent } from './components/livro/livro-cadastro/livro-
     ListaLivroComponent,
     LivrosTituloComponent,
     LivroCategoriaComponent,
-    LivroCadastroComponent
+    LivroCadastroComponent,
+    EntrarComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,8 @@ import { LivroCadastroComponent } from './components/livro/livro-cadastro/livro-
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    MensagemModule
   ],
   providers: [],
   bootstrap: [AppComponent]
