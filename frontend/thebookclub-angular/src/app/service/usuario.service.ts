@@ -11,7 +11,7 @@ import { UsuarioLogin } from '../modelos/UsuarioLogin';
 export class UsuarioService {
   constructor(
     private http: HttpClient
-  ) { }
+  ) {}
 
   public cadastrarUsuario(usuario: Usuario): Observable<Usuario> {
     let options = {};
@@ -33,6 +33,18 @@ export class UsuarioService {
       .set('Authorization', globals.usuarioLogin.token);
 
     return this.http.put<Usuario>('http://localhost:8080/usuarios/atualizar', usuario, { headers });
+  }
+
+  public saveUsuarioLocalStorage(): void {
+    localStorage.setItem("__USER_LOGIN", JSON.stringify(globals.usuarioLogin));
+  }
+
+  public loadUsuarioLocalStorage(): void {
+    const userItem = localStorage.getItem("__USER_LOGIN");
+    if (userItem != null) {
+      const userObj = JSON.parse(userItem);
+      Object.assign(globals.usuarioLogin, userObj);
+    }
   }
 
   public getAllUsuarios(): Observable<Usuario[]> {
@@ -78,6 +90,7 @@ export class UsuarioService {
 
   public logout(): void {
     globals.usuarioLogin = new UsuarioLogin();
+    localStorage.removeItem("__USER_LOGIN");
   }
 
   public getUsuarioLogin(): UsuarioLogin {
