@@ -10,7 +10,7 @@ import { globals } from 'src/environments/environment.prod';
   styleUrls: ['./entrar.component.css']
 })
 export class EntrarComponent implements OnInit {
-  email = '';
+  username = '';
   senha = '';
 
   constructor(private authService: UsuarioService, private router:Router) { }
@@ -20,15 +20,17 @@ export class EntrarComponent implements OnInit {
 
   login(){
     let usuario = new UsuarioLogin;
-    usuario.email = this.email;
+    usuario.username = this.username;
     usuario.senha = this.senha;
       this.authService.logarUsuario(usuario).subscribe({
         next: user => {
           globals.usuarioLogin = user;
           this.router.navigate(['inicio']);
+          console.log(user);
         },
 
         error: error => {
+          console.log(error);
           alert('Usuário ou senha inválidos');
         }
       })

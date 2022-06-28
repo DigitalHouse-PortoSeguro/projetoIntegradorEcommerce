@@ -10,7 +10,7 @@
         <h2 class="border-bottom border-white text-center">Acesse sua conta</h2>
         <form class="form mt-4" (ngSubmit)="login()" #loginForm="ngForm">
           <div class="form-group">
-            <input id="formEmail" class="form-control" type="text" placeholder="Email" [(ngModel)]="email" name="email" #campoEmail="ngModel" required>
+            <input id="formEmail" class="form-control" type="text" placeholder="Username ou email" [(ngModel)]="username" name="username" #campoEmail="ngModel" required>
             <app-mensagem *ngIf="campoEmail.invalid && campoEmail.touched" mensagem="Usuário obrigatório"></app-mensagem>
           </div>
           <div class="form-group">
