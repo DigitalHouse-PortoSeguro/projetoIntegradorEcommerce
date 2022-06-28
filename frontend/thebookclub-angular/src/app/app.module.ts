@@ -26,6 +26,7 @@ import { LivroCadastroComponent } from './components/livro/livro-cadastro/livro-
 import { EntrarComponent } from './components/entrar/entrar.component';
 import { InicioComponent } from './views/inicio/inicio.component';
 import { MensagemModule } from './mensagem/mensagem/mensagem.module';
+import { HomeComponent } from './views/home/home.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MensagemModule } from './mensagem/mensagem/mensagem.module';
     LivroCategoriaComponent,
     LivroCadastroComponent,
     EntrarComponent,
-    InicioComponent
+    InicioComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

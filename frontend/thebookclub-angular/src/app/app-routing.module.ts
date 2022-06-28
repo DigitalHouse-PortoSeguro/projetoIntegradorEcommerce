@@ -12,11 +12,14 @@ import { LivroCategoriaComponent } from './components/livro/livro-categoria/livr
 import { ProdutoLivroComponent } from './components/livro/produto-livro/produto-livro.component';
 import { LivroCadastroComponent } from './components/livro/livro-cadastro/livro-cadastro.component';
 import { EntrarComponent } from './components/entrar/entrar.component';
+import { InicioComponent } from './views/inicio/inicio.component';
+import { HomeComponent } from './views/home/home.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "cadastrar", pathMatch: "full" },
+  { path: "", redirectTo: "home", pathMatch: "full" },
+  { path:"home", component: HomeComponent},
+  { path: "inicio", component: InicioComponent},//home page do usuario
   { path: "cadastrar", component: UsuarioCadastroComponent },//arrumar para usuarios/cadastrar
-  { path: "", redirectTo: "entrar", pathMatch: "full" },
   { path: "atualizar", component: UsuarioAtualizarComponent },
   { path: "entrar", component: EntrarComponent},
   { path: "admin/listar-usuarios", component: ListarUsuariosComponent },
