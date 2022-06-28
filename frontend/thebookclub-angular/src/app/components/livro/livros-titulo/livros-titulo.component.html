@@ -1,0 +1,10 @@
+<h3 class="p-2 text-nowrap border-bottom border-white border-3 w-50 text-center mx-auto">
+    Pesquisando por título "{{ titulo }}"
+</h3>
+
+<app-lista-livro
+	[listaLivros]="livros"
+	(select)="onLivroSelect($event)"
+></app-lista-livro>
+
+<!-- <app-produto-livro *ngFor="let livro of listaLivros" [livro]="livro"></app-produto-livro> -->
