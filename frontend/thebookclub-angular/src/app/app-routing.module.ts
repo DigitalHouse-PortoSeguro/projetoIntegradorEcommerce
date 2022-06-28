@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UsuarioCadastroComponent } from './components/usuario-cadastro/usuario-cadastro.component';
 import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuario-atualizar.component';
 import { LivrosTituloComponent } from './components/livro/livros-titulo/livros-titulo.component';
+import { LivroCategoriaComponent } from './components/livro/livro-categoria/livro-categoria.component';
 import { ProdutoLivroComponent } from './components/livro/produto-livro/produto-livro.component';
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: "cadastrar", component: UsuarioCadastroComponent },
   { path: "atualizar", component: UsuarioAtualizarComponent },
   { path: "livros/titulo/:titulo", component: LivrosTituloComponent },
+  { path: "livros/categoria/:categoria", component: LivroCategoriaComponent},
   { path: "livros/produto/:id", component: ProdutoLivroComponent }
 ]
 
