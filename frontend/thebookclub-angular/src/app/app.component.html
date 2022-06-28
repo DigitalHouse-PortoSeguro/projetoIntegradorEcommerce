@@ -8,14 +8,7 @@
 <router-outlet></router-outlet>-->
 
 <app-lista-livro [tituloLista]="livro.categoria" [listaLivros]="[livro, livro2, livro, livro2]">
-    <ng-template appTemplateLivro>
-        <div class="row row-cols-md-3 g-4">
-            <div class="col">
-                <app-card-livro [livro]="livro"></app-card-livro>
-            </div>
-        </div>
-        <!-- <app-produto-livro [livro]="livro"></app-produto-livro> -->
-    </ng-template>
+    
 </app-lista-livro>
 
 <!-- TODO incluir rodape-component -->

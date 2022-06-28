@@ -2,4 +2,6 @@
     {{ tituloLista }}
 </h1>
 <!-- <app-produto-livro *ngFor="let livro of listaLivros" [livro]="livro"></app-produto-livro> -->
-<app-card-livro *ngFor="let livro of listaLivros" [livro]="livro"></app-card-livro>
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    <app-card-livro *ngFor="let livro of listaLivros" [livro]="livro"></app-card-livro>
+</div>
