@@ -33,6 +33,10 @@ export class LivroService {
     return this.http.delete<Livro>(`http://localhost:8080/livros/${id}`, { headers });
   }
 
+  public getAllCategorias(): Observable<string[]> {
+    return this.http.get<string[]>(`http://localhost:8080/livros/categorias`);
+  }
+
   public getAllLivros(): Observable<Livro[]> {
     return this.http.get<Livro[]>(`http://localhost:8080/livros`);
   }
@@ -41,11 +45,11 @@ export class LivroService {
     return this.http.get<Livro>(`http://localhost:8080/livros/${id}`);
   }
 
-  public getAllLivrosByCategoria(categoria: string): Observable<Livro> {
-    return this.http.get<Livro>(`http://localhost:8080/livros/categoria/${categoria}`);
+  public getAllLivrosByCategoria(categoria: string): Observable<Livro[]> {
+    return this.http.get<Livro[]>(`http://localhost:8080/livros/categoria/${categoria}`);
   }
 
-  public getAllLivrosByTitulo(titulo: string): Observable<Livro> {
-    return this.http.get<Livro>(`http://localhost:8080/livros/titulo/${titulo}`);
+  public getAllLivrosByTitulo(titulo: string): Observable<Livro[]> {
+    return this.http.get<Livro[]>(`http://localhost:8080/livros/titulo/${titulo}`);
   }
 }
