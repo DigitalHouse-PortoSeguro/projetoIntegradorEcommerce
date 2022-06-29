@@ -14,20 +14,25 @@ import { LivroCadastroComponent } from './components/livro/livro-cadastro/livro-
 import { EntrarComponent } from './components/entrar/entrar.component';
 import { InicioComponent } from './views/inicio/inicio.component';
 import { HomeComponent } from './views/home/home.component';
+import { ListarLivrosComponent } from './components/livro/listar-livros/listar-livros.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
-  { path:"home", component: HomeComponent},
-  { path: "inicio", component: InicioComponent},//home page do usuario
+  { path: "home", component: HomeComponent },
+  { path: "inicio", component: InicioComponent },//home page do usuario
   { path: "cadastrar", component: UsuarioCadastroComponent },//arrumar para usuarios/cadastrar
   { path: "atualizar", component: UsuarioAtualizarComponent },
-  { path: "entrar", component: EntrarComponent},
+  { path: "entrar", component: EntrarComponent },
+
   { path: "admin/listar-usuarios", component: ListarUsuariosComponent },
   { path: "admin/gerenciar-usuario/:id", component: GerenciarUsuarioComponent },
   { path: "admin/atualizar-usuario/:id", component: UsuarioAtualizarAdminComponent },
+
+  { path: "admin/listar-livros", component: ListarLivrosComponent },
+
   { path: "livros/cadastrar", component: LivroCadastroComponent },
   { path: "livros/titulo/:titulo", component: LivrosTituloComponent },
-  { path: "livros/categoria/:categoria", component: LivroCategoriaComponent},
+  { path: "livros/categoria/:categoria", component: LivroCategoriaComponent },
   { path: "livros/produto/:id", component: ProdutoLivroComponent }
 ]
 
