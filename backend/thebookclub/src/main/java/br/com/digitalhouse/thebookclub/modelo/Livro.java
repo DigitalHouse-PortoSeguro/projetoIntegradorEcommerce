@@ -63,7 +63,7 @@ public class Livro {
 	private Double preco;
 	
 	@NotNull(message="O quantidadeEstoque não pode ser nulo")
-	@Min(value=1, message="O quantidadeEstoque deve ser pelo menos {value}")
+	@Min(value=0, message="O quantidadeEstoque deve ser pelo menos {value}")
 	private Integer quantidadeEstoque;
 	
 	@NotNull(message="O fornecedor não pode ser nulo")
