@@ -20,6 +20,9 @@ import { GerenciarUsuarioComponent } from './components/usuario/gerenciar-usuari
 import { UsuarioAtualizarAdminComponent } from './components/usuario/usuario-atualizar-admin/usuario-atualizar-admin.component';
 import { ProdutoLivroComponent } from './components/livro/produto-livro/produto-livro.component';
 import { ListaLivroComponent } from './components/livro/lista-livro/lista-livro.component';
+import { CarrinhoComponent } from './views/carrinho/carrinho.component';
+import { ItemCarrinhoComponent } from './components/item-carrinho/item-carrinho.component';
+import { CalcFreteComponent } from './components/calc-frete/calc-frete.component';
 import { LivrosTituloComponent } from './components/livro/livros-titulo/livros-titulo.component';
 import { LivroCategoriaComponent } from './components/livro/livro-categoria/livro-categoria.component';
 import { LivroCadastroComponent } from './components/livro/livro-cadastro/livro-cadastro.component';
@@ -44,6 +47,9 @@ import { HomeComponent } from './views/home/home.component';
     UsuarioAtualizarAdminComponent,
     ProdutoLivroComponent,
     ListaLivroComponent,
+    CarrinhoComponent,
+    ItemCarrinhoComponent,
+    CalcFreteComponent,
     LivrosTituloComponent,
     LivroCategoriaComponent,
     LivroCadastroComponent,

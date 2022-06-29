@@ -6,6 +6,7 @@ import { UsuarioAtualizarComponent } from './components/usuario/usuario-atualiza
 import { ListarUsuariosComponent } from './components/usuario/listar-usuarios/listar-usuarios.component';
 import { GerenciarUsuarioComponent } from './components/usuario/gerenciar-usuario/gerenciar-usuario.component';
 import { UsuarioAtualizarAdminComponent } from './components/usuario/usuario-atualizar-admin/usuario-atualizar-admin.component';
+import { CarrinhoComponent } from './views/carrinho/carrinho.component';
 import { AppComponent } from './app.component';
 import { LivrosTituloComponent } from './components/livro/livros-titulo/livros-titulo.component';
 import { LivroCategoriaComponent } from './components/livro/livro-categoria/livro-categoria.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: "admin/gerenciar-usuario/:id", component: GerenciarUsuarioComponent },
   { path: "admin/atualizar-usuario/:id", component: UsuarioAtualizarAdminComponent },
   { path: "livros/cadastrar", component: LivroCadastroComponent },
+  { path: "carrinho", component: CarrinhoComponent},
   { path: "livros/titulo/:titulo", component: LivrosTituloComponent },
   { path: "livros/categoria/:categoria", component: LivroCategoriaComponent},
   { path: "livros/produto/:id", component: ProdutoLivroComponent }
