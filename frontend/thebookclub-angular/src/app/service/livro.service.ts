@@ -16,40 +16,40 @@ export class LivroService {
     const headers = new HttpHeaders()
       .set('Authorization', globals.usuarioLogin.token);
     
-    return this.http.post<Livro>('http://localhost:8080/livros/cadastrar', livro, { headers });
+    return this.http.post<Livro>(`${globals.BASE_URL}/livros/cadastrar`, livro, { headers });
   }
 
   public atualizarLivro(livro: Livro): Observable<Livro> {
     const headers = new HttpHeaders()
       .set('Authorization', globals.usuarioLogin.token);
     
-    return this.http.put<Livro>('http://localhost:8080/livros/atualizar', livro, { headers });
+    return this.http.put<Livro>(`${globals.BASE_URL}/livros/atualizar`, livro, { headers });
   }
 
   public deletarLivro(id: number): Observable<Livro> {
     const headers = new HttpHeaders()
       .set('Authorization', globals.usuarioLogin.token);
     
-    return this.http.delete<Livro>(`http://localhost:8080/livros/${id}`, { headers });
+    return this.http.delete<Livro>(`${globals.BASE_URL}/livros/${id}`, { headers });
   }
 
   public getAllCategorias(): Observable<string[]> {
-    return this.http.get<string[]>(`http://localhost:8080/livros/categorias`);
+    return this.http.get<string[]>(`${globals.BASE_URL}/livros/categorias`);
   }
 
   public getAllLivros(): Observable<Livro[]> {
-    return this.http.get<Livro[]>(`http://localhost:8080/livros`);
+    return this.http.get<Livro[]>(`${globals.BASE_URL}/livros`);
   }
 
   public getLivroById(id: number): Observable<Livro> {
-    return this.http.get<Livro>(`http://localhost:8080/livros/${id}`);
+    return this.http.get<Livro>(`${globals.BASE_URL}/livros/${id}`);
   }
 
   public getAllLivrosByCategoria(categoria: string): Observable<Livro[]> {
-    return this.http.get<Livro[]>(`http://localhost:8080/livros/categoria/${categoria}`);
+    return this.http.get<Livro[]>(`${globals.BASE_URL}/livros/categoria/${categoria}`);
   }
 
   public getAllLivrosByTitulo(titulo: string): Observable<Livro[]> {
-    return this.http.get<Livro[]>(`http://localhost:8080/livros/titulo/${titulo}`);
+    return this.http.get<Livro[]>(`${globals.BASE_URL}/livros/titulo/${titulo}`);
   }
 }

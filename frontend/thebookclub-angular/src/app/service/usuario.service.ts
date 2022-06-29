@@ -21,18 +21,18 @@ export class UsuarioService {
           .set('Authorization', globals.usuarioLogin.token)
       }
     }
-    return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar', usuario, options);
+    return this.http.post<Usuario>(`${globals.BASE_URL}/usuarios/cadastrar`, usuario, options);
   }
 
   public logarUsuario(usuario: UsuarioLogin): Observable<UsuarioLogin> {
-    return this.http.post<UsuarioLogin>('http://localhost:8080/usuarios/login', usuario);
+    return this.http.post<UsuarioLogin>(`${globals.BASE_URL}/usuarios/login`, usuario);
   }
 
   public atualizarUsuario(usuario: Usuario): Observable<Usuario> {
     const headers = new HttpHeaders()
       .set('Authorization', globals.usuarioLogin.token);
 
-    return this.http.put<Usuario>('http://localhost:8080/usuarios/atualizar', usuario, { headers });
+    return this.http.put<Usuario>(`${globals.BASE_URL}/usuarios/atualizar`, usuario, { headers });
   }
 
   public saveUsuarioLocalStorage(): void {
@@ -51,41 +51,41 @@ export class UsuarioService {
     const headers = new HttpHeaders()
       .set('Authorization', globals.usuarioLogin.token);
     
-    return this.http.get<Usuario[]>('http://localhost:8080/usuarios', { headers });
+    return this.http.get<Usuario[]>(`${globals.BASE_URL}/usuarios`, { headers });
   }
 
   public getById(id: number): Observable<Usuario> {
     const headers = new HttpHeaders()
       .set('Authorization', globals.usuarioLogin.token);
     
-    return this.http.get<Usuario>(`http://localhost:8080/usuarios/${id}`, { headers });
+    return this.http.get<Usuario>(`${globals.BASE_URL}/usuarios/${id}`, { headers });
   }
   public getUsuarioByNome(nome: string): Observable<Usuario> {
     const headers = new HttpHeaders()
       .set('Authorization', globals.usuarioLogin.token);
-    return this.http.get<Usuario>(`http://localhost:8080/usuarios/nome/${nome}`, { headers });
+    return this.http.get<Usuario>(`${globals.BASE_URL}/usuarios/nome/${nome}`, { headers });
   }
   public getUsuarioByUsername(username: string): Observable<Usuario> {
     const headers = new HttpHeaders()
       .set('Authorization', globals.usuarioLogin.token);
-    return this.http.get<Usuario>(`http://localhost:8080/usuarios/username/${username}`, { headers });
+    return this.http.get<Usuario>(`${globals.BASE_URL}/usuarios/username/${username}`, { headers });
   }
   public getUsuarioByEmail(email: string): Observable<Usuario> {
     const headers = new HttpHeaders()
       .set('Authorization', globals.usuarioLogin.token);
-    return this.http.get<Usuario>(`http://localhost:8080/usuarios/email/${email}`, { headers });
+    return this.http.get<Usuario>(`${globals.BASE_URL}/usuarios/email/${email}`, { headers });
   }
   public getUsuarioByCpf(cpf: string): Observable<Usuario> {
     const headers = new HttpHeaders()
       .set('Authorization', globals.usuarioLogin.token);
-    return this.http.get<Usuario>(`http://localhost:8080/usuarios/cpf/${cpf}`, { headers });
+    return this.http.get<Usuario>(`${globals.BASE_URL}/usuarios/cpf/${cpf}`, { headers });
   }
 
   public deleteById(id: number): Observable<Usuario> {
     const headers = new HttpHeaders()
       .set('Authorization', globals.usuarioLogin.token);
     
-      return this.http.delete<Usuario>(`http://localhost:8080/usuarios/${id}`, { headers });
+      return this.http.delete<Usuario>(`${globals.BASE_URL}/usuarios/${id}`, { headers });
   }
 
   public logout(): void {

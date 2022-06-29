@@ -81,7 +81,7 @@ export class CarrinhoService {
 		console.log(JSON.stringify(globals.carrinho, null, " "));
 		
 		return this.http.post<Pedido>(
-			'http://localhost:8080/pedidos/cadastrar',
+			`${globals.BASE_URL}/pedidos/cadastrar`,
 			globals.carrinho,
 			{ headers }
 		);
