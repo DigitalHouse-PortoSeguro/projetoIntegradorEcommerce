@@ -1,0 +1,39 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110px;
+    background-color: #8DC8FF;
+}
+
+.nav-item {
+    align-items: center;
+    margin-left: 230px;
+
+}
+
+
+ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: auto;
+
+}
+
+
+li {
+    margin: auto;
+
+}
+
+#fav {
+    margin-left: 50px;
+}
+
+#cat{
+    margin-left: 135px;
+    
+}

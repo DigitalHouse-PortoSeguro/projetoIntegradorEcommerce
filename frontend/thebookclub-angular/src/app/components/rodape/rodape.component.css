@@ -1,0 +1,36 @@
+.rodape {
+    background-color: #8DC8FF;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+#informacoes {
+    list-style: none;
+    text-align: center;
+    margin-top: 15px;
+
+}
+
+
+#github {
+    background-color: #8DC8FF;
+    /* flex-direction: row-reverse; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 15px;
+
+
+}
+
+#github-square:hover {
+    color: black !important;
+}
