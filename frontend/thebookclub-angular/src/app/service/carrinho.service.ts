@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { globals } from 'src/environments/environment';
+import { environment, globals } from 'src/environments/environment';
 import { Pedido } from '../modelos/Pedido';
 import { PedidoLivro } from '../modelos/PedidoLivro';
 import { Usuario } from '../modelos/Usuario';
@@ -81,7 +81,7 @@ export class CarrinhoService {
 		console.log(JSON.stringify(globals.carrinho, null, " "));
 		
 		return this.http.post<Pedido>(
-			`${globals.BASE_URL}/pedidos/cadastrar`,
+			`${environment.BASE_URL}/pedidos/cadastrar`,
 			globals.carrinho,
 			{ headers }
 		);

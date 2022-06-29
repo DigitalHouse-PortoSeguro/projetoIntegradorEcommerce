@@ -8,12 +8,12 @@ type GlobalVariables = {
 
 type EnvironmentVariables = {
 	production: boolean,
-	apiPath: string
+	BASE_URL: string
 };
 
 export const environment: EnvironmentVariables = {
 	production: false,
-	apiPath: "localhost:8080/"
+	BASE_URL: "localhost:8080/"
 };
 
 //variáveis globais para usuário login
