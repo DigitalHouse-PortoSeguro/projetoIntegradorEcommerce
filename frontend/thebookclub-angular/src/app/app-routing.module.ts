@@ -15,6 +15,8 @@ import { LivroCadastroComponent } from './components/livro/livro-cadastro/livro-
 import { EntrarComponent } from './components/entrar/entrar.component';
 import { InicioComponent } from './views/inicio/inicio.component';
 import { HomeComponent } from './views/home/home.component';
+import { ListagemLivrosComponent } from './components/livro/listagem-livros/listagem-livros.component';
+import { GerenciarLivroComponent } from './components/livro/gerenciar-livro/gerenciar-livro.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -27,10 +29,12 @@ const routes: Routes = [
   { path: "admin/gerenciar-usuario/:id", component: GerenciarUsuarioComponent },
   { path: "admin/atualizar-usuario/:id", component: UsuarioAtualizarAdminComponent },
   { path: "livros/cadastrar", component: LivroCadastroComponent },
-  { path: "carrinho", component: CarrinhoComponent},
   { path: "livros/titulo/:titulo", component: LivrosTituloComponent },
   { path: "livros/categoria/:categoria", component: LivroCategoriaComponent},
-  { path: "livros/produto/:id", component: ProdutoLivroComponent }
+  { path: "livros/produto/:id", component: ProdutoLivroComponent },
+  { path: "livros/listagem", component: ListagemLivrosComponent },
+  { path: "livro/gerenciar-livro/:id", component: GerenciarLivroComponent },
+  { path: "carrinho", component: CarrinhoComponent},
 ]
 
 @NgModule({

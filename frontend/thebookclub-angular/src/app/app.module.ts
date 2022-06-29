@@ -30,6 +30,8 @@ import { EntrarComponent } from './components/entrar/entrar.component';
 import { InicioComponent } from './views/inicio/inicio.component';
 import { MensagemModule } from './mensagem/mensagem/mensagem.module';
 import { HomeComponent } from './views/home/home.component';
+import { ListagemLivrosComponent } from './components/livro/listagem-livros/listagem-livros.component';
+import { GerenciarLivroComponent } from './components/livro/gerenciar-livro/gerenciar-livro.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { HomeComponent } from './views/home/home.component';
     LivroCadastroComponent,
     EntrarComponent,
     InicioComponent,
-    HomeComponent
+    HomeComponent,
+    ListagemLivrosComponent,
+    GerenciarLivroComponent
   ],
   imports: [
     BrowserModule,
