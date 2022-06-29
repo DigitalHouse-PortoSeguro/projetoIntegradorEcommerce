@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { globals } from 'src/environments/environment.prod';
+import { globals } from 'src/environments/environment';
 import { Usuario } from '../modelos/Usuario';
 import { UsuarioLogin } from '../modelos/UsuarioLogin';
 

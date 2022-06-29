@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/modelos/Usuario';
+import { UsuarioLogin } from 'src/app/modelos/UsuarioLogin';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { globals } from 'src/environments/environment';
 
 @Component({
   selector: 'app-usuario-atualizar',
@@ -29,9 +31,22 @@ export class UsuarioAtualizarComponent implements OnInit {
     this.usuarioService.atualizarUsuario(usuario).subscribe({
       next: resp => {
         console.log(resp);
-        this.usuarioService.logout();
-        this.router.navigate(['entrar']);
-        alert('Usuário atualizado com sucesso!');
+        const login = new UsuarioLogin();
+        login.username = usuario.username;
+        login.senha = usuario.senha;
+
+        this.usuarioService.logarUsuario(login).subscribe({
+          next: user => {
+            globals.usuarioLogin = user;
+            this.usuarioService.saveUsuarioLocalStorage();
+            this.router.navigate(['inicio']);
+            alert('Usuário atualizado com sucesso!');
+          },
+          error: err => {
+            console.log(err);
+            alert('Um erro aconteceu...');
+          }
+        });
       },
       error: err => {
         console.log(err);

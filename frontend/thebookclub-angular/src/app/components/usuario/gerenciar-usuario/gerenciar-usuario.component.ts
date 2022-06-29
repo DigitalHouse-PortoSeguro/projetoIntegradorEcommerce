@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/modelos/Usuario';
 import { UsuarioService } from 'src/app/service/usuario.service';
-import { globals } from 'src/environments/environment.prod';
+import { globals } from 'src/environments/environment';
 
 @Component({
   selector: 'app-gerenciar-usuario',

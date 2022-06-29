@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioLogin } from 'src/app/modelos/UsuarioLogin';
 import { UsuarioService } from 'src/app/service/usuario.service';
-import { globals } from 'src/environments/environment.prod';
+import { globals } from 'src/environments/environment';
 
 @Component({
   selector: 'app-entrar',
