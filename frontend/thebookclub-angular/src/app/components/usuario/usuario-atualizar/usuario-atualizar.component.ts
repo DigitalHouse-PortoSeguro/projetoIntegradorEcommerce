@@ -19,7 +19,7 @@ export class UsuarioAtualizarComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.usuarioService.isLoggedIn()) {
-      this.router.navigate(['cadastrar']);
+      this.router.navigate(['entrar']);
       return;
     }
     this.user = this.usuarioService.getUsuario();
