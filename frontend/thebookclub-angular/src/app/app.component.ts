@@ -1,7 +1,5 @@
-import { Component, ContentChild, OnInit } from '@angular/core';
-import { globals } from 'src/environments/environment.prod';
+import { Component, OnInit } from '@angular/core';
 import { Livro } from './modelos/Livro';
-import { Usuario } from './modelos/Usuario';
 import { UsuarioLogin } from './modelos/UsuarioLogin';
 import { CarrinhoService } from './service/carrinho.service';
 import { UsuarioService } from './service/usuario.service';
