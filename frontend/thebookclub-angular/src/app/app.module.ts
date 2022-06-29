@@ -27,7 +27,6 @@ import { LivrosTituloComponent } from './components/livro/livros-titulo/livros-t
 import { LivroCategoriaComponent } from './components/livro/livro-categoria/livro-categoria.component';
 import { LivroCadastroComponent } from './components/livro/livro-cadastro/livro-cadastro.component';
 import { EntrarComponent } from './components/entrar/entrar.component';
-import { InicioComponent } from './views/inicio/inicio.component';
 import { MensagemModule } from './mensagem/mensagem/mensagem.module';
 import { HomeComponent } from './views/home/home.component';
 import { ListagemLivrosComponent } from './components/livro/listagem-livros/listagem-livros.component';
@@ -35,7 +34,8 @@ import { GerenciarLivroComponent } from './components/livro/gerenciar-livro/gere
 import { AtualizarLivroComponent } from './components/livro/atualizar-livro/atualizar-livro.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RodapeComponent } from './components/rodape/rodape.component';
-import { InicioComponent } from './components/inicio/inicio.component';
+import { InicioComponent } from './views/inicio/inicio.component';
+//import { InicioComponent } from './components/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +64,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
     HomeComponent,
     ListagemLivrosComponent,
     GerenciarLivroComponent,
-    AtualizarLivroComponent
+    AtualizarLivroComponent,
     NavbarComponent,
     RodapeComponent,
     InicioComponent
