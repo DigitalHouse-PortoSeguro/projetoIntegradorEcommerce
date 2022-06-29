@@ -13,9 +13,16 @@ export class EntrarComponent implements OnInit {
   username = '';
   senha = '';
 
-  constructor(private authService: UsuarioService, private router:Router) { }
+  constructor(
+    private authService: UsuarioService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['inicio']);
+      return
+    }
   }
 
   login(){
