@@ -1,120 +1,36 @@
-@font-face {
-    font-family: 'Harmonia Sans Pro Cyr';
-    src: url('HarmoniaSansProCyr-Regular.ttf') format('truetype');
-  }
-
-  #text-element {
-    font-family: 'Harmonia Sans Pro Cyr', Arial, sans-serif;
-  }
-  
-#Footer {
+.rodape {
     background-color: #8DC8FF;
-    color: white;
-    padding-top: 30px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
-#Footer .footer-copyright {
-    background-color: #8DC8FF;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    text-align: center;
-}
-
-#Footer .row {
-    margin-bottom: 60px;
-}
-
-#Footer .navbar-brand {
-    margin-top: 45px;
-    height: 65px;
-}
-
-#Footer .footer-copyright p {
-    margin: 10px;
-    color: #ffff;
-}
-
-#Footer ul {
-    list-style-type: none;
-    padding-left: 0;
-    line-height: 1.7;
-}
-
-#Footer h5 {
-    font-size: 18px;
-    color: #ffff;
-    font-weight: bold;
-    margin-top: 30px;
-}
-
-#Footer h2 a{
-    font-size: 50px;
-    text-align: center;
-    color: #ffff;
-}
-
-#Footer a {
-    color: #ffff;
-    text-decoration: none;
-}
-
-#Footer a:hover,
-#Footer a:focus {
-    text-decoration: none;
-    color: #ffff;
-}
-
-
-#Footer .facebook:hover {
-    color: #0077e2;
-}
-
-#Footer .instagram:hover {
-    color: purple;
-}
-
-#Footer .twitter:hover {
-    color: #00aced;
-}
-
-#Footer .btn {
-    color: white;
-    background-color: #d84b6b;
-    border-radius: 20px;
-    border: none;
-    width: 150px;
-    display: block;
-    margin: 0 auto;
-    margin-top: 10px;
-    line-height: 25px;
-}
-
-@media screen and (max-width: 767px) {
-    #Footer {
-        text-align: center;
-    }
-}
-
-
-html{
-    height: 100%;
-}
-
-body{
+.row {
     display: flex;
-    display: -webkit-flex;
-    flex-direction: column;
-    -webkit-flex-direction: column;
-    height: 100%;
+    flex-wrap: wrap;
+    align-content: flex-start;
 }
 
-.content{
-   flex: 1 0 auto;
-   -webkit-flex: 1 0 auto;
-   min-height: 200px;
+#informacoes {
+    list-style: none;
+    text-align: center;
+    margin-top: 15px;
+
 }
 
-#myFooter{
-   flex: 0 0 auto;
-   -webkit-flex: 0 0 auto;
+
+#github {
+    background-color: #8DC8FF;
+    /* flex-direction: row-reverse; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 15px;
+
+
+}
+
+#github-square:hover {
+    color: black !important;
 }
