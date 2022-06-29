@@ -1,72 +1,45 @@
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-        <title>Livros</title>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Cadastro de Livros</h1>
-            <br>
-            <div class="row d-flex justify-content-center">
-              <div class="col-md-5">
-                  <label for="titulo">Título: </label>
-                  <input class="form-control" type="text" name="titulo" id="titulo" placeholder="Digite o Título">
-                </div>
-              
-              <div class="col-md-5">
-                <label for="data-publicacao">Data da Publicação:</label>
-                <input class="form-control" type="text" name="data-publicacao" id="data-publicacao" placeholder="Digite a Data de Publicação">
-              </div>
-              
-              <div class="w-100"></div>
-              <div class="col-md-5">
-                <label for="autores">Autores:</label>
-                <input class="form-control" type="text" name="autores" id="autores" placeholder="Digite os Autores">
-              </div>
-              <div class="col-md-5">
-                <label for="editora">Editora:</label>
-                <input class="form-control" type="text" name="editora" id="editora" placeholder="Digite a Editora">
-              </div>
+<div class="container">
+  <h1>Cadastro de Livros</h1>
+  <br>
+  <form [formGroup]="form" (ngSubmit)="enviar()">
+    <div class="row d-flex justify-content-center">
+      <app-input-field formControlName="Titulo" title="Titulo" name="titulo" id="titulo" class="col-md-6"
+        placeholder="Digite o Título"></app-input-field>
+      <app-input-field type="date" formControlName="DataPublicacao" title="Data Publicacao" name="data-publicacao" id="data-publicacao"
+        class="col-md-6" placeholder="Digite a Data de Publicação"></app-input-field>
+    </div>
+    <!-- <label for="titulo">Título: </label> -->
+    <!-- <input class="form-control" type="text" name="titulo" id="titulo" placeholder="Digite o Título"> -->
 
-              <div class="w-100"></div>
-              <div class="col-md-5">
-                <label for="categoria">Categoria:</label>
-                <input class="form-control" type="text" name="categoria" id="categoria" placeholder="Digite a Categoria">
-              </div>
-              <div class="col-md-5">
-                <label for="numero-paginas">Número de Páginas:</label>
-                <input class="form-control" type="text" name="numero-paginas" id="numero-paginas" placeholder="Digite o Número de Páginas">
-              </div>
+    <div class="row d-flex justify-content-center">
+      <app-input-field formControlName="Autores" title="Autores:" name="autores" id="autores" class="col-md-6"
+        placeholder="Digite os Autores"></app-input-field>
+      <app-input-field formControlName="Editora" title="Editora:" name="editora" id="editora" class="col-md-6"
+        placeholder="Digite a Editora"></app-input-field>
+    </div>
 
-              <div class="w-100"></div>
-              <div class="col-md-5">
-                <label for="preco">Preço:</label>
-                <input class="form-control" type="text" name="preco" id="preco" placeholder="Digite o Preço">
-              </div>
-              <div class="col-md-5">
-                <label for="isbn">ISBN:</label>
-                <input class="form-control" type="text" name="isbn" id="isbn" placeholder="Digite o ISBN">
-              </div>
+    <div class="row d-flex justify-content-center">
+      <app-input-field formControlName="Categoria" title="Categoria:" name="categoria" id="categoria" class="col-md-6"
+        placeholder="Categoria:"></app-input-field>
+      <app-input-field formControlName="NumeroDePaginas" title="Número de Páginas:" name="numero-paginas" id="numero-paginas"
+        class="col-md-6" placeholder="Digite o Número de Páginas"></app-input-field>
+    </div>
 
-              <div class="w-100"></div>
-              <div class="col-md-5">
-                <label for="quantidade-estoque">Quantidade no Estoque:</label>
-                <input class="form-control" type="text" name="quantidade-estoque" id="quantidade-estoque" placeholder="Digite a Quantidade no Estoque">
-              </div>
-              <div class="col-md-5">
-                <label for="fornecedor">Fornecedor:</label>
-                <input class="form-control" type="text" name="fornecedor" id="fornecedor" placeholder="Digite o Fornecedor">
-              </div>
-              <div class="w-100"></div>
-              <div class="col text-center">
-                <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
-              </div>
+    <div class="row d-flex justify-content-center">
+      <app-input-field formControlName="Preco" title="Preço:" name="preco" id="preco" class="col-md-6"
+        placeholder="Digite o Preço"></app-input-field>
+      <app-input-field formControlName="ISBN" title="ISBN:" name="isbn" id="isbn" class="col-md-6"
+        placeholder="Digite o ISBN"></app-input-field>
+    </div>
 
-
-            </div>
-          </div>
-    </body>
-</html>
+    <div class="row d-flex justify-content-center">
+      <app-input-field formControlName="QuantidadeNoEstoque" title="Quantidade no Estoque:" name="quantidade-estoque"
+        id="quantidade-estoque" class="col-md-6" placeholder="Digite a Quantidade no Estoque"></app-input-field>
+      <app-input-field formControlName="Fornecedor" title="Fornecedor:" name="fornecedor" id="fornecedor" class="col-md-6"
+        placeholder="Digite o Fornecedor"></app-input-field>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+    </div>
+  </form>
+</div>
