@@ -4,6 +4,7 @@ import { Livro } from './modelos/Livro';
 import { Usuario } from './modelos/Usuario';
 import { UsuarioLogin } from './modelos/UsuarioLogin';
 import { CarrinhoService } from './service/carrinho.service';
+import { UsuarioService } from './service/usuario.service';
 import { LocalDate } from './utils/LocalDate';
 
 @Component({
@@ -48,7 +49,8 @@ export class AppComponent implements OnInit {
   }
 
   constructor(
-    private carrinhoService: CarrinhoService
+    private carrinhoService: CarrinhoService,
+    private usuarioService: UsuarioService
   ) {
     this.livro = this.createLivro(
       "Os segredos da mente milionária",
@@ -95,6 +97,8 @@ export class AppComponent implements OnInit {
     user.username = "ghsoares"
     user.usuarioId = 1
     user.token = "Basic " + btoa("ghsoares:Senha123")
+
+    usuarioService.loadUsuarioLocalStorage();
 
     //globals.usuarioLogin = user;
   }
