@@ -17,11 +17,13 @@ import { UsuarioCadastroComponent } from './components/usuario-cadastro/usuario-
 import { UsuarioAtualizarComponent } from './components/usuario-atualizar/usuario-atualizar.component';
 import { ProdutoLivroComponent } from './components/livro/produto-livro/produto-livro.component';
 import { ListaLivroComponent } from './components/livro/lista-livro/lista-livro.component';
-import { CategoriasGeralComponent } from './views/categorias-geral/categorias-geral.component';
+import { CategoriasGeralComponent } from './components/categorias-geral/categorias-geral.component';
 import { CarrinhoComponent } from './views/carrinho/carrinho.component';
 import { ItemCarrinhoComponent } from './components/item-carrinho/item-carrinho.component';
 import { CalcFreteComponent } from './components/calc-frete/calc-frete.component';
-
+import { LivrosTituloComponent } from './components/livro/livros-titulo/livros-titulo.component';
+import { LivroCategoriaComponent } from './components/livro/livro-categoria/livro-categoria.component';
+import { LivroCadastroComponent } from './components/livro/livro-cadastro/livro-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,9 @@ import { CalcFreteComponent } from './components/calc-frete/calc-frete.component
     CarrinhoComponent,
     ItemCarrinhoComponent,
     CalcFreteComponent,
+    LivrosTituloComponent,
+    LivroCategoriaComponent,
+    LivroCadastroComponent
   ],
   imports: [
     BrowserModule,

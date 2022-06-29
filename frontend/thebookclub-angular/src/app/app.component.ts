@@ -59,13 +59,13 @@ export class AppComponent implements OnInit {
       10,
       30,
       "Editora",
-      "Aventura",
+      "Auto ajuda",
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam culpa expedita assumenda debitis earum rerum totam minus aliquam possimus, iure iste reiciendis nulla excepturi ratione praesentium quam officiis iusto quo!",
       "100011",
       30.9
     );
     this.livro2 = this.createLivro(
-      "Teste teste",
+      "Livro Aventura 01",
       "https://images-na.ssl-images-amazon.com/images/I/81ZnJcgjCdL.jpg",
       "Teste ",
       "2005-08-13",

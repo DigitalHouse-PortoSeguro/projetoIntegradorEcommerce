@@ -1,4 +1,4 @@
-import { Component, ContentChild, Directive, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, ContentChild, Directive, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { Livro } from 'src/app/modelos/Livro';
 
 @Component({
@@ -9,11 +9,15 @@ import { Livro } from 'src/app/modelos/Livro';
 export class ListaLivroComponent implements OnInit {
 
   @Input() listaLivros: Livro[];
-  @Input() tituloLista: string;
+  @Output() select: EventEmitter<number> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onLivroSelect(id: number): void {
+    this.select.emit(id);
   }
 
 }
