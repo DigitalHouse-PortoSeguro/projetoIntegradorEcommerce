@@ -7,7 +7,6 @@ import { ListarUsuariosComponent } from './components/usuario/listar-usuarios/li
 import { GerenciarUsuarioComponent } from './components/usuario/gerenciar-usuario/gerenciar-usuario.component';
 import { UsuarioAtualizarAdminComponent } from './components/usuario/usuario-atualizar-admin/usuario-atualizar-admin.component';
 import { CarrinhoComponent } from './views/carrinho/carrinho.component';
-import { AppComponent } from './app.component';
 import { LivrosTituloComponent } from './components/livro/livros-titulo/livros-titulo.component';
 import { LivroCategoriaComponent } from './components/livro/livro-categoria/livro-categoria.component';
 import { ProdutoLivroComponent } from './components/livro/produto-livro/produto-livro.component';
@@ -18,14 +17,16 @@ import { HomeComponent } from './views/home/home.component';
 import { ListagemLivrosComponent } from './components/livro/listagem-livros/listagem-livros.component';
 import { GerenciarLivroComponent } from './components/livro/gerenciar-livro/gerenciar-livro.component';
 import { AtualizarLivroComponent } from './components/livro/atualizar-livro/atualizar-livro.component';
+import { SairComponent } from './components/sair/sair.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
-  { path:"home", component: HomeComponent},
-  { path: "inicio", component: InicioComponent},//home page do usuario
+  { path: "home", component: HomeComponent },
+  { path: "inicio", component: InicioComponent },//home page do usuario
   { path: "cadastrar", component: UsuarioCadastroComponent },//arrumar para usuarios/cadastrar
   { path: "atualizar", component: UsuarioAtualizarComponent },
-  { path: "entrar", component: EntrarComponent},
+  { path: "entrar", component: EntrarComponent },
+  { path: "sair", component: SairComponent },
   { path: "admin/listar-usuarios", component: ListarUsuariosComponent },
   { path: "admin/gerenciar-usuario/:id", component: GerenciarUsuarioComponent },
   { path: "admin/atualizar-usuario/:id", component: UsuarioAtualizarAdminComponent },

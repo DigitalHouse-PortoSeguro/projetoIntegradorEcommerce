@@ -36,6 +36,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RodapeComponent } from './components/rodape/rodape.component';
 import { InicioComponent } from './views/inicio/inicio.component';
 //import { InicioComponent } from './components/inicio/inicio.component';
+import { SairComponent } from './components/sair/sair.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { InicioComponent } from './views/inicio/inicio.component';
     AtualizarLivroComponent,
     NavbarComponent,
     RodapeComponent,
-    InicioComponent
+    InicioComponent,
+    SairComponent
   ],
   imports: [
     BrowserModule,

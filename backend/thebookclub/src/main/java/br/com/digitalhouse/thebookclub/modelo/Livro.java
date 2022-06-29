@@ -48,7 +48,7 @@ public class Livro {
 	private String categoria;
 	
 	@NotNull(message="A sinopse não pode ser nula")
-	@Size(min=2,max=256, message = "O tamanho da sinopse deve ser entre {min} e {max}")
+	@Size(min=2, message = "O tamanho da sinopse deve ser pelo menos {min}")
 	private String sinopse;
 	
 	@NotNull(message="O numeroPaginas não pode ser nulo")
@@ -63,7 +63,7 @@ public class Livro {
 	private Double preco;
 	
 	@NotNull(message="O quantidadeEstoque não pode ser nulo")
-	@Min(value=1, message="O quantidadeEstoque deve ser pelo menos {value}")
+	@Min(value=0, message="O quantidadeEstoque deve ser pelo menos {value}")
 	private Integer quantidadeEstoque;
 	
 	@NotNull(message="O fornecedor não pode ser nulo")
