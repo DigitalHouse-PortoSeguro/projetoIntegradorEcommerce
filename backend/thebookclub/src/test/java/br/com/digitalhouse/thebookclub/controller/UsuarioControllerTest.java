@@ -107,7 +107,7 @@ public class UsuarioControllerTest {
 		// assim ele salva com a senha encriptografada corretamente.
 		// Como ele retorna um optional, usa-se o orElseThrow para poder dar erro
 		// no teste em si, caso der algo de errado no salvamento
-		usuarioService.cadastrarUsuario(usuario).orElseThrow();
+		usuarioService.cadastrarUsuario(usuario).orElseThrow(null);
 		
 		// Usa-se o testRestTemplate como cliente HTTP
 		ResponseEntity<Usuario> resposta = testRestTemplate
@@ -169,8 +169,8 @@ public class UsuarioControllerTest {
 		// assim ele salva com a senha encriptografada corretamente.
 		// Como ele retorna um optional, usa-se o orElseThrow para poder dar erro
 		// no teste em si, caso der algo de errado no salvamento
-		usuario1 = usuarioService.cadastrarUsuario(usuario1).orElseThrow();
-		usuario2 = usuarioService.cadastrarUsuario(usuario2).orElseThrow();
+		usuario1 = usuarioService.cadastrarUsuario(usuario1).orElseThrow(null);
+		usuario2 = usuarioService.cadastrarUsuario(usuario2).orElseThrow(null);
 		
 		// Aqui está mudando o email do usuário 2 para o email exato do usuário 1,
 		// para simular a mudança de email para o email de outro usuário

@@ -2,6 +2,8 @@ HELP.md
 mvn.cmd
 mvnw*
 target/
+../.metadata/
+../RemoteSystemTempFiles/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
