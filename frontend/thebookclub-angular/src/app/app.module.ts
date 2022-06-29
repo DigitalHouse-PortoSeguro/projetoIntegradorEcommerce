@@ -32,6 +32,7 @@ import { MensagemModule } from './mensagem/mensagem/mensagem.module';
 import { HomeComponent } from './views/home/home.component';
 import { ListagemLivrosComponent } from './components/livro/listagem-livros/listagem-livros.component';
 import { GerenciarLivroComponent } from './components/livro/gerenciar-livro/gerenciar-livro.component';
+import { AtualizarLivroComponent } from './components/livro/atualizar-livro/atualizar-livro.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { GerenciarLivroComponent } from './components/livro/gerenciar-livro/gere
     InicioComponent,
     HomeComponent,
     ListagemLivrosComponent,
-    GerenciarLivroComponent
+    GerenciarLivroComponent,
+    AtualizarLivroComponent
   ],
   imports: [
     BrowserModule,

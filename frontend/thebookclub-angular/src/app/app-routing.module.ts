@@ -17,6 +17,7 @@ import { InicioComponent } from './views/inicio/inicio.component';
 import { HomeComponent } from './views/home/home.component';
 import { ListagemLivrosComponent } from './components/livro/listagem-livros/listagem-livros.component';
 import { GerenciarLivroComponent } from './components/livro/gerenciar-livro/gerenciar-livro.component';
+import { AtualizarLivroComponent } from './components/livro/atualizar-livro/atualizar-livro.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: "livros/produto/:id", component: ProdutoLivroComponent },
   { path: "livros/listagem", component: ListagemLivrosComponent },
   { path: "livro/gerenciar-livro/:id", component: GerenciarLivroComponent },
+  { path: "livro/atualizar-livro/:id", component: AtualizarLivroComponent },
   { path: "carrinho", component: CarrinhoComponent},
 ]
 
