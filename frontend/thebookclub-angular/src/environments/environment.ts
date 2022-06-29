@@ -1,16 +1,24 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+import { Pedido } from 'src/app/modelos/Pedido';
+import { UsuarioLogin } from 'src/app/modelos/UsuarioLogin';
 
-export const environment = {
-  production: false
+type GlobalVariables = {
+	usuarioLogin: UsuarioLogin,
+	carrinho: Pedido
 };
 
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+type EnvironmentVariables = {
+	production: boolean,
+	apiPath: string
+};
+
+export const environment: EnvironmentVariables = {
+	production: false,
+	apiPath: "localhost:8080/"
+};
+
+//variáveis globais para usuário login
+export const globals: GlobalVariables = {
+	usuarioLogin: new UsuarioLogin(),
+	carrinho: new Pedido()
+}
+
