@@ -31,6 +31,8 @@ const routes: Routes = [
   { path: "admin/gerenciar-usuario/:id", component: GerenciarUsuarioComponent },
   { path: "admin/atualizar-usuario/:id", component: UsuarioAtualizarAdminComponent },
   { path: "livros/cadastrar", component: LivroCadastroComponent },
+  { path: "admin/cadastrarLivro", component: LivroCadastroComponent },
+  { path: "carrinho", component: CarrinhoComponent},
   { path: "livros/titulo/:titulo", component: LivrosTituloComponent },
   { path: "livros/categoria/:categoria", component: LivroCategoriaComponent},
   { path: "livros/produto/:id", component: ProdutoLivroComponent },
