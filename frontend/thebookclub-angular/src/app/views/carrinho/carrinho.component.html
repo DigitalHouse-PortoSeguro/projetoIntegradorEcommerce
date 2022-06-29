@@ -1,0 +1,42 @@
+<h2 class="title border-bottom border-white text-center">Carrinho</h2>
+<h3 class="subtitle"><strong>Itens</strong></h3>
+
+<div class="tabelaCarrinho">
+<table class="table">
+  <thead>
+    <tr class="tabelacabecalho" style="height: 50px; border: 20px">
+      <th class="cabecalho" style="width: 750px;">Produto</th>
+      <th class="cabecalho text-center">Quantidade</th>
+      <th class="cabecalho text-center">Preço</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="tabela" style="height: 200px" *ngFor="let pedidoLivro of listaPedidoLivro">
+      <td class="colunaTabela"><div class="cardCarrinho"><app-item-carrinho [pedidoLivro]="pedidoLivro"></app-item-carrinho></div></td>
+      <td class="colunaTabela align-middle"><p class="text-center" style="font-size: 14pt"><strong>{{ pedidoLivro.quantidade }}</strong></p></td>
+      <td class="colunaTabela align-middle"><p class="text-center" style="font-size: 15pt"><strong>R$ {{(pedidoLivro.precoVenda * pedidoLivro.quantidade).toFixed(2).replace(".", ",")}}</strong></p></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="link">
+<a style="color: black" [routerLink]="['/inicio']"><strong>Adicionar mais itens ao carrinho</strong></a>
+</div>
+
+<div class="total">
+    <p><strong>Total do pedido: R$ {{ getTotal().toFixed(2).replace(".", ",") }}</strong></p>
+</div>
+
+<div class="botaoFinalizar">
+<button class="botao" (click)="finalizarPedido()">Finalizar compra</button>
+</div>
+
+
+
+
+
+
+
+
+

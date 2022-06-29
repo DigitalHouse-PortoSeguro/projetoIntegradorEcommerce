@@ -1,7 +1,19 @@
-<h1 class="p-2 text-nowrap border-bottom border-white border-3 w-50 text-center mx-auto">
-    {{ tituloLista }}
-</h1>
 <!-- <app-produto-livro *ngFor="let livro of listaLivros" [livro]="livro"></app-produto-livro> -->
-<div class="row row-cols-1 row-cols-md-4 g-4">
-    <app-card-livro *ngFor="let livro of listaLivros" [livro]="livro"></app-card-livro>
+<div class="container">
+	<div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-2">
+		<div *ngFor="let livro of listaLivros" class="col mb-4">
+			<app-card-livro 
+				[livro]="livro"
+				(select)="onLivroSelect($event)"
+			>
+
+			</app-card-livro>
+		</div>
+	</div>
 </div>
+<!--<div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-2">
+    <app-card-livro 
+        *ngFor="let livro of listaLivros" 
+        [livro]="livro"
+    ></app-card-livro>
+</div>-->

@@ -1,6 +1,7 @@
 import { Component, ContentChild, OnInit } from '@angular/core';
 import { globals } from 'src/environments/environment.prod';
 import { Livro } from './modelos/Livro';
+import { PedidoLivro } from './modelos/PedidoLivro';
 import { Usuario } from './modelos/Usuario';
 import { UsuarioLogin } from './modelos/UsuarioLogin';
 import { CarrinhoService } from './service/carrinho.service';
@@ -101,5 +102,22 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.carrinhoService.resetar();
+
+    /*
+    teste dos livros para o carrinho
+    var livro = this.createLivro('livro1', 'https://images-na.ssl-images-amazon.com/images/I/81ZnJcgjCdL.jpg', 'fulano det al', '2000-10-22', 100, 20, 'moderna', 'Auto-ajuda', 'oaksdmejncuhucd', 'aduedecnj', 30.90)
+
+    var pedidoLivro = new PedidoLivro()
+
+    pedidoLivro.livro = livro
+    pedidoLivro.quantidade = 4
+    pedidoLivro.precoVenda = livro.preco
+
+    this.carrinhoService.adicionarPedidoLivro(pedidoLivro)
+    this.carrinhoService.adicionarPedidoLivro(pedidoLivro)
+    this.carrinhoService.adicionarPedidoLivro(pedidoLivro)
+    this.carrinhoService.adicionarPedidoLivro(pedidoLivro)
+    this.carrinhoService.adicionarPedidoLivro(pedidoLivro)
+    */
   }
 }

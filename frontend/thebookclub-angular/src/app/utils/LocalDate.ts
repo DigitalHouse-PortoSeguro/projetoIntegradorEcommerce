@@ -4,7 +4,7 @@ import { formatDate } from "@angular/common";
 export class LocalDate extends Date {
 
 	public override toString(): string {
-		return formatDate(this, "yyyy-MM-dd", "en-US");
+		return formatDate(super.toString(), "yyyy-MM-dd", "en-US");
 	}
 
 	public override toJSON(key?: any): string {
@@ -20,7 +20,7 @@ export class LocalDate extends Date {
 
 export class LocalDateTime extends Date {
 	public override toString(): string {
-		return formatDate(this, "yyyy-MM-dd HH:mm:ss", "en-US");
+		return formatDate(super.toString(), "yyyy-MM-dd HH:mm:ss", "en-US");
 	}
 
 	public override toJSON(key?: any): string {
