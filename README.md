@@ -66,17 +66,18 @@
 <br><br>
 
 <div>
- <h3 >Tecnologias utilizadas:</h3>
+
  <br>
 <p>
-    O projeto foi desenvolvido em JAVA, usando Maven e Angular. No Backend temos a estrutura do banco de dados:
+    O projeto foi desenvolvido em JAVA, usando Maven e Angular. No Backend temos a estrutura do banco de dados relacional:
 </p>  
-    <img src="Captura de tela de 2022-06-30 19-04-57.png">
+    <img src="/home/magna/Documentos/DH_PortoSeguro/projetoIntegradorEcommerce/frontend/thebookclub-angular/src/assets/img/model.png">
 </div> 
 <br>
 
 <div>
    
+   ## Tecnologias utilizadas:
 <ul>
         <li>Java 17</li>
         <li> Maven Apache 4.0.0</li>
@@ -94,6 +95,12 @@
         <li>Angular</li>
 </ul>
 </div>
+
+## Pré requisitos:
+<div>
+    Para rodar op código de forma local é necessário ter o nvm instalado assim como todas as dependencias citadas acima.
+
+<br><br>
 
 <h4 align="center">Colaboradores: </h4>
 
