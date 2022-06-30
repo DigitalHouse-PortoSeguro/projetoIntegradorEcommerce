@@ -7,6 +7,7 @@ import { CarrinhoComponent } from './views/carrinho/carrinho.component';
 import { LivrosTituloComponent } from './components/livro/livros-titulo/livros-titulo.component';
 import { LivroCategoriaComponent } from './components/livro/livro-categoria/livro-categoria.component';
 import { ProdutoLivroComponent } from './components/livro/produto-livro/produto-livro.component';
+import { CategoriasGeralComponent } from './components/categorias-geral/categorias-geral.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "cadastrar", pathMatch: "full" },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: "carrinho", component: CarrinhoComponent},
   { path: "livros/titulo/:titulo", component: LivrosTituloComponent },
   { path: "livros/categoria/:categoria", component: LivroCategoriaComponent},
-  { path: "livros/produto/:id", component: ProdutoLivroComponent }
+  { path: "livros/produto/:id", component: ProdutoLivroComponent },
+  { path: "livros/categorias", component: CategoriasGeralComponent}
 ]
 
 @NgModule({

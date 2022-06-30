@@ -15,41 +15,41 @@ export class LivroService {
   public cadastrarLivro(livro: Livro): Observable<Livro> {
     const headers = new HttpHeaders()
       .set('Authorization', globals.usuarioLogin.token);
-    
-    return this.http.post<Livro>('http://localhost:8080/livros/cadastrar', livro, { headers });
+
+    return this.http.post<Livro>('https://thebookclub-dhporto.herokuapp.com/livros/cadastrar', livro, { headers });
   }
 
   public atualizarLivro(livro: Livro): Observable<Livro> {
     const headers = new HttpHeaders()
       .set('Authorization', globals.usuarioLogin.token);
-    
-    return this.http.put<Livro>('http://localhost:8080/livros/atualizar', livro, { headers });
+
+    return this.http.put<Livro>('https://thebookclub-dhporto.herokuapp.com/livros/atualizar', livro, { headers });
   }
 
   public deletarLivro(id: number): Observable<Livro> {
     const headers = new HttpHeaders()
       .set('Authorization', globals.usuarioLogin.token);
-    
-    return this.http.delete<Livro>(`http://localhost:8080/livros/${id}`, { headers });
+
+    return this.http.delete<Livro>(`https://thebookclub-dhporto.herokuapp.com/livros/${id}`, { headers });
   }
 
   public getAllCategorias(): Observable<string[]> {
-    return this.http.get<string[]>(`http://localhost:8080/livros/categorias`);
+    return this.http.get<string[]>(`https://thebookclub-dhporto.herokuapp.com/livros/categorias`);
   }
 
   public getAllLivros(): Observable<Livro[]> {
-    return this.http.get<Livro[]>(`http://localhost:8080/livros`);
+    return this.http.get<Livro[]>(`https://thebookclub-dhporto.herokuapp.com/livros`);
   }
 
   public getLivroById(id: number): Observable<Livro> {
-    return this.http.get<Livro>(`http://localhost:8080/livros/${id}`);
+    return this.http.get<Livro>(`https://thebookclub-dhporto.herokuapp.com/livros/${id}`);
   }
 
   public getAllLivrosByCategoria(categoria: string): Observable<Livro[]> {
-    return this.http.get<Livro[]>(`http://localhost:8080/livros/categoria/${categoria}`);
+    return this.http.get<Livro[]>(`https://thebookclub-dhporto.herokuapp.com/livros/categoria/${categoria}`);
   }
 
   public getAllLivrosByTitulo(titulo: string): Observable<Livro[]> {
-    return this.http.get<Livro[]>(`http://localhost:8080/livros/titulo/${titulo}`);
+    return this.http.get<Livro[]>(`https://thebookclub-dhporto.herokuapp.com/livros/titulo/${titulo}`);
   }
 }
