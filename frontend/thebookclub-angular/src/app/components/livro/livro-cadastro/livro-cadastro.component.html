@@ -38,6 +38,18 @@
       <app-input-field formControlName="Fornecedor" title="Fornecedor:" name="fornecedor" id="fornecedor" class="col-md-6"
         placeholder="Digite o Fornecedor"></app-input-field>
     </div>
+    <div class="row d-flex justify-content-center">
+      <app-input-field formControlName="Foto" helpText="Foto no Formato PNG ou JPG" title="URL da Foto:" name="url-foto"
+        id="url-foto" class="col-md-12" placeholder="Digite a URL da Foto"></app-input-field>
+      
+    </div>
+    <div class="row d-flex justify-content-center">
+
+          <app-textarea formControlName="Sinopse" title="Sinopse:" name="sinopse" id="sinopse" class="col-md-12" 
+          placeholder="Digite a Sinopse do Livro">
+          </app-textarea>
+    </div>
+
     <div class="d-flex justify-content-end">
       <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
     </div>
