@@ -57,7 +57,7 @@
 
 
 <a href="https://www.canva.com/design/DAE_7eqkEPE/OdpUXJiGBeoW8eYczJAOKw/view?website#4:inicio">
-  <img alt="Esboço do the book club" src="http://img.shields.io/static/v1?label=rLayout&message=Canva&color=blue&s?style=plastic=appveyor">
+  <img alt="Canva the book club" src="http://img.shields.io/static/v1?label=Layout&message=Canva&color=blue&s?style=plastic=appveyor">
 </a>
 <br><br>
 
