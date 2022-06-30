@@ -37,6 +37,11 @@ export class LivroCategoriaComponent implements OnInit {
     })
   }
 
+  onLivroSelect(id: number): void {
+    console.log(id);
+    this.router.navigate(['/livros/produto', id]);
+  }
+
 
 
 }

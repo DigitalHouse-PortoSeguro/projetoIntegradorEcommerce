@@ -3,5 +3,6 @@
 </h1>
 <app-lista-livro 
     *ngIf="listaLivrosCategoria" 
-    [listaLivros]="listaLivrosCategoria">
+    [listaLivros]="listaLivrosCategoria"
+    (select)="onLivroSelect($event)">
 </app-lista-livro>
