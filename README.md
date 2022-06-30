@@ -10,7 +10,6 @@
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=blue&?style=plastic=appveyor)
 ![Badge em Maven](http://img.shields.io/static/v1?label=Maven%20version&message=4.0.0&color=blue&?style=plastic=appveyor)
-![Badge em Licença](http://img.shields.io/static/v1?label=Licence&message=???&color=blue&?style=plastic=appveyor)
 ![Badge em Release date](http://img.shields.io/static/v1?label=release&message=Julho&color=blue&s?style=plastic=appveyor)
 
 
@@ -37,39 +36,29 @@
     </ul>    
 </p>
 </div>
-<fieldset>
-    <legend>Features: </legend>
 
 <div>
-    <input type="checkbox" checked>
-    <label>Cadastro de usuário</label>
-</div>
-<div>
-    <input type="checkbox" checked>
-    <label>Cadastro de produtos</label>
-</div>
-<div>
-    <input type="checkbox" checked>
-    <label>Autenticação de usuário</label>
-</div>
-<div>
-    <input type="checkbox" checked>
-    <label>Página inicial com navbar e botão de login e cadastro</label>
-</div>
-<div>
-    <input type="checkbox" checked>
-    <label>Página individual do produto(livro)</label>
-</div>
-<div>
-    <input type="checkbox" checked>
-    <label>Página de favoritos</label>
-</div>
-<div>
-    <input type="checkbox" checked>
-    <label>Página dos mais populares</label>
-</div>
-</fieldset>
 <br>
+
+## ⚙️ Features
+
+- [x] Página dos mais populares
+- [x] Página de favoritos
+- [x] Página individual do produto(livro)
+- [x] Página inicial com navbar e botão de login e cadastro
+- [x] Autenticação de usuário 
+- [x] Cadastro de produtos 
+- [x] Cadastro de usuário
+
+<br>
+
+## 🎨 Layout
+
+<a href="https://www.canva.com/design/DAE_7eqkEPE/OdpUXJiGBeoW8eYczJAOKw/view?website#4:inicio">
+  <img alt="Esboço do the book club" src="https://img.shields.io/badge/Acessar%20Layout%20-Canva-%&color=blue&s?style=plastic=appveyor)">
+</a>
+<br><br>
+
 <div>
 <p>
     O projeto foi desenvolvido em JAVA, usando Maven e Angular. No Backend temos a estrutura do banco de dados:
@@ -77,6 +66,7 @@
     img do esquema
 </div> 
 <br>
+
 <div>
     <label>Tecnologias utilizadas:</label>
     <ul>
@@ -96,7 +86,7 @@
         <li>Angular</li>
     </ul>
 </div>
-<h2 align="center">Colaboradores: </h2>
+<h4 align="center">Colaboradores: </h4>
 
 <table>
 <tr>
@@ -116,9 +106,5 @@
 
 <td align="center"><a href="https://github.com/Temgi"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/8334174?v=4" width="160px;" alt="Foto de Rui Temgi Saraiva Azevedo no GitHub"/><br /><sub><b>Temgi</b></sub></a><br /></td>
 
-
-
-
-
-  </tr>
+</tr>
 </table>
