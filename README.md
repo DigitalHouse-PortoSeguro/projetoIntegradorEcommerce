@@ -54,6 +54,8 @@
 
 ## 🎨 Layout
 
+![Badge em layout](https://www.canva.com/design/DAE_7eqkEPE/OdpUXJiGBeoW8eYczJAOKw/view?website#4:inicio?label=release&message=Canva&color=blue&s?style=plastic=appveyor)
+
 <a href="https://www.canva.com/design/DAE_7eqkEPE/OdpUXJiGBeoW8eYczJAOKw/view?website#4:inicio">
   <img alt="Esboço do the book club" src="https://img.shields.io/badge/Acessar%20Layout%20-Canva-%&color=blue&s?style=plastic=appveyor)">
 </a>
