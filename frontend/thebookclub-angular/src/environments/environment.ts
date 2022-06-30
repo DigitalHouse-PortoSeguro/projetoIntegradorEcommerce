@@ -15,6 +15,7 @@ export const environment: EnvironmentVariables = {
 	production: false,
 	BASE_URL: "http://localhost:8080"
 };
+environment.BASE_URL = "https://thebookclub-dhporto.herokuapp.com";
 
 //variáveis globais para usuário login
 export const globals: GlobalVariables = {
