@@ -13,7 +13,7 @@ type EnvironmentVariables = {
 
 export const environment: EnvironmentVariables = {
 	production: false,
-	BASE_URL: "localhost:8080/"
+	BASE_URL: "localhost:8080"
 };
 
 //variáveis globais para usuário login

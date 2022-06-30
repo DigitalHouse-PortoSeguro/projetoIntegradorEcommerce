@@ -13,7 +13,7 @@ type EnvironmentVariables = {
 
 export const environment: EnvironmentVariables = {
 	production: true,
-	BASE_URL: "https://thebookclub-dhporto.herokuapp.com/"
+	BASE_URL: "https://thebookclub-dhporto.herokuapp.com"
 };
 
 //variáveis globais para usuário login
