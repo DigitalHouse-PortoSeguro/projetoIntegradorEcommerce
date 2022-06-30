@@ -93,11 +93,11 @@ export class AppComponent implements OnInit {
     user.senha = "$2a$10$s5WHHaUrkJeWfC7.n2o3XuvHlKytNOm0VcNp/uQg1uzZ.NSgba/yG"
     user.sobrenome = "Pereira Soares"
     user.tipoUsuario = "COMUM"
-    user.username = "ghsoares"
+    user.username = "ruitemgi"
     user.usuarioId = 1
-    user.token = "Basic " + btoa("ghsoares:Senha123")
+    user.token = "Basic " + btoa("ruitemgi:Senha123")
 
-    //globals.usuarioLogin = user;
+    globals.usuarioLogin = user;
   }
 
   ngOnInit(): void {
