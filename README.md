@@ -92,12 +92,33 @@
         <li>Jdbc</li>
         <li>Spring Boot Starter Test </li>
         <li>Spring Boot Maven Plugin</li>
+        <li>Bootstrap</li>
+        <li>Angular</li>
     </ul>
+</div>
+<h2 align="center">Colaboradores: </h2>
+
+<table>
+<tr>
+<td align="center"><a href="https://github.com/adriellebs"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/99371469?v=4" width="100px;" alt="Foto de Adrielle Barros no GitHub"/><br /><sub><b>adriellebs</b></sub></a><br /></td>
+
+<td align="center"><a href="https://github.com/carollmbg"><img style="border-radius:10%;" src="https://avatars.githubusercontent.com/u/51660899?v=4" width="100px;" alt="Foto de carollmbg no GitHub"/><br /><sub><b>carollmbg</b></sub></a><br /></td>
+
+<td align="center"><a href="https://github.com/drishaolin"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/81246626?v=4" width="110px;" alt="Foto de Adriana Mucciolo no GitHub"/><br /><sub><b>drishaolin</b></sub></a><br /></td>
+
+<td align="center"><a href="https://github.com/ghsoares"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/43936806?v=4" width="130px;" alt="Foto de ghsoares no GitHub"/><br /><sub><b>ghsoares</b></sub></a><br /></td>
+
+
+<td align="center"><a href="https://github.com/letoffoli"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/100161664?v=4" width="125px;" alt="Foto de letoffoli no GitHub"/><br /><sub><b>letoffoli</b></sub></a><br /></td>
+
+<td align="center"><a href="https://github.com/luanatenguan"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/99658695?v=4" width="75px;" alt="Foto de luanatenguan no GitHub"/><br /><sub><b>luanatenguan</b></sub></a><br /></td>
+ 
+
+<td align="center"><a href="https://github.com/Temgi"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/8334174?v=4" width="160px;" alt="Foto de Rui Temgi Saraiva Azevedo no GitHub"/><br /><sub><b>Temgi</b></sub></a><br /></td>
 
 
 
 
-<p>
 
-
- E a estrutura do código é composta de model, security, repository e enuns.
+  </tr>
+</table>
