@@ -62,6 +62,8 @@
 <br><br>
 
 <div>
+ <h3 >Tecnologias utilizadas:</h3>
+ <br>
 <p>
     O projeto foi desenvolvido em JAVA, usando Maven e Angular. No Backend temos a estrutura do banco de dados:
 </p>  
@@ -70,8 +72,8 @@
 <br>
 
 <div>
-    <label>Tecnologias utilizadas:</label>
-    <ul>
+   
+<ul>
         <li>Java 17</li>
         <li> Maven Apache 4.0.0</li>
         <li> Spring Boot Starter Parent 2.6.7</li>
@@ -86,8 +88,9 @@
         <li>Spring Boot Maven Plugin</li>
         <li>Bootstrap</li>
         <li>Angular</li>
-    </ul>
+</ul>
 </div>
+
 <h4 align="center">Colaboradores: </h4>
 
 <table>
@@ -96,17 +99,17 @@
 
 <td align="center"><a href="https://github.com/carollmbg"><img style="border-radius:10%;" src="https://avatars.githubusercontent.com/u/51660899?v=4" width="100px;" alt="Foto de carollmbg no GitHub"/><br /><sub><b>carollmbg</b></sub></a><br /></td>
 
-<td align="center"><a href="https://github.com/drishaolin"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/81246626?v=4" width="110px;" alt="Foto de Adriana Mucciolo no GitHub"/><br /><sub><b>drishaolin</b></sub></a><br /></td>
+<td align="center"><a href="https://github.com/drishaolin"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/81246626?v=4" width="100px;" alt="Foto de Adriana Mucciolo no GitHub"/><br /><sub><b>drishaolin</b></sub></a><br /></td>
 
-<td align="center"><a href="https://github.com/ghsoares"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/43936806?v=4" width="130px;" alt="Foto de ghsoares no GitHub"/><br /><sub><b>ghsoares</b></sub></a><br /></td>
+<td align="center"><a href="https://github.com/ghsoares"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/43936806?v=4" width="100px;" alt="Foto de ghsoares no GitHub"/><br /><sub><b>ghsoares</b></sub></a><br /></td>
 
 
-<td align="center"><a href="https://github.com/letoffoli"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/100161664?v=4" width="125px;" alt="Foto de letoffoli no GitHub"/><br /><sub><b>letoffoli</b></sub></a><br /></td>
+<td align="center"><a href="https://github.com/letoffoli"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/100161664?v=4" width="100px;" alt="Foto de letoffoli no GitHub"/><br /><sub><b>letoffoli</b></sub></a><br /></td>
 
-<td align="center"><a href="https://github.com/luanatenguan"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/99658695?v=4" width="75px;" alt="Foto de luanatenguan no GitHub"/><br /><sub><b>luanatenguan</b></sub></a><br /></td>
+<td align="center"><a href="https://github.com/luanatenguan"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/99658695?v=4" width="100px;" alt="Foto de luanatenguan no GitHub"/><br /><sub><b>luanatenguan</b></sub></a><br /></td>
  
 
-<td align="center"><a href="https://github.com/Temgi"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/8334174?v=4" width="160px;" alt="Foto de Rui Temgi Saraiva Azevedo no GitHub"/><br /><sub><b>Temgi</b></sub></a><br /></td>
+<td align="center"><a href="https://github.com/Temgi"><img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/8334174?v=4" width="100px;" alt="Foto de Rui Temgi Saraiva Azevedo no GitHub"/><br /><sub><b>Temgi</b></sub></a><br /></td>
 
 </tr>
 </table>
