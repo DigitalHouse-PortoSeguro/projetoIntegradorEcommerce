@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="form" class="container">
     <h1>Atualização de Livros</h1>
     <br>
     <form [formGroup]="form" (ngSubmit)="enviar()">
