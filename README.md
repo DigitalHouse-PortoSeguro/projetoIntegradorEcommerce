@@ -29,5 +29,11 @@ Tivemos como inspiração grandes nomes da venda de livros e sebos online para c
 
     img
 
-    E a estrutura é composta de model, controller, service, security e repository.
+    E a estrutura é composta de model, security, repository e enuns.
 </p>    
+<p>
+    ###Features
+    - [x] Cadastro de usuário
+    - [x] Cadastro de cliente
+    - [x] Cadastro de produtos
+
