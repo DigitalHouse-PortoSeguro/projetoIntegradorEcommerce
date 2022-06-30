@@ -8,12 +8,19 @@ import { Router } from '@angular/router'
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(
-    // private router: Router
+  tituloText: string = "";
 
+  constructor(
+    private router: Router
   ) { }
 
   ngOnInit() {
+  }
+
+  buscaTitulo() {
+    if (this.tituloText == "") return;
+
+    this.router.navigate(['/livros/titulo', this.tituloText]);
   }
 
 }
