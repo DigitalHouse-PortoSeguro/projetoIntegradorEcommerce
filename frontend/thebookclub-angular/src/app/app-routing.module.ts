@@ -19,28 +19,29 @@ import { GerenciarLivroComponent } from './components/livro/gerenciar-livro/gere
 import { AtualizarLivroComponent } from './components/livro/atualizar-livro/atualizar-livro.component';
 import { SairComponent } from './components/sair/sair.component';
 import { LivroAtualizarComponent } from './components/livro/livro-atualizar/livro-atualizar.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "home", pathMatch: "full" },
-  { path: "home", component: HomeComponent },
+  { path: "", redirectTo: "inicio", pathMatch: "full" },
+  
   { path: "inicio", component: InicioComponent },//home page do usuario
   { path: "cadastrar", component: UsuarioCadastroComponent },//arrumar para usuarios/cadastrar
   { path: "atualizar", component: UsuarioAtualizarComponent },
   { path: "entrar", component: EntrarComponent },
   { path: "sair", component: SairComponent },
-  { path: "admin/listar-usuarios", component: ListarUsuariosComponent },
-  { path: "admin/gerenciar-usuario/:id", component: GerenciarUsuarioComponent },
-  { path: "admin/atualizar-usuario/:id", component: UsuarioAtualizarAdminComponent },
-  { path: "livros/cadastrar", component: LivroCadastroComponent },
-  { path: "admin/cadastrarLivro", component: LivroCadastroComponent },
-  { path: "admin/atualizarLivro/:id", component: LivroAtualizarComponent },
-  { path: "carrinho", component: CarrinhoComponent},
+  { path: "admin", component: AdminComponent },
+  { path: "admin/usuarios/lista", component: ListarUsuariosComponent },
+  { path: "admin/usuarios/gerenciar/:id", component: GerenciarUsuarioComponent },
+  { path: "admin/usuarios/atualizar/:id", component: UsuarioAtualizarAdminComponent },
+  
+  { path: "admin/livros/cadastrar", component: LivroCadastroComponent },
+  { path: "admin/livros/atualizar/:id", component: LivroAtualizarComponent },
+  { path: "admin/livros/lista", component: ListagemLivrosComponent },
+  { path: "admin/livros/gerenciar/:id", component: GerenciarLivroComponent },
+  
   { path: "livros/titulo/:titulo", component: LivrosTituloComponent },
   { path: "livros/categoria/:categoria", component: LivroCategoriaComponent},
   { path: "livros/produto/:id", component: ProdutoLivroComponent },
-  { path: "livros/listagem", component: ListagemLivrosComponent },
-  { path: "livro/gerenciar-livro/:id", component: GerenciarLivroComponent },
-  { path: "livro/atualizar-livro/:id", component: AtualizarLivroComponent },
   { path: "carrinho", component: CarrinhoComponent},
 ]
 
