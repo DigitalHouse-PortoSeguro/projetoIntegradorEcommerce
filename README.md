@@ -1,4 +1,8 @@
-<h2 align="center">PROJETO INTEGRADOR DIGITAL HOUSE-PORTO SEGURO</h1>
+<h2 align="center">PROJETO INTEGRADOR DIGITAL HOUSE-PORTO SEGURO</h2>
+
+<h1 align="center">The Book Club</h1>
+<h6 align="center">A loja perfeita para os amantes de livros</h6>
+
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=blue&?style=plastic=appveyor)
 ![Badge em Maven](http://img.shields.io/static/v1?label=Maven%20version&message=4.0.0&color=blue&?style=plastic=appveyor)
@@ -23,17 +27,28 @@ Tivemos como inspiração grandes nomes da venda de livros e sebos online para c
         <li>Colocar produtos em um carrinho de compras</li>
         <li>Realizar a compra</li>
         <li>Realizar login com senha</li>
+    </ul>    
 </p>
 <p>
-    O projeto foi desenvolvido em JAVA, usando Maven e Angular. No Backend temos a estrutura de banco de dados:
+    O projeto foi desenvolvido em JAVA, usando Maven e Angular. No Backend temos a estrutura do banco de dados:
 
-    img
+    img do esquema
 
-    E a estrutura é composta de model, security, repository e enuns.
+   
 </p>    
 <p>
     ###Features
     - [x] Cadastro de usuário
-    - [x] Cadastro de cliente
     - [x] Cadastro de produtos
+    - [x] Autenticação de usuário
+    - [x] Página inicial com navbar e botão de login e cadastro
+    - [x] Página individual do produto(livro)
+    - [x] Página de categorias do produto(livro)
+    - [x] Página de favoritos
 
+
+</p>
+<p>
+
+
+ E a estrutura do código é composta de model, security, repository e enuns.
