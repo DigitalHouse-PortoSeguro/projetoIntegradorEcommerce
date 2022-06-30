@@ -40,6 +40,20 @@ export default class CustomValidators {
 		}
 	}
 
+	public static size(min: number, max: number, message: string) {
+		return function (control: AbstractControl) {
+			const len = control.value.length;
+
+			if (len < min || len > max) {
+				return {
+					'size': message
+				}
+			}
+
+			return null;
+		}
+	}
+
 	public static email(message: string) {
 		return function (control: AbstractControl) {
 			const err = Validators.email(control);

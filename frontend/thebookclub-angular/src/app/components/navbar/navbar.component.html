@@ -1,22 +1,60 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light bg-opacity-25">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid" style="background-color:#8DC8FF ;">
       <a class="navbar-brand" routerLink="/inicio">
-        <img src="../../../assets/img/Logo.png" height="60px" alt="símbolo do site, um livro com coração">
+        <img src="../../../assets/img/Logo.png" height="50px" alt="símbolo do site, um livro com coração">
     </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+        <ul class="navbar-nav mx-4 mb-2 mb-lg-0">
+          <li class="nav-item mx-0">
             <a class="nav-link active fs-3 fw-bold" aria-current="page" href="#">Categorias</a>
           </li>
 
           <li class="nav-item mx-0">
-            <a class="nav-link" href="#">
-                <img id="perfil" src="../../../assets/img/perfil.png" height="40px" alt="" />
-                <span>Olá, bem vindo(a)!</span>
+            <div class="row">
+                <div class="col-2">
+                    <a class="nav-link" href="#">
+                        <img id="perfil" src="../../../assets/img/perfil.png" height="40px" alt="" />
+                      </a>
+                </div>
+                <div class="col-10">
+                    <div class="row">
+                        <div class="col-12">
+                            <span>Olá, bem vindo(a)!</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <span>
+                                <a href="">
+                                    Entre
+                                </a>
+                            </span>
+                            <span> ou </span>
+                            <span>
+                                <a href="">
+                                    Cadastre-se
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+          </li>
+
+          <li class="nav-item mx-0">
+            <a class="nav-link" href="/">
+                <img src="../../../assets/img/favoritos.png" height="40px"
+                    alt="coração representando lista de favoritos" />
+            </a>
+          </li>
+          <li class="nav-item mx-0">
+            <a class="nav-link .flex-fill" href="../item-carrinho/item-carrinho.component.html">
+                <img src="../../../assets/img/carrinho.png" height="40px"
+                    alt="carrinho com os itens escolhidos para compra" />
             </a>
           </li>
         </ul>

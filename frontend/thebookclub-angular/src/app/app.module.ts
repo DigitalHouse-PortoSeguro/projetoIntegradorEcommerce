@@ -37,6 +37,9 @@ import { RodapeComponent } from './components/rodape/rodape.component';
 import { InicioComponent } from './views/inicio/inicio.component';
 //import { InicioComponent } from './components/inicio/inicio.component';
 import { SairComponent } from './components/sair/sair.component';
+import { SobreNosComponent } from './views/sobre-nos/sobre-nos.component';
+import { FaleConoscoComponent } from './views/fale-conosco/fale-conosco.component';
+import { FormasPagamentoComponent } from './views/formas-pagamento/formas-pagamento.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +72,10 @@ import { SairComponent } from './components/sair/sair.component';
     NavbarComponent,
     RodapeComponent,
     InicioComponent,
-    SairComponent
+    SairComponent,
+    SobreNosComponent,
+    FaleConoscoComponent,
+    FormasPagamentoComponent
   ],
   imports: [
     BrowserModule,
