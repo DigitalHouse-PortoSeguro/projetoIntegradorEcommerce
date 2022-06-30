@@ -43,6 +43,7 @@ import { FormasPagamentoComponent } from './views/formas-pagamento/formas-pagame
 import { TextareaComponent } from './components/textarea/textarea.component';
 import { LivroAtualizarComponent } from './components/livro/livro-atualizar/livro-atualizar.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { CategoriasGeralComponent } from './components/categorias-geral/categorias-geral.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { AdminComponent } from './components/admin/admin.component';
     CarrinhoComponent,
     ItemCarrinhoComponent,
     CalcFreteComponent,
+    CategoriasGeralComponent,
     LivrosTituloComponent,
     LivroCategoriaComponent,
     LivroCadastroComponent,
