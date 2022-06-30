@@ -19,11 +19,11 @@ export class ListarUsuariosComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.usuarioService.isLoggedIn()) {
-      this.router.navigate(['entrar']);
+      this.router.navigate(['/entrar']);
       return;
     }
     if (!this.usuarioService.isAdmin()) {
-      this.router.navigate(['inicio']);
+      this.router.navigate(['/inicio']);
       return;
     }
 
@@ -39,7 +39,7 @@ export class ListarUsuariosComponent implements OnInit {
   }
 
   gerenciar(usuarioId: number): void {
-    this.router.navigate(['admin/usuarios/gerenciar', usuarioId]);
+    this.router.navigate(['/admin/usuarios/gerenciar', usuarioId]);
   }
 
 }

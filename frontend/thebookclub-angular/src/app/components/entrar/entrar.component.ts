@@ -20,7 +20,7 @@ export class EntrarComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.isLoggedIn()) {
-      this.router.navigate(['inicio']);
+      this.router.navigate(['/inicio']);
       return
     }
   }
@@ -33,7 +33,7 @@ export class EntrarComponent implements OnInit {
         next: user => {
           globals.usuarioLogin = user;
           this.authService.saveUsuarioLocalStorage();
-          this.router.navigate(['inicio']);
+          this.router.navigate(['/inicio']);
           console.log(user);
         },
 

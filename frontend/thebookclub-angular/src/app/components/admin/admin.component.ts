@@ -13,11 +13,11 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.usuarioService.isLoggedIn()) {
-      this.router.navigate(['entrar']);
+      this.router.navigate(['/entrar']);
       return;
     }
     if (this.usuarioService.isLoggedIn() && !this.usuarioService.isAdmin()) {
-      this.router.navigate(['inicio']);
+      this.router.navigate(['/inicio']);
       return;
     }
   }

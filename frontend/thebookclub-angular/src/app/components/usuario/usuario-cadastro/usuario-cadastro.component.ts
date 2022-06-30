@@ -17,7 +17,7 @@ export class UsuarioCadastroComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.usuarioService.isLoggedIn() && !this.usuarioService.isAdmin()) {
-      this.router.navigate(['inicio']);
+      this.router.navigate(['/inicio']);
       return;
     }
   }
@@ -26,7 +26,7 @@ export class UsuarioCadastroComponent implements OnInit {
     this.usuarioService.cadastrarUsuario(usuario).subscribe({
       next: resp => {
         alert("Usuário cadastrado com sucesso!");
-        this.router.navigate(['entrar']);
+        this.router.navigate(['/entrar']);
       },
       error: err => {
         if (err.error) {

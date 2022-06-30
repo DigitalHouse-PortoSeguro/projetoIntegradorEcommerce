@@ -21,7 +21,7 @@ export class UsuarioAtualizarComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.usuarioService.isLoggedIn()) {
-      this.router.navigate(['entrar']);
+      this.router.navigate(['/entrar']);
       return;
     }
     this.user = this.usuarioService.getUsuario();
@@ -39,7 +39,7 @@ export class UsuarioAtualizarComponent implements OnInit {
           next: user => {
             globals.usuarioLogin = user;
             this.usuarioService.saveUsuarioLocalStorage();
-            this.router.navigate(['inicio']);
+            this.router.navigate(['/inicio']);
             alert('Usuário atualizado com sucesso!');
           },
           error: err => {

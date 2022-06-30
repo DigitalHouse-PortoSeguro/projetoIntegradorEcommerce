@@ -23,11 +23,11 @@ export class GerenciarLivroComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.usuarioService.isLoggedIn()) {
-      this.router.navigate(['entrar']);
+      this.router.navigate(['/entrar']);
       return;
     }
     if (!this.usuarioService.isAdmin()) {
-      this.router.navigate(['inicio']);
+      this.router.navigate(['/inicio']);
       return;
     }
 
@@ -47,14 +47,14 @@ export class GerenciarLivroComponent implements OnInit {
   }
 
   atualizarLivro(): void {
-    this.router.navigate(['livro/atualizar-livro', this.livro.livroId]);
+    this.router.navigate(['/admin/livros/atualizar', this.livro.livroId]);
   }
 
   deletarLivro(): void {
     this.livroService.deletarLivro(this.livro.livroId).subscribe({
       next: resp => {
         alert('Livro deletado com sucesso!');
-        this.router.navigate(['livros/listagem']);
+        this.router.navigate(['/admin/livros/lista']);
       },
       error: err => {
         console.log(err);
@@ -63,7 +63,7 @@ export class GerenciarLivroComponent implements OnInit {
     })
   }
   voltarListagem() {
-    this.router.navigate(['livros/listagem']);
+    this.router.navigate(['/admin/livros/lista']);
       return;
   }
 

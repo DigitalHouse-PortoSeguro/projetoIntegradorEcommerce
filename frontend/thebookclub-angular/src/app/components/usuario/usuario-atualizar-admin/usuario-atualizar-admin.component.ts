@@ -20,11 +20,11 @@ export class UsuarioAtualizarAdminComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.usuarioService.isLoggedIn()) {
-      this.router.navigate(['entrar']);
+      this.router.navigate(['/entrar']);
       return;
     }
     if (!this.usuarioService.isAdmin()) {
-      this.router.navigate(['inicio']);
+      this.router.navigate(['/inicio']);
       return;
     }
 
@@ -46,7 +46,7 @@ export class UsuarioAtualizarAdminComponent implements OnInit {
   atualizar(usuario: Usuario): void {
     this.usuarioService.atualizarUsuario(usuario).subscribe({
       next: resp => {
-        this.router.navigate(['admin/usuarios/gerenciar', resp.usuarioId]);
+        this.router.navigate(['/admin/usuarios/gerenciar', resp.usuarioId]);
         alert('Usuário atualizado com sucesso!');
       },
       error: err => {

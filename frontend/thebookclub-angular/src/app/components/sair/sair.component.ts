@@ -20,7 +20,7 @@ export class SairComponent implements OnInit {
     this.usuarioService.logout();
     this.carrinhoService.resetar();
     this.carrinhoService.saveCarrinhoLocalStorage();
-    this.router.navigate(['entrar']);
+    this.router.navigate(['/entrar']);
   }
 
 }

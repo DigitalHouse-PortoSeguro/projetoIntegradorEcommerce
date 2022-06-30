@@ -21,11 +21,11 @@ export class ListagemLivrosComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.usuarioService.isLoggedIn()) {
-      this.router.navigate(['entrar']);
+      this.router.navigate(['/entrar']);
       return;
     }
     if (!this.usuarioService.isAdmin()) {
-      this.router.navigate(['inicio']);
+      this.router.navigate(['/inicio']);
       return;
     }
     this.livroService.getAllLivros().subscribe({
@@ -40,7 +40,7 @@ export class ListagemLivrosComponent implements OnInit {
   }
 
   gerenciar(livroId: number): void {
-    this.router.navigate(['livro/gerenciar-livro', livroId]);
+    this.router.navigate(['/admin/livros/gerenciar', livroId]);
   }
 
 }
