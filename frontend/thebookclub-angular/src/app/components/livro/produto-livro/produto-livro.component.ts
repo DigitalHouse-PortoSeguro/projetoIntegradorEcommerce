@@ -48,6 +48,7 @@ export class ProdutoLivroComponent implements OnInit {
     pedidoLivro.quantidade = this.quantidade;
 
     this.carrinho.adicionarPedidoLivro(pedidoLivro);
+    this.carrinho.saveCarrinhoLocalStorage();
   }
 
 }

@@ -28,6 +28,7 @@ export class CarrinhoService {
 		globals.carrinho.pedidoLivros = [];
 		globals.carrinho.valor = 0;
 		globals.carrinho.status = "AGUARDANDO_PAGAMENTO";
+		localStorage.removeItem("__USER_CART");
 	}
 
 	public adicionarPedidoLivro(pedidoLivro: PedidoLivro): void {
@@ -58,10 +59,26 @@ export class CarrinhoService {
 		globals.carrinho.pedidoLivros.splice(i, 1);
 	}
 
+	public saveCarrinhoLocalStorage(): void {
+		localStorage.setItem("__USER_CART", JSON.stringify(globals.carrinho));
+	}
+
+	public loadCarrinhoLocalStorage(): void {
+		const cartItem = localStorage.getItem("__USER_CART");
+		if (cartItem != null) {
+			const cartObj = JSON.parse(cartItem);
+			Object.assign(globals.carrinho, cartObj);
+		} else {
+			globals.carrinho.pedidoLivros = [];
+			globals.carrinho.valor = 0;
+			globals.carrinho.status = "AGUARDANDO_PAGAMENTO";
+		}
+	}
+
 	public checkoutCarrinho(tipoPagamento: string, formaEnvio: string): Observable<Pedido> {
 		const headers = new HttpHeaders()
 			.set('Authorization', globals.usuarioLogin.token);
-		
+
 		const dataPedido = new LocalDateTime(Date.now());
 		const dataEntrega = new LocalDateTime(Date.now());
 		// Tempo de entrega aleatório entre 1 e 10 dias
@@ -78,8 +95,6 @@ export class CarrinhoService {
 		globals.carrinho.dataEntrega = dataEntrega;
 		globals.carrinho.usuario = usuario;
 
-		console.log(JSON.stringify(globals.carrinho, null, " "));
-		
 		return this.http.post<Pedido>(
 			`${environment.BASE_URL}/pedidos/cadastrar`,
 			globals.carrinho,

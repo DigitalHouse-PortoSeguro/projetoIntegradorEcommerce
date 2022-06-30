@@ -97,12 +97,13 @@ export class AppComponent implements OnInit {
     user.usuarioId = 1
     user.token = "Basic " + btoa("root:root")
 
-    usuarioService.loadUsuarioLocalStorage();
+    
     globals.usuarioLogin = user
   }
 
   ngOnInit(): void {
-    this.carrinhoService.resetar();
+    this.usuarioService.loadUsuarioLocalStorage();
+    this.carrinhoService.loadCarrinhoLocalStorage();
 
     /*
     teste dos livros para o carrinho

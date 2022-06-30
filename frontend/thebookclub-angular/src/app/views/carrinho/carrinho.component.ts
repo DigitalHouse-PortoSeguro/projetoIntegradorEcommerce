@@ -18,16 +18,16 @@ export class CarrinhoComponent implements OnInit {
     this.listaPedidoLivro = this.carrinhoService.getAllPedidoLivros()
   }
 
-  getTotal(): Number{
+  getTotal(): Number {
     return this.carrinhoService.getTotal()
   }
 
-  finalizarPedido(){
+  finalizarPedido() {
     this.carrinhoService.checkoutCarrinho('DEBITO', 'CORREIOS').subscribe(
-    (pedido: Pedido) => {
-          this.carrinhoService.resetar();
-          alert('O pedido foi finalizado');
-    })
+      (pedido: Pedido) => {
+        this.carrinhoService.resetar();
+        alert('O pedido foi finalizado');
+      })
   }
 }
 
