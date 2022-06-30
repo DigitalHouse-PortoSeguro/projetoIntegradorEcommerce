@@ -46,7 +46,7 @@ export class UsuarioAtualizarAdminComponent implements OnInit {
   atualizar(usuario: Usuario): void {
     this.usuarioService.atualizarUsuario(usuario).subscribe({
       next: resp => {
-        this.router.navigate(['admin/gerenciar-usuario', resp.usuarioId]);
+        this.router.navigate(['admin/usuarios/gerenciar', resp.usuarioId]);
         alert('Usuário atualizado com sucesso!');
       },
       error: err => {

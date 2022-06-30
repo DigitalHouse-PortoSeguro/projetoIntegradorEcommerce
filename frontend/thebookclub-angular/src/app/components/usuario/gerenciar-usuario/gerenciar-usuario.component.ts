@@ -45,14 +45,14 @@ export class GerenciarUsuarioComponent implements OnInit {
   }
 
   atualizarUsuario(): void {
-    this.router.navigate(['admin/atualizar-usuario', this.usuario.usuarioId]);
+    this.router.navigate(['admin/usuarios/atualizar', this.usuario.usuarioId]);
   }
 
   deletarUsuario(): void {
     this.usuarioService.deleteById(this.usuario.usuarioId).subscribe({
       next: resp => {
         alert('Usuário deletado com sucesso!');
-        this.router.navigate(['admin/listar-usuarios']);
+        this.router.navigate(['admin/usuarios/lista']);
       },
       error: err => {
         console.log(err);

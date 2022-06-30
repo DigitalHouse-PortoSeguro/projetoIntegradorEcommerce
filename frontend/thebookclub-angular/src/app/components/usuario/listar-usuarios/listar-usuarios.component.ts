@@ -39,7 +39,7 @@ export class ListarUsuariosComponent implements OnInit {
   }
 
   gerenciar(usuarioId: number): void {
-    this.router.navigate(['admin/gerenciar-usuario', usuarioId]);
+    this.router.navigate(['admin/usuarios/gerenciar', usuarioId]);
   }
 
 }
