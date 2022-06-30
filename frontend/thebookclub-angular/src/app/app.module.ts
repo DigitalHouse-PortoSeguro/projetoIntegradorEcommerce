@@ -40,6 +40,7 @@ import { SairComponent } from './components/sair/sair.component';
 import { SobreNosComponent } from './views/sobre-nos/sobre-nos.component';
 import { FaleConoscoComponent } from './views/fale-conosco/fale-conosco.component';
 import { FormasPagamentoComponent } from './views/formas-pagamento/formas-pagamento.component';
+import { TextareaComponent } from './components/textarea/textarea.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { FormasPagamentoComponent } from './views/formas-pagamento/formas-pagame
     SairComponent,
     SobreNosComponent,
     FaleConoscoComponent,
-    FormasPagamentoComponent
+    FormasPagamentoComponent,
+    TextareaComponent
   ],
   imports: [
     BrowserModule,
