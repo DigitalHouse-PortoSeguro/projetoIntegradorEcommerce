@@ -23,7 +23,11 @@
     <li>17-Parcerias e meios de implementação</li>
 </ul>
 
-<p>Tivemos como inspiração grandes nomes da venda de livros e sebos online para criar uma experiencia fluida e segura para os usuários, deixando o acesso á livros mais facil e divertido.
+<p>
+    Em um mundo cada vez mais conectado,  o desapego aos velhos e queridos livros tornou-se comum. Pensando em formas de incentivar a leitura e tornar a compra de livros algo interativo e prazeroso, criamos o "The Book Club"!
+</p>
+<p>
+    O The Book Club é uma livraria virtual, prática e de fácil interação, que permite aos leitores navegarem por suas categorias preferidas, além de ficarem por dentro daquilo que está bombando no universo da literatura! 
 </p>
 <p>
     Nesse e-commerce o usuario tem a opção de:
@@ -67,7 +71,7 @@
 <p>
     O projeto foi desenvolvido em JAVA, usando Maven e Angular. No Backend temos a estrutura do banco de dados:
 </p>  
-    img do esquema
+    <img src="Captura de tela de 2022-06-30 19-04-57.png">
 </div> 
 <br>
 
