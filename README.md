@@ -1,9 +1,9 @@
 <h1 align="center">PROJETO INTEGRADOR DIGITAL HOUSE-PORTO SEGURO</h1>
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&?style=plastic=appveyor)
-![Badge em Maven](http://img.shields.io/static/v1?label=Maven%20version&message=4.0.0&color=BLUE&style=for-the-badge)
-![Badge em Licença](http://img.shields.io/static/v1?label=Licence&message=???&color=BLUE&style=for-the-badge)
-![Badge em Release date](http://img.shields.io/static/v1?label=release&message=Julho&color=BLUE&style=for-the-badge)
+![Badge em Maven](http://img.shields.io/static/v1?label=Maven%20version&message=4.0.0&color=blue&?style=plastic=appveyor)
+![Badge em Licença](http://img.shields.io/static/v1?label=Licence&message=???&color=BLUE&?style=plastic=appveyor)
+![Badge em Release date](http://img.shields.io/static/v1?label=release&message=Julho&color=BLUE&s?style=plastic=appveyor)
 
 ![GitHub Org's stars](https://img.shields.io/github/stars/ghsoares?style=social)
 ![GitHub Org's stars](https://img.shields.io/github/stars/drishaolin?style=social)
