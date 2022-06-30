@@ -42,6 +42,7 @@ import { FaleConoscoComponent } from './views/fale-conosco/fale-conosco.componen
 import { FormasPagamentoComponent } from './views/formas-pagamento/formas-pagamento.component';
 import { TextareaComponent } from './components/textarea/textarea.component';
 import { LivroAtualizarComponent } from './components/livro/livro-atualizar/livro-atualizar.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { LivroAtualizarComponent } from './components/livro/livro-atualizar/livr
     FaleConoscoComponent,
     FormasPagamentoComponent,
     TextareaComponent,
-    LivroAtualizarComponent
+    LivroAtualizarComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
