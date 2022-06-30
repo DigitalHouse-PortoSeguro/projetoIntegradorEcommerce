@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-4">
+    <div class="text col text-center" *ngFor="let subcategoria of listaCategorias">
+      <a style="color: black; text-decoration: none; font-weight: bold;" [routerLink]="['/livros/categoria', subcategoria]">{{subcategoria}}</a>
+    </div>
+  </div>
+</div>
+

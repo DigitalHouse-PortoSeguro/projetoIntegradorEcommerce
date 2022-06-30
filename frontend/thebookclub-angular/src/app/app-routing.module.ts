@@ -20,6 +20,7 @@ import { AtualizarLivroComponent } from './components/livro/atualizar-livro/atua
 import { SairComponent } from './components/sair/sair.component';
 import { LivroAtualizarComponent } from './components/livro/livro-atualizar/livro-atualizar.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { CategoriasGeralComponent } from './components/categorias-geral/categorias-geral.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "inicio", pathMatch: "full" },
@@ -39,10 +40,11 @@ const routes: Routes = [
   { path: "admin/livros/lista", component: ListagemLivrosComponent },
   { path: "admin/livros/gerenciar/:id", component: GerenciarLivroComponent },
   
+  { path: "livros/categorias", component: CategoriasGeralComponent},
   { path: "livros/titulo/:titulo", component: LivrosTituloComponent },
   { path: "livros/categoria/:categoria", component: LivroCategoriaComponent},
   { path: "livros/produto/:id", component: ProdutoLivroComponent },
-  { path: "carrinho", component: CarrinhoComponent},
+  { path: "carrinho", component: CarrinhoComponent}
 ]
 
 @NgModule({
