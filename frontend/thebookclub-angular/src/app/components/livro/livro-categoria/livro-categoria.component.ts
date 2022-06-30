@@ -19,8 +19,9 @@ export class LivroCategoriaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let categoria = this.route.snapshot.params['categoria'];
-    this.findByCategoria(categoria);
+    this.route.paramMap.subscribe(params => {
+      this.findByCategoria(params.get('categoria')!!);
+    })
   }
 
   findByCategoria(categoria:string) {
