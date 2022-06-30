@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { globals } from 'src/environments/environment';
 import { Livro } from './modelos/Livro';
 import { UsuarioLogin } from './modelos/UsuarioLogin';
 import { CarrinhoService } from './service/carrinho.service';
@@ -91,12 +92,13 @@ export class AppComponent implements OnInit {
     user.rua = "Mauro D' Araújo Ribeiro"
     user.senha = "$2a$10$s5WHHaUrkJeWfC7.n2o3XuvHlKytNOm0VcNp/uQg1uzZ.NSgba/yG"
     user.sobrenome = "Pereira Soares"
-    user.tipoUsuario = "COMUM"
+    user.tipoUsuario = "ADMIN"
     user.username = "ruitemgi"
     user.usuarioId = 1
-    user.token = "Basic " + btoa("ruitemgi:Senha123")
+    user.token = "Basic " + btoa("root:root")
 
     usuarioService.loadUsuarioLocalStorage();
+    globals.usuarioLogin = user
   }
 
   ngOnInit(): void {

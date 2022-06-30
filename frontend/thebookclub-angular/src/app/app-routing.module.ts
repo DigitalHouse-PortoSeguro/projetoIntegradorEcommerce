@@ -18,6 +18,7 @@ import { ListagemLivrosComponent } from './components/livro/listagem-livros/list
 import { GerenciarLivroComponent } from './components/livro/gerenciar-livro/gerenciar-livro.component';
 import { AtualizarLivroComponent } from './components/livro/atualizar-livro/atualizar-livro.component';
 import { SairComponent } from './components/sair/sair.component';
+import { LivroAtualizarComponent } from './components/livro/livro-atualizar/livro-atualizar.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: "admin/atualizar-usuario/:id", component: UsuarioAtualizarAdminComponent },
   { path: "livros/cadastrar", component: LivroCadastroComponent },
   { path: "admin/cadastrarLivro", component: LivroCadastroComponent },
+  { path: "admin/atualizarLivro/:id", component: LivroAtualizarComponent },
   { path: "carrinho", component: CarrinhoComponent},
   { path: "livros/titulo/:titulo", component: LivrosTituloComponent },
   { path: "livros/categoria/:categoria", component: LivroCategoriaComponent},

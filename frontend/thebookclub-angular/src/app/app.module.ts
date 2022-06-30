@@ -41,6 +41,7 @@ import { SobreNosComponent } from './views/sobre-nos/sobre-nos.component';
 import { FaleConoscoComponent } from './views/fale-conosco/fale-conosco.component';
 import { FormasPagamentoComponent } from './views/formas-pagamento/formas-pagamento.component';
 import { TextareaComponent } from './components/textarea/textarea.component';
+import { LivroAtualizarComponent } from './components/livro/livro-atualizar/livro-atualizar.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { TextareaComponent } from './components/textarea/textarea.component';
     SobreNosComponent,
     FaleConoscoComponent,
     FormasPagamentoComponent,
-    TextareaComponent
+    TextareaComponent,
+    LivroAtualizarComponent
   ],
   imports: [
     BrowserModule,
