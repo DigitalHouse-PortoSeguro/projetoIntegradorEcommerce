@@ -30,6 +30,7 @@ const routes: Routes = [
   { path: "entrar", component: EntrarComponent },
   { path: "sair", component: SairComponent },
   { path: "admin", component: AdminComponent },
+  { path: "admin/usuarios/cadastrar", component: UsuarioCadastroComponent },
   { path: "admin/usuarios/lista", component: ListarUsuariosComponent },
   { path: "admin/usuarios/gerenciar/:id", component: GerenciarUsuarioComponent },
   { path: "admin/usuarios/atualizar/:id", component: UsuarioAtualizarAdminComponent },
