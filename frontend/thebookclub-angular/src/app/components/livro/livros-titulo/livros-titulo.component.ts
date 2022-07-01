@@ -20,16 +20,18 @@ export class LivrosTituloComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.titulo = this.route.snapshot.paramMap.get('titulo')!!;
+    this.route.paramMap.subscribe(params => {
+      this.titulo = params.get('titulo')!!;
 
-    this.livroService.getAllLivrosByTitulo(this.titulo).subscribe({
-      next: livros => {
-        this.livros = livros;
-      },
-      error: err => {
-        console.log(err);
-        alert('Um erro aconteceu...');
-      }
+      this.livroService.getAllLivrosByTitulo(this.titulo).subscribe({
+        next: livros => {
+          this.livros = livros;
+        },
+        error: err => {
+          console.log(err);
+          alert('Um erro aconteceu...');
+        }
+      })
     })
   }
 

@@ -24,21 +24,21 @@ export class ProdutoLivroComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const livroID = Number(this.route.snapshot.paramMap.get('id')!!);
-
-    this.livroService.getLivroById(livroID).subscribe({
-      next: livro => {
-        this.livro = livro;
-        this.quantidadeOptions = [];
-        for (let i = 0; i < 4 && i < livro.quantidadeEstoque; i++) {
-          this.quantidadeOptions.push((i + 1).toString());
+    this.route.paramMap.subscribe(params => {
+      this.livroService.getLivroById(Number(params.get('id'))).subscribe({
+        next: livro => {
+          this.livro = livro;
+          this.quantidadeOptions = [];
+          for (let i = 0; i < 4 && i < livro.quantidadeEstoque; i++) {
+            this.quantidadeOptions.push((i + 1).toString());
+          }
+        },
+        error: err => {
+          console.log(err);
+          alert("Um erro aconteceu");
         }
-      },
-      error: err => {
-        console.log(err);
-        alert("Um erro aconteceu");
-      }
-    })
+      })
+    });
   }
 
   adicionar(): void {
