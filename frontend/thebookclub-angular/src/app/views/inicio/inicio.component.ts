@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Livro } from 'src/app/modelos/Livro';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { LivroService } from 'src/app/service/livro.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class InicioComponent implements OnInit {
 
   constructor(
     private livroService: LivroService,
+    private alertaService: AlertasService,
     private router: Router
   ) { }
 
@@ -30,7 +32,7 @@ export class InicioComponent implements OnInit {
         this.listaLivros = livros.slice(0, 10);
       },
       error: err => {
-        alert("Um erro aconteceu");
+        this.alertaService.showAlertDanger("Um erro aconteceu");
         console.log(err);
       }
     })
