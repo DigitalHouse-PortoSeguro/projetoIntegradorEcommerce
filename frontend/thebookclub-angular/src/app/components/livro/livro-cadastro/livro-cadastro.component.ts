@@ -6,6 +6,7 @@ import { Livro } from 'src/app/modelos/Livro';
 import { LivroService } from 'src/app/service/livro.service';
 import { LocalDate } from 'src/app/utils/LocalDate';
 import CustomValidators from '../../validators/CustomValidators';
+import { AlertasService } from 'src/app/service/alertas.service';
 
 @Component({
   selector: 'app-livro-cadastro',
@@ -19,7 +20,9 @@ export class LivroCadastroComponent implements OnInit {
   constructor(private usuarioService: UsuarioService,
               private router: Router,
               private FormBuilder: FormBuilder,
-              private LivroService : LivroService) { }
+              private LivroService : LivroService,
+              private alertas: AlertasService
+              ){ }
 
   ngOnInit() {
     if (!this.usuarioService.isLoggedIn()) {
@@ -71,7 +74,8 @@ export class LivroCadastroComponent implements OnInit {
 
     this.LivroService.cadastrarLivro(livro).subscribe({
       next : LivroResposta => {alert('Livro Cadastrado!!!')},
-      error : Erro => {alert('Erro ao Cadastrar o Livro!!!')
+      // error : Erro => {alert('Erro ao Cadastrar o Livro!!!')
+      error : Erro => {this.alertas.showAlertDanger('Erro ao Cadastrar o Livro!!!')
               console.log(Erro)  
     }
     })

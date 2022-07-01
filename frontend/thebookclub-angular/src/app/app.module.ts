@@ -40,6 +40,8 @@ import { TextareaComponent } from './components/textarea/textarea.component';
 import { LivroAtualizarComponent } from './components/livro/livro-atualizar/livro-atualizar.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { CategoriasGeralComponent } from './components/categorias-geral/categorias-geral.component';
+import { AlertasComponent } from './alertas/alertas.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,8 @@ import { CategoriasGeralComponent } from './components/categorias-geral/categori
     FormasPagamentoComponent,
     TextareaComponent,
     LivroAtualizarComponent,
-    AdminComponent
+    AdminComponent,
+    AlertasComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,8 @@ import { CategoriasGeralComponent } from './components/categorias-geral/categori
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
-    MensagemModule
+    MensagemModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
