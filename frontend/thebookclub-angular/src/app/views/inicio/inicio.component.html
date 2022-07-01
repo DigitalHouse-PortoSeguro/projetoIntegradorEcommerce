@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <img class="img-fluid" src="../../../assets/img/Imagem meninas sentadas.png " 
+            alt="Imagem de duas meninas sentadas lendo livro"
+            style="width: 100%" />
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <img class="img-fluid" src="../../../assets/img/Slogan.png" alt="duas amigas sentadas lendo com o slogan do site abaixo">
+        </div>
+    </div>
+    <div *ngIf="listaLivros">
+        <h4 class="text-center border-bottom border-white border-3 w-50 mx-auto p-2 mb-5">
+            Sugestões para você
+        </h4>
+        <div class="row">
+            <div class="col">
+                <app-lista-livro 
+                    [listaLivros]="listaLivros"
+                    (select)="onLivroSelect($event)">
+                </app-lista-livro>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 

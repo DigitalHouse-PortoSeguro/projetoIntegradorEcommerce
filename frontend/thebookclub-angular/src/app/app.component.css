@@ -1,0 +1,14 @@
+body{
+    background-color: #8DC8FF;
+    padding: 110px;
+    
+}
+
+@font-face {
+    font-family: 'Harmonia Sans Pro Cyr';
+    src: url('HarmoniaSansProCyr-Regular.ttf') format('truetype');
+  }
+
+  #text-element {
+    font-family: 'Harmonia Sans Pro Cyr', Arial, sans-serif;
+  }

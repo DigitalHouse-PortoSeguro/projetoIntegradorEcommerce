@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #8DC8FF;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+app-root {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mr-5 {
+    margin-right: 3rem;
+}
+
+.border-radius-3 {
+    border-radius: 1rem;
+}
+
+.border-radius-4 {
+    border-radius: 1.5rem;
+}
+
+/* .card {
+    overflow: hidden;
+} */
+
+@font-face {
+    font-family: 'Harmonia Sans Pro Cyr';
+    src: url('HarmoniaSansProCyr-Regular.ttf') format('truetype');
+}
+
+#text-element {
+    font-family: 'Harmonia Sans Pro Cyr', Arial, sans-serif;
+}

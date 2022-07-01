@@ -1,0 +1,13 @@
+
+.livro-card {
+	cursor: pointer;
+	transition: transform 100ms ease-in-out;
+}
+
+.livro-card:hover {
+	transform: scale(1.02);
+}
+
+.livro-card-img {
+	object-fit: contain;
+}

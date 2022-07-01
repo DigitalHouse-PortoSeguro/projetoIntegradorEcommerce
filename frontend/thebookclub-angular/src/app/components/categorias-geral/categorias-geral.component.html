@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="p-2 text-nowrap border-bottom border-white border-3 w-50 text-center mx-auto">
+  Categorias
+  </h1>
+
+  <div class="row row-cols-1 row-cols-md-4 justify-content-center mt-4">
+    <div class="card text col text-center bg-light bg-opacity-50 m-2" style="height: 4rem;" *ngFor="let subcategoria of listaCategorias">
+      <a class="my-auto" style="color: black; text-decoration: none; font-weight: bold;" [routerLink]="['/livros/categoria', subcategoria]">{{subcategoria}}</a>
+    </div>
+  </div>
+</div>
+

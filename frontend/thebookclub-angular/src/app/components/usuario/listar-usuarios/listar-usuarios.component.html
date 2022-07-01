@@ -1,0 +1,26 @@
+<div class="container">
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Username</th>
+				<th scope="col">Email</th>
+				<th scope="col">Tipo</th>
+				<th scope="col">Gerenciar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let usuario of usuarios">
+				<th scope="row">{{usuario.usuarioId}}</th>
+				<td>{{usuario.nome}}</td>
+				<td>{{usuario.username}}</td>
+				<td>{{usuario.email}}</td>
+				<td>{{usuario.tipoUsuario}}</td>
+				<td> 
+					<button class="btn btn-primary" (click)="gerenciar(usuario.usuarioId)">Gerenciar</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

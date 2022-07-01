@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 d-flex flex-column justify-content-center">
+      <div class="image">
+        <img class="img-fluid" src="/assets/img/login.jpg" alt="Imagem de duas meninas sentadas lendo livro"/>
+      </div>
+    </div>
+    <div class="col-md-6 d-flex flex-column justify-content-center">
+      <div class="secaoLogin">
+        <h2 class="border-bottom border-white text-center">Acesse sua conta</h2>
+        <form class="form mt-4" (ngSubmit)="login()" #loginForm="ngForm">
+          <div class="form-group my-2">
+            <input id="formEmail" class="form-control" type="text" placeholder="Username ou email" [(ngModel)]="username" name="username" #campoEmail="ngModel" required>
+            <app-mensagem *ngIf="campoEmail.invalid && campoEmail.touched" mensagem="Usuário obrigatório"></app-mensagem>
+          </div>
+          <div class="form-group my-2">
+            <input id="formSenha" class="form-control" type="password" placeholder="Senha" [(ngModel)]="senha" name="senha" #campoSenha="ngModel" required>
+            <app-mensagem *ngIf="campoSenha.invalid && campoSenha.touched" mensagem="Senha obrigatória"></app-mensagem>
+          </div>
+          <div class="d-flex my-2">
+            <button class="flex-grow-1 btn btn-primary" [disabled]="loginForm.invalid"><strong>Login</strong></button>
+          </div>
+        </form>
+        <div class="cadastro">
+          <p>Ainda não possui uma conta? <a [routerLink]="['/cadastrar']"><strong>Cadastre-se</strong></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

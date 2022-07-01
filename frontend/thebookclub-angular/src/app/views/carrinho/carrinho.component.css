@@ -1,0 +1,37 @@
+.title{
+  font-size: 30pt;
+}
+
+.subtitle{
+
+}
+
+.tabelaCarrinho{
+}
+
+.cardCarrinho{
+  
+}
+
+.link{
+  font-size: 12pt;
+}
+
+.total{
+  font-size: 15pt;
+  text-align: end;
+}
+
+.botaoFinalizar {
+  text-align: end;
+}
+
+.botao{
+  background-color: white;
+  color: black;
+  border-radius: 50px;
+  width: 250px;
+  height: 40px;
+  border: none;
+  font-weight: bold;
+}

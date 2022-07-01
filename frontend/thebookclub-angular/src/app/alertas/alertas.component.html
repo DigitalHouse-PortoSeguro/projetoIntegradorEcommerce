@@ -1,0 +1,7 @@
+<div class="alert alert-{{type}} alert-dismissible alerta" role="alert" [ngClass]="{
+    'collapse': !isOpen
+}">
+    <h5 *ngIf="title" class="alert-heading">{{title}}</h5>
+    <p *ngIf="message">{{message}}</p>
+    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close" (click)="onClose()"></button>
+</div>

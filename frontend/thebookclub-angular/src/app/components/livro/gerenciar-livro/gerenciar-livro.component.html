@@ -1,0 +1,41 @@
+<div *ngIf="livro" class="container">
+	<div class="row mb-5">
+		<div class="col-md-2">
+			<img [src]="livro.foto" alt="Foto do usuário" class="img-fluid">
+		</div>
+		<div class="col">
+			<h5>ID: <span class="fs-5 fw-light">{{livro.livroId}}</span></h5>
+            
+            <hr>
+			<h5>Título: <span class="fs-5 fw-light">{{livro.titulo}}</span></h5>
+			<h5>Foto: <span class="fs-5 fw-light">{{livro.foto}}</span></h5>
+			<h5>Data de Publicação: <span class="fs-5 fw-light">{{livro.dataPublicacao | date: "dd/MM/yyyy"}}</span></h5>
+			<hr>
+			<h5>Autores: <span class="fs-5 fw-light">{{livro.autores}}</span></h5>
+			<h5>Editora: <span class="fs-5 fw-light">{{livro.editora}}</span></h5>
+			<h5>Categoria: <span class="fs-5 fw-light">{{livro.categoria}}</span></h5>
+			<hr>
+			<h5>Sinopse: <span class="fs-5 fw-light">{{livro.sinopse}}</span></h5>
+            <hr>
+			<h5>Número de Páginas: <span class="fs-5 fw-light">{{livro.numeroPaginas}}</span></h5>
+			<h5>ISBN: <span class="fs-5 fw-light">{{livro.isbn}}</span></h5>
+			<h5>Preço: <span class="fs-5 fw-light">{{livro.preco}}</span></h5>
+			<h5>Quantidade em Estoque: <span class="fs-5 fw-light">{{livro.quantidadeEstoque}}</span></h5>
+			<hr>
+			<h5>Fornecedor: <span class="fs-5 fw-light">{{livro.fornecedor}}</span></h5>
+			<div class="row mt-4">
+				<div class="col-sm-2">
+					<button class="btn btn-primary mb-3" (click)="atualizarLivro()">Atualizar</button>
+				</div>
+				<div class="col-sm-2">
+					<button class="btn btn-warning mb-3" (click)="voltarListagem()" >Voltar</button>
+				</div>
+                <div class="col-sm-6"></div>
+				<div class="col-sm-2">
+					<button class="btn btn-danger" (click)="deletarLivro()">Deletar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

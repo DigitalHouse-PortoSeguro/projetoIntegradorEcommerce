@@ -1,0 +1,47 @@
+/* .rodape {
+    background-color: #8DC8FF;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+} */
+
+.linha {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+#informacoes {
+    list-style: none;
+    text-align: center;
+    margin-top: 15px;
+    
+}
+.decoration-none {
+    text-decoration: none;
+
+}
+.link-hover:hover {
+    text-decoration: underline!important;
+    color: darkblue!important;
+
+}
+
+
+#github {
+    /* flex-direction: row-reverse; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 15px;
+}
+#github img {
+    background-color: #8DC8FF;
+    border-radius: 100%;
+
+}
+
+#github-square:hover {
+    color: black !important;
+}

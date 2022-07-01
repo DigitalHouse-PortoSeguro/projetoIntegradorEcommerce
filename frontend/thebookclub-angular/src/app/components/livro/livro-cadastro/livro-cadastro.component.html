@@ -1,0 +1,56 @@
+<h1 class="p-2 text-nowrap border-bottom border-white border-3 w-50 text-center mx-auto">
+  Cadastro de livros
+</h1>
+<div class="container rounded p-4 my-5 bg-light bg-opacity-50">
+  <form [formGroup]="form" (ngSubmit)="enviar()">
+    <div class="row d-flex justify-content-center">
+      <app-input-field formControlName="Titulo" title="Titulo" name="titulo" id="titulo" class="col-md-6"
+        placeholder="Digite o Título"></app-input-field>
+      <app-input-field type="date" formControlName="DataPublicacao" title="Data Publicacao" name="data-publicacao"
+        id="data-publicacao" class="col-md-6" placeholder="Digite a Data de Publicação"></app-input-field>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+      <app-input-field formControlName="Autores" title="Autores:" name="autores" id="autores" class="col-md-6"
+        placeholder="Digite os Autores"></app-input-field>
+      <app-input-field formControlName="Editora" title="Editora:" name="editora" id="editora" class="col-md-6"
+        placeholder="Digite a Editora"></app-input-field>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+      <app-input-field formControlName="Categoria" title="Categoria:" name="categoria" id="categoria" class="col-md-6"
+        placeholder="Categoria:"></app-input-field>
+      <app-input-field formControlName="NumeroDePaginas" title="Número de Páginas:" name="numero-paginas"
+        id="numero-paginas" class="col-md-6" placeholder="Digite o Número de Páginas"></app-input-field>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+      <app-input-field formControlName="Preco" title="Preço:" name="preco" id="preco" class="col-md-6"
+        placeholder="Digite o Preço"></app-input-field>
+      <app-input-field formControlName="ISBN" title="ISBN:" name="isbn" id="isbn" class="col-md-6"
+        placeholder="Digite o ISBN"></app-input-field>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+      <app-input-field formControlName="QuantidadeNoEstoque" title="Quantidade no Estoque:" name="quantidade-estoque"
+        id="quantidade-estoque" class="col-md-6" placeholder="Digite a Quantidade no Estoque"></app-input-field>
+      <app-input-field formControlName="Fornecedor" title="Fornecedor:" name="fornecedor" id="fornecedor"
+        class="col-md-6" placeholder="Digite o Fornecedor"></app-input-field>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <app-input-field formControlName="Foto" helpText="Foto no Formato PNG ou JPG" title="URL da Foto:" name="url-foto"
+        id="url-foto" class="col-md-12" placeholder="Digite a URL da Foto"></app-input-field>
+
+    </div>
+    <div class="row d-flex justify-content-center">
+
+      <app-textarea formControlName="Sinopse" title="Sinopse:" name="sinopse" id="sinopse" class="col-md-12"
+        placeholder="Digite a Sinopse do Livro">
+      </app-textarea>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="btn btn-info rounded-pill text-uppercase fs-5 fw-bold p-2">Cadastrar</button>
+    </div>
+  </form>
+</div>

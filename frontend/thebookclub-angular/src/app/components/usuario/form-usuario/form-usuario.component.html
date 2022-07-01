@@ -1,0 +1,71 @@
+<div class="container rounded p-4 my-5 bg-light bg-opacity-50">
+    <form class="m-4" [formGroup]="form" (ngSubmit)="submit()">
+        <h3>Informações pessoais</h3>
+        <div class="row">
+            <app-input-field formControlName="nome" title="Nome" name="nome" id="nome" class="col-md-6"
+                placeholder="Insira seu nome"></app-input-field>
+            <app-input-field formControlName="sobrenome" title="Sobrenome" name="sobrenome" id="sobrenome"
+                class="col-md-6" placeholder="Insira seu Sobrenome"></app-input-field>
+        </div>
+        <div class="row">
+            <app-input-field formControlName="dataNascimento" title="Data de nascimento" type="date"
+                name="data-nascimento" id="data-nascimento" class="col-md-6"
+                placeholder="Insira sua data de nascimento"></app-input-field>
+            <app-input-field formControlName="cpf" title="CPF" type="text" name="cpf" id="cpf" class="col-md-6"
+                placeholder="Insira seu CPF" helpText="Segue o padrão 000.000.000-00"></app-input-field>
+        </div>
+        <h3>Informações do usuário</h3>
+        <div class="row">
+            <app-input-field formControlName="username" title="Nome de usuário" name="username" id="username"
+                class="col-md-6" placeholder="Insira seu nome de usuário " helpText="Mínimo 5 caracteres">
+            </app-input-field>
+            <app-input-field formControlName="email" type="email" title="Email" name="email" id="email" class="col-md-6"
+                placeholder="email.exemplo@gmail.com"></app-input-field>
+        </div>
+        <div class="row">
+            <app-input-field formControlName="senha" title="Senha" type="password" name="senha" id="senha"
+                class="col-md-6" placeholder="Insira sua senha"
+                helpText="No mínimo 6 caracteres, deve conter letras maiúsculas, minúsculas, números e símbolos">
+            </app-input-field>
+            <app-input-field formControlName="confirmarSenha" title="Confirme a sua senha" type="password"
+                name="confirmar-senha" id="confirmar-senha" class="col-md-6" placeholder="Repita sua senha"
+                helpText="Digite novamente a sua senha"></app-input-field>
+        </div>
+        <div class="row">
+            <app-input-field formControlName="foto" title="URL da foto" name="foto" id="foto"
+                class="col-md-6" placeholder="https://imagem-perfil.png"
+                helpText="Pode usar tanto .png quanto .jpg">
+            </app-input-field>
+        </div>
+        <div *ngIf="incluirTipo" class="row">
+            <app-dropdown formControlName="tipoUsuario" title="Tipo de usuário" name="tipo-usuario" id="tipo-usuario"
+                class="col-md-6" defaultOption="Selecione uma opção" [options]="['COMUM', 'ADMIN']"></app-dropdown>
+        </div>
+        <h3>Endereço</h3>
+
+        <div class="row">
+            <app-input-field formControlName="cep" title="CEP" type="text" name="cep" id="cep" class="col-md-3"
+            placeholder="Insira seu CEP " helpText="Segue o padrão 00000-000" (blur)="buscarCEP()"></app-input-field>
+            
+            <app-input-field formControlName="rua" title="Rua" type="text" name="rua" id="rua" 
+            class="col-md-4"></app-input-field>
+            <app-input-field formControlName="bairro" title="Bairro" type="text" name="bairro" id="bairro"
+            class="col-md-5"></app-input-field>
+        </div>
+        <div class="row">
+            <app-input-field formControlName="numero" title="Número" type="text" name="numero" id="numero"
+            class="col-md-3" placeholder="Insira o número"></app-input-field>
+            <app-input-field formControlName="complemento" title="Complemento" type="text" name="complemento"
+            id="complemento" class="col-md-9" placeholder="Complemento do seu endereço "
+            helpText="Esse campo é opcional"></app-input-field>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary rounded-pill text-uppercase fs-5"
+            [disabled]="buscandoEndereco">
+                {{submitText}}
+            </button>
+        </div>
+    </form>
+</div>
+

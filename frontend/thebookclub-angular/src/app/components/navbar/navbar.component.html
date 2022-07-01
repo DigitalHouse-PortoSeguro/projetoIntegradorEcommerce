@@ -1,0 +1,114 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand me-3" routerLink="/inicio">
+                <img src="../../../assets/img/Logo.png" height="50" alt="símbolo do site, um livro com coração">
+            </a>
+            <div class="d-flex flex-grow-1">
+                <input class="form-control me-2" type="search" placeholder="Digite aqui o que procura :D"
+                    aria-label="Search" [(ngModel)]="tituloText">
+                <button class="btn btn-primary" type="submit" (click)="buscaTitulo()">
+                    Buscar
+                    <!-- <img src="../../../assets/img/lupa.png" height="40px" alt="lupa para busca" /> -->
+                </button>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-sm navbar-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item me-4">
+                        <a class="nav-link active fw-bold fs-5" routerLink="/inicio" aria-current="page">Início</a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link active fw-bold fs-5" routerLink="/livros/categorias" aria-current="page">Categorias</a>
+                    </li>
+                    <li *ngIf="isAdmin()" class="nav-item me-4">
+                        <a class="nav-link active fw-bold fs-5 text-uppercase" routerLink="/admin" aria-current="page">Admin</a>
+                    </li>
+                    <div *ngIf="!loggedIn()" class="d-flex me-2 align-items-center">
+                        <img class="me-2 rounded" height="48" id="perfil" src="../../../assets/img/perfil.png" alt="" />
+                        <div class="d-flex flex-column">
+                            <span>Olá, bem vindo(a)!</span>
+                            <div class="d-flex">
+                                <a routerLink="/entrar">Entre</a>
+                                <span class="mx-1"> ou </span>
+                                <a routerLink="/cadastrar">Cadastre-se</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="loggedIn()" class="d-flex me-2 align-items-center">
+                        <img class="me-2 rounded" height="48" id="perfil" [src]="getUser().foto" alt="" />
+                        <div class="d-flex flex-column">
+                            <span>Olá, bem vindo(a) {{getUser().nome}}!</span>
+                            <a routerLink="/sair">Sair</a>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+            <div class="d-flex">
+                
+                <a routerLink="/carrinho">
+                    <img src="../../../assets/img/carrinho.png" height="48"
+                        alt="carrinho com os itens escolhidos para compra" />
+                </a>
+            </div>
+            <!--
+    
+                    <li class="nav-item mx-0">
+                        <div class="row">
+                            <div class="col-2">
+                                <a class="nav-link" href="#">
+                                    <img id="perfil" src="../../../assets/img/perfil.png" height="40px" alt="" />
+                                </a>
+                            </div>
+                            <div class="col-10">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <span>Olá, bem vindo(a)!</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <span>
+                                            <a routerLink="/entrar">
+                                                Entre
+                                            </a>
+                                        </span>
+                                        <span> ou </span>
+                                        <span>
+                                            <a routerLink="/cadastrar">
+                                                Cadastre-se
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li class="nav-item mx-0">
+                        <a class="nav-link .flex-fill" routerLink="/carrinho">
+                            <img src="../../../assets/img/carrinho.png" height="40px"
+                                alt="carrinho com os itens escolhidos para compra" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex">
+                <input class="form-control me-2" style="min-width: 250px" type="search"
+                    placeholder="Digite aqui o que procura :D" aria-label="Search"
+                    [(ngModel)]="tituloText">
+                <button class="btn btn-outline-success" type="submit" (click)="buscaTitulo()">
+                    <img src="../../../assets/img/lupa.png" height="40px" alt="lupa para busca" />
+                </button>
+            </div> -->
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,34 @@
+<div *ngIf="usuario" class="container">
+	<div class="row mb-5">
+		<div class="col-md-2">
+			<img [src]="usuario.foto" alt="Foto do usuário" class="img-fluid">
+		</div>
+		<div class="col">
+			<h5>ID: {{usuario.usuarioId}}</h5>
+			<hr>
+			<h5>Username: {{usuario.username}}</h5>
+			<h5>Email: {{usuario.email}}</h5>
+			<h5>Tipo: {{usuario.tipoUsuario}}</h5>
+			<hr>
+			<h5>Nome: {{usuario.nome}}</h5>
+			<h5>Sobrenome: {{usuario.sobrenome}}</h5>
+			<h5>Data de nascimento: {{usuario.dataNascimento | date: "dd/MM/yyyy"}}</h5>
+			<hr>
+			<h5>CEP: {{usuario.cep}}</h5>
+			<h5>Rua: {{usuario.rua}}</h5>
+			<h5>Bairro: {{usuario.bairro}}</h5>
+			<h5>Número: {{usuario.numero}}</h5>
+			<h5>Complemento: {{usuario.complemento}}</h5>
+			<hr>
+			<h5>CPF: {{usuario.cpf}}</h5>
+			<div class="row mt-4" *ngIf="!usuarioLogado()">
+				<div class="col-md-2">
+					<button class="btn btn-primary" (click)="atualizarUsuario()">Atualizar</button>
+				</div>
+				<div class="col-md-2">
+					<button class="btn btn-danger" (click)="deletarUsuario()">Deletar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

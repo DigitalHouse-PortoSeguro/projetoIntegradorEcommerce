@@ -1,0 +1,26 @@
+<div class="container">
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Título</th>
+				<th scope="col">Categoria</th>
+				<th scope="col">Preço</th>
+				<th scope="col">Quantidade no Estoque</th>
+				<th scope="col">Gerenciar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let livro of livros">
+				<th scope="row">{{livro.livroId}}</th>
+				<td>{{livro.titulo}}</td>
+				<td>{{livro.categoria}}</td>
+				<td>{{livro.preco}}</td>
+				<td>{{livro.quantidadeEstoque}}</td>
+				<td> 
+					<button class="btn btn-primary" (click)="gerenciar(livro.livroId)">Gerenciar</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

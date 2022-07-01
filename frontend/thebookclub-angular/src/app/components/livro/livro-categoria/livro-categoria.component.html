@@ -1,0 +1,10 @@
+<ng-container *ngIf="listaLivrosCategoria">
+    <h1 class="p-2 text-nowrap border-bottom border-white border-3 w-50 text-center mx-auto">
+        {{ listaLivrosCategoria[0]['categoria'] }}
+    </h1>
+    <app-lista-livro 
+        *ngIf="listaLivrosCategoria" 
+        [listaLivros]="listaLivrosCategoria"
+        (select)="onLivroSelect($event)">
+    </app-lista-livro>
+</ng-container>

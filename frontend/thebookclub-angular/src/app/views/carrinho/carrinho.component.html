@@ -1,0 +1,84 @@
+<h1 class="p-2 text-nowrap border-bottom border-white border-3 w-50 text-center mx-auto">Carrinho</h1>
+
+
+<div class="container">
+  <div class="row mb-5">
+    <h3 class="subtitle"><strong>Itens</strong></h3>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr class="tabelacabecalho" style="height: 50px; border: 20px">
+            <th class="cabecalho" style="width: 590px;">Produto</th>
+            <th class="cabecalho text-center">Quantidade</th>
+            <th class="cabecalho text-center">Preço unitário</th>
+            <th class="cabecalho text-center">Preço Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="tabela" *ngFor="let pedidoLivro of listaPedidoLivro">
+            <td class="colunaTabela">
+              <div class="cardCarrinho">
+                <app-item-carrinho [pedidoLivro]="pedidoLivro"></app-item-carrinho>
+              </div>
+            </td>
+            <td class="colunaTabela align-middle">
+              <p class="text-center" style="font-size: 14pt"><strong>{{ pedidoLivro.quantidade }}</strong></p>
+            </td>
+            <td class="colunaTabela align-middle">
+              <p class="text-center" style="font-size: 14pt"><strong>R$ {{
+                  (pedidoLivro.precoVenda).toFixed(2).replace(".",
+                  ",")}}</strong></p>
+            </td>
+            <td class="colunaTabela align-middle">
+              <p class="text-center" style="font-size: 15pt"><strong>R$ {{(pedidoLivro.precoVenda *
+                  pedidoLivro.quantidade).toFixed(2).replace(".", ",")}}</strong></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="link">
+      <a style="color: black" [routerLink]="['/inicio']"><strong>Adicionar mais itens ao carrinho</strong></a>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="total fs-4 d-flex justify-content-start">
+      <p><strong>Total do pedido: R$ {{ getTotal().toFixed(2).replace(".", ",") }}</strong></p>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <h3 class="subtitle"><strong>Falta pouco! Precisamos de mais algumas informações</strong></h3>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <app-dropdown title="Método de pagamento" name="metodo-pagamento" id="metodo-pagamento"
+        defaultOption="Selecione um método de pagamento"
+        [options]="['CREDITO', 'DEBITO', 'PIX', 'BOLETO', 'TRANSFERBANCARIA']"
+        [texts]="['Crédito', 'Débito', 'PIX', 'Boleto', 'Transferência Bancária']" [(ngModel)]="metodoPagamento">
+      </app-dropdown>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-md-4">
+      <app-dropdown title="Forma de envio" name="forma-envio" id="forma-envio"
+        defaultOption="Selecione uma forma de envio" [options]="['CORREIOS', 'RETIRADANALOJA', 'TRANSPORTADORA']"
+        [texts]="['Correios', 'Retirar na loja', 'Transportadora']" [(ngModel)]="formaEnvio">
+      </app-dropdown>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="botaoFinalizar d-flex justify-content-start">
+      <button [disabled]="metodoPagamento == '' || formaEnvio == ''" class="btn btn-light"
+        (click)="finalizarPedido()">Finalizar compra</button>
+    </div>
+  </div>
+</div>

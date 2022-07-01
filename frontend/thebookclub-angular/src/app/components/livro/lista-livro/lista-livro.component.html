@@ -1,0 +1,19 @@
+<!-- <app-produto-livro *ngFor="let livro of listaLivros" [livro]="livro"></app-produto-livro> -->
+<div class="container">
+	<div class="row row-cols-1 row-cols-lg-5 row-cols-md-3 row-cols-sm-2">
+		<div *ngFor="let livro of listaLivros" class="col mb-4">
+			<app-card-livro 
+				[livro]="livro"
+				(select)="onLivroSelect($event)"
+			>
+
+			</app-card-livro>
+		</div>
+	</div>
+</div>
+<!--<div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-2">
+    <app-card-livro 
+        *ngFor="let livro of listaLivros" 
+        [livro]="livro"
+    ></app-card-livro>
+</div>-->

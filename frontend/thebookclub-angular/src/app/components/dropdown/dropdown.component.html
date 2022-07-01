@@ -1,0 +1,15 @@
+<div class="mb-3">
+	<label [for]="id" class="form-label">{{title}}</label>
+	<select class="form-select" [ngClass]="{
+			'is-invalid': hasError()
+		}" aria-label="Default select example" [id]="id" [name]="name" [attr.aria-describeBy]="id + '-help'"
+		[(ngModel)]="value" [disabled]="!!disabled" (blur)="onBlur($event)">
+		<option value="" selected disabled>{{defaultOption}}</option>
+		<option *ngFor="let op of options; let i = index" [ngValue]="op">{{getText(i)}}
+		</option>
+	</select>
+	<div *ngFor="let err of getErrors()" class="invalid-feedback">
+		{{err}}
+	</div>
+	<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
+</div>

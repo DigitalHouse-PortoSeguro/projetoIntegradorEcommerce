@@ -1,0 +1,7 @@
+<h1 class="p-2 text-nowrap border-bottom border-white border-3 w-50 text-center mx-auto">Cadastre-se</h1>
+<app-form-usuario
+	submitText="Cadastrar"
+	(onSubmit)="cadastrar($event)"
+	[incluirTipo]="isAdmin()"
+>
+</app-form-usuario>
