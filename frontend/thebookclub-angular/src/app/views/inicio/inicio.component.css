@@ -4,19 +4,7 @@ body{
 }
 
 
-.container{
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    padding: 115px;
-}
 
-
-    .slogan 
-{
-    width: 100%;
-    
-    }
 
 /* .navbar{
     position: fixed;
@@ -26,7 +14,3 @@ body{
     height: 110px;
     background-color: #8DC8FF;
 } */
-
-.t1{
-    align-items: flex-start;
-}
