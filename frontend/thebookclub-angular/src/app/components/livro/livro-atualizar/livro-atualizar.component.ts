@@ -6,6 +6,7 @@ import { Livro } from 'src/app/modelos/Livro';
 import { LivroService } from 'src/app/service/livro.service';
 import { LocalDate } from 'src/app/utils/LocalDate';
 import CustomValidators from '../../validators/CustomValidators';
+import { AlertasService } from 'src/app/service/alertas.service';
 
 @Component({
   selector: 'app-livro-atualizar',
@@ -18,6 +19,7 @@ export class LivroAtualizarComponent implements OnInit {
   id: number
 
   constructor(private usuarioService: UsuarioService,
+    private alertaService: AlertasService,
     private router: Router,
     private FormBuilder: FormBuilder,
     private LivroService: LivroService,
@@ -53,7 +55,7 @@ export class LivroAtualizarComponent implements OnInit {
           })
         },
         error: Erro => {
-          alert('Erro ao Pegar Informação do Livro!!!')
+          this.alertaService.showAlertDanger('Um erro aconteceu');
           console.log(Erro)
         }
       })
@@ -67,7 +69,7 @@ export class LivroAtualizarComponent implements OnInit {
   enviar() {
     this.form.markAllAsTouched()
     if (!this.form.valid) {
-      alert('Formulário está Incompleto!!!')
+      this.alertaService.showAlertDanger('Formulário incompleto');
       return
     }
     console.log(this.form.get('DataPublicacao')!.value)
@@ -88,9 +90,9 @@ export class LivroAtualizarComponent implements OnInit {
     livro.sinopse = this.form.get('Sinopse')!.value
 
     this.LivroService.atualizarLivro(livro).subscribe({
-      next: LivroResposta => { alert('Livro Atualizado!!!') },
+      next: LivroResposta => { this.alertaService.showAlertSucess('Livro atualizado com sucesso'); },
       error: Erro => {
-        alert('Erro ao Atualizar o Livro!!!')
+        this.alertaService.showAlertDanger('Um erro aconteceu');
         console.log(Erro)
       }
     })

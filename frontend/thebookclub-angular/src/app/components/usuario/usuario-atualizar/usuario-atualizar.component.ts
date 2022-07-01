@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/modelos/Usuario';
 import { UsuarioLogin } from 'src/app/modelos/UsuarioLogin';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { globals } from 'src/environments/environment';
 
@@ -16,6 +17,7 @@ export class UsuarioAtualizarComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
+    private alertaService: AlertasService,
     private router: Router
   ) { }
 
@@ -40,17 +42,17 @@ export class UsuarioAtualizarComponent implements OnInit {
             globals.usuarioLogin = user;
             this.usuarioService.saveUsuarioLocalStorage();
             this.router.navigate(['/inicio']);
-            alert('Usuário atualizado com sucesso!');
+            this.alertaService.showAlertDanger('Usuário atualizado com sucesso!');
           },
           error: err => {
             console.log(err);
-            alert('Um erro aconteceu...');
+            this.alertaService.showAlertDanger('Um erro aconteceu');
           }
         });
       },
       error: err => {
         console.log(err);
-        alert('Um erro aconteceu...');
+        this.alertaService.showAlertDanger('Um erro aconteceu');
       }
     })
   }

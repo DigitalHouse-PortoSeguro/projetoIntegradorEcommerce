@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { AlertasService } from '../service/alertas.service';
 
 @Component({
   selector: 'app-alertas',
@@ -8,18 +9,29 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class AlertasComponent implements OnInit {
 
-  @Input() message: string
-  @Input() type: string = 'success'
+  message: string = '';
+  type: string = 'success';
+  isOpen: boolean = false;
 
   constructor(
-    private modal: BsModalRef
-  ) { }
+    private alertaService: AlertasService
+  ) { 
+    this.alertaService.getOnAlert().subscribe(alert => {
+      this.message = alert.message;
+      this.type = alert.type;
+      this.isOpen = true;
+      console.log(this.message);
+      console.log(this.type);
+      console.log(this.isOpen);
+    })
+  }
 
   ngOnInit() {
+    
   }
 
   onClose(){
-    this.modal.hide()
+    this.isOpen = false;
   }
 
 }

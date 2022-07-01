@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Livro } from 'src/app/modelos/Livro';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { LivroService } from 'src/app/service/livro.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { globals } from 'src/environments/environment.prod';
@@ -17,6 +18,7 @@ export class GerenciarLivroComponent implements OnInit {
   constructor(
     private usuarioService: UsuarioService,
     private livroService: LivroService,
+    private alertaService: AlertasService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -39,7 +41,7 @@ export class GerenciarLivroComponent implements OnInit {
           console.log(resp);
         },
         error: err => {
-          alert('Um erro aconteceu...');
+          this.alertaService.showAlertDanger('Um erro aconteceu');
           console.log(err);
         }
       });
@@ -53,12 +55,12 @@ export class GerenciarLivroComponent implements OnInit {
   deletarLivro(): void {
     this.livroService.deletarLivro(this.livro.livroId).subscribe({
       next: resp => {
-        alert('Livro deletado com sucesso!');
+        this.alertaService.showAlertSucess('Livro deletado com sucesso!');
         this.router.navigate(['/admin/livros/lista']);
       },
       error: err => {
+        this.alertaService.showAlertDanger('Um erro aconteceu');
         console.log(err);
-        alert('Um erro aconteceu...');
       }
     })
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pedido } from 'src/app/modelos/Pedido';
 import { PedidoLivro } from 'src/app/modelos/PedidoLivro';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { CarrinhoService } from 'src/app/service/carrinho.service';
 
 @Component({
@@ -12,7 +13,10 @@ export class CarrinhoComponent implements OnInit {
 
   listaPedidoLivro: PedidoLivro[] = []
 
-  constructor(private carrinhoService: CarrinhoService) { }
+  constructor(
+    private carrinhoService: CarrinhoService,
+    private alertaService: AlertasService
+  ) { }
 
   ngOnInit(): void {
     this.listaPedidoLivro = this.carrinhoService.getAllPedidoLivros()
@@ -26,7 +30,7 @@ export class CarrinhoComponent implements OnInit {
     this.carrinhoService.checkoutCarrinho('DEBITO', 'CORREIOS').subscribe(
       (pedido: Pedido) => {
         this.carrinhoService.resetar();
-        alert('O pedido foi finalizado');
+        this.alertaService.showAlertSucess('Pedido finalizado!');
       })
   }
 }

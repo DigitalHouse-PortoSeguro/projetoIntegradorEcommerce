@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioLogin } from 'src/app/modelos/UsuarioLogin';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { globals } from 'src/environments/environment';
 
@@ -15,7 +16,8 @@ export class EntrarComponent implements OnInit {
 
   constructor(
     private authService: UsuarioService,
-    private router: Router
+    private router: Router,
+    private alertaService: AlertasService
   ) { }
 
   ngOnInit(): void {
@@ -34,12 +36,13 @@ export class EntrarComponent implements OnInit {
           globals.usuarioLogin = user;
           this.authService.saveUsuarioLocalStorage();
           this.router.navigate(['/inicio']);
+          this.alertaService.showAlertSucess('Usuário logado com sucesso!');
           console.log(user);
         },
 
         error: error => {
           console.log(error);
-          alert('Usuário ou senha inválidos');
+          this.alertaService.showAlertDanger('Usuário ou senha inválidos');
         }
       })
     }

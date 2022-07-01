@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+//import { BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import { Observable, Subject } from 'rxjs';
 import { AlertasComponent } from '../alertas/alertas.component';
 
 @Injectable({
@@ -7,14 +8,18 @@ import { AlertasComponent } from '../alertas/alertas.component';
 })
 export class AlertasService {
 
+  private onAlert: Subject<any> = new Subject();
+
   constructor(
-    private bsModalService: BsModalService
+    //private bsModalService: BsModalService
   ) { }
 
   private showAlert(message: string, type: string){
-    const bsModalRef: BsModalRef = this.bsModalService.show(AlertasComponent)
+    /*const bsModalRef: BsModalRef = this.bsModalService.show(AlertasComponent)
     bsModalRef.content.type = type
-    bsModalRef.content.message = message
+    bsModalRef.content.message = message*/
+
+    this.onAlert.next({type, message});
   }
 
   showAlertDanger(message: string){
@@ -29,5 +34,7 @@ export class AlertasService {
     this.showAlert(message, 'info')
   }
 
-
+  getOnAlert(): Observable<any> {
+    return this.onAlert.asObservable();
+  }
 }

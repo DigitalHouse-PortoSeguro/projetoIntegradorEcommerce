@@ -104,7 +104,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.alertasServices.showAlertInfo('Teste com Alert de Erro');
+    // this.alertasServices.showAlertInfo('Teste com Alert de Erro');
     this.usuarioService.loadUsuarioLocalStorage();
     this.carrinhoService.loadCarrinhoLocalStorage();
 
