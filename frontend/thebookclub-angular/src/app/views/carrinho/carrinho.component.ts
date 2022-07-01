@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pedido } from 'src/app/modelos/Pedido';
 import { PedidoLivro } from 'src/app/modelos/PedidoLivro';
 import { CarrinhoService } from 'src/app/service/carrinho.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -12,7 +14,11 @@ export class CarrinhoComponent implements OnInit {
 
   listaPedidoLivro: PedidoLivro[] = []
 
-  constructor(private carrinhoService: CarrinhoService) { }
+  constructor(
+    private usuarioService: UsuarioService,
+    private carrinhoService: CarrinhoService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.listaPedidoLivro = this.carrinhoService.getAllPedidoLivros()
@@ -23,11 +29,16 @@ export class CarrinhoComponent implements OnInit {
   }
 
   finalizarPedido() {
-    this.carrinhoService.checkoutCarrinho('DEBITO', 'CORREIOS').subscribe(
-      (pedido: Pedido) => {
-        this.carrinhoService.resetar();
-        alert('O pedido foi finalizado');
-      })
+    if (!this.usuarioService.isLoggedIn()) {
+      this.router.navigate(['/entrar']);
+    } else {
+      this.carrinhoService.checkoutCarrinho('DEBITO', 'CORREIOS').subscribe(
+        (pedido: Pedido) => {
+          this.carrinhoService.resetar();
+          this.listaPedidoLivro = [];
+          alert('O pedido foi finalizado');
+        })
+    }
   }
 }
 
