@@ -5,12 +5,10 @@ import { CommonModule } from '@angular/common'
 
 import { AppComponent } from './app.component';
 import { FormUsuarioComponent } from './components/usuario/form-usuario/form-usuario.component';
-import { InputCustomComponent } from './components/input-custom/input-custom.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputFieldComponent } from './components/input-field/input-field.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
-import { FormDebugComponent } from './components/form-debug/form-debug.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CardLivroComponent } from './components/livro/card-livro/card-livro.component';
 import { UsuarioCadastroComponent } from './components/usuario/usuario-cadastro/usuario-cadastro.component';
@@ -28,14 +26,12 @@ import { LivroCategoriaComponent } from './components/livro/livro-categoria/livr
 import { LivroCadastroComponent } from './components/livro/livro-cadastro/livro-cadastro.component';
 import { EntrarComponent } from './components/entrar/entrar.component';
 import { MensagemModule } from './mensagem/mensagem/mensagem.module';
-import { HomeComponent } from './views/home/home.component';
 import { ListagemLivrosComponent } from './components/livro/listagem-livros/listagem-livros.component';
 import { GerenciarLivroComponent } from './components/livro/gerenciar-livro/gerenciar-livro.component';
 import { AtualizarLivroComponent } from './components/livro/atualizar-livro/atualizar-livro.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RodapeComponent } from './components/rodape/rodape.component';
 import { InicioComponent } from './views/inicio/inicio.component';
-//import { InicioComponent } from './components/inicio/inicio.component';
 import { SairComponent } from './components/sair/sair.component';
 import { SobreNosComponent } from './views/sobre-nos/sobre-nos.component';
 import { FaleConoscoComponent } from './views/fale-conosco/fale-conosco.component';
@@ -49,10 +45,8 @@ import { CategoriasGeralComponent } from './components/categorias-geral/categori
   declarations: [
     AppComponent,
     FormUsuarioComponent,
-    InputCustomComponent,
     InputFieldComponent,
     DropdownComponent,
-    FormDebugComponent,
     CardLivroComponent,
     UsuarioCadastroComponent,
     UsuarioAtualizarComponent,
@@ -70,7 +64,6 @@ import { CategoriasGeralComponent } from './components/categorias-geral/categori
     LivroCadastroComponent,
     EntrarComponent,
     InicioComponent,
-    HomeComponent,
     ListagemLivrosComponent,
     GerenciarLivroComponent,
     AtualizarLivroComponent,
