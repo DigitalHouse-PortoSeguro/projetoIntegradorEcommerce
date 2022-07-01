@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body {
     background-color: #8DC8FF;
-    padding: 110px;
 }
 
 .mr-5 {
@@ -15,9 +14,9 @@ body {
     border-radius: 1.5rem;
 }
 
-.card {
+/* .card {
     overflow: hidden;
-}
+} */
 
 @font-face {
     font-family: 'Harmonia Sans Pro Cyr';
