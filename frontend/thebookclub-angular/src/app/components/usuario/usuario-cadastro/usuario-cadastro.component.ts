@@ -31,7 +31,7 @@ export class UsuarioCadastroComponent implements OnInit {
         this.router.navigate(['/entrar']);
       },
       error: err => {
-        if (err.error) {
+        if (err.error?.message) {
           this.alertaService.showAlertDanger(err.error.message);
         } else {
           this.alertaService.showAlertDanger('Aconteceu um erro');
