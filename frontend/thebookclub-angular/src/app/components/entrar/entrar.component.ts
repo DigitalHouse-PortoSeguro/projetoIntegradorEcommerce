@@ -33,7 +33,11 @@ export class EntrarComponent implements OnInit {
         next: user => {
           globals.usuarioLogin = user;
           this.authService.saveUsuarioLocalStorage();
-          this.router.navigate(['/inicio']);
+          if (globals.carrinho.pedidoLivros.length > 0) {
+            this.router.navigate(['/carrinho']);
+          } else {
+            this.router.navigate(['/inicio']);
+          }
           console.log(user);
         },
 
