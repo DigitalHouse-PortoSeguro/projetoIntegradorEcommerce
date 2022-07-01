@@ -46,8 +46,6 @@
 
 ## ⚙️ Features
 
-- [x] Página dos mais populares
-- [x] Página de favoritos
 - [x] Página individual do produto(livro)
 - [x] Página inicial com navbar e botão de login e cadastro
 - [x] Autenticação de usuário 
