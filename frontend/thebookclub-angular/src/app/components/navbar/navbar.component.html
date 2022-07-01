@@ -11,6 +11,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-4 mb-2 mb-lg-0">
                 <li class="nav-item mx-0">
+                    <a class="nav-link active fs-3 fw-bold" routerLink="/inicio"
+                        aria-current="page">Início</a>
+                </li>
+                <li class="nav-item mx-0">
                     <a class="nav-link active fs-3 fw-bold" routerLink="/livros/categorias"
                         aria-current="page">Categorias</a>
                 </li>
@@ -54,14 +58,14 @@
                     </a>
                 </li>
             </ul>
-            <div class="d-flex">
-                <input class="form-control me-2" style="min-width: 250px" type="search"
-                    placeholder="Digite aqui o que procura :D" aria-label="Search"
-                    [(ngModel)]="tituloText">
-                <button class="btn btn-outline-success" type="submit" (click)="buscaTitulo()">
-                    <img src="../../../assets/img/lupa.png" height="40px" alt="lupa para busca" />
-                </button>
-            </div>
+        </div>
+        <div class="d-flex">
+            <input class="form-control me-2" style="min-width: 250px" type="search"
+                placeholder="Digite aqui o que procura :D" aria-label="Search"
+                [(ngModel)]="tituloText">
+            <button class="btn btn-outline-success" type="submit" (click)="buscaTitulo()">
+                <img src="../../../assets/img/lupa.png" height="40px" alt="lupa para busca" />
+            </button>
         </div>
     </div>
 </nav>
