@@ -1,0 +1,13 @@
+<div class="mb-3">
+	<label [for]="id" class="form-label">{{title}}</label>
+	<div *ngFor="let op of options; let i = index" class="form-check">
+		<input class="form-check-input" type="radio" name="flexRadioDefault" [id]="id + '-' + op">
+		<label class="form-check-label" [for]="id + '-' + op">
+			{{getText(i)}}
+		</label>
+	</div>
+	<div *ngFor="let err of getErrors()" class="invalid-feedback">
+		{{err}}
+	</div>
+	<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
+</div>

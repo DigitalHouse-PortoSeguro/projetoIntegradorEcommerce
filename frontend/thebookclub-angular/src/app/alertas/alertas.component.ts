@@ -9,6 +9,7 @@ import { AlertasService } from '../service/alertas.service';
 })
 export class AlertasComponent implements OnInit {
 
+  title: string = '';
   message: string = '';
   type: string = 'success';
   isOpen: boolean = false;
@@ -18,6 +19,7 @@ export class AlertasComponent implements OnInit {
     private alertaService: AlertasService
   ) { 
     this.alertaService.getOnAlert().subscribe(alert => {
+      this.title = alert.title;
       this.message = alert.message;
       this.type = alert.type;
       this.isOpen = true;

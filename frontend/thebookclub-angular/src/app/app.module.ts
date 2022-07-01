@@ -42,6 +42,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { CategoriasGeralComponent } from './components/categorias-geral/categorias-geral.component';
 import { AlertasComponent } from './alertas/alertas.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { RadioComponent } from './components/radio/radio.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     TextareaComponent,
     LivroAtualizarComponent,
     AdminComponent,
-    AlertasComponent
+    AlertasComponent,
+    RadioComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,9 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 })
 export class CarrinhoComponent implements OnInit {
 
-  listaPedidoLivro: PedidoLivro[] = []
+  listaPedidoLivro: PedidoLivro[] = [];
+  metodoPagamento: string = "";
+  formaEnvio: string = "";
 
   constructor(
     private usuarioService: UsuarioService,
@@ -32,13 +34,14 @@ export class CarrinhoComponent implements OnInit {
 
   finalizarPedido() {
     if (!this.usuarioService.isLoggedIn()) {
+      this.alertaService.showAlertInfo('Entre com sua conta para poder finalizar o pedido');
       this.router.navigate(['/entrar']);
     } else {
-      this.carrinhoService.checkoutCarrinho('DEBITO', 'CORREIOS').subscribe(
+      this.carrinhoService.checkoutCarrinho(this.metodoPagamento, this.formaEnvio).subscribe(
         (pedido: Pedido) => {
           this.carrinhoService.resetar();
           this.listaPedidoLivro = [];
-          this.alertaService.showAlertSucess('Pedido finalizado!');
+          this.alertaService.showAlertSucess('Pedido finalizado! Muito obrigado por usar o nosso site!');
           this.router.navigate(['/inicio']);
         })
     }

@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Optional, Output, Self } from '
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-dropdown',
-  templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.css']
+  selector: 'app-radio',
+  templateUrl: './radio.component.html',
+  styleUrls: ['./radio.component.css']
 })
-export class DropdownComponent implements ControlValueAccessor {
+export class RadioComponent implements ControlValueAccessor {
 
   @Input() id: string;
   @Input() name: string;

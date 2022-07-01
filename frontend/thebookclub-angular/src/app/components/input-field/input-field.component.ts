@@ -79,7 +79,7 @@ export class InputFieldComponent implements ControlValueAccessor {
   }
 
   getErrors(): string[] {
-    if (!this.ngControl.errors) return [];
+    if (!this.ngControl?.errors) return [];
     return Object.values(this.ngControl.errors as any);
   }
 }
