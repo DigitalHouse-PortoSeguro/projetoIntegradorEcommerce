@@ -98,7 +98,7 @@ export class AppComponent implements OnInit {
     user.token = "Basic " + btoa("root:root")
 
     
-    globals.usuarioLogin = user
+    //globals.usuarioLogin = user
   }
 
   ngOnInit(): void {
