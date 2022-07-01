@@ -5,15 +5,17 @@
 <table class="table">
   <thead>
     <tr class="tabelacabecalho" style="height: 50px; border: 20px">
-      <th class="cabecalho" style="width: 750px;">Produto</th>
+      <th class="cabecalho" style="width: 590px;">Produto</th>
       <th class="cabecalho text-center">Quantidade</th>
-      <th class="cabecalho text-center">Preço</th>
+      <th class="cabecalho text-center">Preço unitário</th>
+      <th class="cabecalho text-center">Preço Total</th>
     </tr>
   </thead>
   <tbody>
     <tr class="tabela" style="height: 200px" *ngFor="let pedidoLivro of listaPedidoLivro">
       <td class="colunaTabela"><div class="cardCarrinho"><app-item-carrinho [pedidoLivro]="pedidoLivro"></app-item-carrinho></div></td>
       <td class="colunaTabela align-middle"><p class="text-center" style="font-size: 14pt"><strong>{{ pedidoLivro.quantidade }}</strong></p></td>
+      <td class="colunaTabela align-middle"><p class="text-center" style="font-size: 14pt"><strong>R$ {{ (pedidoLivro.precoVenda).toFixed(2).replace(".", ",")}}</strong></p></td>
       <td class="colunaTabela align-middle"><p class="text-center" style="font-size: 15pt"><strong>R$ {{(pedidoLivro.precoVenda * pedidoLivro.quantidade).toFixed(2).replace(".", ",")}}</strong></p></td>
     </tr>
   </tbody>
