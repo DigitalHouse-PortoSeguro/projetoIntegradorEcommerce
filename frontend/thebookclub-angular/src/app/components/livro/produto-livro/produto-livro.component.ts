@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Livro } from 'src/app/modelos/Livro';
 import { PedidoLivro } from 'src/app/modelos/PedidoLivro';
 import { CarrinhoService } from 'src/app/service/carrinho.service';
@@ -20,7 +20,8 @@ export class ProdutoLivroComponent implements OnInit {
   constructor(
     private livroService: LivroService,
     private carrinho: CarrinhoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +50,8 @@ export class ProdutoLivroComponent implements OnInit {
 
     this.carrinho.adicionarPedidoLivro(pedidoLivro);
     this.carrinho.saveCarrinhoLocalStorage();
+
+    this.router.navigate(['/carrinho'])
   }
 
 }
