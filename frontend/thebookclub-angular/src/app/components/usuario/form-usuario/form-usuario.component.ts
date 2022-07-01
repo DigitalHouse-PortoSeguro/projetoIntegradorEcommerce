@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Usuario } from 'src/app/modelos/Usuario';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { ConsultaCepService } from 'src/app/service/consulta-cep.service';
 import { LocalDate } from 'src/app/utils/LocalDate';
 import CustomValidators from '../../validators/CustomValidators';
@@ -22,7 +23,8 @@ export class FormUsuarioComponent implements OnInit {
 
 	constructor(
 		private formBuilder: FormBuilder,
-		private cepService: ConsultaCepService
+		private cepService: ConsultaCepService,
+		private alertaService: AlertasService
 	) { }
 
 	ngOnInit(): void {
@@ -94,7 +96,7 @@ export class FormUsuarioComponent implements OnInit {
 		// Alguns campos estão carregando
 		if (this.buscandoEndereco) return;
 		if(!this.form.valid) {
-			alert("Preencha o formulário corretamente");
+			this.alertaService.showAlertDanger('Formulário está Incompleto');
 			return;
 		}
 
@@ -138,7 +140,7 @@ export class FormUsuarioComponent implements OnInit {
 				});
 			},
 			error: err => {
-				alert("Um erro acontenceu ao buscar cep...");
+				this.alertaService.showAlertDanger('Um erro aconteceu');
 				console.log(err);
 				this.habilitarEndereco();
 			}

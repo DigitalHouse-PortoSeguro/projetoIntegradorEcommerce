@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { globals } from 'src/environments/environment';
 import { Livro } from './modelos/Livro';
 import { UsuarioLogin } from './modelos/UsuarioLogin';
+import { AlertasService } from './service/alertas.service';
 import { CarrinhoService } from './service/carrinho.service';
 import { UsuarioService } from './service/usuario.service';
 import { LocalDate } from './utils/LocalDate';
@@ -49,7 +50,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private carrinhoService: CarrinhoService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private alertasServices: AlertasService
   ) {
     this.livro = this.createLivro(
       "Os segredos da mente milionária",
@@ -102,6 +104,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.alertasServices.showAlertInfo('Teste com Alert de Erro');
     this.usuarioService.loadUsuarioLocalStorage();
     this.carrinhoService.loadCarrinhoLocalStorage();
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/modelos/Usuario';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { globals } from 'src/environments/environment';
 
@@ -15,6 +16,7 @@ export class GerenciarUsuarioComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
+    private alertaService: AlertasService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -37,7 +39,7 @@ export class GerenciarUsuarioComponent implements OnInit {
           console.log(resp);
         },
         error: err => {
-          alert('Um erro aconteceu...');
+          this.alertaService.showAlertDanger('Um erro aconteceu');
           console.log(err);
         }
       });
@@ -51,12 +53,12 @@ export class GerenciarUsuarioComponent implements OnInit {
   deletarUsuario(): void {
     this.usuarioService.deleteById(this.usuario.usuarioId).subscribe({
       next: resp => {
-        alert('Usuário deletado com sucesso!');
+        this.alertaService.showAlertSucess('Usuario deletado com sucesso!');
         this.router.navigate(['/admin/usuarios/lista']);
       },
       error: err => {
+        this.alertaService.showAlertDanger('Um erro aconteceu');
         console.log(err);
-        alert('Um erro aconteceu...');
       }
     })
   }
