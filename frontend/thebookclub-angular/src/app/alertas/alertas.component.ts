@@ -12,6 +12,7 @@ export class AlertasComponent implements OnInit {
   message: string = '';
   type: string = 'success';
   isOpen: boolean = false;
+  timer: any = null;
 
   constructor(
     private alertaService: AlertasService
@@ -20,9 +21,8 @@ export class AlertasComponent implements OnInit {
       this.message = alert.message;
       this.type = alert.type;
       this.isOpen = true;
-      console.log(this.message);
-      console.log(this.type);
-      console.log(this.isOpen);
+      if (this.timer) clearTimeout(this.timer);
+      this.timer = setTimeout(() => this.onClose(), alert.duration);
     })
   }
 

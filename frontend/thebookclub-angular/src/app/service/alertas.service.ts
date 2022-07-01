@@ -14,24 +14,24 @@ export class AlertasService {
     //private bsModalService: BsModalService
   ) { }
 
-  private showAlert(message: string, type: string){
+  private showAlert(message: string, type: string, duration: number = 5000){
     /*const bsModalRef: BsModalRef = this.bsModalService.show(AlertasComponent)
     bsModalRef.content.type = type
     bsModalRef.content.message = message*/
 
-    this.onAlert.next({type, message});
+    this.onAlert.next({type, message, duration});
   }
 
-  showAlertDanger(message: string){
-    this.showAlert(message, 'danger')
+  showAlertDanger(message: string, duration: number = 5000){
+    this.showAlert(message, 'danger', duration);
   }
 
-  showAlertSucess(message: string){
-    this.showAlert(message, 'success')
+  showAlertSucess(message: string, duration: number = 5000){
+    this.showAlert(message, 'success', duration);
   }
 
-  showAlertInfo(message: string){
-    this.showAlert(message, 'info')
+  showAlertInfo(message: string, duration: number = 5000){
+    this.showAlert(message, 'info', duration);
   }
 
   getOnAlert(): Observable<any> {
