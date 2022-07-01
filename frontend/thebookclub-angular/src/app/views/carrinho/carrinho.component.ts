@@ -37,6 +37,7 @@ export class CarrinhoComponent implements OnInit {
           this.carrinhoService.resetar();
           this.listaPedidoLivro = [];
           alert('O pedido foi finalizado');
+          this.router.navigate(['/inicio']);
         })
     }
   }
