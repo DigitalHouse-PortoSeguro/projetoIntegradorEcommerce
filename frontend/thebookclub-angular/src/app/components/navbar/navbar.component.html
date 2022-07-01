@@ -7,7 +7,7 @@
             <div class="d-flex flex-grow-1">
                 <input class="form-control me-2" type="search" placeholder="Digite aqui o que procura :D"
                     aria-label="Search" [(ngModel)]="tituloText">
-                <button class="btn btn-success" type="submit" (click)="buscaTitulo()">
+                <button class="btn btn-primary" type="submit" (click)="buscaTitulo()">
                     Buscar
                     <!-- <img src="../../../assets/img/lupa.png" height="40px" alt="lupa para busca" /> -->
                 </button>
@@ -28,6 +28,9 @@
                     </li>
                     <li class="nav-item me-4">
                         <a class="nav-link active fw-bold fs-5" routerLink="/livros/categorias" aria-current="page">Categorias</a>
+                    </li>
+                    <li *ngIf="isAdmin()" class="nav-item me-4">
+                        <a class="nav-link active fw-bold fs-5 text-uppercase" routerLink="/admin" aria-current="page">Admin</a>
                     </li>
                     <div *ngIf="!loggedIn()" class="d-flex me-2 align-items-center">
                         <img class="me-2 rounded" height="48" id="perfil" src="../../../assets/img/perfil.png" alt="" />
