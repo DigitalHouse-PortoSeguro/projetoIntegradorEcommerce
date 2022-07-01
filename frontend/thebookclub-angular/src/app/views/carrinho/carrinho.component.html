@@ -40,9 +40,15 @@
       </table>
     </div>
   </div>
-  <div class="row mb-5">
+  <div class="row mb-3">
     <div class="link">
       <a style="color: black" [routerLink]="['/inicio']"><strong>Adicionar mais itens ao carrinho</strong></a>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="total fs-4 d-flex justify-content-start">
+      <p><strong>Total do pedido: R$ {{ getTotal().toFixed(2).replace(".", ",") }}</strong></p>
     </div>
   </div>
 
@@ -60,7 +66,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-md-4">
       <app-dropdown title="Forma de envio" name="forma-envio" id="forma-envio"
         defaultOption="Selecione uma forma de envio" [options]="['CORREIOS', 'RETIRADANALOJA', 'TRANSPORTADORA']"
@@ -70,13 +76,7 @@
   </div>
 
   <div class="row">
-    <div class="total fs-4 d-flex justify-content-end">
-      <p><strong>Total do pedido: R$ {{ getTotal().toFixed(2).replace(".", ",") }}</strong></p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="botaoFinalizar d-flex justify-content-end">
+    <div class="botaoFinalizar d-flex justify-content-start">
       <button [disabled]="metodoPagamento == '' || formaEnvio == ''" class="btn btn-light"
         (click)="finalizarPedido()">Finalizar compra</button>
     </div>
