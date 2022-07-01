@@ -8,8 +8,8 @@
 		<option *ngFor="let op of options" [ngValue]="op">{{op.charAt(0).toUpperCase() + op.slice(1).toLowerCase()}}
 		</option>
 	</select>
-	<div *ngIf="hasError()" class="invalid-feedback">
-		<span *ngFor="let err of getErrors()">{{err}}</span>
+	<div *ngFor="let err of getErrors()" class="invalid-feedback">
+		{{err}}
 	</div>
 	<div *ngIf="helpText != ''" [id]="id + '-help'" class="form-text">{{helpText}}</div>
 </div>

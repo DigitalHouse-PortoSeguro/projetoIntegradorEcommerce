@@ -71,7 +71,8 @@ export class DropdownComponent implements ControlValueAccessor {
     return this.ngControl.invalid && (this.ngControl.dirty || this.ngControl.touched);
   }
 
-  getErrors() {    
-    return Object.keys(this.ngControl.errors as any);
+  getErrors(): string[] {
+    if (!this.ngControl.errors) return [];
+    return Object.values(this.ngControl.errors as any);
   }
 }
