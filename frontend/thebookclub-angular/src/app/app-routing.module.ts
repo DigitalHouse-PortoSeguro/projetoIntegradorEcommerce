@@ -13,7 +13,6 @@ import { ProdutoLivroComponent } from './components/livro/produto-livro/produto-
 import { LivroCadastroComponent } from './components/livro/livro-cadastro/livro-cadastro.component';
 import { EntrarComponent } from './components/entrar/entrar.component';
 import { InicioComponent } from './views/inicio/inicio.component';
-import { HomeComponent } from './views/home/home.component';
 import { ListagemLivrosComponent } from './components/livro/listagem-livros/listagem-livros.component';
 import { GerenciarLivroComponent } from './components/livro/gerenciar-livro/gerenciar-livro.component';
 import { AtualizarLivroComponent } from './components/livro/atualizar-livro/atualizar-livro.component';
