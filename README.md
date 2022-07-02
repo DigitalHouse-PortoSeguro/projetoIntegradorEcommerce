@@ -18,6 +18,7 @@
 <div>
    
 <p>No inicio do curso tinhamos expectativa de que este trabalho fosse totalmente vinculado a uma das ODS da ONU (você pode ver quais são nesse site: https://brasil.un.org/pt-br/sdgs). Porém essa expectativa foi adaptada a um e-commerce que acreditamos colaborar com as ODS:
+
 <ul>
     <li>12-Consumo e produção responsáveis</li>
     <li>17-Parcerias e meios de implementação</li>
