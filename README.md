@@ -69,7 +69,7 @@
 <p>
     O projeto foi desenvolvido em JAVA, usando Maven e Angular. No Backend temos a estrutura do banco de dados relacional:
 </p>  
-    <img src="/home/magna/Documentos/DH_PortoSeguro/projetoIntegradorEcommerce/frontend/thebookclub-angular/src/assets/img/model.png">
+    <img src="./frontend/thebookclub-angular/src/assets/img/model.png">
 </div> 
 <br>
 
